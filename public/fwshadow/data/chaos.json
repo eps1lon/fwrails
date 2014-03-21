@@ -21,7 +21,7 @@
         {"stage":19,"pe":243,"items":{"Gelbsäure":3},"exposes":"Mirigardium"}
     ],
     "Buch des Goldraubs": [
-        {"stage":11,"pe":33278,"items":{"Goldstaub":4,"Perle der Kraft":1,Ölfass":4,"Nachtschatten-Lilie":4,"Sonnenfeuerblume":2},"exposes":"lebendes Farnblatt"}
+        {"stage":11,"pe":33278,"items":{"Goldstaub":4,"Perle der Kraft":1,"Ölfass":4,"Nachtschatten-Lilie":4,"Sonnenfeuerblume":2},"exposes":"lebendes Farnblatt"}
     ],
     "Chaossense": [
         {"stage": 12, "pe": 5428, "items": {"trockenes Gestrüpp": 6}, "expose": "Feuriges Ornament"},
@@ -963,7 +963,7 @@
         {"stage":3,"pe":1583,"items":{"goldener Kuhdarm":6,"rote Zauberkugel":8,"Portalstein":7,"Eisstachel":11,"Lopaknuss":4,"kleiner Energiesplitter":3},"exposes":"Koloa-Kaffe"},
         {"stage":9,"pe":1168,"items":{"Feuereintopf":8},"exposes":"roter Prisma-Kristall"},
         {"stage":10,"pe":2575,"items":{"meisterlicher Holzspreißel":10,"dämonische Kugel":7,"Horn des Teidams":11,"weiße Rose":9},"exposes":"Stachelwinde"},
-        {"stage":21,"pe":1598,"items":{"Eiskristall-Pulver":7,"Kräuterpastille":8,Ölfischzahn":7,"Nebelkaktus":11,"Staubschleifer-Ei":3},"exposes":"Spindeldornschlinge"}
+        {"stage":21,"pe":1598,"items":{"Eiskristall-Pulver":7,"Kräuterpastille":8,"Ölfischzahn":7,"Nebelkaktus":11,"Staubschleifer-Ei":3},"exposes":"Spindeldornschlinge"}
     ],
     "Zauber der Wiederherstellung": [
         {"stage": 7, "pe": 3222, "items": {"Feuerdiamant": 2, "Goldbarren": 1, "Wurmfutter": 4}, "expose": "Goldstaub"},

@@ -11,7 +11,8 @@
 	{"name":"Stabkrebs","live":769,"maxdmg":59,"unqiue":2},
 	{"name":"Nebelwiesel","unique_npc":2},
 	{"name":"Steinpicker-Vogel","unique_npc":2},
-	{"name":"Grabwurm","live":540,"strength":25,"unique_npc":1}
+	{"name":"Grabwurm","live":540,"strength":25,"unique_npc":1},
+	{"name":"Graustein-Bär","live":48872,"unique_npc":1}
 ],
 "Baru": [
 	{"name":"Schattenwolf","live":332,"maxdmg":18},
@@ -107,7 +108,9 @@
 	{"name":"Donnersandschlange","live":1409,"strength":100,"unique_npc":1},
 	{"name":"Staubgeist","live":6206,"strength":344,"unique_npc":2},
 	{"name":"Stein-Tentakel","live":894,"strength":55,"unique_npc":1},
-	{"name":"Koloa-Käfer","live":486,"strength":23,"unique_npc":1}
+	{"name":"Koloa-Käfer","live":486,"strength":23,"unique_npc":1},
+	{"name":"Milchkuh","live":544,"strength":60,"unique_npc":1},
+	{"name":"Insel-Schnapper","live":496,"strength":99,"unique_npc":1}
 ],
 "Dunkelstern": [
 	{"name":"Steinpicker-Vogel","live":866,"maxdmg":108,"unique":2},
@@ -157,7 +160,8 @@
 	{"name":"Solarda-Fisch","live":701,"maxdmg":35,"unique":2},
 	{"name":"Onlo-Skelett","live":1490,"maxdmg":82,"unique":1},
 	{"name":"Hulnodar-Wächter","live":1910,"maxdmg":382,"unique":1},
-	{"name":"Manticore","live":657,"unique_npc":2}
+	{"name":"Manticore","live":657,"unique_npc":2},
+	{"name":"Tentakel","live":444,"strength":37,"unique_npc":1}
 ],
 "Experimental": [
 	{"name":"Wasserkatze","live":539,"maxdmg":33,"unique":1},
@@ -192,7 +196,8 @@
 	{"name":"Riesenhornisse","unique_npc":2},
 	{"name":"Kriechlapf","live":317,"unique_npc":2},
 	{"name":"Flecken-Wolf","live":494,"strength":26,"unique_npc":2},
-	{"name":"Waldhüpfer","live":1181,"strength":196,"unique_npc":1}
+	{"name":"Waldhüpfer","live":1181,"strength":196,"unique_npc":1},
+	{"name":"Silberfuchs","live":402,"unique_npc":2}
 ],
 "Feuer": [
 	{"name":"Grabwurm","live":331,"maxdmg":41},
@@ -235,7 +240,8 @@
 	{"name":"Steinspinne","strength":60,"unique_npc":1},
 	{"name":"Waldspinne","strength":35,"unique_npc":1},
 	{"name":"Frostdämon","live":56880,"unique_npc":2},
-	{"name":"Lablabkaktus","live":707,"strength":37,"unique_npc":2}
+	{"name":"Lablabkaktus","live":707,"strength":37,"unique_npc":2},
+	{"name":"Wüstenmaus","live":523,"strength":24,"unique_npc":1}
 ],
 "Geister": [
 	{"name":"Hyäne","live":446,"maxdmg":74,"unique":2},
@@ -262,7 +268,8 @@
 	{"name":"Ameisenhügel","strength":65,"unique_npc":1},
 	{"name":"Milchkuh","unique_npc":2},
 	{"name":"Wüsten-Ektofron","live":14939,"strength":1090,"unique_npc":2},
-	{"name":"Klapperschlange","live":427,"strength":53,"unique_npc":1}
+	{"name":"Klapperschlange","live":427,"strength":53,"unique_npc":1},
+	{"name":"Flammenwurm","live":771,"unique_npc":2}
 ],
 "Glas": [
 	{"name":"Felsenwurm","live":370,"maxdmg":-1,"unique":2},
@@ -337,7 +344,8 @@
 	{"name":"Moosgeflecht","live":926,"maxdmg":48,"unique":2},
 	{"name":"Erdvogel","live":1039,"maxdmg":86,"unique":2},
 	{"name":"Graswiesenschlange","live":742,"maxdmg":148,"unique":1},
-	{"name":"Seeschlamm","live":821,"maxdmg":82,"unique":2},"Staubgeist",{"name":"Frostaugen-Bestie","live":1439,"strength":79,"unique_npc":1}
+	{"name":"Seeschlamm","live":821,"maxdmg":82,"unique":2},"Staubgeist",{"name":"Frostaugen-Bestie","live":1439,"strength":79,"unique_npc":1},
+	{"name":"Schneewurm","live":1243,"strength":69,"unique_npc":1}
 ],
 "Königs": [
 	{"name":"Fallensteller","live":1092,"maxdmg":70},
@@ -390,7 +398,8 @@
 	{"name":"Grabfliege","live":328,"maxdmg":21,"unique":1},"Schneekäfer-Kokon",{"name":"Dunkelsandkrebs","live":1243,"maxdmg":-1,"unique":2},
 	{"name":"Schotterraupe","live":-1,"maxdmg":65,"unique":1},
 	{"name":"Wühlratte","strength":26,"unique_npc":1},
-	{"name":"Schattensalamander","strength":913,"unique_npc":1}
+	{"name":"Schattensalamander","strength":913,"unique_npc":1},
+	{"name":"Milchkuh","live":416,"unique_npc":2}
 ],
 "Mondschein": [
 	{"name":"Onlo-Skelett","live":2094,"maxdmg":110},
@@ -421,7 +430,8 @@
 	{"name":"Berghund","live":1156,"maxdmg":82,"unique":2},
 	{"name":"Geisterschabe","live":603,"maxdmg":43,"unique":1},"Grasblatt-Schlange",{"name":"Schattenwolf","live":465,"maxdmg":-1,"unique":2},
 	{"name":"Wüstenplankton","strength":37,"unique_npc":1},
-	{"name":"Wiesenschrecke","unique_npc":2}
+	{"name":"Wiesenschrecke","unique_npc":2},
+	{"name":"Schattenwiesel","live":294,"strength":18,"unique_npc":1}
 ],
 "Narben": [
 	{"name":"Kaklatron","live":488,"maxdmg":97,"unique":2},
@@ -583,7 +593,8 @@
 	{"name":"Moosgeflecht","live":635,"maxdmg":37,"unique":1},
 	{"name":"Wandschleim","live":864,"maxdmg":61,"unique":1},
 	{"name":"Berghund","live":1193,"maxdmg":74,"unique":1},"Aasgeier","Wüstenmaus",{"name":"Serbanthi","live":985,"maxdmg":89,"unique":1},
-	{"name":"Schotterraupe","live":897,"maxdmg":128,"unique":2}
+	{"name":"Schotterraupe","live":897,"maxdmg":128,"unique":2},
+	{"name":"Teidam","live":455,"strength":28,"unique_npc":1}
 ],
 "Silber": [
 	{"name":"Erdfisch","live":641,"maxdmg":49,"unique":2},
@@ -745,7 +756,9 @@
 	{"name":"Wüstensalamander","unique_npc":2},
 	{"name":"Larvennest","live":590,"unique_npc":2},
 	{"name":"Belpharia-Tucan","live":528,"strength":44,"unique_npc":1},
-	{"name":"Algenechse","live":1266,"unique_npc":2}
+	{"name":"Algenechse","live":1266,"unique_npc":2},
+	{"name":"Stachelfisch","live":621,"strength":56,"unique_npc":1},
+	{"name":"Silbergras-Spinne","live":600,"strength":40,"unique_npc":1}
 ],
 "Zauber": [
 	{"name":"Strandlokil","live":1638,"maxdmg":96,"unique":2},
@@ -773,7 +786,8 @@
 "Serum": [
 	{"name":"Wasserkatze","live":284,"strength":31,"unique_npc":1},
 	{"name":"Schneewiesel","live":407,"strength":27,"unique_npc":1},
-	{"name":"Moosgeflecht","live":971,"strength":97,"unique_npc":2}
+	{"name":"Moosgeflecht","live":971,"strength":97,"unique_npc":2},
+	{"name":"Goldkrebs","live":613,"unique_npc":2}
 ],
 "Wachs": [
 	{"name":"Wasserschlange","live":585,"strength":27,"unique_npc":2}
@@ -792,28 +806,16 @@
 	{"name":"Wawruz","live":379,"strength":47,"unique_npc":2}
 ],
 "Knochen": [
-	{"name":"Belpharia-Tucan","live":307,"strength":21,"unique_npc":1}
+	{"name":"Belpharia-Tucan","live":307,"strength":21,"unique_npc":1},
+	{"name":"Wüstenmaus","live":298,"strength":18,"unique_npc":1},
+	{"name":"Schneekäfer-Raupe","live":449,"strength":21,"unique_npc":1}
 ],
 "Woll": [
 	{"name":"Klapperschlange","live":515,"strength":42,"unique_npc":2}
 ],
 "Schleim": [
-	{"name":"Graubartechse","live":359,"strength":18,"unique_npc":1}]}
-Knochen-Wüstenmaus (Unique-NPC) LP: 298/298 - Angreifen - Schnellschlag 18
-Dunkel-Milchkuh (Unique-NPC) LP: 544/544 - Angreifen - Schnellschlag 60
-Koloa-Urwaldkuh (Gruppen-NPC) LP: 273/273 - Angreifen - Schnellschlag
-Jerodar-Schneewurm (Unique-NPC) LP: 1174/1243 - Angreifen - Schnellschlag 69
-Wolken-Stachelfisch (Unique-NPC) LP: 565/621 - Angreifen - Schnellschlag 56
-Schleim-Chiup-Vogel (Unique-NPC) LP: 737/737 - Angreifen - Schnellschlag 38
-Schnee-Teidam (Unique-NPC) LP: 427/455 - Angreifen - Schnellschlag 28
-Metall-Milchkuh (Gruppen-NPC) LP: 416/416 - Angreifen - Schnellschlag
-Dunkel-Insel-Schnapper (Unique-NPC) LP: 197/496 - Angreifen - Schnellschlag 99
-Gift-Flammenwurm (Gruppen-NPC) LP: 771/771 - Angreifen - Schnellschlag
-Knochen-Schneekäfer-Raupe (Unique-NPC) LP: 449/449 - Angreifen - Schnellschlag 21
-Serum-Goldkrebs (Gruppen-NPC) LP: 613/613 - Angreifen - Schnellschlag
-Erd-Tentakel (Unique-NPC) LP: 407/444 - Angreifen - Schnellschlag 37
-Felsen-Silberfuchs (Gruppen-NPC) LP: 402/402 - Angreifen - Schnellschlag
-Wolken-Silbergras-Spinne (Unique-NPC) LP: 560/600 - Angreifen - Schnellschlag 40
-Flimmer-Wüstenmaus (Unique-NPC) LP: 299/523 - Angreifen - Schnellschlag 24
-Nacht-Schattenwiesel (Unique-NPC) LP: 294/294 - Angreifen - Schnellschlag 18
-Baby-Graustein-Bär (Unique-NPC) LP: 10761/48872 - Angreifen - Schnellschlag >3522
+	{"name":"Graubartechse","live":359,"strength":18,"unique_npc":1},
+	{"name":"Chiup-Vogel","live":737,"strength":38,"unique_npc":1}
+],
+"Koloa": [
+	{"name":"Urwaldkuh","live":273,"unique_npc":2}]}
