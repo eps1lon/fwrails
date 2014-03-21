@@ -2,6 +2,9 @@ nbproject/
 app/assets/images/achievements
 config/database.yml
 
+public/dumps
+public/assets
+
 # example gitignore
 *.rbc
 capybara-*.html
