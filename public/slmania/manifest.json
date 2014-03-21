@@ -1,0 +1,41 @@
+{
+  "name": "SlMania RC1",
+  "version": "1.0",
+  "manifest_version": 2,
+  "description": "Automatisches Strichlisten-Tool",
+  "web_accessible_resources": [
+      "images/save_labled_go.png",
+      "images/window_text.png",
+      "images/sign_cacel.png"
+  ],
+  "permissions": [
+      // hier Host zur zum Backend/Frontend Eintragen
+      // nicht notwendig wenn localhost
+      "http://localhost/" 
+  ],
+  "icons": {
+      "16": "images/icons/16.png",
+      "48": "images/icons/48.png",
+      "128": "images/icons/128.png"
+  },
+  "content_scripts": [
+      {
+          "matches": [
+              "http://*.freewar.de/freewar/internal/main.php*",
+              "http://*.freewar.de/freewar/internal/fight.php*",
+              "http://*.freewar.de/freewar/internal/areafight.php*"
+          ],
+          "js": [
+              "javascripts/lib/jquery.min.js",
+              "javascripts/lib/json2.js",
+              "javascripts/lib/common.js",
+              "javascripts/version.js",
+              "javascripts/main.js"
+          ],
+          "css": [
+              "stylesheets/interface.css"
+          ],
+          "all_frames": true
+      }
+  ]
+}

@@ -1,0 +1,18 @@
+namespace :deploy do 
+  namespace :web do
+    desc 'Wartungsseite wird angezeigt'
+    task :disable do
+      on roles(:app) do
+        execute "ln -fs #{shared_path}/system/maintenance.html "+ 
+                     "#{current_path}/public/maintenance.html"
+      end
+    end
+
+    desc 'Wartungsseite entfernen'
+    task :enable do
+      on roles(:app) do
+        execute "rm #{current_path}/public/maintenance.html"
+      end
+    end
+  end
+end

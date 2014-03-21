@@ -1,0 +1,71 @@
+<h1><%= t "clans.#{controller.action_name}.head" %></h1>
+<p><%= t "clans.commons.change_world" %>:</p>
+<ul class="worlds">
+  <li><%= link_to t("clans.commons.all_worlds"), clans_url(:action => params[:action]) %></li>
+  <% @worlds_all.each do |world| %>
+    <li>
+        <%= link_to world.short, 
+            clans_url(:action => params[:action], :world => world.short),
+            :title => world.localized_name %>
+    </li>
+  <% end %>
+</ul>
+
+<% unless @skipsearch.eql?(true) %>
+  <%= form_tag(clans_url(:action => params[:action], :world => params[:world]), 
+                         :class => ("suggest" if @suggest_limit > 0), :id=> 'search', :autocomplete => 'off') do %>
+  <%= label_tag :name, "#{Clan.human_attribute_name("name")}:" %>
+  <div>
+    <%= text_field_tag(:name) %>
+  </div>
+  <%= submit_tag t "helpers.submit.search" %>
+  <% end %>
+<% end %>
+
+<p id="last_update"><%= t "time.last_update" %>: <time datetime="<%= @last_update %>"><%= l @last_update %></time></p>
+
+<nav class="pages">
+  <strong><%= t "helpers.nav.page" %></strong>
+  <%= nav_links = nav(@offset, @limit, @model.count, method(:clans_url)).join.html_safe %>
+</nav>
+
+<table class="clans <%= 'single-world' if @worlds.count.eql?(1) %>">
+  <caption>
+    <%= t("clans.#{controller.action_name}.message", 
+          :count => @clans.length, 
+          :worlds => @worlds.collect(&:short).to_sentence) %>
+  </caption>
+  <thead>
+    <tr>
+      <% @attributes.each do |attr| %>
+        <th class="<%= attr[:human] %>">
+          <% if attr[:db] %>
+            <%= link_to @model.human_attribute_name(attr[:human]), 
+                        clans_url(@std_params.merge({"order" => attr[:human], "by" => @by})),
+                        :class => 'sort',
+                        :title => t('helpers.links.sort', :col => @model.human_attribute_name(attr[:human])) %>
+          <% else %>
+            <%=  @model.human_attribute_name(attr[:human]) %>
+          <% end %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @clans.each_with_index do |clan, i| %>
+      <tr class="<%= if i % 2 == 0 then 'odd' else 'even' end %>">
+        <%= render :partial => controller.action_name, :locals => {:clan => clan} %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<nav class="pages">
+  <strong><%= t "helpers.nav.page" %></strong>
+  <%= nav_links %>
+</nav>
+<script type="text/javascript">
+  var clans_url = <%= clans_url(@std_params.merge({"format" => "json", "name" => '_name_'})).to_json.html_safe %>,
+      clan_url = <%= clan_url({"world" => '_world_', "id" => '_id_'}).to_json.html_safe %>,
+      suggest_limit = <%= @suggest_limit %>,
+      worlds = <%= @worlds.to_json(:only => [:id, :short]).html_safe %>;
+</script>

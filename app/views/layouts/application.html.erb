@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="<%= @locale %>">
+<head>
+  <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+
+  <title><%= @title or "#{t("#{controller.controller_name}.human")}: \
+                        #{t("#{controller.controller_name}.#{controller.action_name}.human")}" %></title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= stylesheet_link_tag     controller.controller_name %>
+  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag controller.controller_name %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul id="nav">
+        <li><%= link_to 'FWRails', root_url, :class => 'page_logo' %></li>
+        <% @controllers.each do |controller_name| %>
+          <li  class="<%= "active" if controller_name == controller.controller_name %>">
+            <%= link_to t("human", :scope => controller_name), 
+                        "##{controller_name}" %>
+            <span class="anchor" id="<%= controller_name %>"></span>
+            <ul class="subs">
+                <%= render :partial => "#{controller_name}/actions" %>
+            </ul>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+    <nav id="locales">
+      <ul>
+        <% @locales.each do |locale| %>
+          <li>
+            <%= link_to locale, 
+                        url_for(params.merge({:subdomain => locale})), :data => {:locale => locale},
+                        :title => t('application.locale.change', :lang => t("application.locale.#{locale}")) %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+  <section id="yield">
+    <%= yield %>
+  </section>
+  <script type="text/javascript">
+      var params = <%= params.to_json.html_safe %>;
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+      <%= render template: "analytics/#{ANALYTICS[:service]}.js" if ANALYTICS %>
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<td class="clan_id">
+  <%= link_to_clan_or_del(clan.clan, clan.clan_id, clan.world.short) %>
+</td>
+<td class="leader_id_old">
+  <% if clan.leader_id_old == 0 %>
+    <%= t "clans.commons.noleader" %>
+  <% else %>
+    <%= link_to_user_or_del(clan.leader_old, clan.leader_id_old, clan.world.short) %>
+  <% end %>
+</td>
+<td class="leader_id_new">
+  <% if clan.leader_id_new == 0 %>
+    <%= t "clans.commons.noleader" %>
+  <% else %>
+    <%= link_to_user_or_del(clan.leader_new, clan.leader_id_new, clan.world.short) %>
+  <% end %>
+</td>
+<td class="created_at">
+  <time datetime="<%= clan.created_at %>"><%= l clan.created_at.to_date %></time>
+</td>
+<td class="world_id"><%= clan.world.name %></td>

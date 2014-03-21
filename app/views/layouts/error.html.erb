@@ -1,0 +1,23 @@
+<% @title = "#{controller.controller_name.capitalize} #{Rack::Utils::HTTP_STATUS_CODES[response.status]}" %>
+<h1><%= t "errors.messages.header" %></h1>
+<h2>
+  <%= response.status %> 
+  <%= t "errors.messages.e_#{response.status}.head", 
+        :default => Rack::Utils::HTTP_STATUS_CODES[response.status] %>
+</h2>
+<section id="error_partial">
+  <%= 
+    begin
+      render :partial => "#{controller.controller_name}/e_#{@partial || response.status}"
+    rescue ActionView::MissingTemplate
+      begin
+        render :partial => "errors/e_#{response.status}"
+      rescue ActionView::MissingTemplate
+        t "errors.messages.std"
+      end
+    end
+  %>
+</section>
+<section id="error_yield">
+  <%= yield %>
+</section>

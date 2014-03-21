@@ -1,0 +1,29 @@
+dl#clandetails {
+  display : inline-block; 
+  overflow: hidden;
+
+  dd, dt {
+    float: left; 
+  }
+  
+  dd {
+    padding-top: .05em;
+  }
+
+  dt {
+    font-size   : 1.05em;
+    font-weight : bold;
+    clear       : both; 
+    margin-right: .5em;
+    margin-right: 1ch;
+    
+    &.members + dd {
+      clear      : both;
+      margin-left: 1em;
+    }
+  } 
+}
+
+ul#members {
+  display: none;
+}

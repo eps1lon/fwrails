@@ -1,0 +1,1 @@
+var SLMANIA_VERSION = 1;

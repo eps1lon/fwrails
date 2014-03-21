@@ -1,0 +1,2921 @@
+-821;-780;Die alte Mühle
+-825;-779;Die alte Mühle
+-824;-779;Die alte Mühle
+-823;-779;Die alte Mühle
+-821;-779;Die alte Mühle
+-825;-778;Die alte Mühle
+-824;-778;Die alte Mühle
+-823;-778;Die alte Mühle
+-822;-778;Die alte Mühle
+-821;-778;Die alte Mühle
+-825;-777;Die alte Mühle
+-824;-777;Die alte Mühle
+-823;-777;Die alte Mühle
+-822;-777;Die alte Mühle
+-821;-777;Die alte Mühle
+-824;-776;Die alte Mühle
+-823;-776;Die alte Mühle
+-822;-776;Die alte Mühle
+-249;-349;Hulnodar - Das alte Gewölbe
+-246;-349;Hulnodar - Das alte Gewölbe
+-245;-349;Hulnodar - Das alte Gewölbe
+-244;-349;Hulnodar - Das alte Gewölbe
+-243;-349;Hulnodar - Das alte Gewölbe
+-249;-348;Hulnodar - Das alte Gewölbe
+-248;-348;Hulnodar - Das alte Gewölbe
+-247;-348;Hulnodar - Das alte Gewölbe
+-246;-348;Hulnodar - Das alte Gewölbe
+-245;-348;Hulnodar - Das alte Gewölbe
+-244;-348;Hulnodar - Das alte Gewölbe
+-243;-348;Hulnodar - Das alte Gewölbe
+-248;-347;Hulnodar - Das alte Gewölbe
+-247;-347;Hulnodar - Das alte Gewölbe
+-246;-347;Hulnodar - Das alte Gewölbe
+-245;-347;Hulnodar - Das alte Gewölbe
+-244;-347;Hulnodar - Das alte Gewölbe
+-247;-346;Hulnodar - Das alte Gewölbe
+-246;-346;Hulnodar - Das alte Gewölbe
+-245;-346;Hulnodar - Das alte Gewölbe
+-246;-345;Hulnodar - Das alte Gewölbe
+84;98;Anatubien - Die Koloa-Plantage
+84;99;Anatubien - Die Koloa-Plantage
+85;99;Anatubien - Die Koloa-Plantage
+86;99;Anatubien - Die Koloa-Plantage
+87;99;Anatubien - Die Koloa-Plantage
+88;99;Anatubien - Die Koloa-Plantage
+84;100;Anatubien - Das Plantagenhaus
+85;100;Anatubien - Die Koloa-Plantage
+86;100;Anatubien - Die Koloa-Plantage
+87;100;Anatubien - Die Koloa-Plantage
+90;100;Anatubien - Der Shop der Onlos
+85;101;Anatubien - Der Wald der Akademie
+89;101;Anatubien - Die Geburtstätte
+90;101;Anatubien - Der Ostwald
+84;102;Anatubien - Akademie des Lebens
+85;102;Anatubien - Der Wald der Akademie
+86;102;Anatubien - Das Vulkangebiet
+87;102;Anatubien - Das Vulkangebiet
+88;102;Anatubien - Das Vulkangebiet
+89;102;Anatubien - Der Ostwald
+90;102;Anatubien - Shop der Tränke
+86;103;Anatubien - Das Vulkangebiet
+87;103;Die Spitze des Vulkans
+88;103;Anatubien - Das Vulkangebiet
+89;103;Anatubien - Der Ostwald
+90;103;Anatubien - Der Ostwald
+86;104;Anatubien - Das Vulkangebiet
+87;104;Anatubien - Das Vulkangebiet
+88;104;Anatubien - Das Vulkangebiet
+89;104;Anatubien - Das Denkmal
+88;105;Anatubien - Herberge am Vulkan
+103;120;Azul - Geröll
+104;120;Azul - Geröll
+102;121;Azul - Geröll
+103;121;Azul - Geröll
+104;121;Azul - Geröll
+105;121;Azul - Geröll
+103;122;Azul - Geröll
+104;122;Azul - Geröll
+105;122;Azul - Der Wüstenberg
+104;123;Azul - Der Plunderladen
+105;123;Azul - Geröll
+104;124;Azul - Der Wüstenberg
+105;124;Azul - Der Wüstenberg
+106;124;Azul - Der Wüstenberg
+107;124;Azul - Der Wüstenberg
+103;125;Azul - Der Wüstenberg
+104;125;Azul - Der Wüstenberg
+105;125;Azul - Der Wüstenberg
+106;125;Azul - Der Wüstenberg
+103;126;Azul - Der Wüstenberg
+104;126;Azul - Der Wüstenberg
+105;126;Azul - Der Wüstenberg
+106;126;Azul - Der Wüstenberg
+102;127;Azul - Der Wüstenberg
+103;127;Azul - Der Wüstenberg
+104;127;Azul - Der Wüstenberg
+105;127;Azul - Der Wüstenberg
+106;127;Azul - Der Wüstenberg
+107;127;Azul - Die Wüstenberge
+103;128;Azul - der Wüstenberg
+104;128;Azul - Der Wüstenberg
+105;128;Azul - Der Wüstenberg
+106;128;Azul - Der Wüstenberg
+48;88;Belron - Der Tempel
+93;94;Die Bergwiesen
+94;94;Die Bergwiesen
+94;95;Die Bergwiesen
+-607;-209;Die Bernsteinhöhle
+-604;-209;Die Bernsteinhöhle
+-603;-209;Die Bernsteinhöhle
+-609;-208;Die Bernsteinhöhle
+-608;-208;Die Bernsteinhöhle
+-607;-208;Die Bernsteinhöhle
+-606;-208;Die Bernsteinhöhle
+-605;-208;Die Bernsteinhöhle
+-604;-208;Die Bernsteinhöhle
+-603;-208;Die Bernsteinhöhle
+-602;-208;Die Bernsteinhöhle
+-609;-207;Die Bernsteinhöhle
+-607;-207;Die Bernsteinhöhle
+-606;-207;Die Bernsteinhöhle
+-605;-207;Die Bernsteinhöhle
+-604;-207;Die Bernsteinhöhle
+-603;-207;Die Bernsteinhöhle
+-602;-207;Die Bernsteinhöhle
+-609;-206;Die Bernsteinhöhle
+-607;-206;Die Bernsteinhöhle
+-606;-206;Die Bernsteinhöhle
+-605;-206;Die Bernsteinhöhle
+-604;-206;Die Bernsteinhöhle
+-603;-206;Die Bernsteinhöhle
+-602;-206;Die Bernsteinhöhle
+-609;-205;Die Bernsteinhöhle
+-608;-205;Die Bernsteinhöhle
+-607;-205;Die Bernsteinhöhle
+-606;-205;Die Bernsteinhöhle
+-605;-205;Die Bernsteinhöhle
+-604;-205;Die Bernsteinhöhle
+-603;-205;Die Bernsteinhöhle
+-608;-204;Die Bernsteinhöhle
+-607;-204;Die Bernsteinhöhle
+-606;-204;Die Bernsteinhöhle
+-605;-204;Die Bernsteinhöhle
+-603;-204;Die Bernsteinhöhle
+-606;-203;Die Bernsteinhöhle
+84;103;Blatenien - Der stille Wald
+84;104;Blatenien - Der stille Wald
+82;105;Blatenien - Baumhaus der Ortung
+83;105;Blatenien - Der stille Wald
+84;105;Blatenien - Der stille Wald
+84;106;Blatenien - Der stille Wald
+85;106;Blatenien - Baumhaus des Schmerzes
+86;106;Blatenien - Der stille Wald
+85;107;Blatenien - Der stille Wald
+86;107;Blatenien - Die Gewebewurmzucht
+85;108;Blatenien - Baumhaus der Zauber
+85;109;Blatenien - Der stille Wald
+86;109;Blatenien - Das seltsame Gasthaus
+125;88;Brondor - Hütte der toten Seelen
+127;88;Brondor - Die Hügelkette
+128;88;Brondor - Die Hügelkette
+129;88;Brondor - Die Hügelkette
+130;88;Brondor - Die Hügelkette
+131;88;Brondor - Der Sonnenteich
+125;89;Brondor - Die ebene Wiese
+126;89;Brondor - Der Libellenwald
+127;89;Brondor - Der Libellenwald
+128;89;Brondor - Der Libellenwald
+129;89;Brondor - Der Libellenwald
+130;89;Brondor - Der Libellenwald
+125;90;Brondor - Der Libellenwald
+126;90;Brondor - Der Libellenwald
+127;90;Brondor - Der Libellenwald
+128;90;Brondor - Der Libellenwald
+129;90;Brondor - Der Fluss ins Meer
+130;90;Brondor - Der Libellenwald
+131;90;Brondor - Feiner Strand
+124;91;Brondor - Der Libellenwald
+125;91;Brondor - Der Libellenwald
+126;91;Brondor - Der Libellenwald
+127;91;Brondor - Der Kieselstrand
+124;92;Brondor - Der Libellenwald
+125;92;Brondor - Der Libellenwald
+126;92;Brondor - Der Libellenwald
+125;93;Brondor - Der Libellenwald
+126;93;Brondor - Der Libellenwald
+83;81;Das Portal
+82;82;Buran - Der Außenbereich
+83;82;Buran - Der Außenbereich
+84;82;Buran - Der Außenbereich
+81;83;Buran - Der Außenbereich
+82;83;Buran - Der Außenbereich
+83;83;Buran - Der Außenbereich
+84;83;Buran - Der Außenbereich
+81;84;Buran - Der Außenbereich
+82;84;Buran - Der Außenbereich
+83;84;Buran - Der Außenbereich
+86;85;Buran - Der Shop
+79;86;Kontrollturm
+82;86;Buran - Der Nordbereich
+83;86;Buran - Der Nordbereich
+84;86;Buran - Hohe Bäume
+85;86;Buran - Hohe Bäume
+86;86;Buran - Hohe Bäume
+79;87;Buran - Grasflächen
+80;87;Buran - Der Westbereich
+81;87;Buran - Der Westbereich
+82;87;Buran - Der Nordbereich
+83;87;Buran - Der Nordbereich
+84;87;Buran - Der Nordbereich
+85;87;Buran - Der Ostbereich
+86;87;Buran - Hohe Bäume
+87;87;Buran - Die Auktionshalle
+79;88;Buran - Vereinzelte Grasflächen
+80;88;Buran - Der Westbereich
+81;88;Buran - Der Westbereich
+82;88;Buran - Das Zentrum
+83;88;Buran - Das Zentrum
+84;88;Buran - Der Ostbereich
+85;88;Buran - Der Ostbereich
+86;88;Buran - Hohe Bäume
+79;89;Buran - Vereinzelte Grasflächen
+80;89;Buran - Haus der Schatten
+81;89;Buran - Der Westbereich
+82;89;Buran - Der Südbereich
+83;89;Buran - Der Südbereich
+84;89;Buran - Der Ostbereich
+85;89;Buran - Hohe Bäume
+79;90;Buran - Grasflächen
+80;90;Buran - Vereinzelte Grasflächen
+81;90;Buran - Grasflächen
+82;90;Buran - Der Südbereich
+83;90;Buran - Grasflächen
+84;90;Buran - Hohe Bäume
+85;90;Buran - Die Schmiede
+86;90;Buran - Der Waldweg
+80;91;Buran - Der Schlachthof
+82;91;Buran - Vereinzelte Grasflächen
+61;90;Delos - Der grüne Wall
+62;90;Delos - Der grüne Wall
+63;90;Delos - Grüne Bäume
+64;90;Delos - Grüne Bäume
+65;90;Delos - Die versteckte Hütte
+66;90;Delos - Das Haus der Aufträge
+67;90;Delos - Grüne Bäume
+68;90;Delos - Die alte Ruine
+69;90;Delos - Knorriger Wald
+62;91;Delos - Der grüne Wall
+63;91;Delos - Der grüne Wall
+64;91;Delos - Grüne Bäume
+65;91;Delos - Grüne Bäume
+66;91;Delos - Grüne Bäume
+67;91;Delos - Grüne Bäume
+68;91;Delos - Knorriger Wald
+69;91;Delos - Knorriger Wald
+64;92;Delos - Treppen
+64;93;Delos - Die düstere Ebene
+65;93;Delos - Die düstere Ebene
+66;93;Delos - Die düstere Ebene
+61;94;Delos - Die Dunkelschloss-Festung
+62;94;Delos - Die düstere Ebene
+66;94;Delos - Die düstere Ebene
+68;94;Delos - Der Platz der Taruner
+62;95;Delos - Die vergessene Kathedrale
+63;95;Delos - Die düstere Ebene
+64;95;Delos - Alte Ruinen
+65;95;Delos - Die düstere Ebene
+66;95;Delos - Die düstere Ebene
+68;95;Delos - Der sandige Gang
+62;96;Delos - Die düstere Ebene
+63;96;Delos - Die düstere Ebene
+64;96;Delos - Die düstere Ebene
+65;96;Delos - Die düstere Ebene
+66;96;Delos - Die düstere Ebene
+67;96;Delos - Die düstere Ebene
+68;96;Delos - Die düstere Ebene
+63;97;Delos - Die düstere Ebene
+64;97;Delos - Die düstere Ebene
+65;97;Delos - Die düstere Ebene
+66;97;Delos - Die düstere Ebene
+-937;-558;Die Diebeshöhle
+-936;-558;Die Diebeshöhle
+-935;-558;Die Diebeshöhle
+-938;-557;Die Diebeshöhle
+-937;-557;Die Diebeshöhle
+-936;-557;Die Diebeshöhle
+-935;-557;Die Diebeshöhle
+-934;-557;Die Diebeshöhle
+-939;-556;Die Diebeshöhle
+-938;-556;Die Diebeshöhle
+-937;-556;Die Diebeshöhle
+-936;-556;Die Diebeshöhle
+-935;-556;Die Diebeshöhle
+-934;-556;Die Diebeshöhle
+-939;-555;Die Diebeshöhle
+-938;-555;Die Diebeshöhle
+-937;-555;Die Diebeshöhle
+-936;-555;Die Diebeshöhle
+-935;-555;Die Diebeshöhle
+-934;-555;Die Diebeshöhle
+-938;-554;Die Diebeshöhle
+-936;-554;Die Diebeshöhle
+-935;-554;Die Diebeshöhle
+-938;-553;Die Diebeshöhle
+-935;-553;Die Diebeshöhle
+-935;-552;Die Diebeshöhle
+-934;-552;Ausgang der Höhle
+111;119;Dorea - Land der Geysire
+118;119;Dorea - Land der Geysire
+109;120;Dorea - Steinformationen
+111;120;Dorea - Land der Geysire
+112;120;Dorea - Land der Geysire
+117;120;Dorea - Land der Geysire
+118;120;Dorea - Land der Geysire
+109;121;Dorea - Land der Geysire
+110;121;Dorea - Land der Geysire
+111;121;Dorea - Land der Geysire
+112;121;Dorea - Land der Geysire
+113;121;Dorea - Land der Geysire
+117;121;Dorea - Land der Geysire
+118;121;Dorea - Land der Geysire
+119;121;Dorea - Land der Geysire
+108;122;Dorea - Land der Geysire
+109;122;Dorea - Land der Geysire
+110;122;Dorea - Land der Geysire
+111;122;Dorea - Land der Geysire
+112;122;Dorea - Land der Geysire
+113;122;Dorea - Land der Geysire
+114;122;Dorea - Land der Geysire
+115;122;Dorea - Land der Geysire
+116;122;Dorea - Land der Geysire
+117;122;Dorea - Land der Geysire
+118;122;Dorea - Land der Geysire
+119;122;Dorea - Land der Geysire
+108;123;Dorea - Land der Geysire
+109;123;Dorea - Land der Geysire
+110;123;Dorea - Land der Geysire
+111;123;Dorea - Land der Geysire
+112;123;Dorea - Land der Geysire
+113;123;Dorea - Land der Geysire
+114;123;Dorea - Land der Geysire
+115;123;Dorea - Land der Geysire
+116;123;Dorea - Land der Geysire
+117;123;Dorea - Land der Geysire
+118;123;Dorea - Land der Geysire
+108;124;Dorea - Land der Geysire
+109;124;Dorea - Land der Geysire
+110;124;Dorea - Land der Geysire
+111;124;Dorea - Land der Geysire
+112;124;Dorea - Land der Geysire
+113;124;Dorea - Land der Geysire
+114;124;Dorea - Land der Geysire
+115;124;Dorea - Land der Geysire
+116;124;Dorea - Land der Geysire
+117;124;Dorea - Land der Geysire
+118;124;Dorea - Land der Geysire
+111;125;Dorea - Land der Geysire
+112;125;Dorea - Land der Geysire
+115;125;Dorea - Land der Geysire
+58;94;Dranar - Der Nebelwald
+59;94;Dranar - Der Nebelwald
+60;94;Dranar - Die Windmühle
+56;95;Dranar - Der Nebelwald
+57;95;Dranar - Der Nebelwald
+58;95;Dranar - Der Nebelwald
+59;95;Dranar - Der Nebelwald
+60;95;Dranar - Der Nebelwald
+61;95;Dranar - Der Nebelwald
+56;96;Dranar - Der Nebelwald
+57;96;Dranar - Der Nebelwald
+58;96;Dranar - Der Nebelwald
+59;96;Dranar - Der Nebelwald
+60;96;Dranar - Der Nebelwald
+57;97;Dranar - Der Nebelwald
+58;97;Dranar - Der Nebelwald
+59;97;Dranar - Der Nebelwald
+60;97;Dranar - Der Nebelwald
+58;98;Dranar - Die Tore von Dranar
+57;99;Dranar - Die Stadt
+58;99;Dranar - Die Stadt
+59;99;Dranar - Die Stadt
+60;99;Dranar - Die Stadt
+61;99;Dranar - Die Stadt
+56;100;Dranar - Die Stadt
+57;100;Dranar - Die Stadt
+58;100;Dranar - Die Stadt
+59;100;Dranar - Die Stadt
+60;100;Dranar - Die Stadt
+61;100;Dranar - Die Stadt
+62;100;Dranar - Düstere Nebel
+56;101;Dranar - Die Stadt
+57;101;Dranar - Die Stadt
+58;101;Dranar - Die Stadt
+59;101;Dranar - Die Stadt
+60;101;Dranar - Die Stadt
+62;101;Dranar - Düstere Nebel
+-427;-299;Dranar - Die Baumgrenze
+-426;-299;Dranar - Das Tal
+-425;-299;Dranar - Die Windmühle
+-424;-299;Dranar - Die Festung
+-429;-298;Dranar - Der Wald
+-428;-298;Dranar - Der Wald
+-427;-298;Dranar - Der Wald
+-426;-298;Dranar - Der See
+-425;-298;Dranar - Der Wald
+-424;-298;Dranar - Der Wald
+-429;-297;Dranar - Der Wald
+-428;-297;Dranar - Der Wald
+-427;-297;Dranar - Der Wald
+-426;-297;Dranar - Der Wald
+-425;-297;Dranar - Der Wald
+-428;-296;Dranar - Der Wald
+-427;-296;Dranar - Der Wald
+-426;-296;Dranar - Der Wald
+-425;-296;Dranar - Der Wald
+-427;-295;Dranar - Das Stadttor
+-428;-294;Dranar - die Stadt
+-427;-294;Dranar - die Stadt
+-426;-294;Dranar - die Stadt
+-425;-294;Dranar - die Stadt
+-424;-294;Dranar - die Stadt
+-429;-293;Dranar - die Stadt
+-428;-293;Dranar - die Stadt
+-427;-293;Dranar - die Markthalle
+-426;-293;Dranar - die Stadt
+-425;-293;Dranar - die Stadt
+-424;-293;Dranar - die Stadt
+-423;-293;Dranar - der Garten
+-429;-292;Dranar - die Wassermühle
+-428;-292;Dranar - das Wirtshaus
+-427;-292;Dranar - die Herberge
+-426;-292;Dranar - die Bibliothek
+-425;-292;Dranar - die Treppe
+-423;-292;Dranar - der Garten
+0;0;Dummyplace
+-559;-497;Hewien - Die dunkle Höhle
+-558;-497;Hewien - Die dunkle Höhle
+-567;-497;Hewien - Tropfsteine
+-566;-497;Hewien - Tropfsteinsäulen
+-565;-497;Hewien - Tropfsteine
+-567;-496;Hewien - Tropfsteine
+-566;-496;Hewien - Tropfsteinhöhle
+-565;-496;Hewien - Tropfsteine
+-564;-496;Hewien - Gesteinsgebilde
+-568;-495;Hewien - Dunkle Tropfsteinhöhle
+-567;-495;Hewien - Tropfsteinsäulen
+-566;-495;Hewien - Tropfsteinsäulen
+-565;-495;Hewien - Tropfsteine
+-564;-495;Hewien - Tropfsteine
+-566;-494;Hewien - Tropfsteine
+-565;-494;Hewien - Gesteinsgebilde
+-566;-493;Hewien - Tropfsteine
+-780;-793;Die Kanalisation - Der dunkle Raum
+-168;-858;Der dunkle See
+-167;-858;Der dunkle See
+-165;-858;Der dunkle See
+-164;-858;Der dunkle See
+-163;-858;Der dunkle See
+-168;-857;Der dunkle See
+-167;-857;Der dunkle See
+-166;-857;Der dunkle See
+-165;-857;Der dunkle See
+-164;-857;Der dunkle See
+-163;-857;Der dunkle See
+-162;-857;Der dunkle See
+-166;-856;Der dunkle See
+-165;-856;Der dunkle See
+-164;-856;Der dunkle See
+-163;-856;Der dunkle See
+-166;-855;Der dunkle See
+-165;-855;Der dunkle See
+-164;-855;Der dunkle See
+-163;-855;Der dunkle See
+-163;-854;Der dunkle See
+-162;-854;Der dunkle See
+-300;-300;Vorraum - Das dunkle Haus
+-348;-699;Latenia - Die Eishöhle
+-347;-699;Latenia - Die Eishöhle
+-349;-698;Latenia - Die Eishöhle
+-348;-698;Latenia - Die Eishöhle
+-347;-698;Latenia - Die Eishöhle
+-349;-697;Latenia - Die Eishöhle
+-348;-697;Latenia - Die Eishöhle
+-347;-697;Latenia - Die Eishöhle
+-346;-697;Latenia - Die Eishöhle
+-348;-696;Latenia - Die Eishöhle
+-347;-696;Latenia - Die Eishöhle
+-346;-696;Latenia - Die Eishöhle
+-348;-695;Latenia - Die Eishöhle
+-347;-695;Latenia - Die Eishöhle
+-346;-695;Latenia - Die Eishöhle
+-345;-695;Latenia - Die Eishöhle
+-348;-694;Latenia - Die Eishöhle
+-347;-694;Latenia - Die Eishöhle
+-346;-694;Latenia - Die Eishöhle
+-345;-694;Latenia - Die Eishöhle
+-348;-693;Latenia - Die Eishöhle
+-347;-693;Latenia - Die Eishöhle
+-346;-693;Latenia - Die Eishöhle
+-345;-693;Latenia - Die Eishöhle
+-542;-642;Die eisige Höhle
+-543;-641;Die eisige Höhle
+-542;-641;Die eisige Höhle
+-541;-641;Die eisige Höhle
+-543;-640;Die eisige Höhle
+-542;-640;Die eisige Höhle
+-541;-640;Die eisige Höhle
+-540;-640;Die eisige Höhle
+-543;-639;Die eisige Höhle
+-542;-639;Die eisige Höhle
+-541;-639;Die eisige Höhle
+-542;-638;Die eisige Höhle
+84;97;Felsendorf - Jungbrunnen
+85;97;Das Felsendorf
+86;97;Das Felsendorf
+87;97;Das Felsendorf - Felsenshop
+138;122;Die Felseninsel
+136;123;Die Felseninsel
+137;123;Die Felseninsel
+138;123;Die Felseninsel
+139;123;Die Felseninsel
+140;123;Die Felseninsel
+141;123;Die Felseninsel
+136;124;Die Felseninsel
+137;124;Die Felseninsel
+138;124;Die Felseninsel
+139;124;Die Felseninsel
+140;124;Die Felseninsel
+141;124;Die Felseninsel
+135;125;Die Felseninsel
+136;125;Die Felseninsel
+137;125;Die Felseninsel
+138;125;Die Felseninsel
+139;125;Die Felseninsel
+140;125;Der grüne Giftsee
+141;125;Die Felseninsel
+142;125;Die Felseninsel
+135;126;Die Felseninsel
+136;126;Die Felseninsel
+137;126;Der grüne Giftsee
+138;126;Der grüne Giftsee
+139;126;Der grüne Giftsee
+140;126;Die Felseninsel
+141;126;Die Felseninsel
+142;126;Die Felseninsel
+143;126;Die Felseninsel
+144;126;Die Felseninsel
+135;127;Die Felseninsel
+136;127;Die Felseninsel
+137;127;Die Felseninsel
+138;127;Die Felseninsel
+139;127;Die Felseninsel
+140;127;Die Felseninsel
+141;127;Die Felseninsel
+136;128;Die Felseninsel
+137;128;Die Felseninsel
+138;128;Die Felseninsel
+139;128;Die Felseninsel
+140;128;Die Felseninsel
+141;128;Die Felseninsel
+-599;-498;Hewien - Die Felsenwand
+98;86;Ferdolien - Der Wald
+98;87;Ferdolien - Der lichte Wald
+104;87;Kontrollturm
+98;88;Ferdolien - Der Wald
+99;88;Ferdolien - Der rote Wald
+100;88;Ferdolien - Taunektarbrauerei
+101;88;Ferdolien - Der lichte Wald
+104;88;Ferdolien - Der rote Wald
+100;89;Ferdolien - Der lichte Wald
+101;89;Ferdolien - Der rote Wald
+102;89;Ferdolien - Der rote Wald
+103;89;Ferdolien - Der Moorwald
+104;89;Ferdolien - Der lichte Wald
+105;89;Ferdolien - Der lichte Wald
+106;89;Ferdolien - Der rote Wald
+107;89;Ferdolien - Der lichte Wald
+108;89;Ferdolien - Der Wald der Glühwürmchen
+101;90;Ferdolien - Der rote Wald
+104;90;Ferdolien - Der Moorwald
+105;90;Ferdolien - Der lichte Wald
+106;90;Ferdolien - Die Jagdhütte
+107;90;Ferdolien - Der rote Wald
+104;91;Ferdolien - Das Moor
+105;91;Ferdolien - Das Moor
+106;91;Ferdolien - Der lichte Wald
+109;91;Ferdolien - Bank aller Wesen
+103;92;Ferdolien - Das Moor
+104;92;Ferdolien - Der See
+105;92;Ferdolien - Der einzelne Baum
+106;92;Ferdolien - Der Park
+107;92;Ferdolien - Der Park
+108;92;Ferdolien - Der Park
+109;92;Ferdolien - Der Park
+104;93;Ferdolien - Der einzelne Baum
+105;93;Ferdolien - Der Park
+106;93;Ferdolien - Der Park
+107;93;Ferdolien - Die Wetterkontrollfestung
+108;93;Ferdolien - Der Park
+109;93;Ferdolien - Der Park
+100;94;Das Casino von Ferdolien
+104;94;Ferdolien - Das Vermessungsamt
+105;94;Ferdolien - Der Park
+106;94;Ferdolien - Der Park
+107;94;Ferdolien - Der Teich
+108;94;Ferdolien - Der Park
+109;94;Ferdolien - Der Park
+99;95;Ferdolien - Verlassene Steine
+100;95;Ferdolien - Der Nordwald
+101;95;Ferdolien - Der Nordwald
+102;95;Ferdolien - Die Ruine
+103;95;Ferdolien - Der Park
+104;95;Ferdolien - Der Park
+105;95;Ferdolien - Der Park
+106;95;Ferdolien - Der Blumenpavillon
+107;95;Ferdolien - Der Park
+108;95;Ferdolien - Der Park
+97;96;Die Tollo-Hütte
+98;96;Ferdolien - Der Nordwald
+99;96;Ferdolien - Der Nordwald
+100;96;Ferdolien - Die Steinwand
+103;96;Ferdolien - Der Park
+104;96;Ferdolien - Der Park
+105;96;Ferdolien - Der Park
+106;96;Ferdolien - Der Park
+108;96;Ferdolien - Die kleine Brücke
+98;97;Ferdolien - Der Weg nach Norden
+99;97;Ferdolien - Bäume
+104;97;Ferdolien - Der Park
+108;97;Ferdolien - Die grüne Wiese
+-820;-829;Die Festung
+-818;-829;Die Festung - Der Gang
+-817;-829;Die Festung - Der Gang
+-816;-829;Die Festung - Der Gang
+-820;-828;Die Festung - Der Weg
+-818;-828;Die Festung - Der Gang
+-816;-828;Die Festung - Der Gang
+-820;-827;Die Festung - Der Weg
+-818;-827;Die Festung - Der Gang
+-816;-827;Die Festung - Der Gang
+-820;-826;Die Festung - Der Durchgang
+-819;-826;Die Festung - Der Durchgang
+-818;-826;Die Festung - Der Gang
+-817;-826;Die Festung - Der Gang
+-816;-826;Die Festung - Der Gang
+-818;-825;Die Festung - Der Eingang
+-19999;-19999;Eine Treppe
+-19998;-19999;Die Theke
+-19997;-19999;Die Theke
+-19999;-19998;Der Schnapsschrank
+-19998;-19998;Der Schankraum
+-19997;-19998;Lolas Tisch
+-19998;-19997;Der Schankraum
+-19997;-19997;Der Schankraum
+-19998;-19996;Eingang
+-19993;-19999;Der Partyraum
+-19994;-19998;Eine Treppe
+-19993;-19998;Der Flur
+-19992;-19998;Der Flur
+-19991;-19998;Die Hochzeitssuite
+-19992;-19997;Der Schlafraum
+1006;1002;Die gefrorene Insel
+1007;1002;Die gefrorene Insel
+1008;1002;Die gefrorene Insel
+1005;1003;Die gefrorene Insel
+1006;1003;Die gefrorene Insel
+1007;1003;Die gefrorene Insel
+1008;1003;Die gefrorene Insel
+1009;1003;Die gefrorene Insel
+1004;1004;Die gefrorene Insel
+1005;1004;Die gefrorene Insel
+1006;1004;Die gefrorene Insel
+1007;1004;Die gefrorene Insel
+1008;1004;Die gefrorene Insel
+1009;1004;Die gefrorene Insel
+1010;1004;Die gefrorene Insel
+1004;1005;Die gefrorene Insel
+1005;1005;Die gefrorene Insel
+1006;1005;Die gefrorene Insel
+1007;1005;Die gefrorene Insel
+1008;1005;Die gefrorene Insel
+1009;1005;Die gefrorene Insel
+1010;1005;Die gefrorene Insel
+1011;1005;Die gefrorene Insel
+1003;1006;Die gefrorene Insel
+1004;1006;Die gefrorene Insel
+1005;1006;Die gefrorene Insel
+1006;1006;Die gefrorene Insel
+1007;1006;Die gefrorene Insel
+1008;1006;Die gefrorene Insel
+1009;1006;Die gefrorene Insel
+1010;1006;Die gefrorene Insel
+1011;1006;Die gefrorene Insel
+1004;1007;Die gefrorene Insel
+1005;1007;Die gefrorene Insel
+1006;1007;Die gefrorene Insel
+1007;1007;Die gefrorene Insel
+1008;1007;Die gefrorene Insel
+1009;1007;Die gefrorene Insel
+1010;1007;Die gefrorene Insel
+1011;1007;Die gefrorene Insel
+1006;1008;Die gefrorene Insel
+1007;1008;Die gefrorene Insel
+1008;1008;Die gefrorene Insel
+1009;1008;Die gefrorene Insel
+1010;1008;Die gefrorene Insel
+81;96;Gobos - Der ewige Wald
+78;97;Gobos - Die Lichtung
+79;97;Gobos - Der ewige Wald
+80;97;Gobos - Der ewige Wald
+81;97;Gobos - Der ewige Wald
+82;97;Gobos - Der ewige Wald
+76;98;Gobos - Die Kopfgeldjäger
+77;98;Gobos - Der ewige Wald
+78;98;Gobos - Der ewige Wald
+79;98;Gobos - Der ewige Wald
+81;98;Gobos - Der ewige Wald
+82;98;Gobos - Der ewige Wald
+77;99;Gobos - Der ewige Wald
+79;99;Gobos - Der ewige Wald
+80;99;Gobos - Die Gewebeforschung
+81;99;Gobos - Der ewige Wald
+77;100;Gobos - Der ewige Wald
+78;100;Gobos - Der ewige Wald
+79;100;Gobos - Der ewige Wald
+81;100;Gobos - Der ewige Wald
+74;101;Gobos - Der Bankautomat
+75;101;Gobos - Der ewige Wald
+76;101;Gobos - Der ewige Wald
+77;101;Gobos - Die rote Hütte
+78;101;Gobos - Der ewige Wald
+79;101;Gobos - Der ewige Wald
+80;101;Gobos - Der ewige Wald
+81;101;Gobos - Der ewige Wald
+82;101;Gobos - Der ewige Wald
+76;102;Gobos - Der ewige Wald
+77;102;Gobos - Der ewige Wald
+78;102;Gobos - Der ewige Wald
+79;102;Gobos - Der ewige Wald
+80;102;Gobos - Der ewige Wald
+81;102;Gobos - Der ewige Wald
+82;102;Gobos - Der ewige Wald
+83;102;Gobos - Der ewige Wald
+76;103;Gobos - Die Sumpfgasanlage
+79;103;Gobos - Das magische Licht
+80;103;Gobos - Der ewige Wald
+82;103;Gobos - Der ewige Wald
+76;104;Gobos - Die Sumpfgaslagerung
+78;104;Gobos - Der ewige Wald
+79;104;Gobos - Der ewige Wald
+80;104;Gobos - Der ewige Wald
+78;105;Gobos - Der ewige Wald
+-197;-89;Buran - Eingang
+-197;-88;Buran - Ein Keller
+-196;-88;Buran - Ein Keller
+-195;-88;Buran - Die Goldkammer
+-194;-88;Buran - Die Goldkammer
+-195;-87;Buran - Die Goldkammer
+-194;-87;Buran - Die Goldkammer
+-195;-86;Buran - Die Goldkammer
+-194;-86;Buran - Die Goldkammer
+-193;-86;Buran - Ein Keller
+-192;-86;Buran - Ausgang
+-798;-800;Das Grab - Der Grabeingang
+-798;-799;Das Grab - Der Durchgang
+-799;-798;Das Grab - Die dunkle Kammer
+-798;-798;Das Grab von Reikan
+-797;-798;Das Grab - Die dunkle Kammer
+-799;-797;Das Grab - Die Grabkammer
+-798;-797;Das Grab - Die Grabkammer
+-797;-797;Das Grab - Die Grabkammer
+-827;-919;Die Grotte des Todes
+-827;-918;Die Grotte des Todes
+-826;-918;Die Grotte des Todes
+-826;-917;Die Grotte des Todes
+-827;-916;Die Grotte des Todes
+-826;-916;Die Grotte des Todes
+-826;-915;Die Grotte des Todes
+-825;-915;Die Grotte des Todes
+-827;-914;Die Grotte des Todes
+-826;-914;Die Grotte des Todes
+-825;-914;Die Grotte des Todes
+-827;-913;Die Grotte des Todes
+-826;-913;Die Grotte des Todes
+-826;-912;Die Grotte des Todes
+-825;-912;Die Grotte des Todes
+-824;-912;Die Grotte des Todes
+-823;-912;Die Grotte des Todes
+-827;-911;Die Grotte des Todes
+-826;-911;Die Grotte des Todes
+-825;-911;Die Grotte des Todes
+-828;-910;Die Grotte des Todes
+-827;-910;Die Grotte des Todes
+-826;-910;Die Grotte des Todes
+-825;-910;Die Grotte des Todes
+-822;-910;Die Grotte des Todes
+-821;-910;Die Grotte des Todes
+-827;-909;Die Grotte des Todes
+-826;-909;Die Grotte des Todes
+-825;-909;Die Grotte des Todes
+-822;-909;Die Grotte des Todes
+-827;-908;Die Grotte des Todes
+-826;-908;Die Grotte des Todes
+-825;-908;Die Grotte des Todes
+-824;-908;Die Grotte des Todes
+-823;-908;Die Grotte des Todes
+-822;-908;Die Grotte des Todes
+-823;-907;Die Grotte des Todes
+-823;-906;Die Grotte des Todes
+-824;-905;Die Grotte des Todes
+-823;-905;Die Grotte des Todes
+-826;-904;Die Grotte des Todes
+-825;-904;Die Grotte des Todes
+-824;-904;Die Grotte des Todes
+-826;-903;Die Grotte des Todes
+-825;-903;Die Grotte des Todes
+-824;-903;Die Grotte des Todes
+-823;-903;Die Grotte des Todes
+-826;-902;Die Grotte des Todes
+-826;-901;Die Grotte des Todes
+-585;-495;Hewien - Tropfsteingebilde
+-584;-495;Hewien - Tropfsteingebilde
+-583;-495;Hewien - Die Tropfsteinsäulen
+-582;-495;Hewien - Die Tropfsteinsäule
+-585;-494;Hewien - Tropfsteingebilde
+-584;-494;Hewien - Das Becken
+-583;-494;Hewien - Tropfsteingebilde
+-582;-494;Hewien - Tropfsteingebilde
+-586;-493;Hewien - Die Tropfsteinsäulen
+-585;-493;Hewien - Stalaktiten
+-584;-493;Hewien - Tropfsteingebilde
+-583;-493;Hewien - Tropfsteingebilde
+-582;-493;Hewien - Tropfsteingebilde
+-586;-492;Hewien - Tropfsteingebilde
+-585;-492;Hewien - Stalaktiten
+-584;-492;Hewien - Tropfsteingebilde
+-583;-492;Hewien - Tropfsteingebilde
+-582;-492;Hewien - Tropfsteingebilde
+-581;-492;Hewien - Tropfsteingebilde
+-585;-491;Hewien - Tropfsteingebilde
+-584;-491;Hewien - Tropfsteingebilde
+-583;-491;Hewien - Tropfsteingebilde
+-582;-491;Hewien - Tropfsteingebilde
+-585;-490;Hewien - Der Lichteinfall
+-584;-490;Hewien - Tropfsteingebilde
+-583;-490;Hewien - Die Tropfsteinsäule
+94;91;Der große Fluss
+94;92;Der große Fluss
+94;93;Der große Fluss
+-198;-399;Ruward - Die Gruft
+-199;-398;Ruward - Die Gruft
+-198;-398;Ruward - Die Gruft
+-197;-398;Ruward - Die Gruft
+-198;-397;Ruward - Die Gruft
+-197;-397;Ruward - Die Gruft
+-197;-396;Ruward - Die Gruft
+90;88;Hewien - Eingang zum Kampfgebiet
+88;89;Zentrallager der Händler
+89;89;Turm der Händler
+90;89;Hewien - Die Höhle
+92;89;Bank aller Wesen - Zweigstelle
+87;90;Hewien - Der Marktplatz
+88;90;Hewien - Die Höhle
+89;90;Hewien - Die Höhle
+90;90;Hewien - Kantige Felsen
+91;90;Hewien - Die Höhle
+92;90;Hewien - Kantige Felsen
+87;91;Hewien - Felsen
+88;91;Hewien - Felsen
+89;91;Hewien - Kantige Felsen
+90;91;Hewien - Felsen
+91;91;Hewien - Die Wand
+92;91;Hewien - Kantige Felsen
+87;92;Hewien - Die Höhle
+88;92;Hewien - Felsen
+89;92;Hewien - Die Höhle
+90;92;Hewien - Die Höhle
+91;92;Hewien - Kantige Felsen
+92;92;Hewien - Eingang zum Kampfgebiet
+87;93;Hewien - Die Wand
+88;93;Hewien - Die Höhle
+89;93;Hewien - Felsen
+90;93;Hewien - Kantige Felsen
+91;93;Hewien - Kantige Felsen
+91;94;Hewien - Kantige Felsen
+-286;-723;Hinter dem Wasserfall
+-285;-723;Hinter dem Wasserfall
+-284;-723;Hinter dem Wasserfall
+-281;-723;Hinter dem Wasserfall
+-289;-722;Hinter dem Wasserfall
+-288;-722;Hinter dem Wasserfall
+-287;-722;Hinter dem Wasserfall
+-286;-722;Hinter dem Wasserfall
+-285;-722;Hinter dem Wasserfall
+-284;-722;Hinter dem Wasserfall
+-283;-722;Hinter dem Wasserfall
+-282;-722;Hinter dem Wasserfall
+-281;-722;Hinter dem Wasserfall
+-290;-721;Hinter dem Wasserfall
+-289;-721;Hinter dem Wasserfall
+-288;-721;Hinter dem Wasserfall
+-287;-721;Hinter dem Wasserfall
+-286;-721;Hinter dem Wasserfall
+-285;-721;Hinter dem Wasserfall
+-284;-721;Hinter dem Wasserfall
+-283;-721;Hinter dem Wasserfall
+-282;-721;Hinter dem Wasserfall
+-281;-721;Hinter dem Wasserfall
+-289;-720;Hinter dem Wasserfall
+-288;-720;Hinter dem Wasserfall
+-287;-720;Hinter dem Wasserfall
+-286;-720;Hinter dem Wasserfall
+-285;-720;Hinter dem Wasserfall
+-284;-720;Hinter dem Wasserfall
+-283;-720;Hinter dem Wasserfall
+-282;-720;Hinter dem Wasserfall
+-288;-719;Hinter dem Wasserfall
+-286;-719;Hinter dem Wasserfall
+-285;-719;Hinter dem Wasserfall
+-284;-719;Hinter dem Wasserfall
+-283;-719;Hinter dem Wasserfall
+-810;-830;Gobos - Der hohle Baum
+-812;-829;Gobos - Der hohle Baum
+-811;-829;Gobos - Der hohle Baum
+-810;-829;Gobos - Der hohle Baum
+-809;-829;Gobos - Der hohle Baum
+-812;-828;Gobos - Der hohle Baum
+-811;-828;Gobos - Der hohle Baum
+-810;-828;Gobos - Der hohle Baum
+-809;-828;Gobos - Der hohle Baum
+-812;-827;Gobos - Der hohle Baum
+-811;-827;Gobos - Der hohle Baum
+-810;-827;Gobos - Der hohle Baum
+-811;-826;Gobos - Der hohle Baum
+-548;-499;Hewien - Die Höhle der Säulen
+-548;-498;Hewien - Die Höhle der Säulen
+-548;-497;Hewien - Die Höhle der Säulen
+257;92;Itolos - Die schwebende Insel
+-664;-665;Ixidion - Der Eingang
+-663;-665;Ixidion - Die Feuerklippe
+-662;-665;Ixidion - Der Feuerstrom
+-661;-665;Ixidion - Der Feuerstrom
+-665;-664;Ixidion - Der Lavafluss
+-664;-664;Ixidion - Der Lavafluss
+-663;-664;Ixidion - Der Lavafluss
+-662;-664;Ixidion - Finstere Berge
+-661;-664;Ixidion - Der Feuerstrom
+-660;-664;Ixidion - Feuergrube
+-665;-663;Ixidion - Der Lavafluss
+-664;-663;Ixidion - Der Lavafluss
+-663;-663;Ixidion - Finstere Berge
+-662;-663;Ixidion - Finstere Berge
+-661;-663;Ixidion - Klippen des Todes
+-660;-663;Ixidion - Klippen des Todes
+-659;-663;Ixidion - Klippen des Todes
+-664;-662;Ixidion - Dunkles Gestein
+-663;-662;Ixidion - Dunkles Gestein
+-662;-662;Ixidion - Lavadampf
+-661;-662;Ixidion - Der Lavafluss
+-660;-662;Ixidion - Der Lavafluss
+-659;-662;Ixidion - Der Lavafluss
+-664;-661;Ixidion - Lavamassen
+-663;-661;Ixidion - Dunkles Gestein
+-662;-661;Ixidion - Dunkles Gestein
+-661;-661;Ixidion - Der Lavafluss
+-660;-661;Ixidion - Der Lavafluss
+-664;-660;Ixidion - Dunkles Gestein
+-663;-660;Ixidion - Das brennende Meer
+-662;-660;Ixidion - Das brennende Meer
+-661;-660;Ixidion - Das brennende Meer
+-660;-660;Ixidion - Der Lavafluss
+-659;-660;Ixidion - Dunkles Gestein
+-658;-660;Ixidion - Dunkles Gestein
+-657;-660;Ixidion - Dunkles Gestein
+-663;-659;Ixidion - Das brennende Meer
+-662;-659;Ixidion - Das brennende Meer
+-661;-659;Ixidion - Das brennende Meer
+-659;-659;Ixidion - Dunkles Gestein
+-658;-659;Ixidion - Dunkles Gestein
+-657;-659;Ixidion - Die brennende Wand
+-1299;-1399;Kampfgebiet - Shop
+-1298;-1399;Eingang zum Kampfgebiet
+-1299;-1398;Kampfgebiet
+-1298;-1398;Kampfgebiet
+-1297;-1398;Kampfgebiet
+-1296;-1398;Kampfgebiet
+-1295;-1398;Kampfgebiet
+-1294;-1398;Kampfgebiet
+-1299;-1397;Kampfgebiet
+-1298;-1397;Kampfgebiet
+-1297;-1397;Kampfgebiet
+-1296;-1397;Kampfgebiet
+-1295;-1397;Kampfgebiet
+-1294;-1397;Kampfgebiet
+-1299;-1396;Kampfgebiet
+-1298;-1396;Kampfgebiet
+-1297;-1396;Kampfgebiet
+-1296;-1396;Kampfgebiet
+-1295;-1396;Kampfgebiet
+-1294;-1396;Kampfgebiet
+-1298;-1395;Kampfgebiet
+-1297;-1395;Kampfgebiet
+-1296;-1395;Kampfgebiet
+-1295;-1395;Kampfgebiet
+-1296;-1394;Kampfgebiet
+-1295;-1394;Kampfgebiet
+-1296;-1393;Kampfgebiet
+-1295;-1393;Kampfgebiet
+-1294;-1393;Eingang zum Kampfgebiet
+-787;-790;Die Kanalisation - Der Durchgang
+-786;-790;Die Kanalisation - Der Durchgang
+-785;-790;Die Kanalisation - Der Durchgang
+-780;-790;Die Kanalisation - Der Weg
+-785;-789;Die Kanalisation - Der Durchgang
+-780;-789;Die Kanalisation - Der Weg
+-785;-788;Die Kanalisation - Der Durchgang
+-780;-788;Die Kanalisation - Der Weg
+-785;-787;Die Kanalisation - Der Durchgang
+-780;-787;Die Kanalisation - Der Weg
+-790;-786;Die Kanalisation - Der Eingang
+-789;-786;Die Kanalisation - Der Tunnel
+-788;-786;Die Kanalisation - Der Tunnel
+-787;-786;Die Kanalisation - Der Tunnel
+-786;-786;Die Kanalisation - Das Sammelbecken
+-785;-786;Die Kanalisation - Das Sammelbecken
+-784;-786;Die Kanalisation - Das Sammelbecken
+-783;-786;Die Kanalisation - Der Tunnel
+-782;-786;Die Kanalisation - Der Weg
+-781;-786;Die Kanalisation - Der Weg
+-780;-786;Die Kanalisation - Der Weg
+-758;-759;Die Kanalisation
+-757;-759;Die Kanalisation
+-756;-759;Die Kanalisation
+-755;-759;Die Kanalisation
+-754;-759;Die Kanalisation
+-756;-758;Die Kanalisation
+-754;-758;Die Kanalisation
+-756;-757;Die Kanalisation
+-754;-757;Die Kanalisation
+-759;-756;Die Kanalisation
+-758;-756;Die Kanalisation
+-757;-756;Die Kanalisation
+-756;-756;Die Kanalisation
+-756;-755;Die Kanalisation
+-756;-754;Die Kanalisation
+-755;-754;Die Kanalisation
+-754;-754;Die Kanalisation
+-756;-753;Die Kanalisation
+-758;-752;Die Kanalisation
+-757;-752;Die Kanalisation
+-756;-752;Die Kanalisation
+71;96;Kontrollturm
+73;96;Haus der Clan-Kriege
+71;97;Kanobien - Dichter Wald
+72;97;Kanobien - Dichter Wald
+73;97;Kanobien - Dichter Wald
+69;98;Kanobien - Dichter Wald
+70;98;Kanobien - Der Tempel
+71;98;Kanobien - Der Tempel
+72;98;Kanobien - Der Tempel
+73;98;Kanobien - Der Tempel
+74;98;Kanobien - Dichter Wald
+75;98;Kanobien - Dichter Wald
+69;99;Kanobien - Dichter Wald
+70;99;Kanobien - Der Tempel
+71;99;Kanobien - Der Tempel
+72;99;Kanobien - Der Tempel
+73;99;Kanobien - Der Tempel
+74;99;Kanobien - Der Tempel
+75;99;Kanobien - Der Wasserfall
+69;100;Kanobien - Dichter Wald
+70;100;Kanobien - Dichter Wald
+71;100;Kanobien - Dichter Wald
+72;100;Kanobien - Dichter Wald
+73;100;Kanobien - Dichter Wald
+74;100;Kanobien - Dichter Wald
+75;100;Kanobien - Dichter Wald
+70;101;Kanobien - Dichter Wald
+71;101;Kanobien - Das Waldhaus
+72;101;Kanobien - Dichter Wald
+73;101;Kanobien - Dichter Wald
+70;102;Kanobien - Haus der Beobachtung
+-19993;-20098;Der dunkle Gang
+-19992;-20098;Das Loch
+-19993;-20097;Der dunkle Gang
+-19994;-20096;Die Schüssel
+-19993;-20096;Der Durchgang
+-19995;-20095;Der dunkle Gang
+-19994;-20095;gemauerter Gang
+-19997;-20094;Duft der Freiheit
+-19996;-20094;Der Torbogengang
+-19995;-20094;Das verschlossene Gatter
+-19997;-20093;Das Becken
+-500;-502;Die Kathedrale
+-499;-502;Die Kathedrale
+-500;-501;Die Kathedrale
+-500;-500;Die Kathedrale
+-196;-100;Buran - Ausgang
+-196;-99;Buran - Der Keller
+-198;-98;Buran - Ausgang nach Nordwesten
+-196;-98;Buran - Der Keller
+-194;-98;Buran - Der Keller
+-193;-98;Buran - Der Keller
+-192;-98;Buran - Der Keller
+-191;-98;Buran - Ausgang nach Osten
+-198;-97;Buran - Ein Keller
+-185;-97;Buran - Ausgang
+-198;-96;Buran - Ein Keller
+-197;-96;Buran - Ein Keller
+-196;-96;Buran - Ein Keller
+-195;-96;Buran - Ein Keller
+-193;-96;Buran - Eingang
+-185;-96;Buran - Ein Keller
+-184;-96;Buran - Ein Keller
+-196;-95;Buran - Ein Keller
+-195;-95;Buran - Ein Keller
+-193;-95;Buran - Ein Keller
+-192;-95;Buran - Ein Keller
+-184;-95;Buran - Ein Keller
+-200;-94;Buran - Die Grotte
+-199;-94;Buran - Der Weg
+-198;-94;Buran - Der Gang
+-195;-94;Buran - Ein Keller
+-192;-94;Buran - Ein Keller
+-185;-94;Buran - Ein Keller
+-184;-94;Buran - Ein Keller
+-200;-93;Buran - Ausgang
+-198;-93;Buran - Der Kellergang
+-197;-93;Buran - Eingang
+-195;-93;Buran - Eingang
+-192;-93;Buran - Ausgang
+-185;-93;Buran - Ein Keller
+-187;-92;Buran - Eingang
+-186;-92;Buran - Ein Keller
+-185;-92;Buran - Ein Keller
+-101;-101;Der Keller der Kathedrale
+-100;-101;Der Keller der Kathedrale
+-101;-100;Der Keller der Kathedrale
+-100;-100;Der Keller der Kathedrale
+-99;-100;Die Wendeltreppe
+-100;-95;Der Keller der Post
+-10001;-10011;Keller des Wirtshauses
+-319;-320;Narubia - Das dunkle Haus
+-319;-319;Narubia - Das dunkle Haus
+-318;-319;Narubia - Das dunkle Haus
+-319;-318;Narubia - Das dunkle Haus
+-318;-318;Narubia - Das dunkle Haus
+-317;-318;Narubia - Das dunkle Haus
+-319;-317;Narubia - Das dunkle Haus
+92;112;Kerdis - Gebirge
+90;113;Kerdis - Die Savanne
+91;113;Kerdis - Die Savanne
+92;113;Kerdis - Die Savanne
+93;113;Kerdis - Die Stätte der Spiele
+89;114;Kerdis - Die Savanne
+90;114;Kerdis - Die Savanne
+91;114;Kerdis - Die Savanne
+92;114;Kerdis - Die Savanne
+93;114;Kerdis - Schroffe Felsen
+94;114;Kerdis - Schroffe Felsen
+95;114;Kerdis - Sandberge
+96;114;Kerdis - Sandberge
+88;115;Kerdis - Die Savanne
+89;115;Kerdis - Die Savanne
+90;115;Kerdis - Der knorrige Baum
+91;115;Kerdis - Die Savanne
+92;115;Kerdis - Die Savanne
+93;115;Kerdis - Sandberge
+94;115;Kerdis - Sandberge
+95;115;Kerdis - Sandberge
+87;116;Kerdis - Die Savanne
+88;116;Kerdis - Die Savanne
+89;116;Kerdis - Die Savanne
+90;116;Kerdis - Die Savanne
+88;117;Kerdis - Der düstere Bau
+88;118;Kerdis - Der düstere Bau
+89;118;Kerdis - Der düstere Bau
+62;82;Kolun - Die Burg Hulnodar
+61;83;Kolun - Die Burg Hulnodar
+62;83;Kolun - Die Burg Hulnodar
+63;83;Kolun - Die Burg Hulnodar
+67;83;Kolun - Die Gedenkstätte
+61;84;Kolun - Das Hochland
+62;84;Kolun - Das Hochland
+63;84;Kolun - Das Hochland
+64;84;Kolun - Das Hochland
+65;84;Kolun - Das Hochland
+66;84;Kolun - Das Hochland
+67;84;Kolun - Das Hochland
+61;85;Kolun - Das Hochland
+62;85;Kolun - Das Hochland
+63;85;Kolun - Das Hochland
+64;85;Kolun - Das Hochland
+65;85;Kolun - Das Hochland
+66;85;Kolun - Das alte Spielhaus
+62;86;Kolun - Der Fluss Solarda
+63;86;Kolun - Der Fluss Solarda
+64;86;Kolun - Die Brücke
+62;87;Kolun - Die Villa von Kolun
+63;87;Kolun - Die windigen Wiesen
+64;87;Kolun - Die windigen Wiesen
+65;87;Kolun - Die windigen Wiesen
+66;87;Kolun - Die windigen Wiesen
+67;87;Kolun - Die windigen Wiesen
+68;87;Kolun - Die windigen Wiesen
+62;88;Kolun - Die Treppe zur Villa
+63;88;Kolun - Die windigen Wiesen
+65;88;Kolun - Die windigen Wiesen
+66;88;Kolun - Die windigen Wiesen
+67;88;Kolun - Die windigen Wiesen
+68;88;Kolun - Die windigen Wiesen
+97;98;Konlir - Die alte Esche
+98;98;Konlir - Die Ruhmeshalle
+99;98;Konlir - Die Nordwiese
+100;98;Kontrollturm
+96;99;Konlir - Die Goldmine
+97;99;Konlir - Casino des Nordens
+99;99;Konlir - Die Waffenkammer
+100;99;Der Brunnen der Gesundheit
+101;99;Konlir - Der Wasserfall des Nordens
+102;99;Konlir - Der Wasserfall des Nordens
+96;100;Konlir - Die Nordhügel
+97;100;Konlir - Die Nordhügel
+98;100;Konlir - Vor den Nordhügeln
+99;100;Konlir - Der große See
+100;100;Konlir - Das Haupthaus
+101;100;Konlir - Die immergrünen Wiesen
+102;100;Konlir - Die immergrünen Wiesen
+103;100;Konlir - Akademie der Stärke
+96;101;Konlir - Die Markthalle
+97;101;Konlir - Das Dorf Konlir
+98;101;Konlir - Das Dorf Konlir
+99;101;Konlir - Der vergessene Wald
+100;101;Konlir - Der vergessene Wald
+101;101;Konlir - Die immergrünen Wiesen
+102;101;Konlir - Die immergrünen Wiesen
+96;102;Konlir - Das runde Haus der Haushaltswaren
+97;102;Konlir - Das Dorf Konlir
+98;102;Konlir - Das Dorf Konlir
+99;102;Konlir - Die Halbmondlichtung
+100;102;Konlir - Der vergessene Wald
+101;102;Konlir - Das Haus der Zauberer
+102;102;Konlir - Der vergessene Wald
+96;103;Konlir - Die Wiesen von Konlir
+97;103;Konlir - Die Wiesen von Konlir
+98;103;Konlir - Die Wiesen von Konlir
+99;103;Konlir - Die Kathedrale
+102;103;Konlir - Shop der Zauber
+98;104;Konlir - Das Gefängnis
+-231;-369;Das Korallenriff
+-230;-369;Das Korallenriff
+-229;-369;Das Korallenriff
+-228;-369;Das Korallenriff
+-227;-369;Das Korallenriff
+-226;-369;Das Korallenriff
+-232;-368;Das Korallenriff
+-231;-368;Das Korallenriff
+-230;-368;Das Korallenriff
+-229;-368;Das Korallenriff
+-228;-368;Das Korallenriff
+-227;-368;Das Korallenriff
+-226;-368;Das Korallenriff
+-225;-368;Das Korallenriff
+-231;-367;Das Korallenriff
+-230;-367;Das Korallenriff
+-229;-367;Das Korallenriff
+-228;-367;Das Korallenriff
+-227;-367;Das Korallenriff
+-226;-367;Das Korallenriff
+-231;-366;Das Korallenriff
+-230;-366;Das Korallenriff
+-229;-366;Das Korallenriff
+-228;-366;Das Korallenriff
+-227;-366;Das Korallenriff
+-226;-366;Das Korallenriff
+-225;-366;Das Korallenriff
+-228;-365;Das Korallenriff
+-227;-365;Das Korallenriff
+-226;-365;Das Korallenriff
+63;101;Krato - Die Nebellichtung
+63;102;Krato - Die Nebellichtung
+61;103;Krato - Das Todesmoor
+62;103;Krato - Das Todesmoor
+63;103;Krato - Das Todesmoor
+64;103;Krato - Das Todesmoor
+60;104;Krato - Die Baumkrone
+61;104;Krato - Das Todesmoor
+62;104;Krato - Das Todesmoor
+63;104;Krato - Das Todesmoor
+57;105;Krato - Seerosenteich
+58;105;Krato - Der verschwiegene Fluss
+59;105;Krato - Der verschwiegene Fluss
+60;105;Krato - Die Riesenbaum-Wurzel
+61;105;Krato - Das Todesmoor
+62;105;Krato - Das Todesmoor
+58;106;Krato - Die Hütte der Onlos
+59;106;Krato - Der verschwiegene Fluss
+60;106;Krato - Der grosse Pilz
+57;107;Krato - Kleiner Bach
+58;107;Krato - Der verschwiegene See
+59;107;Krato - Grün-Blauer Sumpf
+62;107;Krato - Das Todesmoor
+57;108;Krato - Farne
+58;108;Krato - Hohe Bäume
+59;108;Krato - Der grüne Flussarm
+60;108;Krato - Dichtes Gestrüpp
+61;108;Krato - Das Todesmoor
+62;108;Krato - Das Todesmoor
+63;108;Krato - Das Todesmoor
+64;108;Krato - Das Todesmoor
+57;109;Krato - Der geschwungene Ast
+58;109;Krato - Hohe Bäume
+59;109;Krato - Dichter Wald
+61;109;Krato - Das Todesmoor
+62;109;Krato - Das Todesmoor
+63;109;Krato - Das Todesmoor
+64;109;Krato - Das Todesmoor
+-687;-348;Die Kristallhöhle
+-686;-348;Die Kristallhöhle
+-685;-348;Die Kristallhöhle
+-684;-348;Die Kristallhöhle
+-687;-347;Die Kristallhöhle
+-686;-347;Die Kristallhöhle
+-685;-347;Die Kristallhöhle
+-684;-347;Die Kristallhöhle
+-683;-347;Die Kristallhöhle
+-687;-346;Die Kristallhöhle
+-686;-346;Die Kristallhöhle - Der Ausgang
+-685;-346;Die Kristallhöhle
+-684;-346;Die Kristallhöhle
+-683;-346;Die Kristallhöhle
+-687;-345;Die Kristallhöhle
+-686;-345;Die Kristallhöhle
+-685;-345;Die Kristallhöhle
+-684;-345;Die Kristallhöhle
+-683;-345;Die Kristallhöhle
+-686;-344;Die Kristallhöhle
+-685;-344;Die Kristallhöhle
+-684;-344;Die Kristallhöhle
+-99;-899;Die Kristallwasserhöhle
+-97;-899;Die Kristallwasserhöhle
+-96;-899;Die Kristallwasserhöhle
+-94;-899;Die Kristallwasserhöhle
+-93;-899;Die Kristallwasserhöhle
+-99;-898;Die Kristallwasserhöhle
+-98;-898;Die Kristallwasserhöhle
+-97;-898;Die Kristallwasserhöhle
+-96;-898;Die Kristallwasserhöhle
+-95;-898;Die Kristallwasserhöhle
+-94;-898;Die Kristallwasserhöhle
+-93;-898;Die Kristallwasserhöhle
+-98;-897;Die Kristallwasserhöhle
+-97;-897;Die Kristallwasserhöhle
+-96;-897;Die Kristallwasserhöhle
+-95;-897;Die Kristallwasserhöhle
+-94;-897;Die Kristallwasserhöhle
+-93;-897;Die Kristallwasserhöhle
+-92;-897;Die Kristallwasserhöhle
+-99;-896;Die Kristallwasserhöhle
+-98;-896;Die Kristallwasserhöhle
+-97;-896;Die Kristallwasserhöhle
+-96;-896;Die Kristallwasserhöhle
+-95;-896;Die Kristallwasserhöhle
+-94;-896;Die Kristallwasserhöhle
+-99;-895;Die Kristallwasserhöhle
+-98;-895;Die Kristallwasserhöhle
+-97;-895;Die Kristallwasserhöhle
+-96;-895;Die Kristallwasserhöhle
+-95;-895;Die Kristallwasserhöhle
+-94;-895;Die Kristallwasserhöhle
+-97;-894;Die Kristallwasserhöhle
+-96;-894;Die Kristallwasserhöhle
+-94;-894;Die Kristallwasserhöhle
+-93;-894;Die Kristallwasserhöhle
+120;94;Kuridan - Der Wandelfluss
+121;94;Kuridan - Der Wandelfluss
+119;95;Kuridan - Der Zwirnwald
+120;95;Kuridan - Der Zwirnwald
+121;95;Kuridan - Der Wandelfluss
+122;95;Kuridan - Der Zwirnwald
+123;95;Kuridan - Der Zwirnwald
+118;96;Kuridan - Der Zwirnwald
+119;96;Kuridan - Der Zwirnwald
+120;96;Kuridan - Der Wandelfluss
+121;96;Kuridan - Der Wandelfluss
+122;96;Kuridan - Die Zwirnwaldhütte
+115;97;Kuridan - Die Prärie
+118;97;Kuridan - Feuchtes Gras
+119;97;Kuridan - Schroffe Steine
+120;97;Kuridan - Der Wandelfluss
+121;97;Kuridan - Der Zwirnwald
+114;98;Kuridan - Haus der Arbeiter
+115;98;Kuridan - Die Prärie
+116;98;Kuridan - Die Prärie
+118;98;Kuridan - Feuchtes Gras
+120;98;Kuridan - Der Wandelfluss
+121;98;Kuridan - Der Wandelfluss
+122;98;Kuridan - Der Zwirnwald
+113;99;Kuridan - Die Brücke
+114;99;Kuridan - Die Prärie
+115;99;Kuridan - Die Prärie
+118;99;Kuridan - Die Prärie
+121;99;Kuridan - Der Wandelfluss
+122;99;Kuridan - Der Wandelfluss
+114;100;Kuridan - Die Prärie
+115;100;Kuridan - Die Prärie
+116;100;Kuridan - Die Prärie
+117;100;Kuridan - Haus der Zauberer
+118;100;Kuridan - Die Prärie
+119;100;Kuridan - Die Prärie
+120;100;Kuridan - Feuchtes Gras
+121;100;Kuridan - Der Wandelfluss
+122;100;Kuridan - Der Wandelfluss
+123;100;Kuridan - Der Zwirnwald
+114;101;Kuridan - Die Prärie
+115;101;Kuridan - Die Prärie
+116;101;Kuridan - Das Haus der Kämpfer
+120;101;Kuridan - Feuchtes Gras
+121;101;Kuridan - Der Wandelfluss
+122;101;Kuridan - Der Wandelfluss
+123;101;Kuridan - Der Zwirnwald
+114;102;Kuridan - Die Prärie
+115;102;Kuridan - Die Prärie
+116;102;Kuridan - Die Prärie
+119;102;Kuridan - Feuchtes Gras
+120;102;Kuridan - Schroffe Steine
+121;102;Kuridan - Der Wandelfluss
+122;102;Kuridan - Der Wandelfluss
+123;102;Kuridan - Der Zwirnwald
+114;103;Kuridan - Die Prärie
+115;103;Kuridan - Die Prärie
+118;103;Kuridan - Der Tempeleingang
+119;103;Kuridan - Schroffe Steine
+120;103;Kuridan - Der Tempeleingang
+121;103;Kuridan - Der Wandelfluss
+123;103;Kuridan - Der Zwirnwald
+113;104;Kuridan - Die Prärie
+114;104;Kuridan - Die Prärie
+115;104;Kuridan - Die Prärie
+118;104;Kuridan - Der Strand
+119;104;Kuridan - Der Strand
+120;104;Kuridan - Der Strand
+121;104;Kuridan - Der Wandelfluss
+115;105;Kuridan - Die Prärie
+116;105;Kuridan - Die Prärie
+115;106;Kuridan - Die Prärie
+116;106;Kuridan - Die Prärie
+117;106;Kuridan - Das Haus der Serum-Geister
+118;106;Kuridan - Der Steg
+114;107;Kuridan - Die Prärie
+115;107;Kuridan - Die Prärie
+116;107;Kuridan - Die Prärie
+117;107;Kuridan - Verfallene Häuser
+118;107;Kuridan - Der Steinstrand
+113;108;Kuridan - Die Prärie
+114;108;Kuridan - Die Prärie
+115;108;Kuridan - Die Prärie
+116;108;Kuridan - Die Prärie
+117;108;Kuridan - Die Prärie
+118;108;Kuridan - Kantige Felsen
+120;110;Lardikia - Das Meer
+121;110;Lardikia - Das Meer
+118;111;Lardikia - Das Meer
+119;111;Lardikia - Hohe Palmen
+120;111;Lardikia - Hohe Palmen
+121;111;Lardikia - Hohe Palmen
+122;111;Lardikia - Das Meer
+120;112;Lardikia - Der karge Berg
+121;112;Lardikia - Der karge Berg
+122;112;Lardikia - Das Meer
+117;113;Markthalle von Lardikia
+118;113;Lardikia - Der rote Felsen
+119;113;Lardikia - Der karge Berg
+120;113;Lardikia - Der karge Berg
+121;113;Lardikia - Der karge Berg
+122;113;Lardikia - Die Klippen
+119;114;Lardikia - Der Inselwald
+120;114;Lardikia - Der Inselwald
+121;114;Lardikia - Der Inselwald
+122;114;Lardikia - Der Strand
+123;114;Lardikia - Der Strand
+126;114;Insel der vergessenen Wellen
+127;114;Insel der vergessenen Wellen
+116;115;Lardikia - Der Wasserpavillon
+118;115;Lardikia - Die Bucht
+119;115;Lardikia - Der Inselwald
+120;115;Lardikia - Das Strandhaus
+121;115;Lardikia - Der Inselwald
+122;115;Lardikia - Der Strand
+114;116;Lardikia - Orewu - Der Salzsee
+116;116;Lardikia - Seichtes Wasser
+117;116;Lardikia - Der Strand
+118;116;Lardikia - Der Strand
+119;116;Lardikia - Der Strand
+120;116;Lardikia - Der Strand
+121;116;Lardikia - Der Strand
+122;116;Lardikia - Der Strand
+114;117;Lardikia - Der Übergang
+115;117;Lardikia - Der Übergang
+116;117;Lardikia - Seichtes Wasser
+117;117;Lardikia - Seichtes Wasser
+118;117;Lardikia - Seichtes Wasser
+120;117;Lardikia - Das Meer
+122;117;Lardikia - Das Meer
+53;74;Laree - Die Stadt
+54;74;Laree - Die Stadt
+53;75;Laree - Die Stadt
+54;75;Laree - Die Stadt
+55;75;Laree - Die Stadt
+56;75;Laree - Die Stadt
+44;76;Laree - Das Chaoslabor
+47;76;Laree - Der Steinwald
+48;76;Laree - Der Steinwald
+52;76;Laree - Die Stadt
+53;76;Laree - Bank aller Wesen
+54;76;Laree - Die Stadt
+55;76;Laree - Das Haus der Aufträge
+56;76;Laree - Vorstadtwiesen
+44;77;Laree - Der Steinwald
+45;77;Laree - Alte Ruine
+47;77;Laree - Der Steinwald
+48;77;Laree - Der Steinwald
+49;77;Laree - Der Steinwald
+51;77;Laree - Das Schloss der Erbauer
+52;77;Laree - Vorstadtwiesen
+53;77;Laree - Die Handwerkshalle
+54;77;Laree - Der Zubehörladen
+55;77;Laree - Vorstadtwiesen
+45;78;Laree - Der Steinwald
+46;78;Laree - Der Steinwald
+47;78;Laree - Der Steinwald
+48;78;Laree - Der Steinwald
+49;78;Laree - Der Steinwald
+52;78;Laree - Vorstadtwiesen
+53;78;Laree - Vorstadtwiesen
+54;78;Laree - Vorstadtwiesen
+46;79;Laree - Der Steinwald
+47;79;Laree - Der Steinwald
+48;79;Laree - Der Steinwald
+53;79;Laree - verfallene Mauern
+54;79;Laree - verfallene Mauern
+47;80;Laree - Die Schotterwiesen
+48;80;Laree - Die Schotterwiesen
+49;80;Laree - Die Schotterwiesen
+50;80;Laree - Die Schotterwiesen
+51;80;Laree - Die Schotterwiesen
+53;80;Laree - verfallene Mauern
+54;80;Laree - verfallene Mauern
+45;81;Laree - Die Schotterwiesen
+46;81;Laree - Die Schotterwiesen
+47;81;Laree - Die Schotterwiesen
+48;81;Laree - Die Schotterwiesen
+49;81;Laree - Die Schotterwiesen
+50;81;Laree - Die Schotterwiesen
+51;81;Laree - Die Schotterwiesen
+52;81;Laree - verfallene Mauern
+53;81;Laree - verfallene Mauern
+54;81;Laree - verfallene Mauern
+56;81;Laree - alte Ausgrabung
+46;82;Laree - Die Schotterwiesen
+47;82;Laree - Die Schotterwiesen
+48;82;Laree - Die Schotterwiesen
+49;82;Laree - Die Schotterwiesen
+50;82;Laree - Die Schotterwiesen
+51;82;Laree - Der Flüsterwald
+54;82;Laree - Vorstadtwiesen
+55;82;Laree - Vorstadtwiesen
+56;82;Laree - Vorstadtwiesen
+49;83;Laree - Das Zauberlabor
+50;83;Laree - Der Flüsterwald
+51;83;Laree - Der Flüsterwald
+50;84;Laree - Der Flüsterwald
+51;84;Laree - Der Flüsterwald
+52;84;Laree - Der Flüsterwald
+53;84;Laree - Der Flüsterwald
+50;85;Laree - Der Flüsterwald
+51;85;Laree - Der Flüsterwald
+52;85;Laree - Der Flüsterwald
+53;85;Laree - Der Flüsterwald
+54;85;Laree - Der Flüsterwald
+53;86;Laree - Der Flüsterwald
+54;86;Laree - Der Flüsterwald
+55;86;Laree - Der Flüsterwald
+97;81;Latenia - Die Schneeberge
+98;81;Latenia - Die Schneeberge
+99;81;Latenia - Die Schneeberge
+90;82;Latenia - Akademie der inneren Macht
+96;82;Latenia - Die Schneeberge
+97;82;Latenia - Die Schneeberge
+98;82;Latenia - Das Geröllfeld
+99;82;Latenia - Die Schneeberge
+100;82;Latenia - Die Schneeberge
+90;83;Latenia - Der weisse Hügel
+95;83;Latenia - Das Geröllfeld
+96;83;Latenia - Das Geröllfeld
+97;83;Latenia - Das Geröllfeld
+98;83;Latenia - Das Geröllfeld
+99;83;Latenia - Die Schneeberge
+90;84;Latenia - Der Eiswald
+91;84;Latenia - Der Eiswald
+92;84;Latenia - Der Eiswald
+93;84;Latenia - Der Eiswald
+94;84;Latenia - Der Eiswald
+95;84;Latenia - Der Eiswald
+96;84;Latenia - Die Berghütte
+97;84;Latenia - Der Eiswald
+98;84;Latenia - Das Geröllfeld
+92;85;Latenia - Der Eissee
+93;85;Latenia - Der Eissee
+94;85;Latenia - Der Eissee
+95;85;Latenia - Der Eiswald
+96;85;Latenia - Der Eiswald
+97;85;Latenia - Die finsteren Bäume
+98;85;Latenia - Der Eiswald
+90;86;Kontrollturm
+91;86;Latenia - Der Eissee
+92;86;Latenia - Der Eissee
+93;86;Latenia - Der Eissee
+94;86;Latenia - Der Eissee
+95;86;Latenia - Der Eissee
+96;86;Latenia - Der Eiswald
+97;86;Latenia - Der Eiswald
+92;87;Latenia - Die Hütte des Eises
+94;87;Latenia - Der Eissee
+92;88;Latenia - Schneegrenze
+-814;-814;Lava Grotte - Die Vulkangrotte
+-813;-814;Lava Grotte - Die Vulkangrotte
+-812;-814;Lava Grotte - Die Vulkangrotte
+-811;-814;Lava Grotte - Die Vulkangrotte
+-814;-813;Lava Grotte - Die Vulkangrotte
+-813;-813;Lava Grotte - Die Vulkangrotte
+-812;-813;Lava Grotte - Die Vulkangrotte
+-811;-813;Lava Grotte - Die Vulkangrotte
+-814;-812;Lava Grotte - Die Vulkangrotte
+-813;-812;Lava Grotte - Die Vulkangrotte
+-812;-812;Lava Grotte - Die Vulkangrotte
+-811;-812;Lava Grotte - Die Vulkangrotte
+-814;-811;Lava Grotte - Die Vulkangrotte
+-813;-811;Lava Grotte - Die Vulkangrotte
+-812;-811;Lava Grotte - Die Vulkangrotte
+-811;-811;Lava Grotte - Die Vulkangrotte
+-812;-810;Lava Grotte - Die Vulkangrotte
+59;84;Limm - Der Farnwald
+55;85;Limm - Der Farnwald
+56;85;Limm - Der Farnwald
+57;85;Limm - Der Farnwald
+59;85;Limm - Der Farnwald
+60;85;Limm - Der Farnwald
+56;86;Limm - Der Farnwald
+57;86;Limm - Der Farnwald
+58;86;Limm - Der Farnwald
+59;86;Limm - Der Farnwald
+57;87;Limm - Der Farnwald
+58;87;Limm - Der Farnwald
+59;87;Limm - Der Farnwald
+60;87;Limm - Der Farnwald
+55;88;Limm - Der Farnwald
+56;88;Limm - Der Farnwald
+57;88;Limm - Der Farnwald
+58;88;Limm - Der Farnwald
+59;88;Limm - Der Farnwald
+60;88;Limm - Der Farnwald
+56;89;Limm - Der Farnwald
+57;89;Limm - Der Farnwald
+58;89;Limm - Der Farnwald
+59;89;Limm - Der Farnwald
+57;90;Limm - Der Nebelwald
+58;90;Limm - Der Nebelwald
+59;90;Limm - Der Nebelwald
+56;91;Limm - Der Nebelwald
+57;91;Limm - Der Nebelwald
+58;91;Limm - Der Nebelwald
+59;91;Limm - Der Nebelwald
+58;92;Limm - Der Nebelwald
+59;92;Limm - Der Nebelwald
+60;92;Limm - Der Nebelwald
+59;93;Limm - Der Nebelwald
+136;113;Linya - Einsamer Strand
+137;113;Linya - Einsamer Strand
+135;114;Linya - Einsamer Strand
+136;114;Linya - Die Wasserfälle
+137;114;Linya - Die Wasserfälle
+138;114;Linya - Einsamer Strand
+139;114;Linya - Einsamer Strand
+133;115;Linya - Felsformationen
+134;115;Linya - Der Tempel von Linya
+135;115;Linya - Dichter Wald
+136;115;Linya - Die Wasserfälle
+137;115;Linya - Die Wasserfälle
+138;115;Linya - Die Wasserfälle
+139;115;Linya - Einsamer Strand
+132;116;Linya - Kantige Felsen
+133;116;Linya - Vereinzelte Bäume
+134;116;Linya - Dichter Wald
+135;116;Linya - Dichter Wald
+136;116;Linya - Dichter Wald
+137;116;Linya - Die Bucht
+138;116;Linya - Die Bucht
+139;116;Linya - Einsamer Strand
+132;117;Linya - Einsamer Strand
+133;117;Linya - Dichter Wald
+134;117;Linya - Dichter Wald
+135;117;Linya - Einsamer Strand
+136;117;Linya - Die Bucht
+137;117;Linya - Einsamer Strand
+138;117;Linya - Dichter Wald
+139;117;Linya - Einsamer Strand
+136;118;Linya - Einsamer Strand
+137;118;Linya - Einsamer Strand
+138;118;Linya - Seichtes Wasser
+106;75;Lodradon - Der Eiswindpass
+108;75;Lodradon - Der Eiswindpass
+109;75;Lodradon - Der Eiswindpass
+104;76;Lodradon - Der Eiswindpass
+105;76;Lodradon - Der Eiswindpass
+106;76;Lodradon - Der Eiswindpass
+107;76;Lodradon - Der Eiswindpass
+108;76;Lodradon - Der Eiswindpass
+109;76;Lodradon - Der Eiswindpass
+110;76;Lodradon - Der Eiswindpass
+114;76;Lodradon - Der organische Turm
+108;77;Lodradon - Der Eiswindpass
+109;77;Lodradon - Der Eiswindpass
+110;77;Lodradon - Der Eiswindpass
+111;77;Lodradon - Der Eiswindpass
+112;77;Lodradon - Schattenwald
+113;77;Lodradon - Schattenwald
+114;77;Lodradon - Schattenwald
+115;77;Lodradon - Schattenwald
+109;78;Lodradon - Der Eiswindpass
+110;78;Lodradon - Der Eiswindpass
+111;78;Lodradon - Schattenwald
+112;78;Lodradon - Schattenwald
+113;78;Lodradon - Schattenwald
+114;78;Lodradon - Schattenwald
+115;78;Lodradon - Schattenwald
+116;78;Lodradon - Schattenwald
+117;78;Lodradon - Schattenwald
+112;79;Lodradon - Holzhütte
+113;79;Lodradon - Schattenwald
+114;79;Lodradon - Schattenwald
+115;79;Lodradon - Schattenwald
+116;79;Lodradon - Schattenwald
+117;79;Lodradon - Schattenwald
+118;79;Lodradon - Schattenwald
+119;79;Lodradon - Schattenwald
+113;80;Lodradon - Schattenwald
+114;80;Lodradon - Schattenwald
+115;80;Lodradon - Schattenwald
+116;80;Lodradon - Schattenwald
+113;81;Lodradon - Schattenwald
+114;81;Lodradon - Die Steinmonumente
+115;81;Lodradon - Schattenwald
+114;82;Lodradon - Die Steinmonumente
+115;82;Lodradon - Die Steinmonumente
+116;82;Lodradon - Die Steinmonumente
+117;82;Lodradon - Die Steinmonumente
+116;83;Lodradon - Die Steinmonumente
+117;83;Lodradon - Die Steinmonumente
+88;106;Loranien - Der Pass
+88;107;Loranien - Der Pass
+88;108;Loranien - Steinsoldaten
+87;109;Loranien - Ein Abhang
+88;109;Loranien - Ein Abhang
+85;110;Loranien - Ein dunkler Wald
+86;110;Loranien - Ein dunkler Wald
+87;110;Loranien - Eine hohe Wiese
+88;110;Loranien - Eine hohe Wiese
+89;110;Loranien - Eine hohe Wiese
+86;111;Loranien - Ein dunkler Wald
+87;111;Loranien - Ein dunkler Wald
+89;111;Loranien - Ein verlassener Brunnen
+90;111;Loranien - Ein Pfad in die Berge
+84;112;Loranien - Ein weißes Haus
+85;112;Loranien - Ein dunkler Wald
+86;112;Loranien - Ein dunkler Wald
+87;112;Stiftung aller Wesen
+85;113;Loranien - Ein Wald
+86;113;Die weißen Türme von Loranien
+81;114;Loranien - Der See des Friedens
+82;114;Loranien - Der See des Friedens
+85;114;Loranien - Der steinige Weg
+78;115;Loranien - Hohe Pflanzen
+79;115;Loranien - Der See des Friedens
+80;115;Loranien - Der See des Friedens
+81;115;Loranien - Der See des Friedens
+82;115;Loranien - Der See des Friedens
+83;115;Loranien - Der See des Friedens
+84;115;Loranien - Der See des Friedens
+85;115;Loranien - Der Weg
+77;116;Die Baumzucht
+78;116;Loranien - Hohe Pflanzen
+79;116;Loranien - Der See des Friedens
+80;116;Loranien - Der See des Friedens
+81;116;Loranien - Der See des Friedens
+82;116;Loranien - Der See des Friedens
+83;116;Loranien - Der See des Friedens
+84;116;Loranien - Der See des Friedens
+85;116;Loranien - Der See des Friedens
+86;116;Loranien - Der See des Friedens
+79;117;Loranien - Strand
+80;117;Loranien - Der See des Friedens
+81;117;Loranien - Der Strand
+82;117;Loranien - Grashalme
+83;117;Loranien - Grashalme
+84;117;Loranien - Grashalme
+85;117;Loranien - Grashalme
+80;118;Loranien - Grashalme
+81;118;Loranien - Grashalme
+83;118;Haus der Clan-Schliessfächer
+80;119;Loranien - Die Bank aller Clans
+97;112;Mentoran - Der Hügel
+97;113;Mentoran - Der Hügel
+99;113;Mentoran - Der lebende Berg
+101;113;Mentoran - Der Hügel
+102;113;Mentoran - Der Wüstenpfad
+103;113;Mentoran - Der Wüstenpfad
+104;113;Mentoran - Das östliche Wüstenland
+97;114;Mentoran - Das Wüstenland
+98;114;Mentoran - Das Wüstenland
+99;114;Mentoran - Das Wüstenland
+100;114;Mentoran - Das Wüstenland
+101;114;Mentoran - Das Wüstenland
+104;114;Mentoran - Das östliche Wüstenland
+97;115;Mentoran - Das Wüstenland
+98;115;Mentoran - Das Wüstenland
+99;115;Mentoran - Die Oase
+100;115;Mentoran - Das Wüstenland
+101;115;Mentoran - Das Wüstenland
+103;115;Mentoran - Der Ölturm
+104;115;Mentoran - Das östliche Wüstenland
+97;116;Mentoran - Das Wüstenland
+98;116;Mentoran - Das Wüstenland
+99;116;Mentoran - Das Wüstenland
+100;116;Mentoran - Das Wüstenland
+101;116;Mentoran - Das Nomadendorf
+104;116;Mentoran - Das östliche Wüstenland
+96;117;Die Arena von Mentoran
+97;117;Mentoran - Das Wüstenland
+98;117;Mentoran - Das Wüstenland
+99;117;Mentoran - Das Wüstenland
+100;117;Mentoran - Das Wüstenland
+101;117;Mentoran - Das Nomadendorf
+103;117;Mentoran - Das Öl-Lagerhaus
+104;117;Mentoran - Das östliche Wüstenland
+98;118;Mentoran - Der Durchgang
+99;118;Haus der Aufträge
+101;118;Der Shop der Taruner
+104;118;Mentoran - Das östliche Wüstenland
+98;119;Mentoran - Der Durchgang
+101;119;Mentoran - Der Wüstentempel
+102;119;Mentoran - Das östliche Wüstenland
+103;119;Mentoran - Das östliche Wüstenland
+104;119;Mentoran - Das östliche Wüstenland
+98;120;Mentoran - Bank aller Wesen
+-18;-26;Tanien - Der morsche Baum
+501;51;Narubia - Die Nebelbank
+502;51;Narubia - Die Nebelbank
+500;52;Narubia - Die Nebelbank
+501;52;Narubia - Die Nebelbank
+502;52;Narubia - Die Nebelbank
+503;52;Narubia - Die Nebelbank
+504;52;Narubia - Die Nebelbank
+499;53;Narubia - Platz der Ehre
+500;53;Narubia - Der Fels
+501;53;Narubia - Der dunkle Wald
+502;53;Narubia - Der dunkle Wald
+503;53;Narubia - Der dunkle Pfad
+504;53;Narubia - Die Nebelbank
+505;53;Narubia - Der dunkle Pfad
+506;53;Narubia - Seltsame Gebilde
+500;54;Narubia - Der dunkle Wald
+501;54;Narubia - Haus der Finsternis
+502;54;Narubia - Der dunkle Wald
+503;54;Narubia - Der dunkle Pfad
+504;54;Narubia - Der dunkle Pfad
+505;54;Narubia - Der dunkle Pfad
+506;54;Narubia - Der dunkle Pfad
+507;54;Narubia - Das dunkle Dorf
+500;55;Narubia - Der dunkle Wald
+501;55;Narubia - Der dunkle Wald
+502;55;Narubia - Der dunkle Wald
+503;55;Narubia - Der dunkle Wald
+504;55;Narubia - Der dunkle Pfad
+505;55;Narubia - Der dunkle Pfad
+506;55;Narubia - Der erleuchtete Baum
+507;55;Narubia - Das dunkle Dorf
+500;56;Narubia - Haus der Entsorgung
+501;56;Narubia - Der dunkle Pfad
+502;56;Narubia - Der dunkle Pfad
+503;56;Narubia - Der dunkle Wald
+504;56;Narubia - Der dunkle Wald
+505;56;Narubia - Der dunkle Pfad
+506;56;Narubia - Der dunkle Pfad
+507;56;Narubia - Der dunkle Pfad
+501;57;Narubia - Das Katapult
+502;57;Narubia - Die Bergkette
+503;57;Narubia - Die Bergkette
+504;57;Narubia - Die Bergkette
+505;57;Narubia - Die Bergkette
+506;57;Narubia - Die Bergkette
+507;57;Der Shop der Natla
+508;57;Die Stätte des Handels
+100;103;Nawor - Einzelne Bäume
+100;104;Nawor - Der Fluss
+104;104;Nawor - Das Haus der Ränge
+100;105;Nawor - Der Fluss
+101;105;Nawor - Die Büsche
+102;105;Nawor - Der Fluss
+103;105;Nawor - Die Büsche
+104;105;Nawor - Das Gestrüpp
+109;105;Nawor - Die Bergspitze
+111;105;Kontrollturm
+98;106;Nawor - Das Gestrüpp
+99;106;Nawor - Die Büsche
+100;106;Nawor - Der Fluss
+101;106;Nawor - Der Fluss
+102;106;Nawor - Der Fluss
+103;106;Nawor - Der Fluss
+104;106;Nawor - Die Büsche
+105;106;Nawor - Der vertrocknete Busch
+106;106;Nawor - Haus der Wahlen
+108;106;Nawor - Die Felswand
+109;106;Nawor - Die Felswand
+110;106;Nawor - Die Felswand
+111;106;Nawor - Die Felswand
+112;106;Nawor - Felsen
+113;106;Nawor - Die Feuerstelle
+98;107;Nawor - Das Gestrüpp
+100;107;Nawor - Die Bienenstöcke
+102;107;Nawor - Die Büsche
+106;107;Nawor - Büsche
+107;107;Nawor - Büsche
+108;107;Nawor - Büsche
+109;107;Nawor - Geröll
+110;107;Nawor - Geröll
+111;107;Nawor - Felsen
+112;107;Nawor - Felsen
+113;107;Nawor - Felsen
+102;108;Nawor - Die dunklen Sandflächen
+103;108;Nawor - Die Kakteenebene
+104;108;Nawor - Die Kakteenebene
+105;108;Nawor - Die Stachelpflanze
+106;108;Nawor - Geröll
+107;108;Nawor - Büsche
+108;108;Nawor - Geröll
+109;108;Nawor - Büsche
+110;108;Nawor - Geröll
+111;108;Nawor - Geröll
+112;108;Nawor - Büsche
+101;109;Nawor - Die dunklen Sandflächen
+102;109;Nawor - Die Kakteenebene
+103;109;Nawor - Die Kakteenebene
+104;109;Nawor - Die Kakteenebene
+105;109;Nawor - Die Kakteenebene
+106;109;Nawor - Die Kakteenebene
+108;109;Nawor - Der Abhang
+109;109;Nawor - Büsche
+110;109;Nawor - Geröll
+111;109;Nawor - Geröll
+101;110;Nawor - Die dunklen Sandflächen
+102;110;Nawor - Die Kakteenebene
+103;110;Nawor - Die Kakteenebene
+104;110;Nawor - Die Kakteenebene
+105;110;Nawor - Die dunklen Sandflächen
+109;110;Nawor - Der Abhang
+110;110;Nawor - Der Abhang
+101;111;Nawor - Die dunklen Sandflächen
+102;111;Nawor - Die dunklen Sandflächen
+103;111;Nawor - Die dunklen Sandflächen
+104;111;Nawor - Die dunklen Sandflächen
+105;111;Nawor - Die Spielhütte
+109;111;Nawor - Der westliche Zwillingshügel
+110;111;Nawor - Der östliche Zwillingshügel
+111;111;Nawor - Der Abhang
+102;112;Nawor - Die dunklen Sandflächen
+110;112;Nawor - Der Abhang
+-225;-541;Der Nebelsumpf
+-256;-29;Das Nest
+-258;-28;Das Nest
+-257;-28;Das Nest
+-256;-28;Das Nest
+-255;-28;Das Nest
+-254;-28;Das Nest
+-253;-28;Das Nest
+-259;-27;Das Nest
+-258;-27;Das Nest
+-257;-27;Das Nest
+-256;-27;Das Nest
+-255;-27;Das Nest
+-254;-27;Das Nest
+-258;-26;Das Nest
+-257;-26;Das Nest
+-256;-26;Das Nest
+-255;-26;Das Nest
+-257;-25;Das Nest
+-256;-25;Das Nest
+-105;-95;Nomadenzelt
+108;113;Orewu - Die Hütte des Salzsees
+109;113;Orewu - Der Salzsee
+110;113;Orewu - Der Salzsee
+111;113;Orewu - Der Salzsee
+112;113;Orewu - Der Salzsee
+113;113;Kontrollturm
+107;114;Orewu - Der Salzsee
+108;114;Orewu - Der Salzsee
+109;114;Orewu - Der Salzsee
+110;114;Orewu - Der Salzsee
+111;114;Orewu - Der Salzsee
+112;114;Orewu - Der Salzsee
+113;114;Orewu - Der Salzsee
+114;114;Orewu - Der Salzshop
+105;115;Orewu - Der Übergang
+106;115;Orewu - Der Übergang
+107;115;Orewu - Der Salzsee
+108;115;Orewu - Der Salzsee
+109;115;Orewu - Der Salzsee
+110;115;Orewu - Der morsche Baum
+111;115;Orewu - Der Salzsee
+112;115;Orewu - Der Salzsee
+113;115;Orewu - Der Salzsee
+114;115;Orewu - Der Salzsee
+107;116;Orewu - Der Salzsee
+108;116;Orewu - Der Salzsee
+109;116;Orewu - Der Salzsee
+110;116;Orewu - Der Salzsee
+111;116;Orewu - Der Salzsee
+112;116;Orewu - Der Salzsee
+113;116;Orewu - Der Salzsee
+114;116;Lardikia - Orewu - Der Salzsee
+108;117;Orewu - Der Salzsee
+109;117;Orewu - Der Salzsee
+110;117;Orewu - Der Salzsee
+111;117;Orewu - Der Salzsee
+112;117;Orewu - Der Salzsee
+110;118;Orewu - Der Salzsee
+111;118;Orewu - Der Salzsee
+51;108;Pensal - Der verfluchte Wald
+53;108;Pensal - Der verfluchte Wald
+54;108;Pensal - Der verfluchte Wald
+49;109;Pensal - Der verfluchte Wald
+50;109;Pensal - Der verfluchte Wald
+51;109;Pensal - Der verfluchte Wald
+52;109;Pensal - Der verfluchte Wald
+53;109;Pensal - Der verfluchte Wald
+54;109;Pensal - Der verfluchte Wald
+49;110;Pensal - Der verfluchte Wald
+50;110;Pensal - Der verfluchte Wald
+51;110;Pensal - Der verfluchte Wald
+52;110;Pensal - Der verfluchte Wald
+53;110;Pensal - Der verfluchte Wald
+54;110;Pensal - Der verfluchte Wald
+50;111;Pensal - Der verfluchte Wald
+51;111;Pensal - Der verfluchte Wald
+52;111;Pensal - Der verfluchte Wald
+53;111;Pensal - Der verfluchte Wald
+51;112;Pensal - Der verfluchte Wald
+52;112;Pensal - Der verfluchte Wald
+50;113;Pensal - Der verfluchte Wald
+51;113;Pensal - Der verfluchte Wald
+52;113;Pensal - Der verfluchte Wald
+53;113;Pensal - Der verfluchte Wald
+54;113;Pensal - Der verfluchte Wald
+79;105;Plefir - Tiefer Wald
+79;106;Plefir - Der Pilzhügel
+80;106;Plefir - Der Pilzhügel
+78;107;Plefir - Der Pilzhügel
+79;107;Plefir - Der Pilzhügel
+80;107;Plefir - Der Pilzhügel
+81;107;Plefir - Das Pilzgebiet
+82;107;Plefir - Das Pilzgebiet
+77;108;Plefir - Das Pilzgebiet
+78;108;Plefir - Das Pilzgebiet
+79;108;Plefir - Das Pilzgebiet
+80;108;Plefir - Das Pilzgebiet
+81;108;Plefir - Das Pilzgebiet
+82;108;Plefir - Das Pilzgebiet
+83;108;Plefir - Das Pilzgebiet
+77;109;Plefir - Das Pilzgebiet
+78;109;Plefir - Das Pilzgebiet
+79;109;Plefir - Das Pilzgebiet
+80;109;Plefir - Das Pilzgebiet
+81;109;Plefir - Das Pilzgebiet
+82;109;Plefir - Das Pilzgebiet
+76;110;Plefir - Ort der Heilquellen
+77;110;Plefir - Das Pilzgebiet
+78;110;Plefir - Das Pilzgebiet
+79;110;Plefir - Haus der Pilze
+80;110;Plefir - Das Pilzgebiet
+81;110;Plefir - Das Pilzgebiet
+82;110;Plefir - Das Pilzgebiet
+83;110;Plefir - Das Pilzgebiet
+84;110;Plefir - Wiese
+78;111;Plefir - Das Pilzgebiet
+79;111;Plefir - Das Pilzgebiet
+80;111;Plefir - Das Pilzgebiet
+81;111;Plefir - Das Pilzgebiet
+82;111;Plefir - Das Pilzgebiet
+100;73;Ragnur - Schlottergipfel
+101;73;Ragnur - Schlottergipfel
+102;73;Ragnur - Schlottergipfel
+98;74;Ragnur - Schlottergipfel
+100;74;Ragnur - Schlottergipfel
+101;74;Ragnur - Schlottergipfel
+102;74;Ragnur - Schlottergipfel
+97;75;Ragnur - Schlottergipfel
+98;75;Ragnur - Schlottergipfel
+99;75;Ragnur - Schlottergipfel
+100;75;Ragnur - Schlottergipfel
+101;75;Ragnur - Schlottergipfel
+102;75;Ragnur - Schlottergipfel
+103;75;Ragnur - Vereinzelte Bäume
+104;75;Ragnur - Eisformationen
+97;76;Ragnur - Steiler Hang
+98;76;Ragnur - Felsvorsprung
+99;76;Ragnur - Tiefer Schnee
+102;76;Ragnur - Baumgrenze
+103;76;Ragnur - Baumgrenze
+94;77;Ragnur - Höhleneingang
+95;77;Ragnur - Steiler Hang
+96;77;Ragnur - Steiler Hang
+97;77;Ragnur - Steiler Hang
+98;77;Ragnur - Felsvorsprung
+102;77;Ragnur - Verschneite Wipfel
+95;78;Ragnur - Steiler Hang
+96;78;Ragnur - Steiler Hang
+97;78;Ragnur - Steiler Hang
+98;78;Ragnur - Steiler hang
+99;78;Ragnur - Steiler Hang
+102;78;Ragnur - Verschneite Wipfel
+103;78;Ragnur - Verschneite Wipfel
+104;78;Ragnur - Verschneite Wipfel
+94;79;Ragnur - Steiler Hang
+95;79;Ragnur - Steiler Hang
+96;79;Ragnur - Steiler Hang
+97;79;Ragnur - Steiler Hang
+99;79;Ragnur - Steinmulde
+103;79;Ragnur - Verschneite Wipfel
+104;79;Ragnur - Verschneite Wipfel
+105;79;Ragnur - Verschneite Wipfel
+95;80;Ragnur - Steiler Hang
+96;80;Ragnur - Steiler Hang
+97;80;Ragnur - Dunkles Gestein
+103;80;Ragnur - Verschneite Wipfel
+104;80;Ragnur - Verschneite Wipfel
+105;80;Ragnur - Verschneite Wipfel
+96;81;Ragnur - Dunkler Schneeberg
+103;81;Ragnur - Verschneite Wipfel
+104;81;Ragnur - Verschneite Wipfel
+105;81;Ragnur - Verschneite Büsche
+103;82;Ragnur - Verschneite Wipfel
+104;82;Ragnur - Verschneite Wipfel
+102;83;Ragnur - Waldrand
+103;83;Ragnur - Waldrand
+104;83;Ragnur - Verschneite Wipfel
+101;84;Ragnur - Verschneite Wipfel
+102;84;Ragnur - Die Lichtung
+103;84;Ragnur - Die Lichtung
+100;85;Ragnur - Die Lichtung
+101;85;Ragnur - Die Lichtung
+102;85;Ragnur - Die Lichtung
+103;85;Ragnur - Ein Haus im Schnee
+101;86;Ragnur - Die Lichtung
+94;105;Reikan - Wald der Toten
+94;106;Reikan - Wald der Toten
+95;106;Reikan - Wald der Toten
+96;106;Die Börse aller Unternehmen
+93;107;Reikan - Wald der Toten
+94;107;Reikan - Wald der Toten
+95;107;Reikan - Wald der Toten
+96;107;Reikan - Baum des Lebens
+97;107;Reikan - Akademie der Intelligenz
+92;108;Reikan - Platz der dunklen Zauber
+93;108;Reikan - Wald der Toten
+94;108;Reikan - Wald der Toten
+95;108;Reikan - Der dunkle Kreis
+96;108;Reikan - Die Trockenebene
+97;108;Reikan - Die Trockenebene
+94;109;Reikan - Shop der Serum-Geister
+95;109;Reikan - Die Trockenebene
+96;109;Reikan - Die Trockenebene
+97;109;Reikan - Die Trockenebene
+98;109;Reikan - Friedhof der Nebel
+95;110;Reikan - Die Trockenebene
+96;110;Reikan - Der Tempel des Serums
+97;110;Reikan - Die Trockenebene
+94;111;Reikan - Haus der Portale
+95;111;Reikan - Die Trockenebene
+96;111;Reikan - Die Trockenebene
+97;111;Reikan - Die Trockenebene
+98;111;Reikan - Haus des Wissens
+95;112;Reikan - Das Orakel
+-530;-169;Die Rotsteinhöhle
+-529;-169;Die Rotsteinhöhle
+-532;-168;Die Rotsteinhöhle
+-531;-168;Die Rotsteinhöhle
+-530;-168;Die Rotsteinhöhle
+-529;-168;Die Rotsteinhöhle
+-530;-167;Die Rotsteinhöhle
+-529;-167;Die Rotsteinhöhle
+-528;-167;Die Rotsteinhöhle
+-531;-166;Die Rotsteinhöhle
+-530;-166;Die Rotsteinhöhle
+-529;-166;Die Rotsteinhöhle
+-530;-165;Die Rotsteinhöhle
+63;75;Rovonia - Die nördliche Bergkette
+64;75;Rovonia - Die nördliche Bergkette
+65;75;Rovonia - Die nördliche Bergkette
+63;76;Rovonia - Die nördlichen Wiesen
+64;76;Rovonia - Die Kristallschmiede
+65;76;Rovonia - Die nördlichen Wiesen
+66;76;Rovonia - Die nördlichen Wiesen
+67;76;Rovonia - Die nördlichen Wiesen
+63;77;Rovonia - Die nördlichen Wiesen
+64;77;Rovonia - Die nördlichen Wiesen
+65;77;Rovonia - Die nördlichen Wiesen
+66;77;Rovonia - Der Seichtwassersumpf
+67;77;Rovonia - Die nördlichen Wiesen
+64;78;Rovonia - Der Seichtwassersumpf
+65;78;Rovonia - Der Seichtwassersumpf
+66;78;Rovonia - Der Seichtwassersumpf
+67;78;Rovonia - Die nördlichen Wiesen
+68;78;Rovonia - Die Unterkunft der Sumpfbewohner
+64;79;Rovonia - Der Seichtwassersumpf
+65;79;Rovonia - Der Seichtwassersumpf
+66;79;Rovonia - Der Seichtwassersumpf
+67;79;Rovonia - Der Seichtwassersumpf
+68;79;Rovonia - Die nördlichen Wiesen
+63;80;Rovonia - Der Seichtwassersumpf
+64;80;Rovonia - Der Seichtwassersumpf
+65;80;Rovonia - Der Seichtwassersumpf
+66;80;Rovonia - Der Seichtwassersumpf
+67;80;Rovonia - Der Seichtwassersumpf
+68;80;Rovonia - Steinige Felsen
+69;80;Rovonia - Steile Klippen
+70;80;Rovonia - Steile Klippen
+64;81;Rovonia - Die nördlichen Wiesen
+65;81;Rovonia - Die nördlichen Wiesen
+66;81;Rovonia - Der Seichtwassersumpf
+67;81;Rovonia - Der Seichtwassersumpf
+68;81;Rovonia - Der Seichtwassersumpf
+69;81;Rovonia - Steile Klippen
+65;82;Rovonia - Die nördlichen Wiesen
+65;83;Rovonia - Die nördlichen Wiesen
+-90;-90;Konlir - Die Ruhmeshalle
+-804;-810;Die Ruine - Das Netz
+-803;-810;Die Ruine - Steine
+-804;-809;Die Ruine - Steine
+-803;-809;Die Ruine - Steine
+-802;-809;Die Ruine - Steine
+-803;-808;Die Ruine - Steine
+-802;-808;Die Ruine - Steine
+-802;-807;Die Ruine - Der Eingang
+70;103;Ruward - Wald des Friedhofs
+72;103;Der Turm der Erzmagier
+74;103;Ruward - Grabsteine
+75;103;Ruward - Feuchtes Gras
+69;104;Ruward - Wald des Friedhofs
+70;104;Ruward - Grabsteine
+71;104;Ruward - Wald des Friedhofs
+72;104;Ruward - Wald des Friedhofs
+73;104;Ruward - Grabsteine
+74;104;Ruward - Grabsteine
+68;105;Ruward - Wald des Friedhofs
+69;105;Ruward - Grabsteine
+70;105;Ruward - Grabsteine
+71;105;Ruward - Grabsteine
+72;105;Ruward - Grabsteine
+73;105;Ruward - Grabsteine
+74;105;Ruward - Grabsteine
+69;106;Ruward - Wald des Friedhofs
+70;106;Ruward - Grabsteine
+71;106;Ruward - Grabsteine
+72;106;Ruward - Grabsteine
+73;106;Ruward - Grabsteine
+71;107;Ruward - Grabsteine
+72;107;Ruward - Ort des Todes
+73;107;Ruward - Grabsteine
+74;107;Ruward - Haus des Friedhofs
+70;108;Ruward - Grabsteine
+71;108;Ruward - Grabsteine
+73;108;Ruward - Feuchtes Gras
+73;109;Ruward - Grabsteine
+74;109;Ruward - Grabsteine
+75;109;Kontrollturm
+74;110;Ruward - Feuchtes Gras
+75;110;Ruward - Feuchtes Gras
+-922;-179;Die Schattenhöhle
+-921;-179;Die Schattenhöhle
+-921;-178;Die Schattenhöhle
+-921;-177;Die Schattenhöhle
+-920;-179;Die Schattenhöhle
+-920;-178;Die Schattenhöhle
+-920;-177;Die Schattenhöhle
+-919;-178;Die Schattenhöhle
+-919;-177;Die Schattenhöhle
+-918;-177;Die Schattenhöhle
+-918;-176;Die Schattenhöhle
+-224;-224;Der Schlachthof
+83;93;Die Schlucht der Sandsteine
+84;93;Die Schlucht der Sandsteine
+85;93;Die Schlucht der Sandsteine
+85;94;Die Schlucht der Sandsteine
+86;94;Die Schlucht der Sandsteine
+87;94;Hewien - Felsen
+85;95;Die Schlucht der Sandsteine
+86;95;Die Schlucht der Sandsteine
+87;95;Die Schlucht der Sandsteine
+88;95;Die Schlucht der Sandsteine
+89;95;Die Schlucht der Sandsteine
+90;95;Die Schlucht der Sandsteine
+85;96;Die Schlucht der Sandsteine
+-340;-718;Die Siedesteinmine
+-333;-712;Die Steinmine
+77;87;Sutranien - Der Juwelier
+77;88;Sutranien - Sträucher
+78;88;Sutranien - Die Wiese der Steine
+70;89;Sutranien - Der dunkle Fels
+71;89;Sutranien - Die kühle Ebene
+72;89;Sutranien - Die kühle Ebene
+73;89;Sutranien - Die kühle Ebene
+76;89;Sutranien - Der Sumpf
+77;89;Sutranien - Der Sumpf
+78;89;Sutranien - Die Wiese der Steine
+70;90;Sutranien - Die kühle Ebene
+71;90;Sutranien - Die Feuerstelle
+72;90;Sutranien - Die kühle Ebene
+73;90;Sutranien - Haus der Geschenke
+75;90;Sutranien - Haus der Magie
+76;90;Sutranien - Der Sumpf
+77;90;Sutranien - Der Sumpf
+71;91;Sutranien - Die kühle Ebene
+72;91;Sutranien - Der Sumpf
+73;91;Sutranien - Der Sumpf
+75;91;Sutranien - Der Sumpf
+76;91;Sutranien - Der Sumpf
+77;91;Sutranien - Der Sumpf
+71;92;Sutranien - Die kühle Ebene
+72;92;Sutranien - Der Sumpf
+73;92;Sutranien - Der Sumpf
+74;92;Sutranien - Der Sumpf
+75;92;Sutranien - Der Sumpf
+76;92;Sutranien - Der Sumpf
+77;92;Sutranien - Der Sumpf
+72;93;Sutranien - Der Sumpf
+73;93;Sutranien - Der Sumpf
+74;93;Sutranien - Der Sumpf
+75;93;Sutranien - Der Sumpf
+76;93;Sutranien - Der Sumpf
+77;93;Sutranien - Der Sumpf
+72;94;Sutranien - Der Sumpf
+73;94;Sutranien - Der Sumpf
+74;94;Sutranien - Der Zauberbaum
+75;94;Sutranien - Der Sumpf
+76;94;Sutranien - Der Sumpf
+77;94;Sutranien - Der Sumpf
+73;95;Sutranien - Der Sumpf
+74;95;Sutranien - Der Sumpf
+75;95;Sutranien - Der Sumpf
+76;95;Sutranien - Der Sumpf
+77;95;Sutranien - Der Sumpf
+75;96;Sutranien - Der Sumpf
+76;96;Sutranien - Der Sumpf
+76;97;Sutranien - Der Sumpf
+77;97;Sutranien - Hohe Bäume
+-738;-230;Das Sägewerk
+-737;-230;Das Sägewerk
+-736;-230;Das Sägewerk
+-739;-229;Das Sägewerk
+-738;-229;Das Sägewerk
+-737;-229;Das Sägewerk
+-736;-229;Das Sägewerk
+-735;-229;Das Sägewerk
+-740;-228;Das Sägewerk
+-739;-228;Das Sägewerk
+-738;-228;Das Sägewerk
+-737;-228;Das Sägewerk
+-736;-228;Das Sägewerk
+-740;-227;Das Sägewerk
+-737;-227;Das Sägewerk
+-736;-227;Das Sägewerk
+-736;-226;Das Sägewerk
+57;110;Tanien - Der morsche Wald
+56;111;Tanien - Der morsche Wald
+57;111;Tanien - Der morsche Wald
+58;111;Tanien - Der morsche Wald
+60;111;Tanien - Der morsche Wald
+55;112;Tanien - Der morsche Wald
+56;112;Tanien - Der morsche Wald
+57;112;Tanien - Der morsche Wald
+58;112;Tanien - Der morsche Wald
+59;112;Tanien - Der morsche Wald
+60;112;Tanien - Der morsche Wald
+61;112;Tanien - Der morsche Wald
+55;113;Tanien - Die alte Strohhütte
+56;113;Tanien - Der morsche Wald
+57;113;Tanien - Der morsche Wald
+58;113;Tanien - Der morsche Wald
+59;113;Tanien - Der morsche Wald
+60;113;Tanien - Der morsche Wald
+61;113;Tanien - Der morsche Wald
+62;113;Der Unterschlupf
+56;114;Tanien - Der morsche Wald
+57;114;Tanien - Der morsche Wald
+58;114;Tanien - Der morsche Wald
+59;114;Tanien - Der morsche Wald
+60;114;Tanien - Der morsche Wald
+57;115;Das Sägewerk von Tanien
+66;101;Terasi - Die Quelle
+69;101;Terasi - Kaltes Gras
+66;102;Terasi - Der Wasserfall
+67;102;Terasi - Der Wasserfall
+68;102;Terasi - Kaltes Gras
+69;102;Terasi - Kaltes Gras
+65;103;Terasi - Kaltes Gras
+66;103;Terasi - Der Wasserfall
+67;103;Terasi - Der Wasserfall
+66;104;Terasi - Der Wasserfall
+67;104;Terasi - Der Fluss
+65;105;Terasi - Der Fluss
+66;105;Terasi - Der Fluss
+67;105;Der Fluss
+64;106;Terasi - Der Fluss
+65;106;Terasi - Der Fluss
+66;106;Terasi - Der Fluss
+65;107;Terasi - Der Fluss
+66;107;Terasi - Der Fluss
+65;108;Terasi - Der Fluss
+66;108;Terasi - Der Fluss
+67;108;Terasi - Der Fluss
+65;109;Terasi - Der Fluss
+66;109;Terasi - Der Fluss
+67;109;Terasi - Der Fluss
+68;109;Terasi - Gardu-Beerenfeld
+69;109;Terasi - Kaltes Gras
+70;109;Terasi - Kaltes Gras
+65;110;Terasi - Der Fluss
+66;110;Terasi - Der Fluss
+67;110;Terasi - Der Fluss
+68;110;Terasi - Der Fluss
+65;111;Terasi - Der Fluss
+66;111;Terasi - Der Fluss
+67;111;Terasi - Der Fluss
+68;111;Terasi - Der Fluss
+65;112;Terasi - Das Jägerlager
+66;112;Terasi - Der Fluss
+67;112;Terasi - Der Fluss
+68;112;Terasi - Der Fluss
+69;112;Terasi - Der Fluss
+67;113;Terasi - Der Fluss
+68;113;Terasi - Der Fluss
+69;113;Terasi - Der Fluss
+68;114;Terasi - Der Fluss
+69;114;Terasi - Der Fluss
+70;114;Terasi - Der Fluss
+69;115;Terasi - Der Fluss
+70;115;Terasi - Der Fluss
+71;115;Terasi - Der Fluss
+72;115;Terasi - Feuchtes Gras
+68;116;Terasi - Das Fischlager
+69;116;Terasi - Die Fischzucht
+70;116;Terasi - Feuchtes Gras
+71;116;Terasi - Der Fluss
+72;116;Terasi - Der Fluss
+73;116;Terasi - Feuchtes Gras
+71;117;Terasi - Der Fluss
+72;117;Terasi - Der Fluss
+73;117;Terasi - Feuchtes Gras
+108;98;Terbat - Die grüne Wiese
+109;98;Terbat - Die grüne Wiese
+110;98;Terbat - Bewachsene Steine
+111;98;Terbat - Bewachsene Steine
+112;98;Terbat - Die grüne Wiese
+107;99;Terbat - Die grüne Wiese
+108;99;Terbat - Die grüne Wiese
+109;99;Terbat - Die grüne Wiese
+110;99;Terbat - Die grüne Wiese
+111;99;Terbat - Bewachsene Steine
+112;99;Terbat - Die grüne Wiese
+104;100;Die Brücke
+105;100;Die Brücke
+106;100;Terbat - Die grüne Wiese
+107;100;Terbat - Die grüne Wiese
+108;100;Terbat - Die grüne Wiese
+109;100;Terbat - Das Postvogelhaus
+110;100;Terbat - Die grüne Wiese
+111;100;Terbat - Die grüne Wiese
+112;100;Terbat - Die grüne Wiese
+108;101;Terbat - Die grüne Wiese
+109;101;Terbat - Die grüne Wiese
+110;101;Terbat - Die grüne Wiese
+111;101;Terbat - Die grüne Wiese
+112;101;Terbat - Das Grillhaus
+110;102;Terbat - Die grüne Wiese
+-177;-277;Das Tiefenriff
+-172;-277;Die Unterwasserpyramide
+-177;-276;Das Tiefenriff
+-175;-276;Das Tiefenriff
+-173;-276;Unterwasserruinen
+-172;-276;Unterwasserruinen
+-171;-276;Unterwasserruinen
+-177;-275;Das Tiefenriff
+-176;-275;Das Tiefenriff
+-175;-275;Das Tiefenriff
+-173;-275;Das Tiefenriff
+-172;-275;Das Tiefenriff
+-178;-274;Das Tiefenriff
+-177;-274;Das Tiefenriff
+-175;-274;Das Tiefenriff
+-174;-274;Das Tiefenriff
+-173;-274;Das Tiefenriff
+-172;-274;Das Tiefenriff
+-171;-274;Das Tiefenriff
+-177;-273;Das Tiefenriff
+-173;-273;Das Tiefenriff
+-172;-273;Das Tiefenriff
+-178;-272;Das Tiefenriff
+-177;-272;Das Tiefenriff
+-175;-272;Das Tiefenriff
+-173;-272;Das Tiefenriff
+-172;-272;Das Tiefenriff
+-171;-272;Das Tiefenriff
+-178;-271;Das Tiefenriff
+-177;-271;Das Tiefenriff
+-176;-271;Das Tiefenriff
+-175;-271;Das Tiefenriff
+-174;-271;Das Tiefenriff
+-173;-271;Das Tiefenriff
+-178;-270;Das Tiefenriff
+-176;-270;Das Tiefenriff
+-176;-269;Das Tiefenriff
+-176;-268;Das Tiefenriff
+-2359;-2359;Die Tollo-Hütte
+109;89;Torihn - Wald der Einsamkeit
+110;89;Torihn - Wald der Einsamkeit
+111;89;Torihn - Wald der Einsamkeit
+111;90;Torihn - Wald der Einsamkeit
+112;90;Torihn - Wald der Einsamkeit
+113;90;Torihn - Wald der Einsamkeit
+116;90;Kontrollturm
+120;90;Torihn - Das Biotop
+121;90;Torihn - Das Biotop
+111;91;Torihn - Die Windwiesen
+112;91;Torihn - Das Steindach
+113;91;Torihn - Die Windwiesen
+115;91;Torihn - Wald der Einsamkeit
+116;91;Torihn - Wald der Einsamkeit
+117;91;Torihn - Die Windwiesen
+118;91;Torihn - Das Nest
+119;91;Torihn - Das Biotop
+120;91;Torihn - Das Biotop
+121;91;Torihn - Das Biotop
+122;91;Torihn - Das Schlammhaus
+123;91;Torihn - Das Biotop
+111;92;Torihn - Die Windwiesen
+113;92;Torihn - Die Windwiesen
+114;92;Torihn - Wald der Einsamkeit
+115;92;Torihn - Wald der Einsamkeit
+116;92;Torihn - Die Windwiesen
+120;92;Torihn - Das Biotop
+121;92;Torihn - Das Biotop
+122;92;Torihn - Das Biotop
+123;92;Torihn - Das Biotop
+110;93;Torihn - Die Baru-Mühle
+111;93;Torihn - Die Windwiesen
+113;93;Torihn - Baum der Heilung
+114;93;Torihn - Die Windwiesen
+119;93;Torihn - Der Holzbau
+120;93;Torihn - Das Biotop
+121;93;Torihn - Das Biotop
+110;94;Torihn - Die Windwiesen
+111;94;Torihn - Die Windwiesen
+112;94;Torihn - Der Kristallsee
+113;94;Torihn - Der Kristallsee
+114;94;Torihn - Die Windwiesen
+115;94;Torihn - Das Getreide-Lagerhaus
+116;94;Torihn - Getreidefelder
+117;94;Torihn - Getreidefelder
+112;95;Torihn - Die Windwiesen
+113;95;Torihn - Die Windwiesen
+114;95;Torihn - Getreidefelder
+115;95;Torihn - Getreidefelder
+116;95;Torihn - Getreidefelder
+111;96;Torihn - Kiras Gasthaus
+112;96;Torihn - Die Windwiesen
+112;97;Torihn - Die Brücke nach Ostterbat
+97;91;Der große Fluss
+98;91;Die unbekannte Wiese
+-599;-449;Der unterirdische Lichtwald
+-598;-449;Der unterirdische Lichtwald
+-597;-449;Der unterirdische Lichtwald
+-596;-449;Der unterirdische Lichtwald
+-599;-448;Der unterirdische Lichtwald
+-598;-448;Der unterirdische Lichtwald
+-597;-448;Der unterirdische Lichtwald
+-596;-448;Der unterirdische Lichtwald
+-595;-448;Der unterirdische Lichtwald
+-594;-448;Der Ausgang
+-598;-447;Der unterirdische Lichtwald
+-597;-447;Der unterirdische Lichtwald
+-208;-789;Der Unterschlupf
+-207;-789;Der Unterschlupf
+-206;-789;Der Unterschlupf
+-209;-788;Der Unterschlupf
+-208;-788;Der Unterschlupf
+-207;-788;Der Unterschlupf
+-206;-788;Der Unterschlupf
+-208;-787;Der Unterschlupf
+-207;-787;Der Unterschlupf
+77;80;Urdanien - Das Schwellsteingebirge
+78;80;Urdanien - Das Schwellsteingebirge
+79;80;Urdanien - Das Schwellsteingebirge
+80;80;Urdanien - Mineneingang
+76;81;Urdanien - Das Schwellsteingebirge
+77;81;Urdanien - Mineneingang
+78;81;Urdanien - Das Schwellsteingebirge
+79;81;Urdanien - Das Schwellsteingebirge
+76;82;Urdanien - Das Schwellsteingebirge
+77;82;Urdanien - Das Schwellsteingebirge
+78;82;Urdanien - Das Schwellsteingebirge
+74;83;Urdanien - Der alte Leuchtturm
+75;83;Urdanien - Das Meer
+76;83;Urdanien - Das Schwellsteingebirge
+77;83;Urdanien - Das Schwellsteingebirge
+78;83;Urdanien - Das Schwellsteingebirge
+70;84;Urdanien - Der Nordstrand
+71;84;Urdanien - Der Nordstrand
+72;84;Urdanien - Der Nordstrand
+73;84;Urdanien - Der Nordstrand
+74;84;Urdanien - Geröll
+75;84;Urdanien - Das Schwellsteingebirge
+76;84;Urdanien - Das Schwellsteingebirge
+77;84;Urdanien - Das Schwellsteingebirge
+69;85;Urdanien - Wiesenhügel
+70;85;Urdanien - Wiesenhügel
+71;85;Urdanien - Wiesenhügel
+72;85;Urdanien - Wiesenhügel
+73;85;Urdanien - Wiesenhügel
+74;85;Urdanien - Die Geisterhütte
+75;85;Urdanien - Geröll
+76;85;Urdanien - Wiesenhügel
+69;86;Urdanien - Wiesenhügel
+70;86;Urdanien - Wiesenhügel
+71;86;Urdanien - Wiesenhügel
+72;86;Urdanien - Wiesenhügel
+73;86;Urdanien - Wiesenhügel
+74;86;Urdanien - Wiesenhügel
+75;86;Urdanien - Die Nordhütte
+76;86;Urdanien - Wiesenhügel
+69;87;Urdanien - Wiesenhügel
+70;87;Urdanien - Wiesenhügel
+71;87;Urdanien - Wiesenhügel
+72;87;Urdanien - Wiesenhügel
+73;87;Urdanien - Wiesenhügel
+74;87;Urdanien - Wiesenhügel
+75;87;Urdanien - Das Drahtgestell
+76;87;Urdanien - Wiesenhügel
+70;88;Urdanien - Wiesenhügel
+71;88;Urdanien - Wiesenhügel
+-286;-479;Die vergessene Kathedrale
+-287;-478;Die vergessene Kathedrale
+-286;-478;Die vergessene Kathedrale
+-285;-478;Die vergessene Kathedrale
+-288;-477;Die vergessene Kathedrale
+-287;-477;Die vergessene Kathedrale
+-286;-477;Die vergessene Kathedrale
+-289;-476;Die vergessene Kathedrale
+-288;-476;Die vergessene Kathedrale
+-287;-476;Die vergessene Kathedrale
+-286;-476;Die vergessene Kathedrale
+-285;-476;Die vergessene Kathedrale
+-284;-476;Die vergessene Kathedrale
+-288;-475;Die vergessene Kathedrale
+-289;-472;Die vergessene Kathedrale
+-288;-472;Die vergessene Kathedrale
+-287;-472;Die vergessene Kathedrale
+-286;-472;Die vergessene Kathedrale
+-289;-471;Die vergessene Kathedrale
+-287;-471;Die vergessene Kathedrale
+-286;-471;Die vergessene Kathedrale
+-285;-471;Die vergessene Kathedrale
+-287;-468;Die vergessene Kathedrale
+-289;-467;Die vergessene Kathedrale
+-288;-467;Die vergessene Kathedrale
+-287;-467;Die vergessene Kathedrale
+82;92;Die Festung der dunklen Magier
+81;93;Das vergessene Tal
+82;93;Das vergessene Tal
+80;94;Der dunkle Turm
+81;94;Das vergessene Tal
+82;94;Das vergessene Tal
+83;94;Der Shop der dunklen Magier
+81;95;Das vergessene Tal
+-898;-779;Das versiegelte Haus
+-897;-779;Das versiegelte Haus
+-896;-779;Das versiegelte Haus
+-895;-779;Das versiegelte Haus
+-897;-778;Das versiegelte Haus
+-896;-778;Das versiegelte Haus
+-895;-778;Das versiegelte Haus
+-897;-777;Das versiegelte Haus
+-896;-777;Das versiegelte Haus
+-897;-776;Das versiegelte Haus
+-607;-267;Vorhof der Eiswelt
+-605;-267;Vorhof der Eiswelt
+-609;-266;Vorhof der Eiswelt
+-608;-266;Vorhof der Eiswelt
+-607;-266;Vorhof der Eiswelt
+-606;-266;Vorhof der Eiswelt
+-605;-266;Vorhof der Eiswelt
+-604;-266;Vorhof der Eiswelt
+-603;-266;Vorhof der Eiswelt
+-610;-265;Vorhof der Eiswelt
+-609;-265;Vorhof der Eiswelt
+-605;-265;Vorhof der Eiswelt
+-604;-265;Vorhof der Eiswelt
+-603;-265;Vorhof der Eiswelt
+-602;-265;Vorhof der Eiswelt
+-610;-264;Vorhof der Eiswelt
+-607;-264;Vorhof der Eiswelt
+-606;-264;Vorhof der Eiswelt
+-605;-264;Vorhof der Eiswelt
+-602;-264;Vorhof der Eiswelt
+-601;-264;Vorhof der Eiswelt
+-600;-264;Vorhof der Eiswelt
+-612;-263;Vorhof der Eiswelt
+-611;-263;Vorhof der Eiswelt
+-610;-263;Vorhof der Eiswelt
+-609;-263;Vorhof der Eiswelt
+-608;-263;Vorhof der Eiswelt
+-607;-263;Vorhof der Eiswelt
+-603;-263;Vorhof der Eiswelt
+-602;-263;Vorhof der Eiswelt
+-601;-263;Vorhof der Eiswelt
+-600;-263;Vorhof der Eiswelt
+-613;-262;Vorhof der Eiswelt
+-612;-262;Vorhof der Eiswelt
+-611;-262;Vorhof der Eiswelt
+-610;-262;Vorhof der Eiswelt
+-609;-262;Vorhof der Eiswelt
+-608;-262;Vorhof der Eiswelt
+-607;-262;Vorhof der Eiswelt
+-605;-262;Vorhof der Eiswelt
+-603;-262;Vorhof der Eiswelt
+-600;-262;Vorhof der Eiswelt
+-613;-261;Vorhof der Eiswelt
+-612;-261;Vorhof der Eiswelt
+-611;-261;Vorhof der Eiswelt
+-610;-261;Vorhof der Eiswelt
+-609;-261;Vorhof der Eiswelt
+-607;-261;Vorhof der Eiswelt
+-606;-261;Vorhof der Eiswelt
+-605;-261;Vorhof der Eiswelt
+-604;-261;Vorhof der Eiswelt
+-603;-261;Vorhof der Eiswelt
+-602;-261;Vorhof der Eiswelt
+-600;-261;Vorhof der Eiswelt
+-612;-260;Vorhof der Eiswelt
+-611;-260;Vorhof der Eiswelt
+-606;-260;Vorhof der Eiswelt
+-605;-260;Vorhof der Eiswelt
+-604;-260;Vorhof der Eiswelt
+-603;-260;Vorhof der Eiswelt
+-602;-260;Vorhof der Eiswelt
+-601;-260;Vorhof der Eiswelt
+-600;-260;Vorhof der Eiswelt
+-605;-259;Vorhof der Eiswelt
+-604;-259;Vorhof der Eiswelt
+-602;-259;Vorhof der Eiswelt
+-830;-810;Vulkangrotte - Die Lavamassen
+-829;-810;Vulkangrotte - Die Lavaformen
+-828;-810;Vulkangrotte - Der Lavastrom
+-827;-810;Vulkangrotte - Die Lavamassen
+-826;-810;Vulkangrotte - Die Lavamassen
+-830;-809;Vulkangrotte - Die Lavaquelle
+-829;-809;Vulkangrotte - Die Lavamassen
+-826;-809;Vulkangrotte - Die Lavamassen
+-830;-808;Vulkangrotte - Die Lavamassen
+-829;-808;Vulkangrotte - Die Lavamassen
+-826;-808;Vulkangrotte - Die Lavamassen
+-830;-807;Vulkangrotte - Die Lavamassen
+-829;-807;Vulkangrotte - Der Lavafluss
+-828;-807;Vulkangrotte - Die Lavamassen
+-827;-807;Vulkangrotte - Die Lavamassen
+-826;-807;Vulkangrotte - Die Lavamassen
+-828;-806;Vulkangrotte - Der Lavafluss
+-827;-806;Vulkangrotte - Die Lavamassen
+92;99;Haus der Aufträge
+93;99;Wald des einsamen Baumes
+93;100;Wald des einsamen Baumes
+94;100;Die alte Eiche
+93;101;Wirtshaus zum einsamen Baum
+92;102;Wald des einsamen Baumes
+93;102;Wald des einsamen Baumes
+94;102;Wald des einsamen Baumes
+91;103;Wald des einsamen Baumes
+92;103;Wald des einsamen Baumes
+93;103;Der einsame Baum
+94;103;Wald des einsamen Baumes
+95;103;Wald des einsamen Baumes
+91;104;Die Post
+92;104;Wald des einsamen Baumes
+93;104;Wald des einsamen Baumes
+94;104;Wald des einsamen Baumes
+95;104;Das Baumhaus der Spiele
+92;105;Bank aller Wesen
+-579;-497;Hewien - Die Wasserhöhle
+-578;-497;Hewien - Die Wasserhöhle
+-577;-497;Hewien - Die Wasserhöhle
+-576;-497;Hewien - Die Wasserhöhle
+-575;-497;Hewien - Die Wasserhöhle
+-313;-198;Der Weltraum - Sternenstaub
+-312;-198;Der Weltraum - Sternenstaub
+-310;-198;Der Weltraum - Sternenstaub
+-315;-197;Der Weltraum - Sternenstaub
+-314;-197;Der Weltraum - Sternenstaub
+-313;-197;Der Weltraum - Sternenstaub
+-312;-197;Der Weltraum - Sternenstaub
+-311;-197;Der Weltraum - Sternenstaub
+-310;-197;Der Weltraum - Sternenstaub
+-316;-196;Der Weltraum - Sternenstaub
+-315;-196;Der Weltraum - Sternenstaub
+-314;-196;Der Weltraum - Sternenstaub
+-313;-196;Der Weltraum - Sternenstaub
+-312;-196;Der Weltraum - Sternenstaub
+-311;-196;Der Weltraum - Sternenstaub
+-310;-196;Der Weltraum - Sternenstaub
+-309;-196;Der Weltraum - Sternenstaub
+-308;-196;Der Weltraum - Sternenstaub
+-316;-195;Der Weltraum - Sternenstaub
+-315;-195;Der Weltraum - Sternenstaub
+-314;-195;Der Weltraum 
+-313;-195;Der Weltraum 
+-312;-195;Der Weltraum - Sternenstaub
+-311;-195;Der Weltraum - Sternenstaub
+-310;-195;Der Weltraum - Sternenstaub
+-309;-195;Der Weltraum - Sternenstaub
+-316;-194;Der Weltraum - Sternenstaub
+-315;-194;Der Weltraum - Sternenstaub
+-314;-194;Der Weltraum 
+-313;-194;Der Weltraum 
+-312;-194;Der Weltraum - Sternenstaub
+-311;-194;Der Weltraum - Sternenstaub
+-310;-194;Der Weltraum - Sternenstaub
+-309;-194;Der Weltraum - Sternenstaub
+-308;-194;Der Weltraum - Space Station 13
+-315;-193;Der Weltraum - Sternenstaub
+-314;-193;Der Weltraum - Sternenstaub
+-313;-193;Der Weltraum - Sternenstaub
+-312;-193;Der Weltraum - Sternenstaub
+-311;-193;Der Weltraum - Sternenstaub
+-310;-193;Der Weltraum - Sternenstaub
+-309;-193;Der Weltraum - Sternenstaub
+-315;-192;Der Weltraum - Sternenstaub
+-314;-192;Der Weltraum - Sternenstaub
+-313;-192;Der Weltraum - Sternenstaub
+-312;-192;Der Weltraum - Sternenstaub
+-311;-192;Der Weltraum - Sternenstaub
+-310;-192;Der Weltraum - Sternenstaub
+106;81;Wilisien - Ewiger Schnee
+107;81;Wilisien - Ewiger Schnee
+108;81;Wilisien - Ewiger Schnee
+107;82;Wilisien - Ewiger Schnee
+108;82;Wilisien - Ewiger Schnee
+111;82;Wilisien - Das Schneedorf
+106;83;Wilisien - Ewiger Schnee
+107;83;Ewiger Schnee
+108;83;Ewiger Schnee
+109;83;Wilisien - Ewiger Schnee
+110;83;Wilisien - Das Schneedorf
+111;83;Wilisien - Das Schneedorf
+112;83;Wilisien - Das Schneedorf
+106;84;Wilisien - Ewiger Schnee
+107;84;Ewiger Schnee
+108;84;Ewiger Schnee
+109;84;Wilisien - Ewiger Schnee
+110;84;Wilisien - Ewiger Schnee
+111;84;Wilisien - Ewiger Schnee
+106;85;Wilisien - Ewiger Schnee
+107;85;Ewiger Schnee
+108;85;Ewiger Schnee
+109;85;Wilisien - Ewiger Schnee
+110;85;Wilisien - Ewiger Schnee
+111;85;Wilisien - Die verschneite Wiese
+105;86;Wilisien - Die Eisfelder
+106;86;Wilisien - Die schneebedeckte Mühle
+107;86;Wilisien - Ewiger Schnee
+108;86;Ewiger Schnee
+109;86;Die verschneite Wiese
+110;86;Wilisien - Die verschneite Wiese
+111;86;Wilisien - Die verschneite Wiese
+112;86;Wilisien - Die verschneite Wiese
+105;87;Wilisien - Die Eisfelder
+106;87;Wilisien - Die Eisfelder
+108;87;Ewiger Schnee
+111;87;Wilisien - Die verschneite Wiese
+112;87;Die verschneite Wiese
+111;88;Wilisien - Die verschneite Wiese
+-486;-158;Wolka - Die Wolkenstadt
+-485;-158;Wolka - Die Wolkenstadt
+-486;-157;Wolka - Die Wolkenstadt
+-485;-157;Wolka - Die Wolkenstadt
+-484;-157;Wolka - Die Wolkenstadt
+-486;-156;Wolka - Die Wolkenstadt
+-485;-156;Wolka - Die Wolkenstadt
+-484;-156;Wolka - Die Wolkenstadt
+-483;-156;Wolka - Die Wolkenstadt
+-486;-155;Wolka - Die Wolkenstadt
+-485;-155;Wolka - Die Wolkenstadt
+-484;-155;Wolka - Die Wolkenstadt
+-449;-449;Nawor - Der Ausgang
+-448;-449;Nawor - Wurzeln
+-449;-448;Nawor - Wurzeln
+-448;-448;Nawor - Wurzeln
+-447;-448;Nawor - Wurzeln
+-449;-447;Nawor - Wurzeln
+-448;-447;Nawor - Wurzeln
+-447;-447;Nawor - Wurzeln
+-448;-446;Nawor - Wurzeln
+-100;-105;Die Zelle
+-100;-104;Die Zelle

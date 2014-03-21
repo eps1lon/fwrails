@@ -1,0 +1,26 @@
+<li><strong><%= t "clans.nav.lists" %></strong>
+  <ul>
+    <% %w{index}.each do |action| %>
+      <li><%= link_to t("clans.#{action}.human"), 
+                      url_for({:controller => 'clans', :action => action}) %></li>       
+    <% end %>
+  </ul>
+</li>
+
+<li><strong><%= t "clans.nav.changes" %></strong>
+  <ul>
+    <% %w{leader_change coleader_change}.each do |action| %>
+      <li><%= link_to t("clans.#{action}.human"), 
+                      url_for({:controller => 'clans', :action => action}) %></li>       
+    <% end %>
+  </ul>
+</li>
+
+<li><strong><%= t "clans.nav.page10" %></strong>
+  <ul>
+    <% %w{new delete}.each do |action| %>
+      <li><%= link_to t("clans.#{action}.human"), 
+                      url_for({:controller => 'clans', :action => action}) %></li>       
+    <% end %>
+  </ul>
+</li>

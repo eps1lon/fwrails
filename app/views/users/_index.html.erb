@@ -1,0 +1,6 @@
+<td class="user_id"><%= user.user_id %></td>
+<td class="name"><%= link_to user.name, user_url(user.name, user.world.short) %></td>
+<td class="experience"><%= number_with_delimiter(user.experience) %></td>
+<td class="race"><%= user.race.name %></td>
+<td class="world"><%= user.world.name %></td>
+<td class="clan"><%= clan_status(user) %></td>

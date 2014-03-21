@@ -1,0 +1,66 @@
+/*
+ * user.css
+ */
+ 
+#changes {
+  table {
+    border-collapse: collapse;
+    
+    th {
+      border: none;
+    }
+    
+    td {
+      border: 1px solid black;
+    }
+  }
+}
+
+a.listimg {
+  display: block;
+  clear  : both;
+}
+
+#achievements {
+  width: #{(50 * 7)}px;
+  overflow: hidden;
+  float: left;
+  margin-right: 1em;
+ 
+  li {
+    float: left;
+  }
+}
+
+#achievements_data {
+  display: none;
+  float: left;
+  max-width: 30em;
+    
+  &+* {
+    clear: both;
+  }
+  
+  dl {
+    dt {
+      clear: both;
+      float: left;
+      font-weight: bold;
+      margin-right: 1ch;
+      margin-right: 5px;
+      
+      &:after {
+        content: ":"
+      }
+    }
+    
+    dd {
+      float: left
+    }
+  }
+    
+  h1 {
+    font-size: 1.05em;
+    font-weight: bold;
+  }
+}

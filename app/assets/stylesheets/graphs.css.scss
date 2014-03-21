@@ -1,0 +1,27 @@
+#config fieldset {
+  margin: 1em 0;
+  padding: .5em;
+  border: 1px solid grey;
+}
+
+#data {
+  input, select, label {
+    float: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  
+  label {
+    padding: 2px;
+    margin-bottom: 1em;
+  }
+  
+  label[for="user_world_short"], label[for="users"] {
+    clear: both;
+  }
+}
+    
+input[type=submit] {
+  display: block;
+  margin: 1em;
+}

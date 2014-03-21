@@ -1,0 +1,20 @@
+<%= label_tag "user[world][short]", User.human_attribute_name("world") %>
+<%= select_tag "user[world][short]",
+               options_from_collection_for_select(@achievement_worlds,
+                                                  :short,
+                                                  :name,
+                                                  params[:user][:world][:short]) %>
+
+<%= label_tag "user[name]", User.human_attribute_name("name") %>
+<%= text_field_tag "user[name]", params[:user][:name] %>
+<%= submit_tag t("graphs.achievements.data.user.add_user.submit"), :id => "add_user" %>
+
+<%= check_box_tag 'loading', 1, false, :disabled => true, :class => 'loading' %>
+<%= label_tag 'loading', loading_markup %>
+
+<p><%= t("helpers.select.multiple") %></p>
+<%= label_tag "users", t("graphs.achievements.data.user.users") %>
+<%= select_tag 'users',
+               options_for_select(@users_for_select,
+                                  @data[:users]),
+               :multiple => true %>

@@ -1,0 +1,5 @@
+<ul class="areas">
+<% @areas.each do |area| %>
+  <li><%= link_to area.name, area_url(area.name) %></li>
+<% end %>
+</ul>

@@ -1,0 +1,49 @@
+/* Importierte K-Style Zusatzkomponenten */
+/* ©2013 by Isdrador (unterstuetzt durch bwoebi) - http://kstyle.no-domain.biz */
+/* Optimiert fuer die Browser: Firefox, SeaMonkey, Safari, Chrome, Opera */
+
+/* &gt; CID-Zusatzkomponente */ 
+p.listitemrow { position: relative; padding: 2px 4px 3px 4px; font-size: 1px; color: transparent; background: #F2F2F2; border: 1px solid #BABABA; height: 12px; white-space: nowrap; }
+p.listitemrow:hover a[href*="action=activate"]:hover:before { opacity: 1; }
+p.listitemrow + p { margin-top: 3px; }
+p.listitemrow:not(#filterrow):not([id^="itemarea"]) b, p.listitemrow .itemequipped { position: absolute; font-size: 11px; color: #5E5E5E; max-width: 232px; text-overflow: ellipsis; overflow: hidden; z-index: 3; }
+p.listitemrow .itemamount + b, p.listitemrow .itemamount + .itemequipped { max-width: 195px; }
+p.listitemrow[id^="itemarea"] { height: 28px; padding-left: 33px !important; }
+p.listitemrow[id^="itemarea"] a, #itemunusedzk a { color: transparent; font-size: 1px; }
+p.listitemrow[id^="itemarea"] b { font-size: 11px; color: #5E5E5E; }
+p.listitemrow .itempos b { font-weight: normal; font-size: 10px !important; }
+p.listitemrow .areaimg { width: 25px; height: 25px; position: absolute; top: 3px; left: 3px; }
+p.listitemrow .areahyphen { margin: 0px 2px; }
+p.listitemrow span[class^="time"] { color: #5E5E5E; font-size: 10px; position: absolute; bottom: 4px; right: 4px; }
+@media screen and (min-device-width: 961px) {
+	/*p.listitemrow:not(#filterrow):hover { padding: 2px 65px 3px 4px; box-shadow: 0px 0px 5px #5E5E5E; }*/
+	p.listitemrow:not(#filterrow):hover b, p.listitemrow:hover .itemequipped { max-width: 171px; }
+	p.listitemrow:hover .itemamount + b, p.listitemrow:hover .itemamount + .itemequipped { max-width: 134px; }
+	p.listitemrow:hover a[href*="action=activate"]:before { content: url(http://kstyle.no-domain.biz/plugins/cid/act.png); position: absolute; top: 2px; right: 47px; opacity: 0.8; z-index: 3; }
+	p.listitemrow:hover img[src$="icon_transfer.gif"] { display: inline-block; position: absolute; top: 3px; right: 2px; z-index: 3; }
+	p.listitemrow:hover img[src$="icon_drop.gif"] { display: inline-block; position: absolute; top: 4px; right: 16px; z-index: 3; }
+	p.listitemrow:hover img[src$="icon_view.gif"] { display: inline-block; position: absolute; top: 4px; right: 28px; z-index: 3; }
+	p.listitemrow img[src$="icon_transfer.gif"], p.listitemrow img[src$="icon_drop.gif"], p.listitemrow img[src$="icon_view.gif"] { display: none; }
+	p.listitemrow span.medium a { font-size: 1px; color: transparent; display: block; height: 0px; margin: -2px 0px 0px 300px; }
+	p.listitemrow a[href*="action=activate"] { display: block; height: 0px; margin: -2px 0px 0px 300px; }
+}
+@media screen and (max-device-width: 1960px), (min-width: 0\0) {
+	p.listitemrow { padding: 2px 65px 3px 4px; }
+	p.listitemrow:not(#filterrow) b, p.listitemrow .itemequipped { max-width: 171px; line-height: 15px; }
+	p.listitemrow .itemamount + b, p.listitemrow .itemamount + .itemequipped { max-width: 134px; }
+	p.listitemrow a[href*="action=activate"]:before { content: url(http://kstyle.no-domain.biz/plugins/cid/act.png); position: absolute; top: 2px; right: 47px; opacity: 0.8; z-index: 3; }
+	p.listitemrow img[src$="icon_transfer.gif"] { display: inline-block; position: absolute; top: 3px; right: 2px; z-index: 3; }
+	p.listitemrow img[src$="icon_drop.gif"] { display: inline-block; position: absolute; top: 4px; right: 16px; z-index: 3; }
+	p.listitemrow img[src$="icon_view.gif"] { display: inline-block; position: absolute; top: 4px; right: 28px; z-index: 3; }
+	p.listitemrow span.medium a, p.listitemrow a[href*="action=activate"] { font-size: 1px; color: transparent; display: block; height: 0px; }
+}
+p.listitemrow .itemamount { position: relative; font-size: 11px; margin-right: 1px; z-index: 3; }
+p.listitemrow .itemmagic { position: absolute; top: 0px; left: 0px; font-size: 1px; color: transparent; background: #D9EDD9; width: 100%; height: 100%; border-radius: 6px; }
+p.listitemrow .magicextend { background: #CCE4F4 !important; }
+p.listitemrow .itemequipped { color: #D20000 !important; }
+p.listitemrow .iteminventorypics { max-height: 14px; opacity: 0.8; }
+p.listitemrow .iteminventorypics:hover { opacity: 1; }
+p.listitemrow span.medium { font-size: 1px; color: transparent; }
+#filterrow { padding: 2px; height: auto !important; }
+#filterrow b { font-size: 10px; color: #5E5E5E; }
+#filterrow:before { color: #5E5E5E; }

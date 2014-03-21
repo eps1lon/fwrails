@@ -1,0 +1,297 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require reset
+ *= require jquery.ui.all
+ *= require datepicker
+ *= require colorpicker
+ *= require loading
+ *= require_self
+ *= require themes/responsive-dropdown
+*/
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    background-color: #fff;
+    height: 100%;
+}
+body {
+    color: #333333;
+    font: 12px Arial,sans-serif;
+}
+
+ /* text-content */
+h1, h2, h3, h4, h5, h6 {
+  clear: both;
+}
+
+h1 { 
+  font-size: 2em; 
+  margin: .67em 0 
+}
+
+h2 { 
+  font-size: 1.5em; 
+  margin: .75em 0 
+}
+
+h3 { 
+  font-size: 1.17em; 
+  margin: .83em 0 
+}
+
+h4 {
+  font-size: 1em;
+  margin: 1.12em 0
+}
+
+/* Table */
+
+table {
+  margin: 1em;
+}
+
+caption {
+  font-weight: bold;
+  margin     : 0 0 1em 0;
+}
+
+th {
+  padding    : 0 .5em;
+  font-weight: bold;
+}
+
+td {
+  padding: .382em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+q, blockquote {
+  quotes: "\201C""\201D""\2018""\2019";
+  
+  &:after {
+    content: close-quote;
+  }
+}
+
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  
+  &:before {
+    color: black;
+    content: open-quote;
+    font-size: 4em;
+    line-height: 0.1em;
+    margin-right: 0.25em;
+    vertical-align: -0.4em;
+  }
+  
+  cite {
+    clear: both;
+    display: block;
+    margin-top: 1em;
+  }
+}
+
+q:before {
+  content: open-quote;
+}
+
+p, blockquote {
+  clear: both;
+  min-width: 16em;
+  min-width: 40ch;
+  max-width: 28em;
+  max-width: 70ch;
+}
+
+/* navs */
+
+#locales {
+    display: none;
+}
+
+#yield {
+  margin-left: 2%;
+  position: relative;
+}
+
+/* Links */
+a.back {
+  clear: both;
+  display: block;
+  margin : 1em inherit;
+}
+
+a.wiki {
+  background: url('style/icons/wiki.png') no-repeat bottom right;
+  padding         : 0 18px 0 0;
+}
+
+a.sort {
+  &:after {
+    content: '';
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-bottom: 5px solid #444;
+    border-top: 5px solid #444;
+  }
+  
+  &:hover:after {
+    border-bottom-color: #04acec; 
+    border-top-color: #04acec; 
+  }
+}
+
+
+/* misc */
+
+.translation_missing:after {
+  font-style: italic;
+  font-size : .5em;
+  content   : " - " attr(title);
+}
+
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+
+/* jquery ui */
+.ui-draggable {
+  cursor: move;
+}
+
+.clan_tag {
+  
+  &.inspected, &.numeric {
+    cursor: help;
+    
+    &:after {
+      //color      : black;
+      //content    : '*';
+      //margin-left: .3em;
+    }
+  }
+}
+
+.changes {
+  display: none;
+}
+
+form#search {
+  height  : 2em;
+  margin  : .5em 0;
+  overflow: visible;
+  float   : left;
+  
+  label, &#name, input, div {
+    float: left;
+  }
+  
+  input#name {
+    width   : 15em;
+    position: relative;
+  }
+  
+  &+* {
+    clear: both;
+  }
+}
+
+table.single-world {
+  .world_id, .world {  
+    display: none;
+  }
+}
+
+.worlds, .races {
+  padding: 0 0 1em 0;
+  overflow: hidden;
+  
+  li {
+    float     : left;
+    border    : 1px solid grey;
+    min-height: 1em;
+    min-width : 2em;
+    text-align: center;
+    padding   : 0 3px;
+    
+    a[title] {
+      &:hover {
+        font-size: 0px; /* hide text */
+        &:after {
+          content: attr(title);
+          font-size: 12px; /* default font-size */
+        }
+      }
+    }
+  }
+}
+
+.ui-droppable {
+  border: 1px dashed grey;
+}
+
+/* pages nav */
+nav.pages {
+  font-size: 1.3em;
+  overflow: hidden;
+  
+  & strong, & .page {
+    display: block;
+    float: left;
+    height: 100%;
+    padding: .1em;
+  }
+  
+  strong { 
+    &:after {
+      content: ":"
+    }
+  }
+  
+  .page {
+    background-color: #333;
+    border: 1px solid grey;
+    color: white;
+    min-width: 1em;
+    text-align: center;
+    text-decoration: none;
+    
+    &:hover {
+      background-color: #F55856;
+    }
+    
+    &.forced { 
+      &:before {
+        content: "...";
+      }
+      
+      &[data-page="1"] {
+        &:after {
+          content: "..."
+        }
+        &:before {
+          content: ""
+        }
+      }
+    }
+  }
+}

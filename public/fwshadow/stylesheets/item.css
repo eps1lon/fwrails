@@ -1,0 +1,12 @@
+#listrow_status + div:not([id]) > img {
+    display: none !important;
+}
+
+#listrow_int {
+    display: none;
+}
+
+.slmania-quickjump-waypoint {
+    padding: 0 .2em;
+    border-right: 1px solid black;
+}

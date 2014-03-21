@@ -1,0 +1,21 @@
+<td class="clan_id">
+  <%= link_to_clan_or_del(clan.clan, clan.clan_id, clan.world.short) %>
+</td>
+<td class="coleader_id_old">
+  <% if clan.coleader_id_old == 0 %>
+    <%= t "clans.commons.nocoleader" %>
+  <% else %>
+    <%= link_to_user_or_del(clan.coleader_old, clan.coleader_id_old, clan.world.short) %>
+  <% end %>
+</td>
+<td class="coleader_id_new">
+  <% if clan.coleader_id_new == 0 %>
+    <%= t "clans.commons.nocoleader" %>
+  <% else %>
+    <%= link_to_user_or_del(clan.coleader_new, clan.coleader_id_new, clan.world.short) %>
+  <% end %>
+</td>
+<td class="created_at">
+  <time datetime="<%= clan.created_at %>"><%= l clan.created_at.to_date %></time>
+</td>
+<td class="world_id"><%= clan.world.name %></td>

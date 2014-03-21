@@ -1,0 +1,5 @@
+<% if @world.nil? %>
+  <%= t "users.not_exists.world", :world => params[:world] %>
+<% else %>
+  <%= t "users.not_exists.user", :world => params[:world], :name => params[:name] %>
+<% end %>

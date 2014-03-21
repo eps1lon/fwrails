@@ -1,0 +1,83 @@
+<% @title = "#{User.model_name.human} #{@user.name_primary}" %>
+<h1><%= @user.name %> (ID: <%= @user.user_id %>)</h1>
+<p><%= t ".info", :race => @user.race.name, 
+                  :world => @user.world.name, 
+                  :xp => number_with_delimiter(@user.experience) %>.</p>
+<%= link_to t(".profile"), @user.profile_url, :target => '_blank' %>
+
+<h2><%= Clan.model_name.human %></h2>
+<p>
+<% if @user.clan.nil? %>
+  <%= t ".noclan" %>
+<% else %>
+  <%= t ".claninfo", :state => t("clans.commons.states.#{@user.clanstate}") %>
+  <%= link_to clan_url(:id => @user.clan_id, :world => @user.world.short) do %>
+    <%= Clan.model_name.human %>
+    <em class="clan_name"><%= @user.clan.name %></em>
+  <% end %>
+<% end %>
+</p>
+<h2><%= UsersAchievements.model_name.human %></h2>
+<% unless @achievements.count.eql?(0) %>
+  <p>
+    <%= t ".achievements.stats.message", 
+        :count => t(".achievements.stats.count", :count => number_with_delimiter(@user.achievement_cache.count)),
+        :reward => t(".achievements.stats.reward", :count => number_with_delimiter(@user.achievement_cache.reward_collected))%>:
+  </p>
+  <ol id="achievements">
+    <% @achievements_progresses.each do |progress| %>
+    <li class="achievement" data-achievement_id="<%= progress.achievement_id %>">
+      <% unless progress.achievement.nil? %>
+      <%= link_to image_tag("achievements/" + progress.achievement.gfx_file, 
+                            :alt => progress.achievement.name),
+                  achievement_url(progress.achievement) %>
+      <% end %>
+    </li>
+    <% end %>
+  </ol>
+  <section id="achievements_data">
+    <h1 id="achievements_caption"></h1>
+    <p id="achievements_description"></p>
+    <dl>
+      <dt><%= UsersAchievements.human_attribute_name("progress") %></dt>
+      <dd id="achievements_progress"></dd>
+      <dt><%= Achievement.human_attribute_name("reward") %></dt>
+      <dd id="achievements_reward"></dd>
+    </dl>
+  </section>
+<% end %>
+  
+<% @changes.each do |changes| %>
+  <h2>
+    <%= changes.model_name.human %>
+    <% if changes.count > 0 %>
+      [<a href="javascript: ;" data-toggle-for="<%= changes.model_name.to_s.tableize %>"><%= t "helpers.toggle.show" %></a>]
+    <% end %>
+  </h2>
+  <p>
+    <%= changes.human_attribute_name("count", :count => changes.count) %>
+    <%= ':' if changes.count > 0 %>
+  </p>
+  <ol id="<%= changes.model_name.to_s.tableize %>" class="changes">
+    <% changes.each do |change| %>
+    <% changed = [] %>
+    <li>
+      <% changed << t(".#{changes.model_name}.old", 
+                     :old => change.old.name
+                    ).html_safe unless change.old.nil? %>
+      <% changed << t(".#{changes.model_name}.new", 
+                     :new => change.new.name
+                    ).html_safe unless change.new.nil? %>
+      <em><%= changed.join(" => ") %></em>
+      (<%= time_tag change.created_at.to_date %>)
+    </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<%= link_to_back %>
+
+<script type="text/javascript">
+  var user = <%= @user.to_json.html_safe %>;
+  user.achievements = <%= @achievements_progresses.to_json(:include => :achievement).html_safe %>
+</script>

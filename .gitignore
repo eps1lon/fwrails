@@ -1,0 +1,7 @@
+nbproject/
+log/*.log
+config/database.yml
+tmp/
+public/assets
+public/dumps
+app/assets/images/achievements

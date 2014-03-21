@@ -1,0 +1,134 @@
+#slmania-body {
+    height: 4em;
+    width: 16em;
+    border: 1px solid red;
+    position: fixed;
+    bottom: 0px;
+    right: 0px;
+}
+
+#slmania-transparent-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: grey;
+    -moz-opacity: 0.8 !important; 
+    -webkit-opacity: 0.8 !important; 
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)" !important; 
+    filter: alpha(opacity=80) !important; 
+    opacity: 0.8 !important;
+}
+
+#slmania-content {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    padding: .5em;
+}
+
+    #slmania-content span {
+        clear: both;
+        float: left;
+    }
+
+    #slmania-content a, #slmania-active {
+        display: block;
+        float: left;
+        margin: 0px 0px;
+    }
+    
+    #slmania-content a {
+        width: 16px;
+        height: 16px;
+        background-position: top left;
+        background-repeat: no-repeat;
+        margin-top: -2px;
+    }
+    
+    #slmania-content input {
+        margin-top: -1px !important;
+    }
+    
+    #slmania-submit {
+        margin-top: 0px !important;
+    }
+    
+#slmania-overlay {
+    position: fixed;
+    top: 0px;
+    left: 25%;
+    height: 98%;
+    width: 50%;
+    display: none;
+    border: 1px solid red;
+    overflow: auto;
+}
+
+#slmania-overlay-transparent-layer {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    background-color: grey;
+    -moz-opacity: 0.9 !important; 
+    -webkit-opacity: 0.9 !important; 
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)" !important; 
+    filter: alpha(opacity=90) !important; 
+    opacity: 0.9 !important;
+}
+
+#slmania-overlay-content {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: auto;
+}
+
+#slmania-logs {
+    width: 90%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+    
+    #slmania-logs th {
+        border: 1px solid black;
+        border-top: none;
+    }
+    
+    #slmania-logs td {
+        border: 1px solid black;
+        border-width: 0 1px;
+        margin: 0;
+        padding: .5em;
+    }
+
+        #slmania-logs td:nth-of-type(1) {
+            width: 60%;
+        }
+
+        #slmania-logs td:nth-of-type(2) {
+            width: 30%;
+        }
+
+#slmania-overlay-close {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: block;
+    font-size: 5em;
+}
+
+#slmania-logs {
+    z-index: 1;
+}

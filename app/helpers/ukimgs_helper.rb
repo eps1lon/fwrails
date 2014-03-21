@@ -1,0 +1,2 @@
+module UkimgsHelper
+end

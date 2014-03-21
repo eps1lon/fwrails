@@ -1,0 +1,22 @@
+<% @title = Statistic.model_name.human + ": " + t("statistics.names.#{params[:name]}") %>
+<h1><%= t ".heading", :name => t("statistics.names.#{params[:name]}") %></h1>
+<table>
+  <thead>
+    <tr>
+      <th><%= t ".th.value" %></th>
+      <th><%= t ".th.world" %></th>
+      <th><%= t ".th.last_update" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @worlds.each do |world_stat| %>
+      <tr>
+        <td><%= number_with_delimiter world_stat.value %></td>
+        <td><%= world_stat.world.name %></td>
+        <td><time datetime="<%= world_stat.created_at %>">
+          <%= l world_stat.created_at.to_date %></time></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to t(".back"), statistics_url %>

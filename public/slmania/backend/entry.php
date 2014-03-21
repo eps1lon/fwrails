@@ -1,0 +1,242 @@
+<?php
+// Allow from any origin
+if (isset($_SERVER['HTTP_ORIGIN'])) {
+    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+    header('Access-Control-Allow-Credentials: true');
+    header('Access-Control-Max-Age: 86400');    // cache for 1 day
+}
+
+// Access-Control headers are received during OPTIONS requests
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+
+    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
+        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+    exit(0);
+}
+    
+error_reporting(E_ALL ^ E_DEPRECATED);
+header('Content-Type: application/json; charset=iso-8859-1');
+require_once 'db.php';
+
+$ob = array("msg" => "", 
+            "what" => array(),
+            "plants_logged" => 0,
+            "plants_inserted" => 0);
+
+function shutdown () {
+    echo json_encode($GLOBALS['ob']);
+}
+
+function mysql_encode($var, $db) {
+    if (is_numeric($var)) {
+        return "'" . (int)($var) . "'";
+    }
+    if (is_null($var)) {
+        return 'NULL';
+    }
+    return "'" . mysql_real_escape_string(utf8_encode($var), $db) . "'";
+}
+
+function db_error_handler ($db) {
+    $ob['err'] = "mysql-error#" . mysql_errno($db) . ": \n" . 
+                 mysql_error($db);
+    
+    print_r(debug_backtrace());
+    
+    exit;
+}
+
+function error_query($sql_query) {
+    global $db;
+    global $connection_count;
+    
+    $result = mysql_query($sql_query, $db);
+    if ($result === false) {
+        if (mysql_errno($db) == 2006) { // server gone away
+            
+            /* re-connect
+            mysql_close($db);
+            $db = db_connect();
+            
+            return error_query($sql_query, $db);//*/
+        }
+
+        db_error_handler($db);   
+    }
+    return $result;
+}
+
+register_shutdown_function("shutdown");
+
+$db = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+        
+if (!$db) {
+    $ob['msg'] = "Verbindung fehlgeschlagen";
+    exit;
+}
+
+mysql_select_db(DB_NAME, $db);
+if (!$db) {
+    $ob['msg'] = "Verbindung fehlgeschlagen";
+    exit;
+}
+
+$sql_query = "SELECT id FROM users WHERE authenticity_token = '" . mysql_real_escape_string($_POST['id'], $db) . "'";
+$result = error_query($sql_query, $db);
+if ($user = mysql_fetch_row($result)) { // User stimmt
+    // parse msg
+    $log = utf8_encode(stripslashes($_POST['log']));
+    $log = array_filter(json_decode($log));
+    $length = count($log);
+
+    if ($length > 0) {
+        $inserted = 0;
+        $updated = 0;
+        $dropcount = 0;
+        $items = array(); // Zwischenspeicher für item_name > item_id
+        
+        foreach ($log as $i => $entry) {
+            if (isset($entry->item)) { // pflanze
+                $plant = utf8_decode($entry->item);
+                
+                if (isset($items[$plant])) {
+                    $item_id = $items[$plant];
+                } else {
+                    $sql_query = "SELECT id FROM items WHERE name = '" . mysql_real_escape_string($plant, $db) . "'";
+                    $result = mysql_query($sql_query, $db);
+                    if ($item = mysql_fetch_assoc($result)) {
+                        $item_id = $item['id'];
+                    } else {
+                        $sql_query = "INSERT INTO items (name) VALUES ('" . mysql_real_escape_string($plant, $db) . "')";
+                        mysql_query($sql_query, $db);
+                        $item_id = mysql_insert_id($db);
+                    }
+
+                    // ID zwischenspeichern
+                    $items[$plant] = $item_id;
+                }
+                
+                $sql_query = "INSERT IGNORE INTO items_places (item_id, pos_x, pos_y) VALUES ".
+                             "('$item_id', '" . $entry->place->x . "', '" . $entry->place->y . "')";
+                mysql_query($sql_query, $db);
+                
+                $ob['plants_inserted'] += mysql_affected_rows($db);
+                $ob['plants_logged'] += 1;
+            } else {
+                $npc = isset($log[$i]->npc) ? $log[$i]->npc : $log[$i];
+
+                $npc->name = utf8_decode($npc->name);
+                $log[$i]->drops = array_map("utf8_decode", $log[$i]->drops);
+
+                $pos_update_on_update = ", pos_x = '-10', pos_y = '-9'";
+                $pos_update_on_insert = ", '-10', '-9'";
+
+                if (isset($log[$i]->action) && $log[$i]->action == 'chase') {
+                    $killadd = 0;
+                    $chaseadd = 1;
+                } else {
+                    $killadd = 1;
+                    $chaseadd = 0;
+                }
+
+
+                if ($log[$i]->id > 0) { // persistented NPC
+                    $npc_id = (int)$log[$i]->id;
+
+                    if (isset($npc->place) && is_object($npc->place)) {
+                        $pos_update_on_update = ", pos_x = '" . (int)$npc->place->x . "', pos_y = '" . (int)$npc->place->y . "'";
+                        $pos_update_on_insert = ", '" . (int)$npc->place->x . "', '" . (int)$npc->place->y . "'";
+                    }
+                } else { // temporäres NPC
+                    $sql_query = "SELECT id FROM npcs WHERE name = '" . mysql_real_escape_string($npc->name, $db) . "'";
+                    $result = error_query($sql_query, $db);
+
+                    if ($search = mysql_fetch_assoc($result)) {
+                        $npc_id = (int)$search['id'];
+                    } else { // NPC noch nicht eingetragen
+                        $npc_id = false; 
+                    }
+                }
+
+                if ($npc_id !== false) { // NPC persistent und/oder schon eingetragen
+                    $sql_query = "UPDATE npcs SET live = '" . (int)$npc->live . "', ".
+                                 "strength = '" . (int)$npc->strength . "', ".
+                                 "unique_npc = '" . (int)$npc->unique . "', ".
+                                 "chasecount = chasecount + " . $chaseadd . ", ".
+                                 "killcount = killcount + " . $killadd . "$pos_update_on_update WHERE id = '$npc_id'";
+                    mysql_query($sql_query, $db);
+
+                    $ob['what'][] = "updated: $npc_id (" . utf8_encode($npc->name) . ")";
+                }
+
+                if ($npc_id === false || mysql_affected_rows($db) < 1) { // npc existiert noch nicht
+
+                    if ($npc_id === false) { // temp NPC > neue Id suchen
+                        $sql_query = "SELECT MIN(id) FROM npcs WHERE id < 0";
+                        $result = mysql_query($sql_query, $db);
+                        $npc_id = mysql_fetch_row($result);
+                        $npc_id = $npc_id[0] - 1;
+                    } 
+                    $ob['what'][] = "inserted: $npc_id (" . utf8_encode($npc->name) . ")";
+                    $sql_query = "INSERT IGNORE INTO npcs (id, name, live, strength, unique_npc, pos_x, pos_y, killcount, chasecount) VALUES ".
+                                 "('" . $npc_id . "', '" . mysql_real_escape_string($npc->name, $db) . "', ".
+                                 "'" . (int)$npc->live . "', '" . (int)$npc->strength . "', ".
+                                 "'" . (int)$npc->unique . "'$pos_update_on_insert, '$killadd', '$chaseadd')";
+                    mysql_query($sql_query, $db) or die(mysql_error());
+
+                    $inserted += mysql_affected_rows($db);
+                } else {
+                    $updated += 1;
+                }
+
+                if (true) {
+                    foreach ($log[$i]->drops as $item_name) {
+                        if (isset($items[$item_name])) {
+                            $item_id = $items[$item_name];
+                        } else {
+                            $sql_query = "SELECT id FROM items WHERE name = '" . mysql_real_escape_string($item_name, $db) . "'";
+                            $result = mysql_query($sql_query, $db);
+                            if ($item = mysql_fetch_assoc($result)) {
+                                $item_id = $item['id'];
+                            } else {
+                                $sql_query = "INSERT INTO items (name) VALUES ('" . mysql_real_escape_string($item_name, $db) . "')";
+                                mysql_query($sql_query, $db);
+                                $item_id = mysql_insert_id($db);
+                            }
+
+                            // ID zwischenspeichern
+                            $items[$item_name] = $item_id;
+                        }
+
+                        $sql_query = "UPDATE items_npcs SET count = count + 1 ".
+                                     "WHERE npc_id = '$npc_id' AND item_id = '$item_id' ".
+                                     "AND action = '" . $log[$i]->action . "'";
+                        mysql_query($sql_query, $db);
+
+                        if (mysql_affected_rows($db) < 1) { // neue Drop-Beziehung
+                            $sql_query = "INSERT INTO items_npcs (item_id, npc_id, count, action)".
+                                         " VALUES ('$item_id', '$npc_id', '1', '" . $log[$i]->action . "')";
+                            mysql_query($sql_query, $db);
+                        }
+
+                        $dropcount += 1;
+                    }
+                }
+            }
+        } 
+
+        $ob['msg'] = true;
+        $ob['inserted'] = $inserted;
+        $ob['updated'] = $updated;
+        $ob['drops'] = $dropcount;
+    } else {
+        $ob['msg'] = "Keien Einträge übermittelt";
+    }    
+} else {
+    $ob['msg'] = "User konnte nicht authentifiziert werden";
+}
+

@@ -1,0 +1,140 @@
+{
+  "name": "FWShawdow",
+  "version": "1",
+  "manifest_version": 2,
+  "description": "black magic",
+  "web_accessible_resources": [
+      "images/save_labled_go.png",
+      "images/window_text.png",
+      "images/blutechse.gif",
+      "images/window_gallery.png",
+      "images/sign_cacel.png",
+      "sounds/bloodalarm.ogg",
+      "sounds/chatalarm.ogg"
+  ],
+  "permissions": [
+      "http://fwrails.net/"
+  ],
+  "icons": {
+      "16": "images/icons/16.png",
+      "48": "images/icons/48.png",
+      "128": "images/icons/128.png"
+  },
+  "page_action": {
+      "default_icon": "images/icons/16.png",
+      "default_title": "slmania background",
+      "default_popup": "background.html"
+  },
+  "content_scripts": [
+      {
+          "matches": ["http://*.freewar.de/freewar/internal/*.php*"],
+          "js": [
+              "javascripts/lib/jquery.min.js",
+              "javascripts/lib/json2.js",
+              "javascripts/lib/common.js",
+              "javascripts/lib/marked_npc.js"
+          ],
+          "css": [
+              //"stylesheets/kstyle/ans.css", // Aggressive NPC Scanner
+              //"stylesheets/kstyle/gns.css", // Mission NPC Scanner
+              //"stylesheets/kstyle/mns.css", // Global NPC Scanner
+              //"stylesheets/kstyle/sit.css", // Statsmap Information Tooltips
+          ],
+          "run_at": "document_start",
+          "all_frames": true
+      },
+      {// NPC/Item-Erfassung
+          "matches": [
+              "http://*.freewar.de/freewar/internal/main.php*",
+              "http://*.freewar.de/freewar/internal/fight.php*",
+              "http://*.freewar.de/freewar/internal/areafight.php*"
+          ],
+          "js": [
+              "javascripts/lib/jquery.tablesorter.js",
+              "javascripts/main.common.js"
+          ],
+          "css": [
+              "stylesheets/interface.css",
+              "stylesheets/main.css"
+          ],
+          "all_frames": true
+      },
+      {// zeigt npcs an
+          "matches": [
+              "http://*.freewar.de/freewar/internal/map.php*"
+          ],
+          "js": [
+              "javascripts/map.js"
+          ],
+          "css": [
+              "stylesheets/map.css"
+          ],
+          "all_frames": true
+      },
+      {// verarbeitet Chat
+          "matches": [
+              "http://*.freewar.de/freewar/internal/chattext.php*"
+          ],
+          "js": [
+              "javascripts/chat.js"
+          ],
+          "css": [
+              "stylesheets/interface.css"
+          ],
+          "all_frames": true,
+          "run_at": "document_end"
+      },
+      {// stats
+          "matches": [
+              "http://*.freewar.de/freewar/internal/stats.php*"
+          ],
+          "js": [
+              "javascripts/stats.js"
+          ],
+          "css": [
+              "stylesheets/interface.css"
+          ],
+          "all_frames": true,
+          "run_at": "document_end"
+      },
+      {// items
+          "matches": [
+              "http://*.freewar.de/freewar/internal/item.php*"
+          ],
+          "js": [
+              "javascripts/item.js"
+          ],
+          "css": [
+              "stylesheets/item.css",
+              "stylesheets/kstyle/itemframe_min.css",
+              "stylesheets/kstyle/cid.css", // Comprimized Inventory Display
+              //"stylesheets/kstyle/csd.css", // Comprimized Status Display
+              "stylesheets/kstyle/sic.css", // Status Image & Counter
+              //"stylesheets/kstyle/vit.css", // Visible Target Images
+              "stylesheets/kstyle/wcv.css" // Weapon Condition Viewer
+              
+          ],
+          "all_frames": true
+      },
+      /*
+      { achievements
+          "matches": [
+              "http://*.freewar.de/freewar/internal/achiev.php*"
+          ],
+          "js": [
+              "javascripts/achiev.js"
+          ],
+          "all_frames": true
+      },//*/
+      {// chara
+          "matches": [
+              "http://*.freewar.de/freewar/internal/ability.php*"
+          ],
+          "js": [
+              "javascripts/chara.js"
+          ],
+          "all_frames": true,
+          "run_at": "document_end"
+      }
+  ]
+}

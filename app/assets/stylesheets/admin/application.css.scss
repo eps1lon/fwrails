@@ -1,0 +1,15 @@
+/*
+ *= require ../datepicker
+ *= require ../themes/jquery-ui-lightness
+ *= require_tree .
+ *= require_self
+*/
+
+/* ressources forms */
+form .actions {
+  textarea {
+    height: 5em;
+    max-width: 600px;
+    width: 100%;
+  }
+}

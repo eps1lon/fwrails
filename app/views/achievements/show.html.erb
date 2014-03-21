@@ -1,0 +1,93 @@
+<% @title = "#{Achievement.model_name.human} #{params[:name]}" %>
+
+<h1><%= params[:name] %></h1>
+<% unless @grouped %>
+  <h2><%= Achievement.human_attribute_name("description") %></h2>
+  <p id="description"><%= @achievement.description %></p>
+  <h2><%= t ".data" %></h2>
+  <dl id="data">
+    <dt class="needed"><%= Achievement.human_attribute_name("needed") %></dt>
+    <dd class="needed"><%= number_with_delimiter @achievement.needed %></dd>
+    <dt class="reward"><%= Achievement.human_attribute_name("reward") %></dt>
+    <dd class="reward"><%= t "achievements.reward", :count => number_with_delimiter(@achievement.reward) %></dd>
+    <dt class="created_at"><%= Achievement.human_attribute_name("created_at") %></dt>
+    <dd class="created_at"><time datetime="<%= @achievement.created_at %>"><%= l @achievement.created_at.to_date %></time></dd>
+  </dl>
+<% end %>
+<h2><%= t ".stages" %></h2>
+<ul id="stages">
+  <% @stages.each do |achievement| %>
+    <li id="<%= 'current' if achievement.stage == @achievement.stage %>">
+      <%= link_to achievement.name, achievement_url(achievement) %>
+    </li>
+  <% end %>
+</ul>
+<section id="world_datas">
+  <h2><%= t ".world_datas" %></h2>
+  <table id="achiev_counts">
+    <caption>
+      <%= t ".achiev_counts.caption" %>
+    </caption>
+    <tr>
+      <th><%= t ".world" %></th>
+      <th><%= t ".achiev_count" %></th>
+    </tr>
+    <% @achiev_counts.each do |achiev_count| %>
+      <tr>
+        <td class ="world" id="world_<%= achiev_count[:world].id %>"><%= achiev_count[:world].short %></td>
+        <td><%= achiev_count[:count] %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td colspan="2" class="sum" abbr="<%= t ".achiev_counts.sum_abbr" %>">
+        <%= number_with_delimiter @achiev_counts.collect {|a| a[:count]}.sum %>
+      </td>
+    </tr>
+  </table>
+  <% unless @achievement.max_stage == 1 %>
+    <table id="progress_sums">
+      <caption>
+        <%= t ".progress_sums.caption" %>
+      </caption>
+      <tr>
+        <th class="world"><%= t ".world" %></th>
+        <th class="progress_sum"><%= t ".progress_sum" %></th>
+      </tr>
+      <% @progress_sums.each do |progress_sum| %>
+        <tr>
+          <td class="world" id="world_<%= progress_sum[:world].id %>"><%= progress_sum[:world].short %></td>
+          <td class="progress_sum"><%= number_with_delimiter progress_sum[:sum] %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="2" class="sum" abbr="<%= t ".progress_sums.sum_abbr" %>">
+          <%= number_with_delimiter @progress_sums.collect {|a| a[:sum]}.sum %>
+        </td>
+      </tr>
+    </table>
+    <table id="closests">
+      <caption>
+        <%= t ".closests.caption" %>
+      </caption>
+      <tr>
+        <th class="world"><%= t ".world" %></th>
+        <th class="progress"><%= t ".progress" %></th>
+        <th class="user"><%= User.model_name.human %></th>
+      </tr>
+      <% @furthest.each do |furthest| %>
+        <tr>
+          <td class="world" id="world_<%= furthest.world.id %>"><%= furthest.world.short %></td>
+          <td class="progress"><%= number_with_delimiter furthest.progress %></td>
+          <td class="user">
+            <% unless furthest.user.nil? %>
+            <%= link_to furthest.user.name, 
+                        user_url(:name => furthest.user.name, 
+                                 :world => furthest.world.short) %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</section>
+<%= link_to_back %>

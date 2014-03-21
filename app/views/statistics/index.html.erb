@@ -1,0 +1,38 @@
+<% @title = t "statistics.human" %>
+<% @title += " (#{params[:world]})" if params[:world] %>
+<h1><%= t ".head" %></h1>
+<p><%= t ".head_paragraph" %></p>
+<p><%= t ".world_change" %></p>
+<ul class="worlds">
+  <% @worlds_all.each do |world| %>
+    <li><%= link_to world.short, statistics_url(:world => world.short) %></li>
+  <% end %>
+</ul>
+<% cache(cache_key_for_statistics(@worlds)) do %>
+  <table>
+    <caption><%= t ".world_text", :worlds => @worlds.collect(&:short).to_sentence %></caption>
+    <thead>
+      <tr>
+        <th><%= Statistic.human_attribute_name("name") %></th>
+        <th><%= Statistic.human_attribute_name("last_value") %></th>
+        <th><%= Statistic.human_attribute_name("last_update") %></th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @statistics.each do |statistic| %>
+      <tr>
+        <td>
+          <%= link_to t("statistics.names.#{statistic.name}"), statistic_url(statistic) %>
+        </td>
+        <td><%= number_with_delimiter statistic.last_change.value  %></td>
+        <td>
+          <time datetime="<%= statistic.last_change.created_at %>">
+            <%= l statistic.last_change.created_at.to_date %>
+          </time>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+  

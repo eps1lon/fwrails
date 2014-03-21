@@ -1,0 +1,52 @@
+<details>
+  <%= debug @config %>
+  <%= debug params %>
+</details>
+
+<h2><%= t ".modes.human" %></h1>
+<%= link_to t(".modes.world"), 
+            graphs_achievements_url(:mode => 'world'),
+            :class => 'mode' %>
+<%= link_to t(".modes.user"), 
+            graphs_achievements_url(:mode => 'user'),
+            :class => 'mode' %>
+            
+<% unless params[:mode].blank? %>
+  <h2><%= t ".heading" %></h2>
+  <%= form_tag('', :method => 'POST', :id => 'achievement_graph') do %>
+  
+  <h3><%= t ".data.heading" %></h3>
+  <section id="data">
+  <%= label_tag 'achievement', t(".achievement") %>
+  <%= select_tag 'achievement', 
+                 options_from_collection_for_select(@achievements,
+                                                    @achievement_identifier,
+                                                    :group_name,
+                                                    @data[:achievement])%>
+  <%= 
+    begin
+      render :partial => "data_#{params[:mode]}"
+    rescue ActionView::MissingTemplate
+      t ".mode_not_found"
+    end
+  %>
+  </section>
+
+  <h3><%= t "graphs.config.heading" %></h3>
+  <section id="config">
+  <%= render :partial => 'config' %>
+  </section>
+  
+  <%= submit_tag t ".submit" %>
+  <% end %>
+  
+  <% if @graph_ready %>
+    <h2><%= t ".graph_ready" %></h2>
+    <details>
+      <% img_path = graph_img_url([@data, @config]) %>
+      <%= link_to 'Bildlink', img_path, :target => :blank %>
+      <%= image_tag img_path %>
+    </details>
+  <% end %>
+<% end %>
+

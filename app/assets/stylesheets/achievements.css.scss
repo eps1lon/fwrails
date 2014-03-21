@@ -1,0 +1,126 @@
+// Place all the styles related to the achievements controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#achiev_groups  {
+  li {
+    cursor :  move;
+    display: inline-block;
+  }
+}
+
+#users thead {
+  th {
+    height: 40px;
+    padding: .1em .3em;
+  }
+  
+  .ui-draggable {
+    margin-bottom : -20px;
+  }
+}
+
+dl {
+  &#data {
+    display: inline-block;
+    overflow: hidden;
+
+    dt {
+      clear       : both;
+      float       : left;
+      font-weight : bold;
+      margin-right: .6em
+    }
+
+    dd {
+      float: right;
+    }
+  }
+}
+
+#achievements {
+  th {
+    border      : 0px solid black;
+    border-width: 0 0 1px 0;
+  }
+  
+  .achievement {
+    vertical-align: middle;
+    border-right  : 1px solid black;
+    
+    a {
+      float : left;
+      margin: 0 .5em 0 0;
+    }
+    
+    img {
+      float: right;
+    }
+  }
+}
+
+tr.ui-droppable th {
+  position: relative;
+  min-width: 55px;
+  
+  a.sort {
+    &.no-content {
+      display    : block;
+      float      : right;
+      height     : 10px;
+      margin-left: 10px;
+      position   : absolute;
+      right      : 0px;
+      top        : 0px;
+      width      : 10px;
+    }
+  }
+}
+
+h1, h2, h3, h4 {
+  margin: 0 0 .3em 0;
+}
+
+#world_datas {
+  table {
+    float: left;
+    
+    caption {
+      font-size: 1.1em;
+    }
+    
+    th {
+      border-bottom: 1px solid black;
+    }
+    
+    .sum {
+      border-top: 1px solid black;
+      text-align: right;
+    }
+    
+    .world {
+      border-right: 1px solid black;
+    }
+  }
+}
+
+#stages {
+  display: inline-block;
+  
+  li {
+    padding: 0 0 0 3px;
+  }
+  
+  #current {
+    border      : 0px solid red;
+    border-width: 0 0 0 3px;
+    padding-left: 1em;
+  }
+}
+
+#world_datas {
+  table {
+    caption {
+      white-space: nowrap;
+    }
+  }
+}

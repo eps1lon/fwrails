@@ -1,0 +1,779 @@
+## https://github.com/svenfuchs/rails-i18n/blob/master/rails/locale/de.yml :
+# German translations for Ruby on Rails
+# by Clemens Kofler (clemens@railway.at)
+# contributors:
+#  - Alexander Dreher - http://github.com/alexdreher - Rails 3 update
+##
+de:
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%e. %b"
+      long: "%e. %B %Y"
+      only_day: "%e"
+
+    day_names:
+      - Sonntag
+      - Montag
+      - Dienstag
+      - Mittwoch
+      - Donnerstag
+      - Freitag
+      - Samstag
+    abbr_day_names:
+      - So
+      - Mo
+      - Di
+      - Mi
+      - Do
+      - Fr
+      - Sa
+    month_names:
+      - ~
+      - Januar
+      - Februar
+      - März
+      - April
+      - Mai
+      - Juni
+      - Juli
+      - August
+      - September
+      - Oktober
+      - November
+      - Dezember
+    abbr_month_names:
+      - ~
+      - Jan
+      - Feb
+      - Mär
+      - Apr
+      - Mai
+      - Jun
+      - Jul
+      - Aug
+      - Sep
+      - Okt
+      - Nov
+      - Dez
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%A, %d. %B %Y, %H:%M Uhr"
+      short: "%d. %B, %H:%M Uhr"
+      long: "%d. %B %Y, %H:%M Uhr"
+      time: "%H:%M"
+
+    am: "vormittags"
+    pm: "nachmittags"
+    last_update: "Letztes Update"
+
+  datetime:
+    distance_in_words:
+      format: "%{distance} her"
+      half_a_minute: 'eine halbe Minute'
+      less_than_x_seconds:
+        one: 'weniger als eine Sekunde'
+        other: 'weniger als %{count} Sekunden'
+      x_seconds:
+        one: 'eine Sekunde'
+        other: '%{count} Sekunden'
+      less_than_x_minutes:
+        one: 'weniger als eine Minute'
+        other: 'weniger als %{count} Minuten'
+      x_minutes:
+        one: 'eine Minute'
+        other: '%{count} Minuten'
+      about_x_hours:
+        one: 'etwa eine Stunde'
+        other: 'etwa %{count} Stunden'
+      x_days:
+        one: 'ein Tag'
+        other: '%{count} Tage'
+      about_x_months:
+        one: 'etwa ein Monat'
+        other: 'etwa %{count} Monate'
+      x_months:
+        one: 'ein Monat'
+        other: '%{count} Monate'
+      almost_x_years:
+        one: 'fast ein Jahr'
+        other: 'fast %{count} Jahre'
+      about_x_years:
+        one: 'etwa ein Jahr'
+        other: 'etwa %{count} Jahre'
+      over_x_years:
+        one: 'mehr als ein Jahr'
+        other: 'mehr als %{count} Jahre'
+    prompts:
+      second: "Sekunden"
+      minute: "Minuten"
+      hour: "Stunden"
+      day: "Tag"
+      month: "Monat"
+      year: "Jahr"
+
+  number:
+    format:
+      precision: 2
+      separator: ','
+      delimiter: ' '
+      significant: false
+      strip_insignificant_zeros: true
+    currency:
+      format:
+        unit: '€'
+        format: '%n %u'
+        separator: ","
+        delimiter: "."
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 1
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        # Storage units output formatting.
+        # %u is the storage unit, %n is the number (default: 2 MB)
+        format: "%n %u"
+        units:
+          byte:
+            one:   "Byte"
+            other: "Bytes"
+          kb: "KB"
+          mb: "MB"
+          gb: "GB"
+          tb: "TB"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: Tausend
+          million: Millionen
+          billion:
+            one: Milliarde
+            others: Milliarden
+          trillion: Billionen
+          quadrillion:
+            one: Billiarde
+            others: Billiarden
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " und "
+      last_word_connector: " und "
+    select:
+      prompt: "Bitte wählen:"
+
+  activemodel:
+    errors:
+      template:
+        header:
+          one:    "Konnte %{model} nicht speichern: ein Fehler."
+          other:  "Konnte %{model} nicht speichern: %{count} Fehler."
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+        
+  helpers:
+    select:
+      multiple: "Auswählen/Abwählen bei gedrückter [STRG]-Taste möglich."
+      prompt: "Bitte wählen"
+    
+    search:
+      loading: "Suche läuft"
+      more_then: 
+        one: "Mehr als ein Treffer"
+        other: "Mehr als %{number} Treffer"
+    
+    submit:
+      search: "Suchen"
+      create: '%{model} erstellen'
+      update: '%{model} aktualisieren'
+      submit: '%{model} speichern'
+    
+    labels:
+      name: "Name"
+      world: "Welt"
+      hide_dots: "Plotpunkte verbergen"
+      hide_lines: "Plotlinien verbergen"
+      x_axes: "X-Achsen"
+      y_axes: "Y-Achsen"
+      font_color: "Schriftfarbe"
+      marker_color: "Plotfarbe"
+      title_font_size: "Titel Schriftgröße"
+      marker_font_size: "Schriftgröße Beschriftung"
+      marker_count: "Anzahl Beschriftungen Y-Achse"
+      interval: "Intervall"
+      intervals:
+        day:
+          one: 'ein Tag'
+          other: '%{count} Tage'
+        week:
+          one: 'eine Woche'
+          other: '%{count} Wochen'
+        month:
+          one: 'ein Monat'
+          other: '%{count} Monate'
+        year:
+          one: 'ein Jahr'
+          other: '%{count} Jahre'
+        
+      
+    legends:
+      colors: "Farb-Einstellungen"
+      fonts: "Schrift-Einstellungen"
+    
+    links:
+      sort: "Nach `%{col}` sortieren"
+    
+    nav:
+      page: "Seite"
+      back: "Zurück"
+    toggle:
+      show: "Anzeigen"
+      hide: "Ausblenden"
+
+  errors:
+    human: 
+      one: "Ein Fehler ist aufgetreten"
+      other: "Mehrere Fehler sind aufgetreten"
+    format: "%{attribute} %{message}"
+
+    messages: &errors_messages
+      header: "Ups, da ist etwas schief gelaufen"
+      locale_not_found: "Die von dir aufgerufene Seite ist in dieser Sprache nicht verfügbar"
+      inclusion: "ist kein gültiger Wert"
+      exclusion: "ist nicht verfügbar"
+      invalid: "ist nicht gültig"
+      confirmation: "stimmt nicht mit der Bestätigung überein"
+      accepted: "muss akzeptiert werden"
+      empty: "muss ausgefüllt werden"
+      blank: "muss ausgefüllt werden"
+      too_long: "ist zu lang (nicht mehr als %{count} Zeichen)"
+      too_short: "ist zu kurz (nicht weniger als %{count} Zeichen)"
+      wrong_length: "hat die falsche Länge (muss genau %{count} Zeichen haben)"
+      not_a_number: "ist keine Zahl"
+      greater_than: "muss größer als %{count} sein"
+      greater_than_or_equal_to: "muss größer oder gleich %{count} sein"
+      equal_to: "muss genau %{count} sein"
+      less_than: "muss kleiner als %{count} sein"
+      less_than_or_equal_to: "muss kleiner oder gleich %{count} sein"
+      odd: "muss ungerade sein"
+      even: "muss gerade sein"
+      not_an_integer: "muss ganzzahlig sein"
+      not_saved: 
+        one:    "Speichern nicht möglich: ein Fehler."
+        other:  "Speichern nicht möglich: %{count} Fehler."
+      std: "Der Fehler wird sicher bald behoben werden"
+      undefined: "merkwürdiger Fehler"
+      e_404: 
+        head: "nicht gefunden"
+        body: "Seite nicht gefunden"
+
+  activerecord:
+    models:
+      achievement: "Errungenschaft"
+      clan: "Clan"
+      language: "Sprache"
+      npc: "NPC"
+      place: "Ort"
+      race: "Rasse"
+      statistic: "Statistik"
+      stock: "Aktie"
+      user: "Benutzer"
+      users_achievement: "Errungenschaften"
+      users_clan_change: "Clanänderungen"
+      users_name_change: "Namenswechsel"
+      users_race_change: "Rassenwechsel"
+      world: "Welt"
+    attributes:
+      achievement:
+        achiev_count: "erreicht von"
+        created_at: "Einbaudatum"
+        description: "Beschreibung"
+        group_name: "Name"
+        max_stage: "Maximalstufe"
+        name: "Name"
+        needed: "benötigt"
+        reward: "Belohnung"
+      clan:
+        clan_id: "ID"
+        coleader_id: "Co-Leader"
+        leader_id: "Leader"
+        member_count: "Mitgliederanzahl"
+        name: "Name"
+        sum_experience: "Gesamterfahrung"
+        tag: "Tag"
+        world_id: "Welt"
+      clans_coleader_change:
+        clan_id: "Clan"
+        coleader_id_new: "neuer Co-Leader"
+        coleader_id_old: "alter Co-Leader"
+        count: "%{count} Co-Leaderwechsel"
+        created_at: "Wechseldatum"
+        world_id: "Welt"
+      clans_delete: 
+        clan_id: "ID"
+        created_at: "Auflösungsdatum"
+        tag: "Tag"
+        world_id: "Welt"
+      clans_leader_change:
+        clan_id: "Clan"
+        count: "%{count} Leaderwechsel"
+        created_at: "Wechseldatum"
+        leader_id_new: "neuer Leader"
+        leader_id_old: "alter Leader"
+        world_id: "Welt"
+      clans_name_change:
+        count: "%{count} Namensänderungen"
+      clans_new: 
+        clan_id: "ID"
+        created_at: "Gründungsdatum"
+        tag: "Tag"
+        world_id: "Welt"
+      clans_tag_change:
+        count: "%{count} Tagänderungen"
+      extension:
+        name: "Name"
+        created_at: "Erstellt am"
+        desc: "Kurzbeschreibung"
+        downloads: "Downloads"
+        filename: "Pfad"
+        rating: "Bewertung"
+        ratings: "Bewertungen"
+        status: "Status"
+        updated_at: "Letztes Update"
+      statistic:
+        name: "Name"
+        last_value: "aktueller Wert"
+        last_update: "letzte Änderung"
+      user:
+        user_id: "ID"
+        name: "Name"
+        experience: "Erfahrung"       
+        race: "Rasse"
+        world: "Welt"
+      users_achievements:
+        achievement_id: "Errungenschaft"
+        progress: "Fortschritt"
+        stage: "Stufe"
+        user_id: "User"
+        world_id: "Welt"
+      users_achievements_cache:
+        count: "erreichte Errungenschaften"
+        reward_collected: "erhaltene AP"
+        user_id: "User"
+        world_id: "Welt"
+      users_clan_change:
+        created_at: "Wechseldatum"
+        count: "insgesamt %{count} Clanänderung"
+        name: "Name"
+        new_clan: "neuer Clan"
+        old_clan: "alter Clan"
+        user_id: "User"
+        world: "Welt"
+      users_delete:
+        user_id: "ID"
+        name: "Name"
+        world: "Welt"
+        created_at: "Löschdatum"
+      users_name_change:
+        created_at: "Wechseldatum"
+        count: "insgesamt %{count} Namenswechsel"
+        name_new: "neuer Name"
+        name_old: "alter Name"
+        user_id: "User"
+        world: "Welt"
+      users_race_change:
+        created_at: "Wechseldatum"
+        count: "insgesamt %{count} Rassenwechsel"
+        new_race: "neue Rasse"
+        old_race: "alte Rasse"
+        user_id: "User"
+        world: "Welt"
+      users_new:
+        user_id: "ID"
+        name: "Name"
+        world: "Welt"
+        created_at: "Anmeldedatum"
+    errors:
+      template:
+        header:
+          one:    "Konnte %{model} nicht speichern: ein Fehler."
+          other:  "Konnte %{model} nicht speichern: %{count} Fehler."
+        body: "Bitte überprüfen Sie die folgenden Felder:"
+
+      messages:
+        not_exists: "existiert nicht"
+        taken: "ist bereits vergeben"
+        record_invalid: "Gültigkeitsprüfung ist fehlgeschlagen: %{errors}"
+        <<: *errors_messages
+
+      full_messages:
+        format: "%{attribute} %{message}"
+  achievements:
+    common:
+      change_world: "angezeigte Welt wechseln (englische Welten haben die Errungenschaften noch nicht implementiert)"
+      dump_info: "Achievements werden alle 3 Stunden ausgelesen. ActionFreewar 
+                  bietet allerdings keine Dumps an. Daher werden dort nur die 
+                  Achievements von User mit einer XP Veränderung erfasst. Aller
+                  24 Stunden werden auch dort alle Achievements ausgelesen."
+      not_testworld: "Alle außer Welt 1"
+      worlds: "verfügbare Welten"
+      worlds_all: "Alle"
+    human: "Errungenschaften"
+    index:
+      head: "List der verfügbaren Errungenschaften in FreeWar"
+      human: "Übersicht"
+    rank:
+      achiev_groups:
+        head: "verfügbare Errungenschaften"
+        message: "Bewege die Errungenschaften per Drag&Drop, damit sie in der Rangliste ein- oder ausgeblendet werden."
+      caption: 
+        zero: "keine User gefunden"
+        one: "ein User gefunden aus %{worlds}"
+        other: "%{count} User gefunden aus %{worlds}"
+      current_link: "Link zur aktuellen Auswahl"
+      head: "Rangliste nach Errungenschaften"
+      human: "Rangliste"
+      users: "Rangliste"
+    show:
+      achiev_count: "erreicht"
+      achiev_counts:
+        caption: "erreicht"
+        sum_abbr: "alle Welten zusammengezählt"
+      closests:
+        caption: "fortschrittlichste User"
+      data: "Daten"
+      progress: "Fortschritt"
+      progress_sum: "Fortschritt"
+      progress_sums:
+        caption: "Fortschritt summiert"
+        sum_abbr: "Gesamtfortschritt"
+      stages: "Stufen"
+      user: "User"
+      world: "Welt"
+      world_datas: "Daten nach Welt"
+    reward: 
+      zero: "keine"
+      other: "%{count} AP"
+    unachieved:
+      achievements: "Errungenschaften"
+      caption: "Angezeigt werden alle Errungenschaften, die noch keiner aus %{worlds} erreicht hat."
+      closest: "weitester Fortschritt"
+      progress:
+        zero: "kein Fortschritt"
+        other: "%{count} erreicht von %{user}"
+      head: "unerreichte Errungenschaften"
+      human: "unerreicht"
+  application:
+    locale:
+      change: "Sprache umstellen auf %{lang}"
+      de: "Deutsch"
+      en: "Englisch"
+  clans:
+    coleader_change:
+      head: "Co-Leaderwechsel bei Clans in FreeWar"
+      human: "Co-Leaderwechsel"
+      message: "%{count} Wechsel gefunden in %{worlds}"
+    commons:
+      all_worlds: "Alle Welten"
+      change_world: "Welt wechseln"
+      id_as_tag: "Clan-ID fungiert als Tag"
+      members:  
+        zero: "Keine Mitglieder"
+        one: "Ein Mitglied"
+        other: "%{count} Mitglieder"
+      not_exists:
+        clan: "Clan mit der ID `%{id}` nicht gefunden in %{world}"
+        world: "Welt '%{world}' nicht gefunden"
+      noname: "keiner"
+      notag: "Keiner"
+      noleader: "keiner"
+      nocoleader: "keiner"
+      profile: "Ingame-Profil"
+      states:
+        coleader: "Co-Leader"
+        leader: "Leader"
+        member: "Mitglied"
+      tag_inspected: "Tag besteht nur aus nicht-anzeigbaren Zeichen"
+    delete:
+      head: "augelöste Clans in FreeWar"
+      human: "Auflösungen"
+      message: 
+        one: "Eine Auflösung gefunden in %{worlds}"
+        other: "%{count} Auflösungen gefunden in %{worlds}"
+    index:
+      head: "Rangliste aller Clans in FreeWar"
+      human: "Rangliste"
+      message: 
+        one: "Ein Clan gefunden in %{worlds}"
+        other: "%{count} Clans gefunden in %{worlds}"
+    human: "Clans"
+    leader_change:
+      head: "Leaderwechsel bei Clans in FreeWar"
+      human: "Leaderwechsel"
+      message: "%{count} Wechsel gefunden in %{worlds}"
+    nav: 
+      changes: "Änderungen"
+      lists: "Listen"
+      page10: "Seite 10"
+    new:
+      head: "Neu gegründete Clans in FreeWar"
+      human: "Gründungen"
+      message: 
+        one: "Eine Gründung gefunden in %{worlds}"
+        other: "%{count} Gründungen gefunden in %{worlds}"
+    show: 
+      data: "Daten"
+      hide: "Verbergen"
+      show: "Anzeigen"
+      xp_stat: 
+        sum: "Gesamterfahrung"
+        avg: "durchschnittliche Erfahrung pro Mitglied"
+        min: "geringste Erfahrung"
+        max: "größte Erfahrung"
+      changes:
+        head: "Änderungen im Erscheinungsbild des Clans"
+        nothing: "nicht bekannt"
+        unknown: "Unbekannt"
+        adds:
+          human: "Beitritte"
+          message: 
+            zero: "keine Beitritte"
+            one: "ein Beitritt"
+            other: "%{count} Beitritte"
+        coleader: 
+          human: "Co-Leaderwechsel"
+          old: "%{old} hat Co-Leaderposten aufgegeben"
+          new: "%{new} hat Co-Leaderposten übernommen"
+        leader: 
+          human: "Leaderwechsel"
+          old: "%{old} hat Leaderposten aufgegeben"
+          new: "%{new} hat Leaderposten übernommen"
+        name:
+          human: "Namenswechsel"
+          message: "von `%{old}` zu `%{new}`"
+        tag:
+          human: "Tagänderung"
+          message: "von `%{old}` zu `%{new}`"
+        outs:
+          human: "Austritte"
+          message:
+            zero: "keine Austritte"
+            one: "ein Austritt"
+            other: "%{count} Austritte"
+  extensions:
+    human: "Erweiterungen"
+    about:
+      human: "Rechtfertigung"
+    howto:
+      human: "Anleitung"
+    index:
+      human: "Start"
+    list:
+      caption: "Verfügbare Erweiterungen"
+      human: "Verzeichnis"
+    status:
+      anounced: "angekündigt"
+      requested: "gewünscht"
+      wip: "work in progress"
+      permission_pending: "Warte auf Freigabe"
+      beta: "Testphase"
+      available: "verfügbar"
+  graphs:
+    achievements:
+      achievement: "Errungenschaft"
+      data: 
+        heading: "Daten"
+        user:
+          add_user: 
+            heading: "User hinzufügen"
+            submit: "hinzufügen"
+          users: "ausgewählte User"
+        world:
+          worlds: "Welten"
+      heading: "Graph-Generator"
+      human: "Errungenschaften"
+      modes: 
+        human: "Modi"
+        user: "Zwischen Usern vergleichen"
+        world: "Zwischen Welten vergleichen"
+      submit: "Graph erstellen"
+    config:
+      heading: "Einstellungen"
+      colors: 
+        legend: "Farb-Einstellungen"
+        bg: "Hintergrund"
+        font: "Schriftfarbe"
+        line: "Linienfarbe"
+        plot: "Hintegrund des Graphen"
+      distance: "Zeitraum"
+      distance_infty: "kompletter Zeitraum"
+      font_sizes:
+        label: "Beschriftung"
+        legend: "Schriftgrößen"
+        legend_graph: "Legende"
+        title: "Titel"
+    human: "Graphen"
+    index: 
+      human: "Index"
+      message: "Wähle eine der oben aufgeführten Kategorien"
+    xp:
+      human: "XP"
+      image:
+        title: "XP-Graph von %{name} (%{world})"
+        interval: "Zeitraum von %{from} bis %{to}"
+    stats:
+      human: "Statistiken"
+    stocks:
+      human: "stocks"
+  home:
+    human: 'Home'
+    index:
+      human: "Index"
+  statistics:
+    index:
+      head: "ausgewählte Statistiken"
+      head_paragraph: "Diese Seite beinhaltet diverse Gold- und Mengenstatistiken 
+                       sowie Statistiken über Errungenschaften in FreeWar."
+      world_change: "Welt wechseln:"
+      world_text: "Statistiken in %{worlds}"
+    human: "Statistiken"
+    names:
+      active_kills: "aktive Kills"
+      became_traitor: "Verräter geworden"
+      bloodsamples_collected: "abgegebene Blutproben"
+      chased_npc: "Verjagte NPC"
+      collected_grotto_moos: "geerntete Todesgrottenmoose"
+      collected_plants: "Geerntete Pflanzen"
+      completed_treassure_maps: "gefundene Schätze"
+      completed_missions: "Aufträge erfüllt"
+      donations_got: "Fördergelder ausgezahlt"
+      exploded_chaoslabs: "explodierte Chaoslabore"
+      extinguished: "gelöschte Felder"
+      group_inspirations: "Gruppen-Inspirationen"
+      killed_phasenpc: "Getötete Phasennpc"
+      killed_undarons: "getötete Undarons"
+      killed_underworld_demons: "getötete Unterwelt-Dämonen"
+      made_chaoslab_items: "Chaoslabor benutzt"
+      money_bank: "Gold in Bank"
+      money_boerse: "Gold in Börse"
+      money_clans: "Gold auf Clankonto"
+      money_gesamt: "Gold gesammt"
+      money_items: "Gold in Items"
+      money_users: "Gold in Bar"
+      no_items: "Anzahl Items"
+      no_sex_M: "Anzahl männlicher User"
+      no_sex_N: "Anzahl neutraler User"
+      no_sex_W: "Anzahl weiblicher User"
+      no_user: "Anzahl User"
+      no_user_in_clans: "User in Clans"
+      no_user_active: "aktive User (48 Stunden)"
+      surveys: "Vermessungen"
+      switched_controller_tower_alliance: "Fraktionswechsel"
+      tissuesamples_collected: "Gewebeproben abgegeben"
+      became_traitor: "Getötet Geister der Welt"
+      aggressive_npc: "Getötete aggressive NPC"
+      ingerium: "Gehackte Ingerium"
+      goat_herd: "Goldhornziegen getrieben"
+      goat_kill: "Goldhornziegen gekillt"
+      cooks: "gekochte Gerichte"
+      group_kills: "getötete NPC in Gruppe"
+      paid_dividend: "ausgezahlte Dividende"
+      opened_locks: "geöffnete Kisten"
+    show:
+      back: "Zurück zur Übersicht"
+      heading: "'%{name}' in allen Welten von FreeWar"
+      th:
+        last_update: "letztes Update"
+        value: "aktueller Wert"
+        world: "Welt"
+  users:
+    achivements:
+      human: "Errungenschaften"
+    clanchange:
+      human: "Clanänderungen"
+      head: "Clanwechsel in FreeWar"
+      noclan: "keiner"
+    common:
+      worlds:
+        all: "Alle"
+        change: "Welt wechseln"
+      races: 
+        all: "Alle Rassen"
+        change: "Rasse wechseln"
+    delete:
+      human: "Nachruf"
+      head: "gelöschte und (temporär) gebannte User in FreeWar"
+      message: "Löschungen in"
+      img: "Nachruf als Bild"
+    human: "User"
+    index:
+      head: "Rangliste der User in FreeWar"
+      human: "Rangliste"
+      message: "User angezeigt aus"
+      img: "Rangliste als Bild" 
+      noclan: "clanlos"
+    namechange:
+      human: "Nickwechsel"
+      head: "Nickwechsel in FreeWar"
+      message: "Namenswechsel in"
+      img: "Namenswechsel als Bild"
+      deleted: "[gelöscht]"
+    nav:
+      changes: "Änderungen"
+      lists: "Listen"
+      page10: "Seite 10"
+    not_exists:
+      user: "User '%{name}' nicht gefunden in %{world}"
+      world: "Welt '%{world}' nicht gefunden"
+    new:
+      human: "Neulinge"
+      head: "Neuanmeldungen und Entbannungen in FreeWar"
+      message: "Neuanmeldungen aus"
+      img: "Liste als Bild"
+    racechange:
+      human: "Rassenwechsel"
+      head: "Rassenwechsel in FreeWar"
+      message: "Rassenwechsel in"
+      img: "Rassenwechsel als Bild"
+    show:
+      human: "Details"
+      info: "spielt als %{race} in %{world} und hat %{xp} Erfahrung"
+      profile: "Ingame-Profil"
+      claninfo: "%{state} von "
+      noclan: "in keinem Clan"
+      achievements:
+        history: "Verlauf"
+        progress: "Fortschritt: %{count}"
+        stats: 
+          count:
+            zero: "keine Errungenschaften"
+            one: "nur eine Errungenschaft"
+            other: "%{count} Errungenschaften"
+          message: "%{reward} durch %{count}"
+          reward: "%{count} AP"
+      UsersClanChange:
+        old: "Clan %{old} verlasse"
+        new: "Clan %{new} beigetreten"
+      UsersNameChange:
+        old: "%{old}"
+        new: "%{new}"
+      UsersRaceChange:
+        old: "%{old}"
+        new: "%{new}"
+    profile: "Ingame-Profil"

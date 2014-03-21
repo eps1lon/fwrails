@@ -1,0 +1,32 @@
+/* Importierte K-Style Zusatzkomponenten */
+/* ©2013 by Isdrador (unterstuetzt durch bwoebi) - http://kstyle.no-domain.biz */
+/* Optimiert fuer die Browser: Firefox, SeaMonkey, Safari, Chrome, Opera */
+
+/* &gt; MNS-Zusatzkomponente */
+.framemapbg td[id^="map"] a { position: relative; text-decoration: none; display: inline-block; width: 50px; height: 50px; }
+.framemapbg td[id^="map"] a:after { z-index: 2; width: 50px; position: absolute; left: 0px; top: 0px; line-height: 120%; color: #007700; font-size: 10px; font-weight: bold; text-align: center; background: #F2F2F2; border-bottom: 1px solid #BABABA; opacity: 0.65; border-radius: 0px 0px 6px 6px; }
+body:not(.framemapbg) td[id^="map"] a:after { display: none; }
+
+/* &gt; &gt; NPC: Blattalisk */
+#mapx119y111 a:after, #mapx120y111 a:after, #mapx121y111 a:after, #mapx119y114 a:after, #mapx120y114 a:after, #mapx121y114 a:after, #mapx119y115 a:after, #mapx121y115 a:after { content: "Blattalisk" !important; }
+
+/* &gt; &gt; NPC: Ektofron */
+#mapx51y82 a:after, #mapx50y84 a:after, #mapx59y84 a:after, #mapx51y85 a:after, #mapx60y87 a:after, #mapx55y88 a:after, #mapx57y88 a:after, #mapx58y88 a:after, #mapx59y88 a:after, #mapx60y88 a:after, #mapx58y91 a:after, #mapx59y92 a:after, #mapx60y92 a:after, #mapx59y93 a:after { content: "Ektofron" !important; }
+
+/* &gt; &gt; NPC: K.-Käfer */
+#mapx85y99 a:after, #mapx87y99 a:after, #mapx86y100 a:after { content: "K.-Käfer" !important; }
+
+/* &gt; &gt; NPC: O.-Skelett */
+#mapx74y104 a:after, #mapx70y105 a:after, #mapx71y105 a:after, #mapx73y105 a:after, #mapx72y106 a:after, #mapx73y106 a:after, #mapx71y107 a:after, #mapx70y108 a:after { content: "O.-Skelett" !important; }
+
+/* &gt; &gt; NPC: S.-Kröte */
+#mapx257y92 a:after, #mapx259y92 a:after, #mapx255y94 a:after, #mapx257y94 a:after, #mapx256y95 a:after, #mapx258y95 a:after, #mapx255y96 a:after { content: "S.-Kröte" !important; }
+
+/* &gt; &gt; NPC: U. Bürger */
+#mapx-193y-98 a:after, #mapx-196y-96 a:after, #mapx-185y-94 a:after, #mapx80y87 a:after, #mapx82y87 a:after, #mapx81y88 a:after, #mapx84y88 a:after, #mapx81y89 a:after, #mapx82y90 a:after { content: "U. Bürger" !important; }
+
+/* &gt; &gt; NPC: e. S.-Kröte */
+#mapx258y93 a:after, #mapx261y93 a:after, #mapx259y95 a:after, #mapx254y96 a:after { content: "e. S.-Kröte" !important; }
+
+/* &gt; &gt; NPC: t. Falter */
+#mapx-508y-375 a:after, #mapx109y76 a:after, #mapx108y77 a:after, #mapx112y79 a:after, #mapx113y79 a:after, #mapx116y79 a:after, #mapx119y79 a:after, #mapx115y80 a:after, #mapx114y81 a:after { content: "t. Falter" !important; }

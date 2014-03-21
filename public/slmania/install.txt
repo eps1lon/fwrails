@@ -1,0 +1,23 @@
+1. Die Ordner frontend und backend auf den Webserver verschieben und die URL 
+   merken.
+2. URL in manifest.json unter `permissions` und in `javascripts/main.js` 
+   unter SLMANIA_URL eintragen.
+3. Datenbank und DB-Nutzer für SLMania in `backend/db.php` eintragen
+4. `backend/install.php` auf Webserver ausführen
+5. In Chrome unter Tools -> Erweiterungen "Entpackte Erweiterung laden" 
+   und zum Ordner von SLMania auf eurem Dateisystem navigieren. Die Erweiterung 
+   muss in diesem Ordner bleiben.
+
+Hinweise:
+1. Die Einträge sollten regelmäßig abgeschickt werden. 
+2. Nicht mehrfach auf abschicken drücken, wenn keine Sendebestätigung erschienen 
+   ist. Im Zweifelsfall sollten die Einträge geleert werden, wenn keine 
+   Bestätigung erscheint. Eine Mehrfacheintragung könnte die Statistik 
+   verfälschen.
+3. NPCs können unmittelbar nach oder während des Schlags vom Feld verschwinden.
+   Das Tool könnte das als Kill verzeichnen. Diese Einträge sollten gelöscht 
+   werden. Das kann bei NPC wie der schwebenden Goldkutsche, den Strativaren etc
+   auftreten.
+4. Die Auswertung geht automatisch davon aus, dass die Roteiskoralle mit A3V3 
+   und alle anderen Korallenriff/Tiefenriff NPC mit AXV3 angegriffen wurden.
+   Du musst dir manuell notieren, wenn du stärkere/schwächere Waffen nutzt.

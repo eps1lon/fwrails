@@ -1,0 +1,22 @@
+<h1><%= @area.name %></h1>
+<%= link_to t(".fieldlist"), places_url(@area.name) %>
+<table>
+  <caption>Zusammenfassung</caption>
+  <tr>
+    <td>Felderanzahl</td>
+    <td><%= @area.places.count %></td>
+  </tr>
+  <tr>
+    <td>NPC-Anzahl</td>
+    <td><%= @npcs.count %></td>
+  </tr>
+  <tr>
+    <td>Dungeon</td>
+    <td><%= @area.dungeon? ? 'ja' : 'nein' %></td>
+  </tr>
+</table>
+<ul class="npcs">
+  <% @npcs.collect { |npc| npc.name }.uniq.sort { |a, b| a.downcase <=> b.downcase }.each do |name| %>
+    <li><%= name %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,27 @@
+<p><%= @test %></p>
+<h1>Listing admin_achievements</h1>
+<%= link_to 'New Achievement', new_admin_achievement_path %>
+<table>
+  <tr>
+    <th><%= Achievement.human_attribute_name('name') %></th>
+    <th colspan="4">Operations</th>
+    <th><%= Achievement.human_attribute_name('reward') %></th>
+    <th><%= Achievement.human_attribute_name('needed') %></th>
+    <th><%= Achievement.human_attribute_name('description') %></th>
+  </tr>
+
+<% @achievements.each_with_index do |achievement, i| %>
+  <tr>
+    <td><%= achievement.name %></td>
+    <td><%= link_to 'Show', [:admin, achievement] %></td>
+    <td><%= link_to 'Edit', edit_admin_achievement_path(achievement) %></td>
+    <td><%= link_to 'Destroy', [:admin, achievement], data: {confirm: 'Are you sure?'}, method: :delete %></td>
+    <td><%= link_to 'Example', 
+                    achievement.users.first.achievement_url(achievement), 
+                    :target => '_blank' unless achievement.users.first.nil? %></td>
+    <td><%= achievement.reward %></td>
+    <td><%= achievement.needed %></td>
+    <td><%= achievement.description.class %></td>
+  </tr>
+<% end %>
+</table>

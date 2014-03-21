@@ -1,0 +1,5 @@
+<% if @world.nil? %>
+  <%= t "clans.commons.not_exists.world", :world => params[:world] %>
+<% else %>
+  <%= t "clans.commons.not_exists.clan", :world => params[:world], :id => params[:id] %>
+<% end %>

@@ -1,0 +1,40 @@
+<h1><%= link_to "Ukimgs#index", ukimgs_url %></h1>
+<%= debug params %>
+<%= form_tag(ukimgs_url(:sets => params[:sets], :tags => params[:tags]), :method => "POST") do %>
+  <p>
+    <%= label_tag(:area_id, "Gebiet") %>
+    <%= select_tag(:area_id, options_for_select([["-" * 10, ""]] + @areas.collect(&:name))) %>
+  </p>
+  <p>
+    <%= label_tag(:set_id, "Set") %>
+    <%= select_tag(:set_id, options_for_select([["-" * 10, ""]] + @sets.collect(&:name))) %>
+  </p>
+  <p>
+    Sets und Tags via 
+    <%= label_tag(:connector_sets_tags_or, "or") %>
+    <%= radio_button_tag(:connector_sets_tags, "or") %>
+    <%= label_tag(:connector_sets_tags_and, "and") %>
+    <%= radio_button_tag(:connector_sets_tags, "and") %>
+    verknüpfen
+  </p>
+  <p>
+    Tags via
+    <%= label_tag(:connector_tags_or, "or") %>
+    <%= radio_button_tag(:connector_tags, "or") %>
+    <%= label_tag(:connector_tags_and, "and") %>
+    <%= radio_button_tag(:connector_tags, "and") %>
+    verknüpfen
+  </p>
+  <p>
+    <%= submit_tag("Hinzufügen") %>
+    <%= submit_tag("Show") %>
+  </p>
+<% end %>
+
+<% if @images.length > 0 %>
+  <%= debug @images.to_sql %>
+  
+  <% @images.limit(100).each do |image| %>
+    <%= image_tag image_path("/ukimgs/#{image.filename}") %>
+  <% end %>
+<% end %>

@@ -1,0 +1,31 @@
+<% unless @distances_for_select.empty? %>
+  <%= label_tag :distance, t("graphs.config.distance") %>
+  <%= select_tag :distance,
+                 options_for_select(@distances_for_select, @distance) %>
+<% end %>
+
+<% @config[:checkboxes].each do |checkboxes| %>
+
+<% end %>
+
+<% unless @config[:colors].empty? %>
+  <%= field_set_tag t("graphs.config.colors.legend"), 
+                    :id => 'colors', 
+                    :class => 'config' do %>
+  <% @config[:colors].each do |color, value| %>
+    <%= label_tag "colors[#{color}]", t(".colors.#{color}") %>
+    <%= color_field_tag "colors[#{color}]", value %>
+  <% end %>
+  <% end %>
+<% end %>
+
+<% unless @config[:font_sizes].empty? %>
+  <%= field_set_tag t("graphs.config.font_sizes.legend"), 
+                    :class => 'config', 
+                    :id => 'font_sizes' do %>
+  <% @config[:font_sizes].each do |font_size, val| %>
+    <%= label_tag "font_sizes[#{font_size}]", t(".font_sizes.#{font_size}") %>
+    <%= number_field_tag "font_sizes[#{font_size}]", val %>
+  <% end %>
+  <% end %>
+<% end %>

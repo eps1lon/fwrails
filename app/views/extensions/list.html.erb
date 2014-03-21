@@ -1,0 +1,25 @@
+<h1><%= t ".human" %></h1>
+<p></p>
+<table class="extensions">
+  <caption><%= t ".caption" %></caption>
+  <thead><tr>
+    <th><%= Extension.human_attribute_name('name') %></th>
+    <th><%= Extension.human_attribute_name('desc') %></th>
+    <th><%= Extension.human_attribute_name('filename') %></th>
+    <th><%= Extension.human_attribute_name('status') %></th>
+    <th><%= Extension.human_attribute_name('downloads') %></th>
+    <th><%= Extension.human_attribute_name('updated_at') %></th>
+  </tr></thead>
+  <tbody>
+  <% @extensions.each do |extension| %>
+    <tr>
+      <td><% link_to extension.name, url_for(extension) %></td>
+      <td><%= extension.desc %></td>
+      <td><%= link_to 'Download', extensions_download_path(extension) %></td>
+      <td><%= translate_status(extension.status) %></td>
+      <td><%= number_with_delimiter extension.downloads  %></td>
+      <td><%= time_tag extension.created_at %></td>
+    </tr>
+  <% end %>
+  </tbod>
+</table>

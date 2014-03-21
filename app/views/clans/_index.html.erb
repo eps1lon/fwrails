@@ -1,0 +1,20 @@
+<td class="id"><%= clan.clan_id %></td>
+<td class="tag"><%= link_to ClansHelper::Tag::as_em(clan.tag).html_safe, clan_url(clan.clan_id, clan.world.short) %></td>
+<td class="name"><%= clan.name || t("clans.commons.noname") %></td>
+<td class="sum_experience"><%= number_with_delimiter(clan.sum_experience.to_i) %></td>
+<td class="member_count"><%= number_with_delimiter(clan.member_count.to_i) %></td>
+<td class="leader">
+  <% if clan.leader.nil? %>
+    <%= t "clans.commons.noleader" %>
+  <% else %>
+    <%= link_to clan.leader.name, user_url(clan.leader.name, clan.world.short) %>
+  <% end %>
+</td>
+<td class="coleader">
+  <% if clan.coleader.nil? %>
+    <%= t "clans.commons.nocoleader" %>
+  <% else %>
+    <%= link_to clan.coleader.name, user_url(clan.coleader.name, clan.world.short) %>
+  <% end %>
+</td>
+<td class="world"><%= clan.world.short %></td>

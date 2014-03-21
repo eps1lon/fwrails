@@ -1,0 +1,8 @@
+<td class="id"><%= clan.clan_id %></td>
+<td class="tag">
+  <del><%= ClansHelper::Tag::as_em(clan.tag).html_safe %></del>
+</td>
+<td class="created_at">
+  <time datetime="<%= clan.created_at %>"><%= l clan.created_at.to_date %></time>
+</td>
+<td class="world_id"><%= clan.world.short %></td>

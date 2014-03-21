@@ -1,0 +1,51 @@
+<h1><%= t ".head" %></h1>
+<p><%= t "achievements.common.dump_info" %></p>
+<h2><%= t "achievements.common.worlds" %></h2>
+<p><%= t "achievements.common.change_world" %>:</p>
+<ul class="worlds">
+  <li>
+    <%= link_to t("achievements.common.worlds_all"), 
+                  achievements_unachieved_url(params.merge({:world => nil})) %>
+  </li>
+  <li>
+    <%= link_to t("achievements.common.not_testworld"), 
+                achievements_unachieved_url(params.merge({:world => '!W1'})) %>
+  </li>
+  <% @all_worlds.each do |world| %>
+    <li>
+      <%= link_to world.short, 
+                  achievements_unachieved_url(params.merge({:world => world.short})),
+                  :title => world.localized_name %>
+    </li>
+  <% end %>
+</ul>
+<h2><%= t ".achievements" %></h2>
+<p id="last_update">
+  <%= t "time.last_update" %>: 
+  <time datetime="<%= @last_update %>"><%= l @last_update %></time>
+</p>
+<% cache(cache_key_for_achievements('index', @worlds)) do %>
+  <table id="achievements">
+    <caption><%= t ".caption", :worlds => @worlds.collect(&:short).to_sentence %></caption>
+    <tr>
+      <th class="achievement"><%= Achievement.model_name.human %></th>
+      <th class="closest"><%= t ".closest" %></th>
+    </tr>
+    <% @achievements.each do |achievement| %>
+      <tr>
+        <td class="achievement">
+          <%= link_to achievement.name, achievement_url(achievement) %>
+          <%= image_tag("achievements/#{achievement.gfx_file}", :alt => achievement.name) %>
+        </td>
+        <td class="closest">
+          <% unless @closest[achievement.id].nil? %>
+            <%= t(".progress", :count => number_with_delimiter(@closest[achievement.id].progress),
+                               :user => link_to(@closest[achievement.id].user.name,
+                                                user_url(:name => @closest[achievement.id].user.name, 
+                                                         :world => @closest[achievement.id].world.short))).html_safe %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

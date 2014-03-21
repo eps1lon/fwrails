@@ -1,0 +1,46 @@
+/* Importierte K-Style Zusatzkomponenten */
+/* ©2013 by Isdrador (unterstuetzt durch bwoebi) - http://kstyle.no-domain.biz */
+/* Optimiert fuer die Browser: Firefox, SeaMonkey, Safari, Chrome, Opera */
+
+/* > CSD-Zusatzkomponente */
+.frameitembg p.listrow[id^="listrow_"]:not(#listrow_status):not(#listrow_aka_battlep):not(#listrow_neck) { white-space: nowrap; max-height: 12px; visibility: hidden; margin-top: -12px; position: static; }
+.frameitembg p.listrow[id^="listrow_"] a:hover { text-decoration: none; }
+.frameitembg #listrow_aka_battlep ~ #listrow_money, .frameitembg #listrow_aka_battlep ~ #listrow_lifep, .frameitembg #listrow_aka_battlep ~ #listrow_int, .frameitembg #listrow_aka_battlep ~ #listrow_attackp, .frameitembg #listrow_aka_battlep ~ #listrow_defensep, .frameitembg #listrow_aka_battlep ~ #listrow_attackw, .frameitembg #listrow_aka_battlep ~ #listrow_defensew  { margin-top: -2px !important; }
+.frameitembg #listrow_char_mission { margin-bottom: 50px; }
+.frameitembg #listrow_char_mission a[href="ability.php"]:before { content: "Chara"; position: absolute; visibility: visible; top: 35px; left: 15px; }
+.frameitembg #listrow_char_mission a[href*="action=missiondesc"]:before { content: "Auftrag"; position: absolute; visibility: visible; top: 35px; left: 54px; }
+.frameitembg #listrow_clan a[href*="action=manageclan"], .frameitembg #listrow_clan a[href*="action=createclan"] { position: absolute; top: 44px; left: 125px; border: 1px solid #BABABA; background: #F2F2F2; font-size: 10px; color: #5E5E5E; font-weight: normal; padding: 0px 1px 1px 1px; border-radius: 6px; z-index: 5; }
+.frameitembg #listrow_clan a[href*="action=manageclan"]:hover, .frameitembg #listrow_clan a[href*="action=createclan"]:hover { visibility: visible; }
+.frameitembg #listrow_clan a[href*="action=manageclan"]:before, .frameitembg #listrow_clan a[href*="action=createclan"]:before { content: "Clan"; position: absolute; visibility: visible; top: -10px; left: 10px; font-size: 11px; color: ; font-weight: bold; }
+.frameitembg #listrow_group a[href*="action=groupmenu"] { position: absolute; visibility: visible; top: 35px; left: 213px; }
+.frameitembg #listrow_group:before { content: "Gruppe ("; position: absolute; visibility: visible; top: 35px; left: 165px; font-weight: bold; }
+.frameitembg #listrow_group:after { content: ")"; position: absolute; visibility: visible; top: 35px; left: 219px; width: 70px; font-weight: bold; background: #ECEAEA; }
+.frameitembg #listrow_clan a[href*="action=groupjoinrand"] { position: absolute; visibility: visible; top: 37px; left: 102px; z-index: 2; }
+.frameitembg #listrow_special a[href="item.php?action=special"]:after { content: "Spezi"; position: absolute; visibility: visible; top: 45px; left: 230px; }
+.frameitembg #listrow_aka_battlep ~ #listrow_char_mission a:before, .frameitembg #listrow_aka_battlep ~ #listrow_clan a, .frameitembg #listrow_aka_battlep ~ #listrow_group:before, .frameitembg #listrow_aka_battlep ~ #listrow_group:after, .frameitembg #listrow_aka_battlep ~ #listrow_group a, .frameitembg #listrow_aka_battlep ~ #listrow_special a:after, .frameitembg #listrow_aka_battlep ~ #listrow_attackw:after, .frameitembg #listrow_aka_battlep ~ #listrow_defensew:after { margin-top: 10px; }
+.frameitembg #listrow_money { position: absolute !important; visibility: visible !important; top: 58px; }
+.frameitembg #listrow_money img[src$="icon_gold.gif"] { height: 10px; width: 15px; }
+.frameitembg #listrow_money img[src$="icon_dropgold.gif"] { height: 10px; width: 19px; }
+.frameitembg #listrow_money img[src$="icon_transfergold.gif"] { height: 10px; width: 25px; }
+.frameitembg #listrow_lifep { position: absolute !important; visibility: visible !important; top: 70px; }
+.healthcritical b, .healthmed b, .healthok b { display: inline !important; }
+.frameitembg #listrow_lifep:before { content: "LP: "; font-weight: bold; }
+.frameitembg #listrow_int { position: absolute !important; visibility: visible !important; top: 70px; left: 135px; }
+.frameitembg #listrow_int:before { content: "I: "; font-weight: bold; }
+.frameitembg #listrow_attackw, .frameitembg #listrow_defensew { position: absolute !important; top: 82px; left: 0px; width: 275px; }
+.frameitembg #listrow_attackp { position: absolute !important; visibility: visible !important; top: 82px; }
+.frameitembg #listrow_attackp:before { content: "A: "; font-weight: bold; }
+.frameitembg #listrow_attackp .valueincreased:after, .frameitembg #listrow_defensep .valueincreased:after { content: "."; position: absolute; color: transparent; background: #ECEAEA; width: 100px; }
+.frameitembg #listrow_attackp:hover ~ #listrow_attackw[title], .frameitembg #listrow_attackw[title]:hover { visibility: visible !important; top: 87px; left: 29px; border: 1px solid #BABABA; background: #F2F2F2; font-size: 10px; width: auto !important; padding: 0px 1px 1px 1px; z-index: 5; border-radius: 4px; }
+.frameitembg #listrow_defensep { position: absolute !important; visibility: visible !important; top: 82px; left: 135px; }
+.frameitembg #listrow_defensep:before { content: "V: "; font-weight: bold; }
+.frameitembg #listrow_defensep:hover ~ #listrow_defensew[title], .frameitembg #listrow_defensew[title]:hover { visibility: visible !important; top: 87px; left: auto !important; right: 30px; border: 1px solid #BABABA; background: #F2F2F2; font-size: 10px; width: auto !important; padding: 0px 1px 1px 1px; z-index: 5; border-radius: 4px; }
+.frameitembg #listrow_attackw:after { position: absolute; visibility: visible; right: 145px; }
+.frameitembg #listrow_defensew:after { position: absolute; visibility: visible; right: 20px; }
+.frameitembg #listrow_aka_battlep ~ #listrow_attackw:after, .frameitembg #listrow_aka_battlep ~ #listrow_defensew:after { top: -10px !important; }
+.frameitembg #listrow_attackp:hover ~ #listrow_attackw[title]:after, .frameitembg #listrow_attackw[title]:hover:after, .frameitembg #listrow_defensep:hover ~ #listrow_defensew[title]:after, .frameitembg #listrow_defensew[title]:hover:after { position: static !important; }
+.frameitembg #listrow_lifep b, .frameitembg #listrow_int b, .frameitembg #listrow_attackp b, .frameitembg #listrow_attackw b, .frameitembg #listrow_defensep b, .frameitembg #listrow_defensew b { display: none; }
+.frameitembg #listrow_neck, .frameitembg #listrow_status { margin-top: -4px; }
+.frameitembg #listrow_aka_battlep ~ #listrow_neck, .frameitembg #listrow_aka_battlep ~ #listrow_status { margin-top: -6px; }
+.frameitembg #listrow_neck ~ #listrow_status { margin-top: -2px; }
+.frameitembg #listrow_status:before { height: 2px; }

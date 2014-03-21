@@ -1,0 +1,26 @@
+<li><strong><%= t "users.nav.lists" %></strong>
+  <ul>
+    <% %w{index}.each do |action| %>
+      <li><%= link_to t("users.#{action}.human"), 
+                      url_for({:controller => 'users', :action => action}) %></li>       
+    <% end %>
+  </ul>
+</li>
+
+<li><strong><%= t "users.nav.changes" %></strong>
+  <ul>
+    <% %w{clanchange namechange racechange}.each do |action| %>
+      <li><%= link_to t("users.#{action}.human"), 
+                      url_for({:controller => 'users', :action => action}) %></li>       
+    <% end %>
+  </ul>
+</li>
+
+<li><strong><%= t "users.nav.page10" %></strong>
+  <ul>
+    <% %w{new delete}.each do |action| %>
+      <li><%= link_to t("users.#{action}.human"), 
+                      url_for({:controller => 'users', :action => action}) %></li>       
+    <% end %>
+  </ul>
+</li>

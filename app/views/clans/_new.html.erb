@@ -1,0 +1,8 @@
+<td class="id"><%= clan.clan_id %></td>
+<td class="tag">
+  <%= link_to_clan_or_del(clan.clan, clan.tag, clan.world.short) %>
+</td>
+<td class="created_at">
+  <time datetime="<%= clan.created_at %>"><%= l clan.created_at.to_date %></time>
+</td>
+<td class="world_id"><%= clan.world.short %></td>

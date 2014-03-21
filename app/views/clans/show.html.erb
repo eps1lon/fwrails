@@ -1,0 +1,191 @@
+<% @title = "#{Clan.model_name.human} #{@clan.name_primary}" %>
+<% tag_printable = @clan.tag_with_flags %>
+<h1>Clan <%= tag_printable[:tag].html_safe %> (ID: <%= @clan.clan_id %>)</h1>
+
+<dl id="clandetails">
+  <dt class="world"><%= Clan.human_attribute_name('world_id') %>:</dt>
+  <dd><%= @clan.world.name %></dd>
+  
+  <dt class="tag"><%= Clan.human_attribute_name('tag') %>:</dt>
+  <dd>
+    <% if @clan.tag_is?(:notag) %>
+      <%= t("clans.commons.notag") %>
+    <% else %>
+      <%= tag_printable[:tag].html_safe %>
+    <% end %>
+  </dd>
+
+  <dt class="name"><%= Clan.human_attribute_name('name') %>:</dt>
+  <dd><%= @clan.name || t('clans.commons.noname') %></dd>
+
+  <dt class="xp_stat sum"><%= t '.xp_stat.sum' %>:</dt>
+  <dd><%= number_with_delimiter @clan.sum_experience %> XP</dd>
+
+  <dt class="xp_stat avg"><%= t '.xp_stat.avg' %>:</dt>
+  <dd><%= number_with_delimiter(@members.average(:experience)) %> XP</dd>
+
+  <dt class="xp_stat min"><%= t '.xp_stat.min' %>:</dt>
+  <dd><%= member_summary(@xp_min_member, @clan) %></dd>
+
+  <dt class="xp_stat max"><%= t '.xp_stat.max' %>:</dt>
+  <dd><%= member_summary(@xp_max_member, @clan) %></dd>
+  
+  <dt class="profile_url"><%= t 'clans.commons.profile' %>:</dt>
+  <dd><%= link_to @clan.profile_url, @clan.profile_url, :target => '_blank' %></dd>
+  
+  <dt class="leader"><%= Clan.human_attribute_name('leader_id') %>:</dt>
+  <dd>
+    <% if @clan.leader %>
+      <%= member_summary(@clan.leader, @clan) %>
+    <% else %>
+      <%= t 'clans.commons.noleader' %>
+    <% end %>
+  </dd>
+  
+  <dt class="coleader"><%= Clan.human_attribute_name('coleader_id') %>:</dt>
+  <dd>
+    <% if @clan.coleader %>
+      <%= member_summary(@clan.coleader, @clan) %>
+    <% else %>
+      <%= t 'clans.commons.nocoleader' %>
+    <% end %>
+  </dd>
+  
+  <dt class="members">
+    <%= t 'clans.commons.members', :count => @members.count %>: 
+    [<a  href="javascript: ;" data-toggle-for="members"><%= t "helpers.toggle.show" %></a>]
+  </dt>
+  <dd>
+    <ul id="members">
+      <% @members.each do |member| %>
+        <li><%= member_summary(member, @clan) %></li>
+      <% end %>
+    </ul>
+  </dd>
+</dl>
+<h2><%= t ".changes.head" %></h2>
+<h3>
+  <%= t ".changes.tag.human" %>
+  <% if @clan.changes[:tag].count > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:tag].model.table_name %>">
+      <%= t "helpers.toggle.show" %>
+     </a>]
+  <% end %>
+</h3>
+<p>
+  <%= @clan.changes[:tag].human_attribute_name("count", :count => @clan.changes[:tag].count) %>
+  <%= ':' if @clan.changes[:tag].count > 0 %>
+</p>
+<ul id="<%= @clan.changes[:tag].model.table_name %>" class="changes">
+  <% @clan.changes[:tag].order("created_at asc").each do |change| %>
+    <li>
+      <%= t ".changes.tag.message", :old => change.tag_old, :new => change.tag_new %>,
+      <%= time_tag change.created_at.to_date, :format => :long %>
+    </li>
+  <% end %>
+</ul>
+<h3>
+  <%= t ".changes.name.human" %>
+  <% if @clan.changes[:name].count > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:name].model.table_name %>">
+      <%= t "helpers.toggle.show" %>
+     </a>]
+  <% end %>
+</h3>
+<p>
+  <%= @clan.changes[:name].human_attribute_name("count", :count => @clan.changes[:name].count) %>
+  <%= ':' if @clan.changes[:name].count > 0 %>
+</p>
+<ul id="<%= @clan.changes[:name].model.table_name %>" class="changes">
+  <% @clan.changes[:name].order("created_at asc").each do |change| %>
+    <li>
+      <%= t ".changes.name.message", :old => change.name_old, :new => change.name_new %>,
+      <%= time_tag change.created_at.to_date, :format => :long %>
+    </li>
+  <% end %>
+</ul>
+<h3>
+  <%= t ".changes.leader.human" %>
+  <% if @clan.changes[:leader].count > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:leader].model.table_name %>">
+      <%= t "helpers.toggle.show" %>
+     </a>]
+  <% end %>
+</h3>
+<p>
+  <%= @clan.changes[:leader].human_attribute_name("count", :count => @clan.changes[:leader].count) %>
+  <%= ':' if @clan.changes[:leader].count > 0 %>
+</p>
+<ul id="<%= @clan.changes[:leader].model.table_name %>" class="changes">
+  <% @clan.changes[:leader].order("created_at asc").each do |change| %>
+    <li>
+      <%= link_to_user_or_del(change.leader_old, change.leader_id_old, @clan.world.short) %>
+      =>
+      <%= link_to_user_or_del(change.leader_old, change.leader_id_old, @clan.world.short) %>,
+      <%= time_tag change.created_at.to_date, :format => :long %>
+    </li>
+  <% end %>
+</ul>
+<h3>
+  <%= t ".changes.coleader.human" %>
+  <% if @clan.changes[:coleader].count > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:coleader].model.table_name %>">
+      <%= t "helpers.toggle.show" %>
+     </a>]
+  <% end %>
+</h3>
+<p>
+  <%= @clan.changes[:coleader].human_attribute_name("count", :count => @clan.changes[:coleader].count) %>
+  <%= ':' if @clan.changes[:coleader].count > 0 %>
+</p>
+<ul id="<%= @clan.changes[:coleader].model.table_name %>" class="changes">
+  <% @clan.changes[:coleader].order("created_at asc").each do |change| %>
+    <li>
+      <%= link_to_user_or_del(change.coleader_old, change.coleader_id_old, @clan.world.short) %>
+      =>
+      <%= link_to_user_or_del(change.coleader_new, change.coleader_id_new, @clan.world.short) %>,
+      <%= time_tag change.created_at.to_date, :format => :long %>
+    </li>
+  <% end %>
+</ul>
+<h3>
+  <%= t ".changes.adds.human" %>
+  <% if @clan.changes[:adds].count > 0 %>
+    [<a href="javascript: ;" data-toggle-for="clan_adds">
+      <%= t "helpers.toggle.show" %>
+     </a>]
+  <% end %>
+</h3>
+<p>
+  <%= t ".changes.adds.message", :count => @clan.changes[:adds].count %>
+  <%= ':' if @clan.changes[:adds].count > 0 %>
+</p>
+<ul id="clan_adds" class="changes">
+  <% @clan.changes[:adds].order("created_at asc").each do |change| %>
+    <li>
+      <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short) %>
+      <%= time_tag change.created_at.to_date, :format => :long %>
+    </li>
+  <% end %>
+</ul>
+<h3>
+  <%= t ".changes.outs.human" %>
+  <% if @clan.changes[:outs].count > 0 %>
+    [<a href="javascript: ;" data-toggle-for="clan_outs">
+      <%= t "helpers.toggle.show" %>
+     </a>]
+  <% end %>
+</h3>
+<p>
+  <%= t ".changes.outs.message", :count => @clan.changes[:outs].count %>
+  <%= ':' if @clan.changes[:outs].count > 0 %>
+</p>
+<ul id="clan_outs" class="changes">
+  <% @clan.changes[:outs].order("created_at asc").each do |change| %>
+    <li>
+      <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short) %>
+      <%= time_tag change.created_at.to_date, :format => :long %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to_back %>

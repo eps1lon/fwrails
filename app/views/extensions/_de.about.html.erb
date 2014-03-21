@@ -1,0 +1,104 @@
+<h1>Userscripte in FreeWar</h1>
+<p>Einige mögen vielleicht sagen, dass Userscripte AGB-widrig sind.
+Die gleichen Leute, werden wohl auch noch anfügen, dass sie zusätzlich in 
+den Banngründen aufgeführt sind und es damit keine zwei Meinungen geben kann.
+Ich möchte diesen Leute empfehlen die folgenden Abschnitte möglichst unvoreingenommen
+zu lesen.</p>
+
+<h2>Was sagt die AGB dazu?</h2>
+<blockquote cite="http://welt1.freewar.de/freewar/agb.php">
+<strong>§ 13</strong> Es ist verboten jegliche Seiten von Freewar mit anderen 
+Programmen außer dem Browser abzurufen. Dies bezieht sich insbesondere auf 
+sogenannte Bots oder auch andere Tools die das Webinterface ersetzen oder ändern 
+sollen. Eine Ausnahme gilt für Tools, die von einem Admin bestätigt und dann der 
+Allgemeinheit zur Verfügung gestellt wurden.</blockquote>
+<p>Ein wunderbarer Absatz, der quasi in jede Richtung interpretiert werden
+kann. <q>Tools die das Webinterface</q> verändern ist auf <q>andere Programme[n] außer 
+dem Browser</q> bezogen. Userscripte sind Teil des Browsers und können damit nicht
+gemeint sein. Entscheidet sich Sotrax zu einer anderen Auslegung dieses
+Paragraphen müssen wir uns vorher ansehen, was mit Weboberfläche
+gemeint ist.</p>
+
+<h3>Was ist eine Weboberfläche?</h3>
+<p>Das kann sich zum einen nur auf das Aussehen der Seite beziehen, das durch CSS
+gesteuert wird. Damit verbietet der Paragraph allerdings usereigene CSS-Datein,
+die aber über eine in Freewar angebotene Einstellung eingebunden werden können.
+Hier stellt sich wiederrum die Frage, inwieweit diese Funktion genutzt werden 
+darf. Es ist technisch möglich damit dynamische CSS-Datein einzubinden, die 
+abhängig vom User in der Oberfläche anzeigen, ob man ein NPC besiegen kann oder
+nicht. Das geht weiter mit dem Ausblenden von GZK-Punkten, wodurch man schneller
+reisen kann. Die Möglichkeiten sind hier zwar begrenzt, man sollte sich aber
+immer selber hinterfragen, warum man Userscripte verteufelt und keinerlei Probleme
+mit css-Datein hat.</p>
+<p>Was wohl eher ursprünglich gemeint war ist das DOM. Das DOM kann zwar
+technisch nicht durch CSS verändert werden, allerdings können seit dem CSS2-Standard
+Textknoten durch die :before und :after Klassen erzeugt werden. Wie das nicht
+den Tatbestand der Veränderung der Weboberfläche erfüllt, kann wohl keiner so
+genau erklären.</p>
+
+<h3>Bestätigung durch einen Admin</h3>
+<p>Die Bestätigung durch einen Admin ist quasi die Allround-Waffe in kniffligen
+Fällen. In welcher Form diese geschieht, wird weder festgelegt, noch folgt
+sie einem Standard. Mal wird ein Forenpost von Sotrax als Bestätigung 
+interpretiert, mal muss dieser direkt im Thread etwas dazu sagen. Neuerdings
+soll wohl ein Gespräch mit ihm geführt werden. Die Absurdität an diesem
+Verfahren bringt uns auch direkt zum nächsten Abschnitt</p>
+
+<h2>Die Oberfläche von Freewar ist grausam!</h2>
+<p>Das Lesen von Texten ist anstrengend, jede Aktion verlangt einem grundsätzlich
+mehr Klicks ab, als nötig wären und im allgemeinen sieht FW nicht wirklich schön 
+aus.</p>
+
+<h3>Warum möchten wir also keine Userscripte?</h3>
+<p>Weil mit Userscripten immer die Angst geweckt wird, man könnte Angriffskripte
+verwenden oder automatisch Gegenstände aufheben. Ich möchte hier keines solcher
+Skripte anbieten aber ich kann mit dem Thema offen umgehen ohne gleich panisch
+den "Sperren"-Knopf zu suchen. Durch die einfältige Oberfläche können
+Bots geschrieben werden, die theoretisch nicht erkannt werden können. Es gibt
+ziemlich sicher schon solche Bots und sicherlich kennen einige den ein oder anderen
+der solche Bots schon einmal benutzt hat.</p>
+<p>Ich möchte hier einen Beitrag zur Verbesserung der Bedienung von FW beitragen
+und damit den Langzeitspaß verbessern. Ich kann Leute nicht verstehen, die 
+gegen Komfortverbesserungen sind. Das einzige Argumente dieser Leute ist stets,
+dass sie es nicht brauchen. Nicht etwa, dass sie anmerken, dass diese Änderung
+die Bedienung verschlechtert oder wie man es noch besser machen könnte.
+Unternehmen geben Millionenbeträge in der Forschung aus nur um einzelne Klicks
+zu sparen.</p>
+<p>Das best-case Szenario wäre, würde man sich eher damit auseinandersetzen,
+warum viele User solche Verbesserung verlangen. Vielleicht könnte man diese 
+Skripte sogar als Anregung nehmen und damit einen konstruktiven Beitrag zur 
+Entwicklung dieses Spiels machen</p>
+
+<h2>Abschluss</h2>
+<p>Hat euch der Text nicht überzeugt, solltet ihr wohl selber einen Blick auf die 
+<%= link_to 'angebotenen Skripte', extensions_url(:action => 'list') %> werfen.</p>
+<p>Ich war selber Entwickler in DarkFleet. Ich habe den Quelltext von DarkFleet und
+die Datenbankstruktur gesehen, die FreeWar zu 99% gleicht. Ich habe mit Sotrax
+zusammengearbeitet und habe in FW unter anderem die Schnellzauber-Sets entwickelt.
+Wenn mir etwas nicht vorgeworfen werden kann, dann das ich diesem Spiel schaden 
+wöllte. Ich möchte die Bedienung von FreeWar nachhaltig verbessern und opfer
+viel Zeit dafür, dass auch andere in den Genuss eines angenehmeren Spielerlebnis
+kommen.</p>
+
+<h3>Diskussion</h3>
+<p>Ich würde mich freuen, könnten wir diese Diskussion ohne zu erwartende 
+Sanktionen im Forum führen. Das ständige sperren und bannen verschärft nur 
+unseren Tunneblick und macht uns blind für Chancen und Möglichkeiten. Der Gedanke
+eines Forums geht verloren, wenn man 99% der Themen prophylaktisch sperrt
+und eine Auseinandersetzung mit dem Thema verhindert.</p>
+
+<h3>Weiterführende Links</h3>
+<ul class="linklist">
+<li><%= link_to 'FreeWar AGB', 'http://welt1.freewar.de/freewar/agb.php' %></li>
+<li><%= link_to 'Banngründe', 'http://forum.freewar.de/viewtopic.php?f=8&t=20238' %></li>
+</ul>
+
+<h3>Aussagen von Sotrax</h3>
+<blockquote cite="http://forum.freewar.de/viewtopic.php?f=9&t=12626&p=173840&hilit=Highlighting#p173840" class="forum">
+Generell sind scripts verboten, welche Aktionen ausführen, also automatisiert 
+rumlaufen, sieben, oder sonstiges machen. Ein Script welches rein passiv ist 
+dürfte ok sein, wenn es z.B. nur das Highlighting übernimmt. Dennoch ist das ein 
+schmaler Grat, wenn das Script direkte Vorteile verschafft, z.b. Töne abgibt wenn 
+ein NPC irgendwo spawnt, dann ist es verboten. Man sollte da also etwas vorsichtig
+sein.
+</blockquote>

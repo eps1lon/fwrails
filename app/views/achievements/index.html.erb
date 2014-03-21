@@ -1,0 +1,48 @@
+<h1><%= t ".head" %></h1>
+<p><%= t "achievements.common.dump_info" %></p>
+<h2><%= t "achievements.common.worlds" %></h2>
+<p><%= t "achievements.common.change_world" %>:</p>
+<ul class="worlds">
+  <li>
+    <%= link_to t("achievements.common.worlds_all"), 
+                  achievements_index_url %>
+  </li>
+  <li>
+    <%= link_to t("achievements.common.not_testworld"), 
+                achievements_index_url(params.merge({:world => '!W1'})) %>
+  </li>
+  <% @all_worlds.each do |world| %>
+    <li><%= link_to world.short, 
+                    achievements_index_url(:world => world.short), 
+                    :title => world.localized_name %></li>
+  <% end %>
+</ul>
+<p id="last_update">
+  <%= t "time.last_update" %>: 
+  <time datetime="<%= @last_update %>"><%= l @last_update %></time>
+</p>
+<% cache(cache_key_for_achievements('index', @worlds)) do %>
+  <table id="achievements">
+    <caption>
+    </caption>
+    <tr>
+      <th class="achievement"><%= Achievement.human_attribute_name("group_name") %></th>
+      <th><%= Achievement.human_attribute_name("achiev_count") %></th>
+      <th><%= Achievement.human_attribute_name("max_stage") %></th>
+      <th><%= Achievement.human_attribute_name("created_at") %></th>
+    </tr>
+    <% @achievements.each do |achievement,i| %>
+      <tr>
+        <td class="achievement">
+          <%= link_to achievement.group_name,
+                      achievement_url(achievement, :group_page => true) %>
+          <%= image_tag("achievements/#{achievement.gfx_file}", 
+                        :alt => achievement.group_name) %>
+        </td>
+        <td><%= achievement.achiev_count %></td>
+        <td><%= achievement.max_stage %></td>
+        <td><%= time_tag achievement.created_at.to_date %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>

@@ -1,0 +1,11 @@
+<td>
+  <% unless user.user.nil? %>
+    <%= link_to user.user.name, user_url(user.user.name, user.world.short) %>
+  <% else %>
+    <del><%= user.user_id %></del>
+  <% end %>
+</td>
+<td><%= user.name_old %></td>
+<td><%= user.name_new %></td>
+<td><time datetime="<%= user.created_at %>"><%= l user.created_at, :format => :long %></time></td>
+<td><%= user.world.name %></td>

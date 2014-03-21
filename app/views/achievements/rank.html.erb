@@ -1,0 +1,128 @@
+<!-- TODO: Permalink -->
+<h1><%= t ".head" %></h1>
+<p><%= t "achievements.common.dump_info" %></p>
+<h2><%= t "achievements.common.worlds" %></h2>
+<p><%= t "achievements.common.change_world" %>:</p>
+<ul class="worlds">
+  <li data-world="">
+    <%= link_to t("achievements.common.worlds_all"), 
+                achievements_rank_url(params.merge({:world => nil})) %>
+  </li>
+  <li data-world="!W1">
+    <%= link_to t("achievements.common.not_testworld"), 
+                achievements_rank_url(params.merge({:world => '!W1'})) %>
+  </li>
+  <% @all_worlds.each do |world| %>
+    <li data-world="<%= world.short %>">
+      <%= link_to world.short, 
+                  achievements_rank_url(params.merge({:world => world.short, :page => 1})) %>
+    </li>
+  <% end %>
+</ul>
+<h2><%= t ".achiev_groups.head" %></h2>
+<p><%= t ".achiev_groups.message" %></p>
+<ul id="achiev_groups">
+  <% @achiev_groups.each do |achievement| %>
+    <li data-container-for="<%= "achiev_group_#{achievement.group}" %>">
+      <%= image_tag("achievements/#{achievement.gfx_file}",
+                    :alt => achievement.group_name,
+                    :class => "ui-draggable",
+                    :id => "achiev_group_#{achievement.group}",
+                    :title => achievement.group_name)
+                   %>
+    </li>
+  <% end %>
+</ul>
+<h2><%= t ".users" %></h2>
+
+<p id="permalink">
+    <em><%= t ".current_link" %></em>
+    <%= link_to achievements_rank_url, achievements_rank_url(params.merge({:ids => '_ids_'})) %>
+</p>
+<p id="last_update">
+  <em><%= t "time.last_update" %></em>:
+  <%= time_tag @last_update %>
+</p>
+<nav class="pages">
+  <strong><%= t "helpers.nav.page" %></strong>
+  <%= nav_links = nav(@offset, @limit, UsersAchievementsCache.count, method(:achievements_rank_url)).join.html_safe %>
+</nav>
+<% cache(cache_key_for_achievements('index', @worlds)) do %>
+  <table id="users">
+    <caption>
+      <%= t '.caption', :count => @users.length, :worlds => @worlds.collect(&:short).to_sentence %>
+    </caption>
+    <thead>
+      <tr>
+        <th class="user_id" data-order="user_id">
+          <%= UsersAchievementsCache.human_attribute_name('user_id') %>
+        </th>
+        <% @achievements.each do |achievement| %>
+          <th data-container-for="<%= "achiev_group_#{achievement.group}" %>" data-order="<%= achievement.group %>">
+            <%= image_tag("achievements/#{achievement.gfx_file}", 
+                          :alt => achievement.group_name, 
+                          :class => "ui-draggable",
+                          :id => "achiev_group_#{achievement.group}",
+                          :title => achievement.group_name) %>
+            <%= link_to '', 
+                        achievements_rank_url(params.merge({:order => achievement.group, :by => @by, :page => 1})),
+                        :class => 'sort no-content',
+                        :title => t("helpers.links.sort", :col => achievement.group_name) %>
+          </th>
+        <% end %>
+        <th class="count" data-order="count">
+          <%= link_to UsersAchievementsCache.human_attribute_name('count'),
+                      achievements_rank_url(params.merge({:order => 'count', :by => @by, :page => 1})),
+                      :class => 'sort',
+                      :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('count')) %>
+         </th>
+        <th class="reward" data-order="reward_collected">
+          <%= link_to UsersAchievementsCache.human_attribute_name('reward_collected'),
+                      achievements_rank_url(params.merge({:order => 'reward_collected', :by => @by, :page => 1})),
+                      :class => 'sort',
+                      :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('reward_collected')) %>
+        </th>
+        <th class="world">
+          <%= UsersAchievementsCache.human_attribute_name('world_id') %>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user_cache| %>
+      <tr id="user_<%= user_cache.user.to_param %>">
+        <td class="user_id">
+          <% if user_cache.user.nil? %>
+            <del><%= user_cache.user_id %></del>
+          <% else %>
+            <%= link_to user_cache.user.name, user_url(:name => user_cache.user.name, :world => user_cache.world.short) %>
+          <% end %>
+        </td>
+        <% @achievements.each_with_index do |achievement, i| %>
+          <td class="achiev_group_<%= achievement.group %>"><%= user_cache.achievements[i].nil? ? 0 : user_cache.achievements[i].stage %></td>
+        <% end %>
+        <td class="count"><%= number_with_delimiter user_cache.count %></td>
+        <td class="reward"><%= number_with_delimiter user_cache.reward_collected %></td>
+        <td class="world"><%= user_cache.world.name %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+<% end %>
+<nav class="pages">
+  <strong><%= t "helpers.nav.page" %></strong>
+  <%= nav_links %>
+</nav>
+<script type="text/javascript">
+  var achievements_group_progress_url = <%= achievements_group_progress_url(:format => 'json',
+                                                                            :group => '_group_', 
+                                                                            :users => '_users_').to_json.html_safe %>,
+      achievements_rank_url = <%= achievements_rank_url(params.merge({:ids => '_ids_'})).to_json.html_safe %>,
+      fallback_urls = <%= {
+        '#users th a' => {'replace' => 'order', 
+                          'href' => achievements_rank_url(params.merge({:order => '_order_', :by => @by, :ids => '_ids_', :page => 1}))},
+        'ul.worlds a' => {'replace' => 'world', 
+                          'href' => achievements_rank_url(params.merge({:world => '_world_', :by => params[:by], :ids => '_ids_', :page => 1}))}
+        
+      }.to_json.html_safe %>,
+      users_nav_url = <%= achievements_rank_url(params.merge({:page => '_page_', :by => @by, :ids => '_ids_'})).to_json.html_safe %>;
+</script>
