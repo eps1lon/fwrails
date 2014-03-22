@@ -8,7 +8,9 @@ require_once JPGRAPH_INCLUDE . '/jpgraph.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_line.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_date.php';
 
-JpGraphError::SetErrLocale('de.fwrails');
+if (RAILS_ENV == 'production') {
+    JpGraphError::SetErrLocale('de.fwrails');
+}
 
 // we only need the mysqli adapter
 $db = $dbi;
