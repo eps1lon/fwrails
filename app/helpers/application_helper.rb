@@ -1,4 +1,8 @@
 module ApplicationHelper
+  def root_url_without_trailing_slash
+    request.protocol + request.host_with_port
+  end
+  
   def wiki_url(page)
     "http://www.fwwiki.de/index.php/#{page.gsub(/\s?(-|\/)\s?/, '\1')}"
   end

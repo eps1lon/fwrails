@@ -13,7 +13,7 @@
             
 <% unless params[:mode].blank? %>
   <h2><%= t ".heading" %></h2>
-  <%= form_tag('', :method => 'POST', :id => 'achievement_graph') do %>
+  <%= form_tag(url_for(:mode => params[:mode]), :method => 'POST', :id => 'achievement_graph') do %>
   
   <h3><%= t ".data.heading" %></h3>
   <section id="data">
@@ -41,11 +41,17 @@
   <% end %>
   
   <% if @graph_ready %>
-    <h2><%= t ".graph_ready" %></h2>
-    <details>
-      <% img_path = graph_img_url([@data, @config]) %>
-      <%= link_to 'Bildlink', img_path, :target => :blank %>
-      <%= image_tag img_path %>
+    <h2><%= t "graphs.graph_ready" %></h2>
+    <details class="graph">
+      <% img_url = graph_img_url([@data, @config]) %>
+      
+      <%= label_tag "img_url", t("graphs.img_url") %>
+      <%= text_field_tag "img_url", img_url, :disabled => true %>
+      
+      <%= label_tag "graph_profile_code", t("graphs..graph_profile_code") %>
+      <%= text_area_tag "graph_profile_code", graph_profile_code([@data, @config]), :disabled => true, :rows => 2 %>
+
+      <%= image_tag img_url %>
     </details>
   <% end %>
 <% end %>

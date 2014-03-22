@@ -595,6 +595,9 @@ de:
       beta: "Testphase"
       available: "verfügbar"
   graphs:
+    graph_profile_code: "Profilcode"
+    graph_ready: "Fertiger Graph"
+    img_url: "Bildlink"
     achievements:
       achievement: "Errungenschaft"
       data: 

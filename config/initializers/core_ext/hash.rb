@@ -1,5 +1,5 @@
 class Hash
-  def map_keys(&block)
-    
+  def compact
+    self.delete_if { |_,v| v.blank? }
   end
 end

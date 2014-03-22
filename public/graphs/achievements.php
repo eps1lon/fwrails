@@ -31,12 +31,18 @@ $achievement_worlds = "IN (" . implode(",", $world_ids) . ")";
 // init data
 $data = [];
 
+$input = filter_var_array($_GET, [
+    'achievement' => FILTER_VALIDATE_INT,
+    'mode' => FILTER_DEFAULT,
+    'users' => ['filter'  => FILTER_DEFAULT,
+                 'flags'  => FILTER_FORCE_ARRAY],
+    'worlds' => ['filter' => FILTER_DEFAULT,
+                 'flags'  => FILTER_FORCE_ARRAY]
+]);
 // achievement
-$achievement_id = filter_input(INPUT_GET, 'achievement', FILTER_VALIDATE_INT);
-$achievement_name = $db->escape_string(filter_input(INPUT_GET, 'achievement'));
+$achievement_id = $input['achievement'];
 $sql_query = "SELECT achievement_id, name FROM achievements " .
-             "WHERE name = '$achievement_name' OR " .
-             "achievement_id = '$achievement_id' LIMIT 1";
+             "WHERE achievement_id = '$achievement_id' LIMIT 1";
 $result = $db->query($sql_query);
 
 if ($achievement = $result->fetch_assoc()) {
@@ -48,14 +54,13 @@ if ($achievement = $result->fetch_assoc()) {
 }
 
 // graph mode
-$mode = filter_input(INPUT_GET, 'mode');
+$mode = $input['mode'];
 
 if ($mode == 'user') {
     $user_primaries = [];
     
     // escape userinput
-    $users = filter_input(INPUT_GET, 'users', 
-                          FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+    $users = $input['users'];
     if ($users) {
         for ($i = 0, $count = count($users); $i < $count; ++$i) {
             $user_param = user_from_param($users[$i]);
@@ -88,8 +93,6 @@ if ($mode == 'user') {
         while ($change = $changes->fetch_assoc()) {
             $data[user_to_param($change)][$change['created_at']] = $change['progress'];
         }
-        
-        
     }
 
 } else if ($mode == 'world') {
@@ -97,8 +100,7 @@ if ($mode == 'user') {
     // TODO: all worlds
     
     // escape userinput
-    $worlds = filter_input(INPUT_GET, 'worlds', 
-                           FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+    $worlds = $input['worlds'];
     if ($worlds) {
         $world_shorts = array_map([$db, 'escape_string'], $worlds);
         

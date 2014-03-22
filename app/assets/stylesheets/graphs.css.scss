@@ -25,3 +25,17 @@ input[type=submit] {
   display: block;
   margin: 1em;
 }
+
+details.graph {
+    * {
+        display: block;
+    }
+    
+    #img_url, #graph_profile_code {
+        width: 90%;
+    }
+       
+    #img_url, label[for="img_url"] {
+        display: inline-block;
+    }
+}

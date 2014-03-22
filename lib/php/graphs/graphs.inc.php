@@ -42,8 +42,14 @@ function number_in_magnitudes($i) {
     return $i;
 }
 
+// parse base64
+if ($base64 = filter_input(INPUT_GET, 'base64')) {
+    parse_str(base64_decode($base64), $_GET);
+}
+
 // std values
 $title = '';
 $subtitle = '';
 $data = [];
 $date_format = 'M, Y';
+$legend = [0];

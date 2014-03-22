@@ -1,5 +1,9 @@
 class GraphsController < ApplicationController
   before_filter :except => :index do
+    # parse base64
+    unless params[:base64].blank?
+      params.merge!(Rack::Utils.parse_nested_query(Base64.decode64(params[:base64])))
+    end
     
     @distances_for_select = [
       1.day,
