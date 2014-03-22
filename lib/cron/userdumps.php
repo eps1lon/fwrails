@@ -1,5 +1,6 @@
 <?php
 require 'common.cron.php';
+/* @var $db mysql adapter */
 
 define('MAX_QUERIES', 10000); // max_allowed_pack
 define('MAX_CURL_CONNECTIONS', 50);
@@ -110,7 +111,10 @@ while ($world = mysql_fetch_assoc($worlds)) {
         
         implode_runtime($sql_query, $i, $insert_query, $db);
         
-        $race_id = race_id($data[3]);
+        $race_id = race_id($data[3]);##
+        if ($race_id === false) {
+            var_dump($data);
+        }
         $clan_id = @(int)$data[4]; // extended dump
         
         $sql_query .= "(" . mysql_encode(+$data[0], $db) . ", ".        // user_id
@@ -141,7 +145,7 @@ if (!empty($recover_clan)) {
 
 // create dumps
 create_dumps($db);
-exit;
+
 $update_queries = array();
 $sql_queries = array();
 $mark_tables = array("users_achievements_caches",

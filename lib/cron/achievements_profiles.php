@@ -121,7 +121,6 @@ if ($limit) {
     }
 }
 #$sql_query = "SELECT user_id, world_id FROM users WHERE world_id IN ($world_ids) AND user_id = 56777 AND world_id = 3 ORDER BY RAND() LIMIT 1";
-
 $result = error_query($sql_query, $db);
 
 // init counter vars

@@ -31,6 +31,21 @@ function get_world($url, $worlds) {
     return null;
 }
 
+function get_stage($progress, $achievement_id, $achievements) {
+    if (isset($achievements[$achievement_id])) {
+        for ($stage = 1; $stage <= $achievements[$achievement_id][1]['max_stage']; ++$stage) {
+            $achievement = $achievements[$achievement_id][$stage];
+            if (is_null($achievement['needed']) || $progress < $achievement['needed']) {
+                break;
+            }  
+        }
+        
+        return $stage - 1;
+    }
+    
+    return 0;
+}
+
 function curlm_each_dump($dump_plain, $handle, $j) {
     global $worlds, $sql_i_progress, $sql_query_progress, $insert_query_progress,
            $now, $db, $achievements;
@@ -67,16 +82,7 @@ function curlm_each_dump($dump_plain, $handle, $j) {
         }
         
         // TODO get stage
-        $stage = 0;
-        if (isset($achievements[$achievement_id])) {
-            for ($stage = 1; $stage <= $achievements[$achievement_id][1]['max_stage']; ++$stage) {
-                $achievement = $achievements[$achievement_id][$stage];
-                if (isNull($achievement['needed']) || $progress < $achievement['needed']) {
-                    $stage -= 1;
-                    break;
-                }  
-            }
-        }
+        $stage = get_stage($progress, $achievement_id, $achievements);
         
         implode_runtime($sql_query_progress, $sql_i_progress, 
                         $insert_query_progress, $db);
