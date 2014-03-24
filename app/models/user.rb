@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   self.primary_keys = :user_id, :world_id
   
+  after_initialize :build_world
+  
   alias_attribute :updated_at, :created_at
   
   belongs_to :clan, :foreign_key => [:clan_id, :world_id]
@@ -31,6 +33,10 @@ class User < ActiveRecord::Base
                         :class_name => 'UsersAchievements',
                         :foreign_key => [:user_id, :world_id]
   
+  def build_world
+    self.world = World.new if self.world.nil?
+  end
+  
   def self.last_update
     self.first.updated_at
   end
@@ -42,17 +48,24 @@ class User < ActiveRecord::Base
   
   def self.primary_from_param(param)
     primaries = param.split('-')
-    {:user_id => primaries[0], :world_id => primaries[1]}
+    {:user_id => primaries[0].to_i, :world_id => primaries[1].to_i}
+  end
+  
+  def self.find_by_name_and_world_short(name, world_short)
+    joins(:world).where(name: name, worlds: {short: world_short}).take
   end
   
   # composite primary finder method
-  def self.from_params(user_params, table = self)
+  def self.from_params(user_params)
     primaries = []
     user_params.map{ |p| User.primary_from_param(p) }.each do |param|
       primaries << "(#{self.table_name}.user_id = #{param[:user_id].to_i} " +
                     "AND #{self.table_name}.world_id  = #{param[:world_id].to_i})"
     end
     
+    if primaries.empty?
+      return []
+    end
     where(primaries.join(' OR '))
   end
   

@@ -15,8 +15,7 @@
   <h2><%= t ".heading" %></h2>
   <%= form_tag(url_for(:mode => params[:mode]), :method => 'POST', :id => 'achievement_graph') do %>
   
-  <h3><%= t ".data.heading" %></h3>
-  <section id="data">
+  <%= field_set_tag t(".data.heading"), :id => 'data' do %>
   <%= label_tag 'achievement', t(".achievement") %>
   <%= select_tag 'achievement', 
                  options_from_collection_for_select(@achievements,
@@ -30,28 +29,27 @@
       t ".mode_not_found"
     end
   %>
-  </section>
-
-  <h3><%= t "graphs.config.heading" %></h3>
-  <section id="config">
-  <%= render :partial => 'config' %>
-  </section>
+  <% end %>
+  
+  <%= field_set_tag t("graphs.config.heading"), :id => 'config' do %>
+    <%= render :partial => 'config' %>
+  <% end %>
   
   <%= submit_tag t ".submit" %>
   <% end %>
   
   <% if @graph_ready %>
     <h2><%= t "graphs.graph_ready" %></h2>
+    <% img_url = graph_img_url([@data, @config]) %>
+    <%= image_tag img_url %>
+    
     <details class="graph">
-      <% img_url = graph_img_url([@data, @config]) %>
-      
+      <summary><%= t "graphs.summary" %></summary>
       <%= label_tag "img_url", t("graphs.img_url") %>
       <%= text_field_tag "img_url", img_url, :disabled => true %>
       
       <%= label_tag "graph_profile_code", t("graphs..graph_profile_code") %>
-      <%= text_area_tag "graph_profile_code", graph_profile_code([@data, @config]), :disabled => true, :rows => 2 %>
-
-      <%= image_tag img_url %>
+      <%= text_area_tag "graph_profile_code", graph_profile_code([@data, @config]), :disabled => true, :rows => 5 %>
     </details>
   <% end %>
 <% end %>

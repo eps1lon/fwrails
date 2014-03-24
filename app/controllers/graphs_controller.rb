@@ -75,15 +75,13 @@ class GraphsController < ApplicationController
       std_user_param = {:world => {}}
       params[:users] ||= []
       params[:user] ||= std_user_param
-
-      user = User.includes(:world).where(:name => params[:user][:name],
-                                         :worlds => {:short => params[:user][:world][:short]})
-                                  .first
+      
+      user = User.includes(:world).find_by_name_and_world_short(params[:user][:name], params[:user][:world][:short])
       unless user.nil?
         params[:users] << user.to_param
         params[:user] = std_user_param
       end
-    
+      
       @users_for_select = User.from_params(params[:users]).uniq.map do |user|
         [user.name_primary, user.to_param]
       end
