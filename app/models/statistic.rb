@@ -28,8 +28,8 @@ class Statistic < ActiveRecord::Base
     group_by = [:achievement_id]
     group_by << options[:group_by] if options[:group_by]
     
-    UsersAchievementsProgress.where(:achievement_id => group, :world_id => options[:in_worlds]).
-                              group(group_by).sum(:progress)
+    UsersAchievements.where(:achievement_id => group, :world_id => options[:in_worlds]).
+                      group(group_by).sum(:progress)
   end
   
   def self.achievement_statistic_to_statistic(progress, last_update = nil)

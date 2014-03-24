@@ -5,7 +5,9 @@
 <p><%= t ".world_change" %></p>
 <ul class="worlds">
   <% @worlds_all.each do |world| %>
-    <li><%= link_to world.short, statistics_url(:world => world.short) %></li>
+    <li><%= link_to world.short, 
+                    statistics_url(:world => world.short), 
+                    :title => "#{world.localized_name}" %></li>
   <% end %>
 </ul>
 <% cache(cache_key_for_statistics(@worlds)) do %>

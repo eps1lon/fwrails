@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
-  before_filter :set_locale, :set_visible_controllers
+  before_filter :set_locale, :set_nav_controllers
   before_filter do 
     authenticate_or_request_with_http_basic('FWRails') do |user_name, password|
       Member.auth?(user_name, password, :developer)
@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
     rescue_from StandardError, with: :render_500
   end
   
-  def set_visible_controllers
-    @controllers = %w{users clans graphs achievements statistics}
+  def set_nav_controllers
+    @controllers = %w{users clans graphs achievements}
   end
   
   def set_locale
