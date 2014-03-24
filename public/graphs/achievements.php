@@ -153,12 +153,15 @@ unset($group_data); // break the reference with the last element
 $width = 600;
 $height = 300;
 $margin = [
-    'left'   => 50,
+    'left'   => 60,
     'top'    => 30,
     'right'  => 5,
     'bottom' => 30
 ];
 $graph_dimensions_mode = DIMENSIONS_FIXED_GRAPH;
+
+$graph_tick_count_major = 6;
+$graph_tick_count_minor = 12;
 
 // draw graph
 include RAILS_ROOT . '/lib/php/graphs/graphs.scaffold.php';

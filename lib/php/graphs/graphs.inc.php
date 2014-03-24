@@ -7,6 +7,7 @@ define('JPGRAPH_INCLUDE', RAILS_ROOT . '/lib/php/jpgraph/src');
 require_once JPGRAPH_INCLUDE . '/jpgraph.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_line.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_date.php';
+require_once JPGRAPH_INCLUDE . '/jpgraph_utils.inc.php';
 
 if (RAILS_ENV == 'production') {
     JpGraphError::SetErrLocale('de.fwrails');
