@@ -145,6 +145,7 @@ if ($mode == 'user') {
 foreach ($data as &$group_data) {
     ksort($group_data, SORT_NUMERIC);
 }
+unset($group_data); // break the reference with the last element
 
 // graph settings
 
