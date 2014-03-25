@@ -70,9 +70,9 @@ class AchievementsController < ApplicationController
     # format of params[:users]: user[,user]...
     
     users = User.from_params(params[:users].split(','))
-                .includes(:users_achievements)
+                .includes(:progresses)
                 .where(users_achievements: {:achievement_id => params[:group]})
-    achievements = users.map { |u| u.users_achievements.first }
+    achievements = users.map { |u| u.progresses[0] unless u.progresses.empty? }
     
     respond_to do |format|
       format.json { render json: achievements, only: [:user_id, :world_id, :stage] }
