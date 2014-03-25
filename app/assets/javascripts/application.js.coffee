@@ -16,6 +16,9 @@ $('.races li, .worlds li').tooltip {
   track: true
 }
 
+window.set_loading = (state) ->
+  $('#loading').prop 'checked', state
+
 # i18n-js wrapper
 window.l = (type, value) ->
   I18n.l(type, value)

@@ -34,6 +34,9 @@
     <%= label_tag :name, "#{User.human_attribute_name("name")}:" %>
     <%= text_field_tag(:name, params[:name]) %>
     <%= submit_tag t "helpers.submit.search" %>
+  
+    <%= check_box_tag 'loading', 1, false, :disabled => true, :class => 'loading' %>
+    <%= label_tag 'loading', loading_markup %>
   <% end %>
 <% end %>
 

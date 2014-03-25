@@ -3,10 +3,7 @@ $(document).ready ->
     option = $ '<option value="' + elem[1] + '">' + elem[0] + '</option>'
     option.prop 'selected', selected
     select.append option
-  
-  set_loading = (state) ->
-    $('#loading').prop 'checked', state
-  
+    
   $('#add_user').click ->
     set_loading true
     

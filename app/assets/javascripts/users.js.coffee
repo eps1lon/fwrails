@@ -17,6 +17,7 @@ $(document).ready ->
     source: (request, response) -> 
       url = users_url.replace /_name_/, request.term
       users = []
+      set_loading true
       
       $.getJSON url, (data) ->
         #console.log data
@@ -24,6 +25,7 @@ $(document).ready ->
             world = (world for world in worlds when world.id is user.world_id)[0]['short']
             users.push {value: user.name, label: user.name + '(' + world + ')', world: world}
           response users
-    select: (event, ui) ->
-      #window.location.href = (user_url.replace /_name_/, ui.item.value).replace /_world_/, ui.item.world
+        set_loading false
+    focus: (event, ui) ->
+      $(event.toElement).prop 'href', (user_url.replace /_name_/, ui.item.value).replace /_world_/, ui.item.world
   })

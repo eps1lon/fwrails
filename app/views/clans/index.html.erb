@@ -13,12 +13,15 @@
 
 <% unless @skipsearch.eql?(true) %>
   <%= form_tag(clans_url(:action => params[:action], :world => params[:world]), 
-                         :class => ("suggest" if @suggest_limit > 0), :id=> 'search', :autocomplete => 'off') do %>
-  <%= label_tag :name, "#{Clan.human_attribute_name("name")}:" %>
-  <div>
-    <%= text_field_tag(:name) %>
-  </div>
-  <%= submit_tag t "helpers.submit.search" %>
+                         :class => ("suggest" if @suggest_limit > 0), 
+                         :id=> 'search', :autocomplete => 'off') do 
+  %>
+    <%= label_tag :name, "#{Clan.human_attribute_name("name")}:" %>
+    <%= text_field_tag(:name, params[:name]) %>
+    <%= submit_tag t "helpers.submit.search" %>
+  
+    <%= check_box_tag 'loading', 1, false, :disabled => true, :class => 'loading' %>
+    <%= label_tag 'loading', loading_markup %>
   <% end %>
 <% end %>
 
