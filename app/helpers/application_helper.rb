@@ -24,7 +24,7 @@ module ApplicationHelper
     if clan.nil?
       "<del class='clan'>{#{tag}}</del>".html_safe
     else
-      link_to(clan.tag.html_safe, clan_url(clan.clan_id, world_short))
+      link_to(tag_markup(clan, 'em'), clan_url(clan.clan_id, world_short))
     end     
   end
   

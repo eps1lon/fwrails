@@ -3,6 +3,6 @@
   <%= link_to_clan_or_del(clan.clan, clan.tag, clan.world.short) %>
 </td>
 <td class="created_at">
-  <time datetime="<%= clan.created_at %>"><%= l clan.created_at.to_date %></time>
+  <%= time_tag clan.created_at.to_date %>
 </td>
 <td class="world_id"><%= clan.world.short %></td>

@@ -1,7 +1,7 @@
 class Clan < ActiveRecord::Base
   self.primary_keys = :clan_id, :world_id
   
-  TAG_FLAGS = Hash[%w{numeric inspected notag}.each_with_index.map {|flag,i| [flag.to_sym, 2**i]}]
+  TAG_FLAGS = Hash[%w{notag inspected}.each_with_index.map {|flag,i| [flag.to_sym, 2**i]}]
   
   belongs_to :world
   
@@ -41,7 +41,7 @@ class Clan < ActiveRecord::Base
   end
   
   def tag_is?(flag)
-    (TAG_FLAGS.include?(:flag) && self.tag_flags & TAG_FLAGS[:flag]) || false
+    TAG_FLAGS.include?(flag) && (self.tag_flags & TAG_FLAGS[flag]).to_b
   end
   
   def tag_flags
@@ -50,17 +50,13 @@ class Clan < ActiveRecord::Base
 
     if tag.blank? 
       flags |= TAG_FLAGS[:notag]
-    elsif tag.is_numeric?
-      flags |= TAG_FLAGS[:numeric]
     else
       if tag.scan(/[[:print:]]/).empty? # tag consists only of non-printable chars
         # some unicode chars get detected as non-printable and they wont get 
         # displayed unless we replace them with their correspondending html entity
         tag = tag.dump.gsub("\\u{85}", "&hellip;") 
 
-        if tag.scan(/[[:print:]]/).empty?
-          flags |= TAG_FLAGS[:inspected]
-        end
+        flags |= TAG_FLAGS[:inspected] if tag.scan(/[[:print:]]/).empty?
       end
     end
       
@@ -71,7 +67,7 @@ class Clan < ActiveRecord::Base
     if tag_is?(:notag)
       self.clan_id.to_s
     elsif tag_is?(:inspected)
-      self['tag'].inspect[1..-2] # remove trailing/dangling quotes
+      self['tag'].inspect
     else 
       self['tag']
     end

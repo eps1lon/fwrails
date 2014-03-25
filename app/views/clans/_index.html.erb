@@ -1,5 +1,5 @@
 <td class="id"><%= clan.clan_id %></td>
-<td class="tag"><%= link_to ClansHelper::Tag::as_em(clan.tag).html_safe, clan_url(clan.clan_id, clan.world.short) %></td>
+<td class="tag"><%= link_to tag_markup(clan, 'em'), clan_url(clan.clan_id, clan.world.short) %></td>
 <td class="name"><%= clan.name || t("clans.commons.noname") %></td>
 <td class="sum_experience"><%= number_with_delimiter(clan.sum_experience.to_i) %></td>
 <td class="member_count"><%= number_with_delimiter(clan.member_count.to_i) %></td>

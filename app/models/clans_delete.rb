@@ -5,7 +5,7 @@ class ClansDelete < ActiveRecord::Base
   belongs_to :world
   
   def tag
-    return self.clan_id if self['tag'].chop.blank?
+    return self.clan_id.to_s if self['tag'].chop.blank?
     self['tag']
   end
 end
