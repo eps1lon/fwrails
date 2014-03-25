@@ -7,15 +7,18 @@ dl#clandetails {
   }
   
   dd {
-    padding-top: .05em;
+    padding-top: .2em;
+    margin-top : .2em;
+    vertical-align: bottom;
   }
 
   dt {
-    font-size   : 1.05em;
+    font-size   : 1.2em;
     font-weight : bold;
     clear       : both; 
     margin-right: .5em;
     margin-right: 1ch;
+    margin-top  : .2em;
     
     &.members + dd {
       clear      : both;
