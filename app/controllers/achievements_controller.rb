@@ -30,7 +30,6 @@ class AchievementsController < ApplicationController
   end
   
   def rank 
-    # TODO worlds
     @users = UsersAchievementsCache.includes(:user, :achievements, :world).
                                     where(:deleted => false, :world_id => @worlds.collect { |world| world.id })
     

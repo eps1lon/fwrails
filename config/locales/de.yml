@@ -464,6 +464,7 @@ de:
       progress_sums:
         caption: "Fortschritt summiert"
         sum_abbr: "Gesamtfortschritt"
+      rank_url: "Rangliste aller %{name}"
       stages: "Stufen"
       user: "User"
       world: "Welt"

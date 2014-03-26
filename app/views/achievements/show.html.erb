@@ -13,6 +13,8 @@
     <dt class="created_at"><%= Achievement.human_attribute_name("created_at") %></dt>
     <dd class="created_at"><time datetime="<%= @achievement.created_at %>"><%= l @achievement.created_at.to_date %></time></dd>
   </dl>
+  <%= link_to t(".rank_url", :name => @achievement.group_name(count: 2)), 
+              achievements_rank_url(ids: @achievement.achievement_id, order: @achievement.achievement_id) %>
 <% end %>
 <h2><%= t ".stages" %></h2>
 <ul id="stages">

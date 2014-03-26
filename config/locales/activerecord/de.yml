@@ -1,593 +1,680 @@
 ---
 de:
-  activemodel:
+  activerecord:
     achievement:
-      id_1,1:
-        name: Bezwinger des Weltenwandlers
+      '1,1':
         description: Der Weltenwandler muss durch deine Waffe sterben, sprich du musst
           den letzten Schlag gegen den Weltenwandler ausführen.
-      id_1,2:
-        name: Bezwinger des Weltenwandlers
-        description: 'Der Weltenwandler muss 3 mal durch deine Waffe sterben, sprich
+      '1,2':
+        description: Der Weltenwandler muss 3 mal durch deine Waffe sterben, sprich
           du musst den letzten Schlag gegen den Weltenwandler ausführen. Auch wenn
           es seltsam erscheint, jemanden gleich mehrfach zu töten, beim Weltenwandler
-          scheint dies durchaus angebracht und nötig '
-      id_1,3:
-        name: Bezwinger des Weltenwandlers
-        description: 'Der Weltenwandler muss 8 mal durch deine Waffe sterben, sprich
+          scheint dies durchaus angebracht und nötig zu sein.
+      '1,3':
+        description: Der Weltenwandler muss 8 mal durch deine Waffe sterben, sprich
           du musst den letzten Schlag gegen den Weltenwandler ausführen. Auch wenn
           es seltsam erscheint, jemanden gleich mehrfach zu töten, beim Weltenwandler
-          scheint dies durchaus angebracht und nötig '
-      id_1,4:
-        name: Bezwinger des Weltenwandlers
+          scheint dies durchaus angebracht und nötig zu sein.
+      '1,4':
+        description: Der Weltenwandler muss 30 mal durch deine Waffe sterben, sprich
+          du musst den letzten Schlag gegen den Weltenwandler ausführen. Auch wenn
+          es seltsam erscheint, jemanden gleich mehrfach zu töten, beim Weltenwandler
+          scheint dies durchaus angebracht und nötig zu sein.
+      '1,5':
         description: 
-      id_1,5:
-        name: Bezwinger des Weltenwandlers
-        description: 
-      id_2,1:
-        name: Gewebeforscher
+      '2,1':
         description: Liefere 10 gesuchte Gewebeproben bei der Gewebeforschung ab,
           um dich als angehender Gewebeforscher zu beweisen.
-      id_2,2:
-        name: Gewebeforscher
+      '2,2':
         description: Liefere 10 gesuchte Gewebeproben bei der Gewebeforschung ab,
           um dich als angehender Gewebeforscher zu beweisen.
-      id_2,3:
-        name: Gewebeforscher
+      '2,3':
         description: Um ein meisterhafter Gewebeforscher zu werden, liefere 2000 gesuchte
           Gewebeproben bei der Gewebeforschung ab.
-      id_2,4:
-        name: Gewebeforscher
+      '2,4':
         description: Um ein göttlicher Gewebeforscher zu werden, liefere 10000 gesuchte
           Gewebeproben bei der Gewebeforschung ab.
-      id_3,1:
-        name: Glückspilz
+      '2,5':
+        description: Um ein legendärer Gewebeforscher zu werden, liefere 30000 gesuchte
+          Gewebeproben bei der Gewebeforschung ab.
+      '3,1':
         description: Gewinne den Jackpot beim Casino von Ferdolien.
-      id_4,1:
-        name: Kombinatorischer Meister
+      '4,1':
         description: 'Löse das Runenpuzzle in Dranar auf Position X: 56 Y: 100 in
           unter einer Minute, ohne dass es am Ende auch nur ein einziges neutrales
           Element gibt.'
-      id_5,1:
-        name: Undaron-Bezwinger
+      '5,1':
         description: Befreie die Welt von den gefährlichen Undarons und töte 30 davon
           (es zählen keine Geister-Undarons).
-      id_5,2:
-        name: Undaron-Bezwinger
+      '5,2':
         description: Befreie die Welt von den gefährlichen Undarons und töte 200 davon
           (es zählen keine Geister-Undarons).
-      id_5,3:
-        name: Undaron-Bezwinger
+      '5,3':
         description: Befreie die Welt von den gefährlichen Undarons und töte 1000
           davon (es zählen keine Geister-Undarons).
-      id_5,4:
-        name: Undaron-Bezwinger
+      '5,4':
         description: Befreie die Welt von den gefährlichen Undarons und töte 5000
           davon (es zählen keine Geister-Undarons)
-      id_5,5:
-        name: Undaron-Bezwinger
-        description: 
-      id_6,1:
-        name: Meister der Aufträge
+      '5,5':
+        description: Befreie die Welt von den gefährlichen Undarons und töte 20000
+          davon (es zählen keine Geister-Undarons).
+      '6,1':
         description: Schließe erfolgreich 150 Aufträge beim Haus der Aufträge ab.
-      id_6,2:
-        name: Meister der Aufträge
+      '6,2':
         description: Schließe erfolgreich 500 Aufträge beim Haus der Aufträge ab.
-      id_6,3:
-        name: Meister der Aufträge
+      '6,3':
         description: Schließe erfolgreich 3000 Aufträge beim Haus der Aufträge ab.
-      id_6,4:
-        name: Meister der Aufträge
+      '6,4':
         description: Schließe erfolgreich 10000 Aufträge beim Haus der Aufträge ab.
-      id_6,5:
-        name: Meister der Aufträge
+      '6,5':
         description: Schließe erfolgreich 70000 Aufträge beim Haus der Aufträge ab.
-      id_7,1:
-        name: Gruppen-Inspirator
+      '7,1':
         description: Töte in einer Gruppe NPCs und inspiriere insgesamt 5 mal die
           Gruppe.
-      id_7,2:
-        name: Gruppen-Inspirator
+      '7,2':
         description: Töte in einer Gruppe NPCs und inspiriere insgesamt 50 mal die
           Gruppe.
-      id_7,3:
-        name: Gruppen-Inspirator
+      '7,3':
         description: Töte in einer Gruppe NPCs und inspiriere insgesamt 400 mal die
           Gruppe.
-      id_7,4:
-        name: Gruppen-Inspirator
+      '7,4':
         description: Töte in einer Gruppe NPCs und inspiriere insgesamt 3000 mal die
           Gruppe.
-      id_7,5:
-        name: Gruppen-Inspirator
+      '7,5':
         description: Töte in einer Gruppe NPCs und inspiriere insgesamt 20000 mal
           die Gruppe.
-      id_8,1:
-        name: Wettkönig
+      '8,1':
         description: Erhalte vom Haus der Aufträge für den Auftrag "Die Wette" mindestens
           40 Auftragspunkte. Es handelt sich dabei um den Auftrag, bei dem du NPCs
           in aufsteigender Reihenfolge ihrer Angriffsstärke töten musst.
-      id_9,1:
-        name: Zu zweit ist man stärker
+      '9,1':
         description: Töte in einer Zweier-Gruppe die Baru-Schrecke. Die Baru-Schrecke
           muss dabei von deiner Gruppe markiert sein und darf bis zum Tod nur von
           maximal 2 Personen geschlagen werden.
-      id_10,1:
-        name: Tollo-Superjackpotknacker
+      '10,1':
         description: Gewinne im Tollo mit 6 richtigen Zahlen.
-      id_11,1:
-        name: Todesgrottengärtner
+      '11,1':
         description: Ernte die Pflanze Dunkelgrottenmoos in der Grotte des Todes.
-      id_11,2:
-        name: Todesgrottengärtner
+      '11,2':
         description: Ernte 5 mal die Pflanze Dunkelgrottenmoos in der Grotte des Todes.
-      id_11,3:
-        name: Todesgrottengärtner
+      '11,3':
         description: Ernte 15 mal die Pflanze Dunkelgrottenmoos in der Grotte des
           Todes.
-      id_11,4:
-        name: Todesgrottengärtner
+      '11,4':
         description: Ernte 70 mal die Pflanze Dunkelgrottenmoos in der Grotte des
           Todes.
-      id_11,5:
-        name: Todesgrottengärtner
+      '11,5':
         description: Ernte 500 mal die Pflanze Dunkelgrottenmoos in der Grotte des
           Todes.
-      id_12,1:
-        name: Stärkekoloss
+      '12,1':
         description: Erhöhe mit der Kette der unsäglichen Kraft deine Stärke um das
           30fache deiner normalen Stärke. Die gesamte Stärke muss dabei 300 Punkte
           übersteigen.
-      id_13,1:
-        name: Phasenjäger
+      '13,1':
         description: Töte 30 Phasenkreaturen.
-      id_13,2:
-        name: Phasenjäger
+      '13,2':
         description: Töte 200 Phasenkreaturen.
-      id_13,3:
-        name: Phasenjäger
+      '13,3':
         description: Töte 800 Phasenkreaturen.
-      id_13,4:
-        name: Phasenjäger
+      '13,4':
         description: Töte 4000 Phasenkreaturen.
-      id_13,5:
-        name: Phasenjäger
+      '13,5':
         description: Töte 80000 Phasenkreaturen.
-      id_14,1:
-        name: Blitzableiter
+      '14,1':
         description: Werde bei Gewitter von einem Blitz getroffen
-      id_15,1:
-        name: Meister des Schreckens
+      '15,1':
         description: Verjage 15 NPCs, welche jeweils mindestens 10 Goldmünzen fallen
           lassen.
-      id_15,2:
-        name: Meister des Schreckens
+      '15,2':
         description: Verjage 50 NPCs, welche jeweils mindestens 10 Goldmünzen fallen
           lassen.
-      id_15,3:
-        name: Meister des Schreckens
+      '15,3':
         description: Verjage 50 NPCs, welche jeweils mindestens 10 Goldmünzen fallen
           lassen.
-      id_15,4:
-        name: Meister des Schreckens
+      '15,4':
         description: Verjage 1500 NPCs, welche jeweils mindestens 10 Goldmünzen fallen
           lassen.
-      id_15,5:
-        name: Meister des Schreckens
+      '15,5':
         description: Verjage 5000 NPCs, welche jeweils mindestens 10 Goldmünzen fallen
           lassen.
-      id_15,6:
-        name: Meister des Schreckens
+      '15,6':
         description: Verjage 15.000 NPCs, welche jeweils mindestens 10 Goldmünzen
           fallen lassen.
-      id_15,7:
-        name: Meister des Schreckens
-        description: 
-      id_15,8:
-        name: Meister des Schreckens
-        description: 
-      id_16,1:
-        name: Pflanzenkundler
+      '15,7':
+        description: Verjage 30000 NPCs, welche jeweils mindestens 10 Goldmünzen fallen
+          lassen.
+      '15,8':
+        description: Verjage 90000 NPCs, welche jeweils mindestens 10 Goldmünzen fallen
+          lassen.
+      '16,1':
         description: Ernte 25 Pflanzen.
-      id_16,2:
-        name: Pflanzenkundler
+      '16,2':
         description: Ernte 100 Pflanzen.
-      id_16,3:
-        name: Pflanzenkundler
+      '16,3':
         description: Ernte 800 Pflanzen, die jeweils mindestens Pflanzenkunde 30 zum
           Ernten benötigen.
-      id_16,4:
-        name: Pflanzenkundler
+      '16,4':
         description: Ernte 5000 Pflanzen, die jeweils mindestens Pflanzenkunde 30
           zum Ernten benötigen.
-      id_16,5:
-        name: Pflanzenkundler
-        description: 
-      id_17,1:
-        name: Fördergeldbezieher
+      '16,5':
+        description: Ernte 35000 Pflanzen, welche mindestens Pflanzenkunde 30 zum
+          Ernten benötigen.
+      '17,1':
         description: Hole 15 mal Fördergeld bei der Stiftung aller Wesen ab.
-      id_17,2:
-        name: Fördergeldbezieher
+      '17,2':
         description: Hole 40 mal Fördergeld bei der Stiftung aller Wesen ab.
-      id_17,3:
-        name: Fördergeldbezieher
+      '17,3':
         description: Hole 120 mal Fördergeld bei der Stiftung aller Wesen ab.
-      id_17,4:
-        name: Fördergeldbezieher
+      '17,4':
         description: Hole 500 mal Fördergeld bei der Stiftung aller Wesen ab.
-      id_17,5:
-        name: Fördergeldbezieher
-        description: 
-      id_18,1:
-        name: Todesbote
+      '17,5':
+        description: Hole 1500 mal Fördergeld bei der Stiftung aller Wesen ab.
+      '18,1':
         description: Töte aktiv eine Person auf eine Art und Weise, sodass dabei ein
           Seelenstein entsteht.
-      id_18,2:
-        name: Todesbote
+      '18,2':
         description: Töte aktiv 5 Personen auf eine Art und Weise, sodass dabei ein
           Seelenstein entsteht.
-      id_18,3:
-        name: Todesbote
+      '18,3':
         description: Töte aktiv 20 Personen auf eine Art und Weise, sodass dabei ein
           Seelenstein entsteht.
-      id_18,4:
-        name: Todesbote
+      '18,4':
         description: Töte aktiv 400 Personen auf eine Art und Weise, sodass dabei
           ein Seelenstein entsteht.
-      id_18,5:
-        name: Todesbote
-        description: 
-      id_19,1:
-        name: Rukimeister
+      '18,5':
+        description: Töte aktiv 3000 Personen auf eine Art und Weise, sodass dabei
+          ein Seelenstein entsteht.
+      '19,1':
         description: Gewinne bei dem Spiel Ruki in Kerdis mindestens 1000 Goldmünzen.
-      id_19,2:
-        name: Rukimeister
+      '19,2':
         description: Gewinne 5 Ruki-Spiele in Kerdis mit mindestens 1000 Goldmünzen.
-      id_19,3:
-        name: Rukimeister
+      '19,3':
         description: Gewinne 40 Ruki-Spiele in Kerdis mit mindestens 1000 Goldmünzen.
-      id_19,4:
-        name: Rukimeister
+      '19,4':
         description: Gewinne 500 Ruki-Spiele in Kerdis mit mindestens 1000 Goldmünzen.
-      id_19,5:
-        name: Rukimeister
+      '19,5':
         description: Gewinne 4000 Ruki-Spiele in Kerdis mit mindestens 1000 Goldmünzen.
-      id_20,1:
-        name: Feuerlöscher
+      '20,1':
         description: Lösche 10 mal einen brennenden Ort in Pensal.
-      id_20,2:
-        name: Feuerlöscher
+      '20,2':
         description: Lösche 40 mal einen brennenden Ort in Pensal.
-      id_20,3:
-        name: Feuerlöscher
+      '20,3':
         description: Lösche 150 mal einen brennenden Ort in Pensal.
-      id_20,4:
-        name: Feuerlöscher
+      '20,4':
         description: Lösche 800 mal einen brennenden Ort in Pensal.
-      id_20,5:
-        name: Feuerlöscher
+      '20,5':
         description: Lösche 3000 mal einen brennenden Ort in Pensal.
-      id_21,1:
-        name: Blutforscher
+      '21,1':
         description: Liefere 10 gesuchte Blutproben bei den Sumpfwesen im Sumpf von
           Sutranien ab.
-      id_21,2:
-        name: Blutforscher
+      '21,2':
         description: Liefere 50 gesuchte Blutproben bei den Sumpfwesen im Sumpf von
           Sutranien ab.
-      id_21,3:
-        name: Blutforscher
+      '21,3':
         description: Liefere 600 gesuchte Blutproben bei den Sumpfwesen im Sumpf von
           Sutranien ab.
-      id_21,4:
-        name: Blutforscher
+      '21,4':
         description: iefere 3000 gesuchte Blutproben bei den Sumpfwesen im Sumpf von
           Sutranien ab.
-      id_21,5:
-        name: Blutforscher
+      '21,5':
         description: Liefere 18000 gesuchte Blutproben bei den Sumpfwesen im Sumpf
           von Sutranien ab.
-      id_22,1:
-        name: Chaoslaborant
+      '22,1':
         description: Stelle 5 Dinge im Chaoslabor her.
-      id_22,2:
-        name: Chaoslaborant
+      '22,2':
         description: Stelle 15 Dinge im Chaoslabor her.
-      id_22,3:
-        name: Chaoslaborant
+      '22,3':
         description: Stelle 80 Dinge im Chaoslabor her.
-      id_22,4:
-        name: Chaoslaborant
+      '22,4':
         description: Stelle 500 Dinge im Chaoslabor her.
-      id_22,5:
-        name: Chaoslaborant
-        description: 
-      id_23,1:
-        name: Sprengstoffmischer
+      '22,5':
+        description: Stelle 3000 Dinge im Chaoslabor her.
+      '23,1':
         description: "\tDas Chaoslabor muss bei Herstellung eines Items explodieren."
-      id_24,1:
-        name: Herrscher der Kontrolltürme
+      '24,1':
         description: Sorge dafür, dass deine Fraktion die meisten Kontrolltürme besitzt
           und die Herrschaft über die Kontrolltürme an deine Fraktion übergeht. (1x
           nötig)
-      id_24,2:
-        name: Herrscher der Kontrolltürme
+      '24,2':
         description: Sorge dafür, dass deine Fraktion die meisten Kontrolltürme besitzt
           und die Herrschaft über die Kontrolltürme an deine Fraktion übergeht. (6x
           nötig)
-      id_24,3:
-        name: Herrscher der Kontrolltürme
+      '24,3':
         description: Sorge dafür, dass deine Fraktion die meisten Kontrolltürme besitzt
           und die Herrschaft über die Kontrolltürme an deine Fraktion übergeht. (50x
           nötig)
-      id_24,4:
-        name: Herrscher der Kontrolltürme
+      '24,4':
         description: Sorge dafür, dass deine Fraktion die meisten Kontrolltürme besitzt
           und die Herrschaft über die Kontrolltürme an deine Fraktion übergeht. (300x
           nötig)
-      id_24,5:
-        name: Herrscher der Kontrolltürme
+      '24,5':
         description: Sorge dafür, dass deine Fraktion die meisten Kontrolltürme besitzt
           und die Herrschaft über die Kontrolltürme an deine Fraktion übergeht. (1000x
           nötig)
-      id_25,1:
-        name: Schatzsucher
+      '25,1':
         description: Finde mit Hilfe einer Schatzkarte den Schatz und grabe ihn aus.
-      id_25,2:
-        name: Schatzsucher
+      '25,2':
         description: Finde mit Hilfe von Schatzkarten insgesamt 5 Schätze und grabe
           sie aus.
-      id_25,3:
-        name: Schatzsucher
+      '25,3':
         description: Finde mit Hilfe von Schatzkarten insgesamt 40 Schätze und grabe
           sie aus.
-      id_25,4:
-        name: Schatzsucher
+      '25,4':
         description: Finde mit Hilfe von Schatzkarten insgesamt 200 Schätze und grabe
           sie aus.
-      id_25,5:
-        name: Schatzsucher
+      '25,5':
         description: Finde mit Hilfe von Schatzkarten insgesamt 800 Schätze und grabe
           sie aus.
-      id_26,1:
-        name: Unterwelt-Schlachter
-        description: 
-      id_26,2:
-        name: Unterwelt-Schlachter
+      '26,1':
+        description: Töte 5 Unterwelt-Dämonen und ziehe damit ihren Zorn auf dich.
+          Entscheidend für diese Errungenschaft ist, dass der Unterwelt-Dämon ein
+          Rückangriff gegen dich erstellt.
+      '26,2':
         description: Töte 40 Unterwelt-Dämonen und ziehe damit ihren Zorn auf dich.
           Entscheidend für diese Errungenschaft ist, dass der Unterwelt-Dämon ein
           Rückangriff gegen dich erstellt.
-      id_26,3:
-        name: Unterwelt-Schlachter
+      '26,3':
         description: Töte 200 Unterwelt-Dämonen und ziehe damit ihren Zorn auf dich.
           Entscheidend für diese Errungenschaft ist, dass der Unterwelt-Dämon ein
           Rückangriff gegen dich erstellt.
-      id_26,4:
-        name: Unterwelt-Schlachter
+      '26,4':
         description: Töte 800 Unterwelt-Dämonen und ziehe damit ihren Zorn auf dich.
           Entscheidend für diese Errungenschaft ist, dass der Unterwelt-Dämon ein
           Rückangriff gegen dich erstellt.
-      id_26,5:
-        name: Unterwelt-Schlachter
+      '26,5':
         description: Töte 6000 Unterwelt-Dämonen und ziehe damit ihren Zorn auf dich.
           Entscheidend für diese Errungenschaft ist, dass der Unterwelt-Dämon ein
           Rückangriff gegen dich erstellt.
-      id_27,1:
-        name: Clan-Krieger
+      '27,1':
         description: Nehme aktiv an einem Clan-Krieg teil.
-      id_27,2:
-        name: Clan-Krieger
+      '27,2':
         description: Nehme aktiv an 3 Clan-Kriegen teil.
-      id_27,3:
-        name: Clan-Krieger
+      '27,3':
         description: Nehme aktiv an 10 Clan-Kriegen teil.
-      id_27,4:
-        name: Clan-Krieger
+      '27,4':
         description: Nehme aktiv an 100 Clan-Kriegen teil.
-      id_27,5:
-        name: Clan-Krieger
-        description: 
-      id_28,1:
-        name: geprüfter Landvermesser
+      '27,5':
+        description: Nimm aktiv an 500 Clan-Kriegen teil.
+      '28,1':
         description: Führe mit Mitgliedern deines Clans erfolgreich eine Landvermessung
           durch.
-      id_28,2:
-        name: geprüfter Landvermesser
+      '28,2':
         description: Führe mit Mitgliedern deines Clans erfolgreich 10 Landvermessung
           durch.
-      id_28,3:
-        name: geprüfter Landvermesser
+      '28,3':
         description: Führe mit Mitgliedern deines Clans erfolgreich 30 Landvermessung
           durch.
-      id_28,4:
-        name: geprüfter Landvermesser
+      '28,4':
         description: Führe mit Mitgliedern deines Clans erfolgreich 200 Landvermessung
           durch.
-      id_28,5:
-        name: geprüfter Landvermesser
-        description: 
-      id_29,1:
-        name: Gestaltwandler
+      '28,5':
+        description: Führe mit Mitgliedern deines Clans erfolgreich 800 Landvermessungen
+          durch.
+      '29,1':
         description: "Ändere deine Rasse, wobei nur Rassenänderungen über das Sponsoring-Menü
           zählen."
-      id_29,2:
-        name: Gestaltwandler
+      '29,2':
         description: "Ändere 3 mal deine Rasse, wobei nur Rassenänderungen über das
           Sponsoring-Menü zählen."
-      id_29,3:
-        name: Gestaltwandler
+      '29,3':
         description: "Ändere 10 mal deine Rasse, wobei nur Rassenänderungen über das
           Sponsoring-Menü zählen."
-      id_29,4:
-        name: Gestaltwandler
+      '29,4':
+        description: "Ändere 80 mal deine Rasse, wobei nur Rassenänderungen über das
+          Sponsoring-Menü zählen."
+      '29,5':
         description: 
-      id_29,5:
-        name: Gestaltwandler
-        description: 
-      id_30,1:
-        name: Verräter
+      '30,1':
         description: Töte den Geist der Welt und werde dadurch Verräter.
-      id_30,2:
-        name: Verräter
+      '30,2':
         description: Töte 5 mal den Geist der Welt und werde dadurch Verräter. Dabei
           zählen für die Errungenschaft nur Tötungen, die mindestens 16 Stunden auseinanderliegen.
-      id_30,3:
-        name: Verräter
+      '30,3':
         description: Töte 40 mal den Geist der Welt und werde dadurch Verräter. Dabei
           zählen für die Errungenschaft nur Tötungen, die mindestens 16 Stunden auseinanderliegen.
-      id_30,4:
-        name: Verräter
+      '30,4':
         description: Töte 120 mal den Geist der Welt und werde dadurch Verräter. Dabei
           zählen für die Errungenschaft nur Tötungen, die mindestens 16 Stunden auseinanderliegen.
-      id_30,5:
-        name: Verräter
+      '30,5':
         description: Töte 500 mal den Geist der Welt und werde dadurch Verräter. Dabei
           zählen für die Errungenschaft nur Tötungen, die mindestens 16 Stunden auseinanderliegen.
-      id_31,1:
-        name: Aggressorvernichter
+      '31,1':
         description: Töte 30 aggressive NPCs.
-      id_31,2:
-        name: Aggressorvernichter
+      '31,2':
         description: Töte 120 aggressive NPCs.
-      id_31,3:
-        name: Aggressorvernichter
+      '31,3':
         description: Töte 800 aggressive NPCs.
-      id_31,4:
-        name: Aggressorvernichter
+      '31,4':
         description: Töte 9000 aggressive NPCs.
-      id_31,5:
-        name: Aggressorvernichter
-        description: 
-      id_32,1:
-        name: reiner Ingerium-Hacker
+      '31,5':
+        description: Töte 50000 aggressive NPCs.
+      '32,1':
         description: Baue 5 mal Ingerium ab, achte darauf, dass es sich nicht um unreines
           Ingerium handelt.
-      id_32,2:
-        name: reiner Ingerium-Hacker
+      '32,2':
         description: Baue 30 mal Ingerium ab, achte darauf, dass es sich nicht um
           unreines Ingerium handelt.
-      id_32,3:
-        name: reiner Ingerium-Hacker
+      '32,3':
         description: Baue 200 mal Ingerium ab, achte darauf, dass es sich nicht um
           unreines Ingerium handelt.
-      id_32,4:
-        name: reiner Ingerium-Hacker
+      '32,4':
         description: Baue 1.000 mal Ingerium ab, achte darauf, dass es sich nicht
           um unreines Ingerium handelt.
-      id_32,5:
-        name: reiner Ingerium-Hacker
+      '32,5':
         description: Baue 12.000 mal Ingerium ab, achte darauf, dass es sich nicht
           um unreines Ingerium handelt.
-      id_33,1:
-        name: Ziegentreiber
+      '33,1':
         description: Treibe die Goldhornziege zum Ort ihrer Bestimmung.
-      id_33,2:
-        name: Ziegentreiber
+      '33,2':
         description: Treibe die Goldhornziege 5 mal zum Ort ihrer Bestimmung.
-      id_33,3:
-        name: Ziegentreiber
+      '33,3':
         description: Treibe die Goldhornziege 50 mal zum Ort ihrer Bestimmung.
-      id_33,4:
-        name: Ziegentreiber
+      '33,4':
         description: Treibe die Goldhornziege 200 mal zum Ort ihrer Bestimmung.
-      id_33,5:
-        name: Ziegentreiber
-        description: 
-      id_34,1:
-        name: Ziegentöter
+      '33,5':
+        description: Treibe die Goldhornziege 800 mal zum Ort ihrer Bestimmung.
+      '34,1':
         description: Töte die Goldhornziege, bevor sie jemand zum Ort ihrer Bestimmung
           treiben kann.
-      id_34,2:
-        name: Ziegentöter
+      '34,2':
         description: Töte 5 mal die Goldhornziege, bevor sie jemand zum Ort ihrer
           Bestimmung treiben kann.
-      id_34,3:
-        name: Ziegentöter
+      '34,3':
         description: Töte 50 mal die Goldhornziege, bevor sie jemand zum Ort ihrer
           Bestimmung treiben kann.
-      id_34,4:
-        name: Ziegentöter
+      '34,4':
         description: Töte 200 mal die Goldhornziege, bevor sie jemand zum Ort ihrer
           Bestimmung treiben kann.
-      id_34,5:
-        name: Ziegentöter
+      '34,5':
         description: Töte 800 mal die Goldhornziege, bevor sie jemand zum Ort ihrer
           Bestimmung treiben kann.
-      id_35,1:
-        name: Meisterkoch
+      '35,1':
         description: Koche an der Feuerstelle in Nawor mindestens 20 Gerichte, welche
           jeweils mehr als 80 Lebenspunkte heilen.
-      id_35,2:
-        name: Meisterkoch
+      '35,2':
         description: Koche an der Feuerstelle in Nawor mindestens 500 Gerichte, welche
           jeweils mehr als 80 Lebenspunkte heilen.
-      id_35,3:
-        name: Meisterkoch
+      '35,3':
         description: Koche an der Feuerstelle in Nawor mindestens 4.000 Gerichte,
           welche jeweils mehr als 80 Lebenspunkte heilen.
-      id_35,4:
-        name: Meisterkoch
+      '35,4':
         description: Koche an der Feuerstelle in Nawor mindestens 35.000 Gerichte,
           welche jeweils mehr als 80 Lebenspunkte heilen.
-      id_35,5:
-        name: Meisterkoch
+      '35,5':
         description: Koche an der Feuerstelle in Nawor mindestens 500.000 Gerichte,
           welche jeweils mehr als 80 Lebenspunkte heilen.
-      id_36,1:
-        name: Gruppenjäger
+      '36,1':
         description: Töte in einer Gruppe 30 NPCs. Invasions-NPCs zählen dabei nicht.
           Die Gruppe muss dabei mit dir zusammen mindestens 3 Mitglieder haben.
-      id_36,2:
-        name: Gruppenjäger
+      '36,2':
         description: Töte in einer Gruppe 200 NPCs. Invasions-NPCs zählen dabei nicht.
           Die Gruppe muss dabei mit dir zusammen mindestens 3 Mitglieder haben.
-      id_36,3:
-        name: Gruppenjäger
+      '36,3':
         description: Töte in einer Gruppe 1.000 NPCs. Invasions-NPCs zählen dabei
           nicht. Die Gruppe muss dabei mit dir zusammen mindestens 3 Mitglieder haben.
-      id_36,4:
-        name: Gruppenjäger
+      '36,4':
         description: Töte in einer Gruppe 7.000 NPCs. Invasions-NPCs zählen dabei
           nicht. Die Gruppe muss dabei mit dir zusammen mindestens 3 Mitglieder haben.
-      id_36,5:
-        name: Gruppenjäger
+      '36,5':
         description: Töte in einer Gruppe 80.000 NPCs. Invasions-NPCs zählen dabei
           nicht. Die Gruppe muss dabei mit dir zusammen mindestens 3 Mitglieder haben.
-      id_37,1:
-        name: Dividendenkönig
+      '37,1':
         description: Nimm 500 Goldmünzen durch Dividenden ein.
-      id_37,2:
-        name: Dividendenkönig
+      '37,2':
         description: Nimm 3.000 Goldmünzen durch Dividenden ein.
-      id_37,3:
-        name: Dividendenkönig
+      '37,3':
         description: Nimm 20.000 Goldmünzen durch Dividenden ein.
-      id_37,4:
-        name: Dividendenkönig
+      '37,4':
         description: Nimm 100.000 Goldmünzen durch Dividenden ein.
-      id_37,5:
-        name: Dividendenkönig
+      '37,5':
         description: Nimm 600.000 Goldmünzen durch Dividenden ein.
-      id_38,1:
-        name: Schlossknacker
+      '38,1':
         description: Knacke 5 Kisten oder Tempelschätze, für die du einen speziellen
           Schlüssel benötigst. Die Lehrlingskiste oder Holzgefäße in Unterkünften
           sind dabei ausgenommen.
-      id_38,2:
-        name: Schlossknacker
+      '38,2':
         description: Knacke 20 Kisten oder Tempelschätze, für die du einen speziellen
           Schlüssel benötigst. Die Lehrlingskiste oder Holzgefäße in Unterkünften
           sind dabei ausgenommen.
-      id_38,3:
-        name: Schlossknacker
+      '38,3':
         description: Knacke 100 Kisten oder Tempelschätze, für die du einen speziellen
           Schlüssel benötigst. Die Lehrlingskiste oder Holzgefäße in Unterkünften
           sind dabei ausgenommen.
-      id_38,4:
-        name: Schlossknacker
+      '38,4':
         description: Knacke 400 Kisten oder Tempelschätze, für die du einen speziellen
           Schlüssel benötigst. Die Lehrlingskiste oder Holzgefäße in Unterkünften
           sind dabei ausgenommen.
-      id_38,5:
-        name: Schlossknacker
+      '38,5':
+        description: Knacke 2000 Kisten oder Tempelschätze, für die du einen speziellen
+          Schlüssel benötigst. Die Lehrlingskiste oder Holzgefäße in Unterkünften
+          sind dabei ausgenommen.
+      '39,1':
+        description: Schlage 10 Segmente vom Schotterwurm ab.
+      '39,2':
+        description: Schlage 10 Segmente vom Schotterwurm ab.
+      '39,3':
+        description: Schlage 50 Segmente vom Schotterwurm ab.
+      '39,4':
+        description: Schlage 200 Segmente vom Schotterwurm ab.
+      '39,5':
+        description: Schlage 500 Segmente vom Schotterwurm ab.
+      '39,6':
+        description: Schlage 2000 Segmente vom Schotterwurm ab.
+      '39,7':
         description: 
+      '40,1':
+        description: Gewinne insgesamt 250 Goldmünzen im Casino von Ferdolien, im
+          Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '40,2':
+        description: Gewinne insgesamt 2.500 Goldmünzen im Casino von Ferdolien, im
+          Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '40,3':
+        description: Gewinne insgesamt 25.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '40,4':
+        description: Gewinne insgesamt 250.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '40,5':
+        description: Gewinne insgesamt 2.500.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '40,6':
+        description: Gewinne insgesamt 25.000.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '40,7':
+        description: ''
+      '41,1':
+        description: Verliere insgesamt 250 Goldmünzen im Casino von Ferdolien, im
+          Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '41,2':
+        description: Verliere insgesamt 2.500 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '41,3':
+        description: Verliere insgesamt 25.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '41,4':
+        description: Verliere insgesamt 250.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '41,5':
+        description: Verliere insgesamt 2.500.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '41,6':
+        description: Verliere insgesamt 25.000.000 Goldmünzen im Casino von Ferdolien,
+          im Casino des Nordens, beim Blackjack oder beim Falschgold-Zauberer im Tal
+          der Ruinen.
+      '41,7':
+        description: ''
+      :1:
+        name:
+          one: Bezwinger des Weltenwandlers
+          other: Bezwinger des Weltenwandlers
+      :2:
+        name:
+          one: Gewebeforscher
+          other: Gewebeforscher
+      :3:
+        name:
+          one: Glückspilz
+          other: Glückspilze
+      :4:
+        name:
+          one: Kombinatorischer Meister
+          other: Kombinatorischer Meister
+      :5:
+        name:
+          one: Undaron-Bezwinger
+          other: Undaron-Bezwinger
+      :6:
+        name:
+          one: Meister der Aufträge
+          other: Meister der Aufträge
+      :7:
+        name:
+          one: Gruppen-Inspirator
+          other: Gruppen-Inspiratoren
+      :8:
+        name:
+          one: Wettkönig
+          other: Wettkönige
+      :9:
+        name:
+          one: Zu zweit ist man stärker
+          other: Zu zweit ist man stärker
+      :10:
+        name:
+          one: Tollo-Superjackpotknacker
+          other: Tollo-Superjackpotknacker
+      :11:
+        name:
+          one: Todesgrottengärtner
+          other: Todesgrottengärtner
+      :12:
+        name:
+          one: Stärkekoloss
+          other: Stärkekolosse
+      :13:
+        name:
+          one: Phasenjäger
+          other: Phasenjäger
+      :14:
+        name:
+          one: Blitzableiter
+          other: Blitzableiter
+      :15:
+        name:
+          one: Meister des Schreckens
+          other: Meister des Schreckens
+      :16:
+        name:
+          one: Pflanzenkundler
+          other: Pflanzenkundler
+      :17:
+        name:
+          one: Fördergeldbezieher
+          other: Fördergeldbezieher
+      :18:
+        name:
+          one: Todesbote
+          other: Todesboten
+      :19:
+        name:
+          one: Rukimeister
+          other: Rukimeister
+      :20:
+        name:
+          one: Feuerlöscher
+          other: Feuerlöscher
+      :21:
+        name:
+          one: Blutforscher
+          other: Blutforscher
+      :22:
+        name:
+          one: Chaoslaborant
+          other: Chaoslaboranten
+      :23:
+        name:
+          one: Sprengstoffmischer
+          other: Sprengstoffmischer
+      :24:
+        name:
+          one: Herrscher der Kontrolltürme
+          other: Herrscher der Kontrolltürme
+      :25:
+        name:
+          one: Schatzsucher
+          other: Schatzsucher
+      :26:
+        name:
+          one: Unterwelt-Schlachter
+          other: Unterwelt-Schlachter
+      :27:
+        name:
+          one: Clan-Krieger
+          other: Clan-Krieger
+      :28:
+        name:
+          one: geprüfter Landvermesser
+          other: geprüfte Landvermesser
+      :29:
+        name:
+          one: Gestaltwandler
+          other: Gestaltwandler
+      :30:
+        name:
+          one: Verräter
+          other: Verräter
+      :31:
+        name:
+          one: Aggressorvernichter
+          other: Aggressorvernichter
+      :32:
+        name:
+          one: reiner Ingerium-Hacker
+          other: reine Ingerium-Hacker
+      :33:
+        name:
+          one: Ziegentreiber
+          other: Ziegentreiber
+      :34:
+        name:
+          one: Ziegentöter
+          other: Ziegentöter
+      :35:
+        name:
+          one: Meisterkoch
+          other: Meisterköche
+      :36:
+        name:
+          one: Gruppenjäger
+          other: Gruppenjäger
+      :37:
+        name:
+          one: Dividendenkönig
+          other: Dividendenkönige
+      :38:
+        name:
+          one: Schlossknacker
+          other: Schlossknacker
+      :39:
+        name:
+          one: Schotterwurmzerstückler
+          other: Schotterwurmzerstückler
+      :40:
+        name:
+          one: Gesandter des Glücks
+          other: Gesandte des Glücks
+      :41:
+        name:
+          one: Gesandter des Pechs
+          other: Gesandte des Pechs

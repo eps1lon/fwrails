@@ -1,7 +1,6 @@
 class Achievement < ActiveRecord::Base  
   alias_attribute :group, :achievement_id
   alias_attribute :achievement_group, :achievement_id
-  alias_attribute :id, :achievement_id
   self.primary_keys = :achievement_id, :stage
   
   has_many :progresses, -> { where(:deleted => false) },
@@ -32,6 +31,22 @@ class Achievement < ActiveRecord::Base
     including_achiev_count
   end
   
+  def self.unachieved(options = {})
+    if options[:in_worlds]
+      world_query = "world_id IN (#{options[:in_worlds].map { |w| w.id.to_i}.join(',')})"
+    else 
+      world_query = "1"
+    end
+    joins("RIGHT JOIN (SELECT achievement_id, MAX(stage) + 1 as stage FROM users_achievements WHERE #{world_query} GROUP BY achievement_id) unachieved "\
+          "ON #{self.table_name}.achievement_id = unachieved.achievement_id "\
+          "AND #{self.table_name}.stage = unachieved.stage")
+    .where(Achievement.arel_table[:achievement_id].not_eq(nil))
+  end
+  
+  def self.worlds
+    World.where(:language_id => 1)
+  end
+  
   # deprecated
   def achieved(options = {})
     achieved = self.progresses.where("stage >= ?", self.stage)
@@ -53,6 +68,12 @@ class Achievement < ActiveRecord::Base
     UsersAchievements.from("(#{self.progresses.where("stage >= ?", self.stage).order("progress desc").to_sql}) #{UsersAchievements.table_name}").group(:achievement_id)
   end
   
+  def description
+    logger.debug "activerecord.achievement.#{self.id.to_s}.description"
+    I18n.t("activerecord.achievement.#{self.id.to_s}.description", 
+           :default => self['description'])
+  end
+  
   def gfx_file
     if self.gfx.empty?
       "achiev#{self.achievement_id}x#{stage}.gif"
@@ -65,27 +86,14 @@ class Achievement < ActiveRecord::Base
     true
   end
   
-  def group_name
-    self['name']
+  def group_name(options = {})
+    options[:count] ||= 1
+    I18n.t("activerecord.achievement.#{self.achievement_id}.name", 
+           :count => options[:count], 
+           :default => self['name'])
   end
   
   def name
     "#{self['name']} (Rang #{self['stage']} von #{self['max_stage']})"
-  end
-  
-  def self.unachieved(options = {})
-    if options[:in_worlds]
-      world_query = "world_id IN (#{options[:in_worlds].map { |w| w.id.to_i}.join(',')})"
-    else 
-      world_query = "1"
-    end
-    joins("RIGHT JOIN (SELECT achievement_id, MAX(stage) + 1 as stage FROM users_achievements WHERE #{world_query} GROUP BY achievement_id) unachieved "\
-          "ON #{self.table_name}.achievement_id = unachieved.achievement_id "\
-          "AND #{self.table_name}.stage = unachieved.stage")
-    .where(Achievement.arel_table[:achievement_id].not_eq(nil))
-  end
-  
-  def self.worlds
-    World.where(:language_id => 1)
   end
 end

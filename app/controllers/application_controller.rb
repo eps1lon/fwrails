@@ -23,7 +23,7 @@ class ApplicationController < ActionController::Base
     @locales = %w{de}
     @locale = request.subdomains.first
     
-    unless @locales.include?(locale)
+    unless @locales.include?(@locale)
       @locale = I18n.default_locale
     end
     

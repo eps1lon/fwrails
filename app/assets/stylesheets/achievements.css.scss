@@ -49,6 +49,10 @@ dl {
   }
 }
 
+dl#data + a {
+  display: block;
+}
+
 #achievements {
   th {
     border      : 0px solid black;
