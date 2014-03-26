@@ -18,7 +18,7 @@
 <% end %>
 </p>
 <h2><%= UsersAchievements.model_name.human %></h2>
-<% unless @achievements.count.eql?(0) %>
+<% unless @achievements_progresses.count.eql?(0) %>
   <p>
     <%= t ".achievements.stats.message", 
         :count => t(".achievements.stats.count", :count => number_with_delimiter(@user.achievement_cache.count)),

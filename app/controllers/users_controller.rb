@@ -43,7 +43,6 @@ class UsersController < ApplicationController
     end
 
     @user = User.includes(:achievement_cache,
-                          :achievements,
                           :clan_changes, 
                           :experience_changes,
                           :name_changes,
@@ -58,8 +57,7 @@ class UsersController < ApplicationController
     end
     
     # achievements
-    @achievements = @user.achievements.order("name asc")
-    @achievements_progresses = @user.progresses
+    @achievements_progresses = @user.progresses.includes(:achievement).order("achievements.name asc")
     
     # changes
     @changes = [
