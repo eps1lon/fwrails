@@ -40,7 +40,7 @@ set :log_level, :debug
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml public/.htaccess}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
@@ -64,7 +64,7 @@ namespace :deploy do
   
   after :migrate, :rake do
     on roles(:app) do
-      ["load:achievements", "jslang", "translate:models"].each do |task|
+      ["load:achievements"].each do |task|
         execute "cd #{release_path} && (RAILS_ENV=#{fetch(:rails_env)} "+
                 "#{fetch(:rvm_path)}/bin/rvm default do bundle exec rake #{task})"
       end
@@ -85,8 +85,8 @@ end
 after :deploy, :fix_permissions do
   on roles(:app) do
     {
-      'lib/tasks/mydump.sh' => 700,
-      'lib/tasks/*.php' => 644
+      'lib/cron/mydump.sh' => 700,
+      'lib/cron/*.php' => 644
     }.each do |file, permissions|
       execute "chmod #{permissions} #{File.join(current_path, file)}"
     end
