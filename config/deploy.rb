@@ -97,5 +97,6 @@ end
 before :deploy, "deploy:web:disable"
 after :deploy, :reminder do 
   # notification for enabling website
-  puts "dont forget to precompile assets then `cap deploy:web:enable`"
+  puts "you may need to run  `rake i18n:js:export`, `rake assets:precompile RAILS_ENV=production`"
+  puts "dont forget to when everything works fine `cap deploy:web:enable`"
 end
