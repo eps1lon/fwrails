@@ -203,6 +203,25 @@ var user_id = '721366d55104bb1765173fe40895a29cf76c7dae',
     }
     
     localStorage.setItem('slmania-house', house);
+    
+    if (house !== null) {
+        $('a[href*="do=showitem"] + a[href*="do2="]').each(function (i, link) {
+            var $link = $(link),
+                params = {};
+                
+            $($link.attr('href').split("?")[1].split("&")).each(function (i, param) {
+                var split = param.split("=");
+                params[split[0]] = split[1];
+            });
+                
+            if (params.itemid && params.do2) {
+                $link.after(' - ', $('<a/>', {
+                    href: $link.attr('href').split("?")[0] + "?do=putitem&arrive_eval=" + params.do2 + "&itemid=" + params.itemid,
+                    html: 'Füllen'
+                }));
+            }
+        });
+    }
 
     if (params['do'] == 'guess') {
         (function (form) {
@@ -350,7 +369,7 @@ var user_id = '721366d55104bb1765173fe40895a29cf76c7dae',
         // items dauerhaft speichern
         localStorage.setItem('slmania-items', JSON.stringify(items));
         
-        // Alles nehmen
+        /* Alles nehmen
         if ($.isEmptyObject(items) === false) {
             $('p.itemlistcaption').html($('<a/>', {
                 href: 'javascript: ;',
@@ -372,7 +391,7 @@ var user_id = '721366d55104bb1765173fe40895a29cf76c7dae',
                     });
                 }
             }));
-        }
+        }//*/
     }
     
     //console.log('params: ', params);
