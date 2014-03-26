@@ -273,7 +273,8 @@
         {"stage":17,"pe":121,"items":{"silberner Schraubring":1},"exposes":"Klauenbartrein-Burger"},
         {"stage":17,"pe":104,"items":{"Baru-Getreide":1},"exposes":"Feueröl"},
         {"stage":20,"pe":92,"items":{"Rotkellerschimmel":2,"Brot der Nomaden":2},"exposes":"toter Tar-Fisch"},
-        {"stage":7,"pe":175,"items":{"Brot der Nomaden":2},"exposes":"Nebelkristall"}
+        {"stage":7,"pe":175,"items":{"Brot der Nomaden":2},"exposes":"Nebelkristall"},
+        {"stage":5,"pe":49,"items":{"starrende Essenz":2,"Unterwelt-Trüffel":2},"exposes":"Grymholz"}
     ],
     "Globaler Geldregen": [
         {"stage": "1?", "pe": 13686, "items": {"Weltenfragment": 5, "Rotkellerschimmel": 4, "Loktit-Stein": 2, "toter Gewebewurm": 2}, "expose": "?"},
@@ -397,7 +398,9 @@
         {"stage":2,"pe":39,"items":{"Nesselfaden":2},"exposes":"Schattenglas"},
         {"stage":2,"pe":281,"items":{"Feueröl":2,"Sicht der Schwäche":1},"exposes":"goldener Kuhdarm"},
         {"stage":4,"pe":19,"items":{"Raketensplitter":2},"exposes":"Fell der Finsternis"},
-        {"stage":3,"pe":194,"items":{"Baru-Papier":2,"Sandflammenstein":2},"exposes":"Wurmfutter"}
+        {"stage":3,"pe":194,"items":{"Baru-Papier":2,"Sandflammenstein":2},"exposes":"Wurmfutter"},
+        {"stage":4,"pe":169,"items":{"wilde Kletternelke":1,"Onlium":2},"exposes":"Stierhoden"}, 
+        {"stage":4,"pe":43,"items":{"Kern der Vernichtung":2,"Dämonenblut":2},"exposes":"goldener Kuhdarm"}
     ],
     "Lebenserweiterung": [
         {"stage": 18, "pe": 309, "items": {"Perle der Kraft": 2}, "expose": "Holz"},
