@@ -56,7 +56,7 @@ while ($world = mysql_fetch_assoc($worlds)) {
         $stock_id = array_search($data[1], $stocks);
         if (!$stock_id) { // new statistic
             error_query("INSERT INTO stocks (name, created_at) ".
-                        "VALUES (CONVERT('" . $data[1] . "' using utf8), '$now')", $db);
+                        "VALUES ('" . $data[1] . "', '$now')", $db);
             $stock_id = mysql_insert_id($db);
         }
         

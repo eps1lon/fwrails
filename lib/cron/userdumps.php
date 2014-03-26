@@ -11,10 +11,10 @@ function race_id ($name) {
     
     if ($races === false) {
         // get races
-        $sql_query = "SELECT id, CONVERT(name using latin1) COLLATE latin1_swedish_ci as name FROM races";
+        $sql_query = "SELECT id, name FROM races";
         $result = error_query($sql_query, $GLOBALS['db']);
         while ($race = mysql_fetch_assoc($result)) {
-            $races[] = array('id' => $race['id'], 'name' => utf8_decode($race['name']));
+            $races[] = array('id' => $race['id'], 'name' => $race['name']);
         }
         
         $races[] = array('id'=> 1, 'name' => 'Tarunan');
@@ -118,7 +118,7 @@ while ($world = mysql_fetch_assoc($worlds)) {
         $clan_id = @(int)$data[4]; // extended dump
         
         $sql_query .= "(" . mysql_encode(+$data[0], $db) . ", ".        // user_id
-                            mysql_encode(html_entity_decode($data[1], ENT_COMPAT | ENT_HTML401, 'UTF-8'), $db) . ", ".// name
+                            mysql_encode($data[1], $db) . ", ".// name
                             mysql_encode(+$data[2], $db) . ", ".        // experience
                             mysql_encode($race_id, $db) . ", ".         // race_id
                             mysql_encode($world_id, $db) . ", '$now', $clan_id)"; // world_id, created_at

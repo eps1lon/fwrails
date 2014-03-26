@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/plain; charset=utf8');
+header('Content-Type: text/plain; charset=iso-8859-1');
 
 // cron workaround
 chdir(dirname(__FILE__));
@@ -56,7 +56,7 @@ function mysql_encode($var, $db) {
     if (is_null($var)) {
         return 'NULL';
     }
-    return "'" . mysql_real_escape_string(utf8_encode($var), $db) . "'";
+    return "'" . mysql_real_escape_string($var, $db) . "'";
 }
 
 function error_query($sql_query, $db = null, $ignore = false) {
@@ -108,7 +108,7 @@ function db_connect($name = null) {
         }
     }
     
-    mysql_set_charset("utf8", $db);
+    mysql_set_charset("iso-8859-1", $db);
     
     return $db;
 }
