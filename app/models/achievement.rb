@@ -69,8 +69,9 @@ class Achievement < ActiveRecord::Base
   end
   
   def description
-    I18n.t("activerecord.achievement.#{self.id.to_s}.description", 
-           :default => self['description'])
+    t_key = "activerecord.achievement.#{self.id.to_s}.description"
+    return I18n.t t_key if ApplicationController.helpers.i18n_set? t_key
+    self['description']
   end
   
   def gfx_file
@@ -87,9 +88,10 @@ class Achievement < ActiveRecord::Base
   
   def group_name(options = {})
     options[:count] ||= 1
-    I18n.t("activerecord.achievement.#{self.achievement_id}.name", 
-           :count => options[:count], 
-           :default => self['name'])
+    
+    t_key = "activerecord.achievement.#{self.achievement_id}.name"
+    return I18n.t t_key, count: options[:count] if ApplicationController.helpers.i18n_set? t_key
+    self['name']
   end
   
   def name

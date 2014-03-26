@@ -52,8 +52,15 @@ module ApplicationHelper
     end
   end
   
+  # checks if translations exists
+  # setting default may not be viable since it will always return 
+  # a string and not the original var type
+  def i18n_set? key
+    I18n.t key, :raise => true rescue false
+  end
+  
   ##
-  # alternitive coult be link_to "back", :back
+  # alternitive could be link_to "back", :back
   # but this uses javascript and has no fallback
   # ugly if this page is an entry page
   ##
