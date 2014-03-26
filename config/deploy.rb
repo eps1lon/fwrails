@@ -13,7 +13,7 @@ set :default_shell, :bash
 # Repo Setup
 set :scm, :git
 set :user, 'capistrano'
-set :repo_url,  "#{fetch(:user)}@fwrails.net:git/freewar3.git"
+set :repo_url,  "#{fetch(:user)}@fwrails.net:freewar3.git"
 
 # server details
 
