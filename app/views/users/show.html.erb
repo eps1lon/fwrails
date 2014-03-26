@@ -13,7 +13,7 @@
   <%= t ".claninfo", :state => t("clans.commons.states.#{@user.clanstate}") %>
   <%= link_to clan_url(:id => @user.clan_id, :world => @user.world.short) do %>
     <%= Clan.model_name.human %>
-    <em class="clan_name"><%= @user.clan.name %></em>
+    <em class="clan_name"><%= @user.clan.name.html_safe %></em>
   <% end %>
 <% end %>
 </p>
@@ -51,24 +51,24 @@
   <h2>
     <%= changes.model_name.human %>
     <% if changes.count > 0 %>
-      [<a href="javascript: ;" data-toggle-for="<%= changes.model_name.to_s.tableize %>"><%= t "helpers.toggle.show" %></a>]
+      [<a href="javascript: ;" data-toggle-for="<%= changes.model.table_name %>"><%= t "helpers.toggle.show" %></a>]
     <% end %>
   </h2>
   <p>
     <%= changes.human_attribute_name("count", :count => changes.count) %>
     <%= ':' if changes.count > 0 %>
   </p>
-  <ol id="<%= changes.model_name.to_s.tableize %>" class="changes">
+  <ol id="<%= changes.model.table_name %>" class="changes">
     <% changes.each do |change| %>
     <% changed = [] %>
     <li>
       <% changed << t(".#{changes.model_name}.old", 
-                     :old => change.old.name
-                    ).html_safe unless change.old.nil? %>
+                     :old => change.old[:name]
+                    ) unless change.old.nil? %>
       <% changed << t(".#{changes.model_name}.new", 
-                     :new => change.new.name
-                    ).html_safe unless change.new.nil? %>
-      <em><%= changed.join(" => ") %></em>
+                     :new => change.new[:name]
+                    ) unless change.new.nil? %>
+      <em><%= changed.join("</em> => <em>").html_safe %></em>
       (<%= time_tag change.created_at.to_date %>)
     </li>
     <% end %>
