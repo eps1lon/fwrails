@@ -52,10 +52,10 @@ class AchievementsController < ApplicationController
       @achiev_groups = @achiev_groups.where("achievement_id NOT IN (?)", @achievements.collect { |a| a.group }.join(','))
       
       if params[:order].is_numeric? && !@achievements.to_a.select {|a| a.achievement_id == params[:order].to_i}.empty?
-        @users = @users.joins(:users_achievements_progresses).
-                        where(:users_achievements_progresses => {:achievement_id => params[:order]})
-        @order = ["#{UsersAchievementsProgress.table_name}.stage", 
-                  "#{UsersAchievementsProgress.table_name}.progress"]
+        @users = @users.joins(:achievements).
+                        where(:users_achievements => {:achievement_id => params[:order]})
+        @order = ["#{UsersAchievements.table_name}.stage", 
+                  "#{UsersAchievements.table_name}.progress"]
       end
     else
       @achievements = []
@@ -64,6 +64,11 @@ class AchievementsController < ApplicationController
     @users = @users.order(@order.map {|order| "#{order} #{params[:by]}"}.join(','))
     @users = @users.offset(@offset).limit(20)
     
+    # users_achievements
+    @users_achievements = {}
+    @users.each do |user|
+      @users_achievements[user.to_param] = user.achievements.where(:achievement_id => @achievements.collect(&:achievement_id))
+    end
   end
   
   def group_progress
@@ -75,7 +80,7 @@ class AchievementsController < ApplicationController
     achievements = users.map { |u| u.progresses[0] unless u.progresses.empty? }
     
     respond_to do |format|
-      format.json { render json: achievements, only: [:user_id, :world_id, :stage] }
+      format.json { render json: achievements, only: [:user_id, :world_id, :stage, :progress] }
     end
   end
   

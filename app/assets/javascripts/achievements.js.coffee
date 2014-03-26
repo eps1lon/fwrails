@@ -1,110 +1,118 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 toggle_duration = "slow"
 
 ids_ = -> 
   ids = []
-  $('#users th[data-container-for]').each ->
-    unless $(this).css('display') == 'none'
-      ids.push +$(this).data('container-for').replace(class_name_(''), '')
+  $('th .ui-draggable:not(.ui-draggable-dragging)').each ->
+    ids.push(+$(this).attr('id').replace id_(''), '')
   ids
 
 ids_changed = ->
-  href = achievements_rank_url.replace(/_ids_/, ids_().join(','))
-  $('#permalink a').attr('href', href).html(href)
+  $link = $('#permalink a')
+  href = $link.data('template').replace(/_ids_/, ids_().join(','))
+  $link.attr('href', href).html(href)
 
 add_ids_to_href = (event, selector) ->
-  that = $(selector || this)
+  $that = $(selector || this)
     
   # get display groups
   ids = ids_()
   
   # and insert these groups into the sort href
   if ids.length # groups displayed
-    that.attr('href', that.attr('href').replace('_ids_', ids.join(',')))
+    $that.attr('href', $that.attr('href').replace('_ids_', ids.join(',')))
   else
-    that.attr('href', that.attr('href').replace('/show/_ids_', ''))
+    $that.attr('href', $that.attr('href').replace(/\/show\/[^\/]*/, ''))
 
-class_name_ = (col) ->
+override_fallback_url = (event) ->
+  $that = $(this)
+
+  # custom dynamic link data
+  fallback_key = $that.parents('*[data-fallback_url]').data('fallback_url')
+  link = fallback_urls[fallback_key]
+  $that.attr('href', link.href.replace('_' + link.replace + '_', $that.data(link.replace)))
+  #console.log $that.attr('href')
+
+  # add displayed achievements
+  add_ids_to_href null, this
+
+  #console.log $that.attr('href')
+  true
+
+id_ = (col) ->
   'achiev_group_' + col
 
-create_col = (from, after) ->
-  group = group_ from
-  class_name = class_name_ group
-  attr = 'container-for="'  + from.attr('id') + '"'
+create_col = ($from, after) ->
+  group = group_ $from
+  attr = 'data-container-for="'  + $from.attr('id') + '"'
+
+  $th = $('th[' + attr + ']')
+  create = $th.length == 0
   
-  if $('th[' + attr + ']').length == 0
-    $('<th ' + attr + '></th>').append(from).insertAfter(after)
+  if create
+    $th = $('<th ' + attr + ' colspan="2"></th>').css('display', 'none').insertAfter('th' + after)
+
+    $sort = $('<a data-order="' + group + '" class="sort no-content"></a>')
+    $sort.click override_fallback_url
+    $th.append $sort
     
     $('tbody tr').each (i, row) ->
-      $('<td/>', {
-        class: class_name,
+      $td = $('<td/>', {
+        class: 'achiev_group'
+        'data-achievement_id': group
         html: '-'
-      }).insertAfter($(after.selector, row))
-    
-    return true # successfully created
-    
-  false # already created
+      }).data('achievement_id', group).css('display', 'none')
+
+      $td.clone().addClass('stage').insertAfter($(after, row))
+      $td.clone().addClass('progress').insertAfter($(after, row))
+  
+  $th.append($from)
+  create
   
 fill_col = (col, values) ->
-  class_name = class_name_ col
   col = +col
   
   $('tbody tr').each -> # each user_row
-    user_primary = this.id.split('_')[1] # get user_primary_id
-    
-    $('td.'+class_name, this).text(values[user_primary] || 0)
+    user_primary = $(this).data 'user' # get user_primary_id
+    users_achievement = values[user_primary] || {progress: '-', stage: '-'}
+
+    $('td.achiev_group.progress[data-achievement_id="' + col + '"]', this).text(users_achievement.progress || 0)
+    $('td.achiev_group.stage[data-achievement_id="' + col + '"]', this).text(users_achievement.stage || 0)
     
 group_ = (container) ->
-  +container.attr('id').replace class_name_(''), ''
+  +container.attr('id').replace id_(''), ''
 
 show_achiev_group = ($item, shown) ->
   #$item.hide toggle_duration
   after = '.user_id'
   attr = 'data-container-for="' + $item.attr('id') + '"'
   group = group_ $item
-  class_name = class_name_ group
-  
-  $th = $('#users th[' + attr + ']')
-  create = $th.length == 0
 
+  create = create_col $item, '.user_id'
   if create
-    $th = $('<th ' + attr + ' data-order="' + group + '" style="display: none"></th>').
-          insertAfter($(after, $('#users thead'))).show(toggle_duration)
-    $sort = $('<a href="' + fallback_urls['#users th a'].href.replace('_order_', group) + '" class="sort no-content"></a>')
-    $sort.click add_ids_to_href
-    $th.append $sort
-          
     users = []
     # get displayed users
-    $('#users tbody tr').each (i, row) ->
-      users.push row.id.split('_')[1]
-      $('<td class="' + class_name + '" style="display: none">-</td>').insertAfter($(after, row)).show toggle_duration
+    $('#users tbody tr.user').each (i, row) ->
+      users.push $(row).data('user')
 
     url = achievements_group_progress_url.replace(/_users_/, users.join(',')).
-                                          replace(/_group_/, group_($item))
-
-    values = {}
+                                          replace(/_group_/, group)
 
     $.getJSON url, (data) ->
+      values = {}
       # parse data into correct format
       # {user_primary: value}
       $.each data, (i, row) ->
-        values[row.user_id + '-' + row.world_id] = row.stage
-
+        values[row.user_id + '-' + row.world_id] = {progress: row.progress, stage: row.stage}
+      
       fill_col group, values  
-   else
-    $th.show toggle_duration
-    $('#users tbody td.' + class_name).show toggle_duration
-
-  $item.prependTo($th).fadeIn()
+  
+  $('th[data-container-for="' + $item.attr('id') + '"]').show toggle_duration
+  $('.achiev_group[data-achievement_id="' + group + '"]').show toggle_duration
   
   ids_changed()
     
 hide_achiev_group = ($item, shown) ->
-  $('#users tbody td.' + $item.attr('id')).hide toggle_duration
+  $('#users tbody td.achiev_group[data-achievement_id="' + group_($item) + '"]').hide toggle_duration
   $item.parent('th').hide toggle_duration
   #$item.hide toggle_duration, ->
   attr = 'data-container-for="' + $item.attr('id') + '"'
@@ -138,20 +146,10 @@ $(document).ready ->
   }
   
   # overwrite no-js fallback
-  fallback_urls = fallback_urls || {}
-  $.each fallback_urls, (selector, link) ->
-    $(selector).each ->
-      that = $(this)
-      that.attr('href', link.href.replace('_' + link.replace + '_', that.parent().data(link.replace)))
-  $('nav.users a').each ->
-      that = $(this)
-      that.attr('href', users_nav_url.replace('_page_', that.text()))
-
-  # append added/removed achievements to these links
-  $('#users th a, nav.users a, ul.worlds a').click add_ids_to_href
-  
+  $('*[data-fallback_url] a').click override_fallback_url
+     
   # title fallback
-  $('.ui-draggable[id*="achiev_group_"]').tooltip {
+  $('.ui-draggable').tooltip {
     content: ->
       return $(this).attr 'title'
     track: true

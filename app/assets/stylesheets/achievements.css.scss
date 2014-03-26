@@ -1,6 +1,3 @@
-// Place all the styles related to the achievements controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 #achiev_groups  {
   li {
     cursor :  move;
@@ -12,11 +9,26 @@
   th {
     height: 40px;
     padding: .1em .3em;
+    vertical-align: top;
   }
   
   .ui-draggable {
     margin-bottom : -20px;
   }
+}
+
+#users td {
+    &.progress {
+        border-left: 1px solid black;
+    }
+    
+    &.stage {
+        border-right: 1px solid black;
+    }
+    
+    &.achiev_group, &.reward, &.count {
+        text-align: right;
+    }
 }
 
 dl {

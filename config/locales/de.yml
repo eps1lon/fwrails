@@ -441,7 +441,8 @@ de:
     rank:
       achiev_groups:
         head: "verfügbare Errungenschaften"
-        message: "Bewege die Errungenschaften per Drag&Drop, damit sie in der Rangliste ein- oder ausgeblendet werden."
+        message: "Bewege die Errungenschaften per Drag&Drop in die gestrichelten 
+                  Bereiche, damit sie in der Rangliste ein- oder ausgeblendet werden."
       caption: 
         zero: "keine User gefunden"
         one: "ein User gefunden aus %{worlds}"
