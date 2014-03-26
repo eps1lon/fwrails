@@ -69,7 +69,6 @@ class Achievement < ActiveRecord::Base
   end
   
   def description
-    logger.debug "activerecord.achievement.#{self.id.to_s}.description"
     I18n.t("activerecord.achievement.#{self.id.to_s}.description", 
            :default => self['description'])
   end
