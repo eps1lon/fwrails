@@ -3,6 +3,15 @@ module ApplicationHelper
     request.protocol + request.host_with_port
   end
   
+  def profile_url(user_relation)
+    "#{user_relation.world.url}internal/fight.php?action=watchuser&act_user_id=#{user_relation.user_id}"
+  end
+  
+  def achievement_profile_url(user_relation, achievement = nil)
+    anchor = "#achiev#{achievement.achievement_id}s#{achievement.stage}" unless achievement.nil?
+    "#{user_relation.world.url}internal/achiev.php?act_user_id=#{user_relation.user_id}#{anchor}"
+  end
+  
   def wiki_url(page)
     "http://www.fwwiki.de/index.php/#{page.gsub(/\s?(-|\/)\s?/, '\1')}"
   end

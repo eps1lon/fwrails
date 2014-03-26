@@ -1,3 +1,4 @@
+<% @title = "Edit #{@admin_achievement.name}" %>
 <h1>Editing admin_achievement</h1>
 
 <%= render 'form' %>
@@ -5,5 +6,5 @@
 <%= link_to 'Show', [:admin, @admin_achievement] %> |
 <%= link_to 'Back', admin_achievements_path %> |
 <%= link_to 'Example user', 
-    @admin_achievement.users.first.achievement_url(@admin_achievement),
-    :target => :blank unless @admin_achievement.users.first.nil? %>
+    achievement_profile_url(@admin_achievement.users_achievements.take, @admin_achievement),
+    :target => :blank unless @admin_achievement.users_achievements.take.nil? %>

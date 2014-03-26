@@ -75,19 +75,17 @@ class User < ActiveRecord::Base
   
   # URL to the users's ingame profil
   def profile_url
-    "#{self.world.url}internal/fight.php?action=watchuser&act_user_id=#{self.user_id}"
+    ApplicationController.helpers.profile_url(self)
   end
   
   # link to achievement profile including anchor
   def achievement_url(achievement)
-    anchor = "achiev#{achievement.achievement_id}s#{achievement.stage}"
-    self.profile_achievement_url + "#" + anchor
-    
+    ApplicationController.helpers.achievement_profile_url(self, achievement)
   end
   
   # link to achievement profile
   def profile_achievement_url
-    "#{self.world.url}internal/achiev.php?act_user_id=#{self.user_id}"
+    ApplicationController.helpers.achievement_profile_url(self)
   end
   
   def clanstate
