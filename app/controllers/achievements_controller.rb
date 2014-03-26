@@ -27,9 +27,6 @@ class AchievementsController < ApplicationController
   def index
     @achievements = Achievement.base_stage.including_achiev_count(:in_worlds => @worlds)
                                .order("name asc")
-    
-    @group_count = @achievements.count
-    @limit = @group_count # no limit
   end
   
   def rank 
