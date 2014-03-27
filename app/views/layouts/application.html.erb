@@ -48,6 +48,11 @@
       <% end %>
     </nav>
   </header>
+  <section id="flash">
+    <% flash.each do |name, msg| -%>
+      <%= content_tag :p, msg, class: name %>
+    <% end -%>
+  </section>
   <section id="yield">
     <%= yield %>
   </section>

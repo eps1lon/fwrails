@@ -120,7 +120,6 @@ p, blockquote {
 
 #yield {
   margin-left: 2%;
-  position: relative;
 }
 
 /* Links */
@@ -262,6 +261,10 @@ header {
     position: absolute;
     right: 0px;
     top: 0px;
+  }
+  
+  & + * {
+    position: relative;
   }
 }
 
