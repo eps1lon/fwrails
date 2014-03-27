@@ -20,8 +20,8 @@
         <% @controllers.each do |controller_name| %>
           <li  class="<%= "active" if controller_name == controller.controller_name %>">
             <%= link_to t("human", :scope => controller_name), 
-                        "##{controller_name}" %>
-            <span class="anchor" id="controller-<%= controller_name %>"></span>
+                        "#nav-#{controller_name}" %>
+            <span class="anchor" id="nav-<%= controller_name %>"></span>
             <ul class="subs">
                 <%= render :partial => "#{controller_name}/actions" %>
             </ul>
