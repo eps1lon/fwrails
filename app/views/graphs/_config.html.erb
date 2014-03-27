@@ -1,7 +1,9 @@
 <% unless @distances_for_select.empty? %>
   <%= label_tag :distance, t("graphs.config.distance") %>
   <%= select_tag :distance,
-                 options_for_select(@distances_for_select, @distance) %>
+                 options_for_select(@distances_for_select, @distance),
+                 :disabled => true,
+                 :title => t("dev.announced") %>
 <% end %>
 
 <% @config[:checkboxes].each do |checkboxes| %>
