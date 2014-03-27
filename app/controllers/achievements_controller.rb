@@ -91,13 +91,15 @@ class AchievementsController < ApplicationController
     @stages = Achievement.where(:name => params[:name]).order('stage asc')
     
     if @stages.empty?
-      raise ActiveRecord::RecordNotFound
+      raise ActiveRecord::RecordNotFound.new(params[:name])
     else
       if params[:stage].is_numeric?
         @achievement = @stages.where(:stage => params[:stage]).first
       else
         @achievement = @stages[0]
       end
+      
+      raise ActiveRecord::RecordNotFound.new(@stages[0].name(params[:stage])) if @achievement.nil?
     end
     
     # for cache_key in fragment caching

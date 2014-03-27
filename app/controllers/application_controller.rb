@@ -33,8 +33,9 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new(params[:path])
   end
   
-  def render_record_not_found
+  def render_record_not_found(record)
     @partial = "record_not_found"
+    @record = record
     render_error_page 404
   end
   

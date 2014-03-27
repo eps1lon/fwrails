@@ -94,7 +94,8 @@ class Achievement < ActiveRecord::Base
     self['name']
   end
   
-  def name
-    "#{self['name']} (Rang #{self['stage']} von #{self['max_stage']})"
+  def name(stage = nil)
+    stage ||= self['stage']
+    "#{self['name']} (Rang #{stage} von #{self['max_stage']})"
   end
 end

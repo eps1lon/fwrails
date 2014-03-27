@@ -1,14 +1,11 @@
 class StatisticsController < ApplicationController
-  before_filter [:index, :show] do
+  def index
     @worlds = @worlds_all = World.includes(:language)
     if params[:world]
       @worlds = @worlds.where(:short => params[:world]) 
-      raise ActiveRecord::RecordNotFound if @worlds.first.nil?
+      raise ActiveRecord::RecordNotFound(params[:world]) if @worlds.empty?
     end
     
-  end
-  
-  def index
     @statistics = Statistic.with_achievements(:in_worlds => @worlds)
   end
   
@@ -28,5 +25,7 @@ class StatisticsController < ApplicationController
     else
       @worlds = statistic.world_grouped
     end
+    
+    raise ActiveRecord::RecordNotFound.new(params[:name]) if @worlds.empty?
   end
 end

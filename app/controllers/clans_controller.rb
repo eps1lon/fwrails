@@ -75,12 +75,12 @@ class ClansController < ApplicationController
   def show
     @world = World.where(:short => params[:world]).first
     
+    raise ActiveRecord::RecordNotFound if @world.nil?
+    
     @clan = Clan.where(:world_id => @world.id, :clan_id => params[:id]).
                  includes(:adds, :coleader, :leader, :members, :outs).first
                
-    if @clan.nil?
-      raise ActiveRecord::RecordNotFound
-    end
+    raise ActiveRecord::RecordNotFound if @clan.nil?
 
     @members = @clan.members.order("name asc")
     

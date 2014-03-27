@@ -448,6 +448,7 @@ de:
     index:
       head: "List der verfügbaren Errungenschaften in FreeWar"
       human: "Übersicht"
+    not_found: "Eintrag `%{record}` nicht gefunden"
     rank:
       achiev_groups:
         head: "verfügbare Errungenschaften"
@@ -724,6 +725,7 @@ de:
       group_kills: "getötete NPC in Gruppe"
       paid_dividend: "ausgezahlte Dividende"
       opened_locks: "geöffnete Kisten"
+    not_found: "`%{record}` nicht gefunden"
     show:
       back: "Zurück zur Übersicht"
       heading: "'%{name}' in allen Welten von FreeWar"

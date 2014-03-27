@@ -1,4 +1,6 @@
-<% @title = "#{controller.controller_name.capitalize} #{Rack::Utils::HTTP_STATUS_CODES[response.status]}" %>
+<% @title = t("#{controller_name}.human", :default => controller_name.capitalize) + ": " +
+            t("errors.messages.e_#{response.status}.head", 
+              :default => Rack::Utils::HTTP_STATUS_CODES[response.status]) %>
 <h1><%= t "errors.messages.header" %></h1>
 <h2>
   <%= response.status %> 
