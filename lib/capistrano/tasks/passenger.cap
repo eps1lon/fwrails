@@ -3,9 +3,22 @@ namespace :deploy do
     desc 'Sets the correct RailsEnv value for Phusion Passenger'
     task :set_environment do
       on roles(:app) do
-        execute "sed 's/RailsEnv .*/RailsEnv #{fetch(:rails_env)}/'" +
-                " #{shared_path}/public/.htaccess "
+        # set :rails_env, fetch(:rails_env) wont set the variable in this file
+        puts "you forget to prepend RAILS_ENV=example_environment to your cap command. " +
+             "falling back to staging environment in passenger conf" unless ENV['RAILS_ENV']
+        
+        # set environmet
+        rails_env = ENV['RAILS_ENV'] || 'staging'
+        execute "sed -i 's/RailsEnv .*/RailsEnv #{rails_env}/' #{shared_path}/public/.htaccess "
       end
     end
+    
+    task :restart do
+      on roles(:app) do
+        execute :touch, current_path.join('tmp/restart.txt')
+      end
+    end
+    
+    after :set_environment, :restart
   end
 end

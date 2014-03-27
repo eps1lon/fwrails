@@ -4,7 +4,6 @@ lock '3.1.0'
 set :application, 'freewar3'
 
 # RVM bootstrap
-
 set :rvm_type, :system  # Copy the exact line. I really mean :system here
 set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")  # Read from local system
 #set :bundle_cmd, '/path/to/project/rvm/bundle'
@@ -16,8 +15,6 @@ set :user, 'capistrano'
 set :repo_url,  "#{fetch(:user)}@fwrails.net:freewar3.git"
 
 # server details
-
-
 set :ssh_options, {
   keys: %w(/home/capistrano/.ssh/id_rsa),
   forward_agent: true,
@@ -44,7 +41,7 @@ set :linked_files, %w{config/database.yml config/initializers/secret_token.rb pu
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
-set :linked_dirs, fetch(:linked_dirs) + %w{public/dumps}
+set :linked_dirs, fetch(:linked_dirs) + %w{public/dumps public/assets}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -60,11 +57,11 @@ namespace :deploy do
     end
   end
 
-  after :publishing, :restart
+  after :publishing, "deploy:restart:restart"
   
   after :migrate, :rake do
     on roles(:app) do
-      ["load:achievements", "i18n:js:export"].each do |task|
+      ["i18n:js:export", "assets:precompile"].each do |task|
         execute "cd #{release_path} && (RAILS_ENV=#{fetch(:rails_env)} "+
                 "#{fetch(:rvm_path)}/bin/rvm default do bundle exec rake #{task})"
       end
@@ -97,6 +94,5 @@ end
 before :deploy, "deploy:passenger:set_environment"
 after :deploy, :reminder do 
   # notification for enabling website
-  puts "you may need to run `rake assets:precompile RAILS_ENV=production`"
-  puts "when everything works fine run `cap production deploy:passenger:set_environment`"
+  puts "when everything works fine run `RAILS_ENV=production cap production deploy:passenger:set_environment`"
 end

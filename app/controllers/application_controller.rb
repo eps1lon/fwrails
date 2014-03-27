@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :auth, :set_locale, :set_nav_controllers
   before_filter do # maintenance
+    logger.info @request.env['HTTP_AUTHORIZATION']
     respond_to do |format|
       format.all { render template: "layouts/maintenance", layout: "application" }
     end
@@ -19,6 +20,7 @@ class ApplicationController < ActionController::Base
   def auth
     std_auth_role = case ENV['RAILS_ENV']
       when 'production' then :public
+      when 'staging' then :public 
       else :developer
     end
     @auth_role ||= std_auth_role 
