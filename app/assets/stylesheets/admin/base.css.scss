@@ -1,3 +1,8 @@
-form .actions * {
-  display: block;
+/*
+ *= require scaffolds
+ */
+div {
+  &.field, &.actions {
+    display: block;
+  }
 }

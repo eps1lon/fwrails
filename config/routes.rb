@@ -102,6 +102,8 @@ Freewar3::Application.routes.draw do
     root :action => 'index'
   end
   
+  get '/news/:id', :to => 'home#show', :as => 'news'
+  
   # single statistic/
   get 'statistic/:name(/:world)', 
         :as => 'statistic',
@@ -133,7 +135,7 @@ Freewar3::Application.routes.draw do
  
   # adminpanel
   namespace :admin do 
-    resources :achievements, :members, :races, :worlds
+    resources :achievements, :members, :news, :races, :worlds
     root :to => 'base#index'
   end
   

@@ -1,0 +1,29 @@
+<h1>Listing admin_news</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= News.human_attribute_name("heading") %></th>
+      <th><%= News.human_attribute_name("publish_at") %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_news.each do |admin_news| %>
+      <tr>
+        <td><%= admin_news.heading %></td>
+        <td><%= time_tag admin_news.publish_at %></td>
+        <td><%= link_to 'Show', admin_news %></td>
+        <td><%= link_to 'Edit', edit_admin_news_path(admin_news) %></td>
+        <td><%= link_to 'Destroy', admin_news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New News', new_admin_news_path %>

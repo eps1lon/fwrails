@@ -1,0 +1,15 @@
+<% @title = "#{News.model_name.human}: #{@news.heading}" %>
+<section id="news">
+  <h1 class="news heading"><%= @title %></h1>
+  <p class="news publish_at">
+    <em><%= News.human_attribute_name("publish_at") %></em>
+    <%= time_tag @news.publish_at.to_date %>
+  </p>
+  <p class="news updated_at">
+    <em><%= News.human_attribute_name("updated_at") %></em>
+    <%= time_tag @news.public_updated_at %>
+  </p>
+  <p class="news content"><%= @news.content.html_safe %></p>
+</section>
+
+<%= link_to t(".back"), root_url %>

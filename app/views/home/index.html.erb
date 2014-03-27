@@ -1,1 +1,20 @@
 <% @title = "FWRails" %>
+<h1><%= News.model_name.human %></h1>
+
+<% @news.each do |news| %>
+  <% news.max_content_summary_count = 1 %>
+  <h2 class="news heading">
+    <%= news.heading %>
+    <%= link_to t(".edit"), edit_admin_news_url(news) if current_member.try(:developer?) %>
+  </h2>
+  <p class="news publish_at">
+    <em><%= News.human_attribute_name("publish_at") %></em>
+    <%= time_tag news.publish_at.to_date %>
+  </p>
+  <p class="news content">
+    <%= news.content_summary %>
+    <%= "…" if news.content_summarized? %>
+    <%= link_to t(".read_further"), news, id: "read_further" if news.content_summarized? %>
+  </p>
+  
+<% end %>

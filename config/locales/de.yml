@@ -288,6 +288,7 @@ de:
       achievement: "Errungenschaft"
       clan: "Clan"
       language: "Sprache"
+      news: "News"
       npc: "NPC"
       place: "Ort"
       race: "Rasse"
@@ -366,6 +367,13 @@ de:
         ratings: "Bewertungen"
         status: "Status"
         updated_at: "Letztes Update"
+      news:
+        content: "Inhalt"
+        created_at: "geschrieben am"
+        heading: "Thema"
+        member: "Verfasser"
+        publish_at: "veröffentlicht am"
+        updated_at: "zuletzt verändert am"
       statistic:
         name: "Name"
         last_value: "aktueller Wert"
@@ -680,7 +688,13 @@ de:
   home:
     human: 'Home'
     index:
+      edit: "bearbeiten"
       human: "Index"
+      read_further: "Weiterlesen"
+    show:
+      back: "Zurück zur Übersicht"
+      human: ""
+      record_not_found: "News-Eintrag nicht gefunden"
   sessions:
     human: "Session"
     new:

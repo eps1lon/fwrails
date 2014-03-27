@@ -3,7 +3,7 @@ class Admin::MembersController < Admin::BaseController
 
   # GET /admin/members
   def index
-    @admin_members = Member.all
+    @admin_members = ::Member.all
   end
 
   # GET /admin/members/1
@@ -21,7 +21,6 @@ class Admin::MembersController < Admin::BaseController
 
   # POST /admin/members
   def create
-    logger.debug admin_member_params
     @admin_member = Member.new(admin_member_params)
     @admin_member.skip_confirmation!
 
