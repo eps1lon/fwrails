@@ -118,12 +118,6 @@ p, blockquote {
   max-width: 70ch;
 }
 
-/* navs */
-
-#locales {
-    display: none;
-}
-
 #yield {
   margin-left: 2%;
   position: relative;
@@ -248,6 +242,27 @@ table.single-world {
 
 .ui-droppable {
   border: 1px dashed grey;
+}
+
+/* header nav */
+header {
+  * {
+    z-index: 3;
+  }
+  
+  #controllers {
+    z-index: 2;
+  }
+  
+  #locales {
+    display: none;
+  }
+  
+  #member_panel {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
 }
 
 /* pages nav */

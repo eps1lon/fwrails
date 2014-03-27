@@ -37,7 +37,7 @@ set :log_level, :debug
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/initializers/secret_token.rb public/.htaccess}
+set :linked_files, %w{config/database.yml config/initializers/secret_token.rb public/.htaccess tmp/restart.txt}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
@@ -57,7 +57,7 @@ namespace :deploy do
     end
   end
 
-  after :publishing, "deploy:restart:restart"
+  after :publishing, "deploy:passenger:restart"
   
   after :migrate, :rake do
     on roles(:app) do

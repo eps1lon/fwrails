@@ -1,4 +1,8 @@
 Freewar3::Application.routes.draw do 
+  devise_for :members,
+             controllers: {
+               sessions: "sessions"
+             }
   # :param => /.*/ prevents failing on a name with a period
   root :to => 'home#index'
   
@@ -129,7 +133,7 @@ Freewar3::Application.routes.draw do
  
   # adminpanel
   namespace :admin do 
-    resources :achievements, :races, :worlds
+    resources :achievements, :members, :races, :worlds
     root :to => 'base#index'
   end
   

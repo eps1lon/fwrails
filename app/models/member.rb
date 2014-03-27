@@ -1,9 +1,10 @@
 class Member < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable and :omniauthable
+  devise :confirmable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable  
+  
   ROLES = %w{developer content_admin}.map &:to_sym
-
-  def is?(role)
-    roles.include?(role)
-  end
 
   def roles
     ROLES.reject do |r|
@@ -12,16 +13,27 @@ class Member < ActiveRecord::Base
   end
   
   def roles=(roles)
+    logger.debug roles
     self['roles'] = (roles & ROLES).map { |r| 2**ROLES.index(r) }.inject(0, :+)
   end
-
-  def password=(password)
-    self['password'] = Digest::MD5.hexdigest(password)
+  
+  # role auth
+  def is?(role)
+    roles.include?(role)
   end
   
-  def self.auth?(name, password, role) 
-    md5_of_password = Digest::MD5.hexdigest(password)
-    member = Member.where(:name => name, :password => md5_of_password).first
-    !member.nil? && member.is?(role)
+  # role helper
+  def developer?
+    is?(:developer)
+  end
+  
+  def content_admin?
+    is?(:content_admin)
+  end
+  
+  # deprecated
+  def self.auth?(role)
+    ActiveSupport::Deprecation.warn("Member.auth? is deprecated")
+    current_member && current_member.is?(role)
   end
 end

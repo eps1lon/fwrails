@@ -675,6 +675,10 @@ de:
     human: 'Home'
     index:
       human: "Index"
+  sessions:
+    human: "Session"
+    new:
+      human: "Login"
   statistics:
     index:
       head: "ausgewählte Statistiken"

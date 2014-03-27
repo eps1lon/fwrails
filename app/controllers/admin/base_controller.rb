@@ -1,12 +1,10 @@
-class Admin::BaseController < ActionController::Base
+class Admin::BaseController < ApplicationController
   protect_from_forgery
   layout "admin"
   
+  before_filter :authenticate_developer!
+  
   before_filter do 
-    authenticate_or_request_with_http_basic('admin') do |user_name, password|
-      Member.auth?(user_name, password, :content_admin)
-    end
-    
     @title = "Adminpanel #{controller_name}##{action_name}"
   end
   

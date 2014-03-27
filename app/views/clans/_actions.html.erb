@@ -2,7 +2,7 @@
   <ul>
     <% %w{index}.each do |action| %>
       <li><%= link_to t("clans.#{action}.human"), 
-                      url_for({:controller => 'clans', :action => action}) %></li>       
+                      url_for({:controller => '/clans', :action => action}) %></li>       
     <% end %>
   </ul>
 </li>
@@ -11,7 +11,7 @@
   <ul>
     <% %w{leader_change coleader_change name_change tag_change}.each do |action| %>
       <li><%= link_to t("clans.#{action}.human"), 
-                      url_for({:controller => 'clans', :action => action}) %></li>       
+                      url_for({:controller => '/clans', :action => action}) %></li>       
     <% end %>
   </ul>
 </li>
@@ -20,7 +20,7 @@
   <ul>
     <% %w{new delete}.each do |action| %>
       <li><%= link_to t("clans.#{action}.human"), 
-                      url_for({:controller => 'clans', :action => action}) %></li>       
+                      url_for({:controller => '/clans', :action => action}) %></li>       
     <% end %>
   </ul>
 </li>

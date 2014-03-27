@@ -1,0 +1,33 @@
+<%= form_for([:admin, @admin_member]) do |f| %>
+  <% if @admin_member.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_member.errors.count, "error") %> prohibited this admin_member from being saved:</h2>
+
+      <ul>
+      <% @admin_member.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.label :name, "name" %>
+    <%= f.text_field :name %>
+    
+    <%= f.label :email, "email" %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password, "password" %>
+    <%= f.password_field :password %>
+    <%= f.label :password_confirmation, "password_confirmation" %>
+    <%= f.password_field :password_confirmation %>
+
+    <% Member::ROLES.each_with_index do |role, i| %>
+      <%= f.label "roles_#{role}", role %>
+      <%= f.check_box "roles", {multiple: true}, role, nil  %>
+    <% end %>
+    
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,5 +1,5 @@
 <% %w{index}.each do |action| %>
-  <li><%= link_to t("achievements.#{action}.human"), url_for({:controller => 'achievements', :action => action}) %></li>
+  <li><%= link_to t("achievements.#{action}.human"), url_for({:controller => '/achievements', :action => action}) %></li>
 <% end %>
 <li><%= link_to t("achievements.rank.human"), achievements_rank_url %></li>
 <li><%= link_to t("achievements.unachieved.human"), achievements_unachieved_url %></li>

@@ -1,13 +1,7 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
-
-  before_filter :auth, :set_locale, :set_nav_controllers
-  before_filter do # maintenance
-    logger.info @request.env['HTTP_AUTHORIZATION']
-    respond_to do |format|
-      format.all { render template: "layouts/maintenance", layout: "application" }
-    end
-  end if ENV['RAILS_ENV'] == 'staging'
+  
+  before_filter :set_locale, :set_nav_controllers, :staging
   
   # error handler
   unless Rails.application.config.consider_all_requests_local
@@ -16,20 +10,7 @@ class ApplicationController < ActionController::Base
   end
   
   rescue_from ActiveRecord::RecordNotFound, with: :render_record_not_found
-  
-  def auth
-    std_auth_role = case ENV['RAILS_ENV']
-      when 'production' then :public
-      when 'staging' then :public 
-      else :developer
-    end
-    @auth_role ||= std_auth_role 
-    
-    authenticate_or_request_with_http_basic("FWRails needs #{@auth_role.to_s} auth") do |user_name, password|
-      Member.auth?(user_name, password, @auth_role)
-    end unless @auth_role.eql?(:public)
-  end
-  
+ 
   # error pages
   def routing_error
     raise ActionController::RoutingError.new(params[:path])
@@ -64,6 +45,15 @@ class ApplicationController < ActionController::Base
     order ||= attributes[default]
   end 
   
+  # devise helpers
+  def authenticate_developer!
+    authenticate_member! unless current_member.try(:developer?)
+  end
+  
+  def authenticate_content_admin!
+    authenticate_member! unless current_member.try(:content_admin?)
+  end
+  
   private
   def set_nav_controllers
     @controllers = %w{users clans graphs achievements}
@@ -78,5 +68,13 @@ class ApplicationController < ActionController::Base
     end
     
     I18n.locale = @locale
+  end
+  
+  # 
+  def staging
+    logger.debug "dev: #{current_member.try(:developer?)}"
+    respond_to do |format|
+      format.all { render template: "layouts/maintenance", layout: "application" }
+    end if ENV['RAILS_ENV'] == 'staging' && !current_member.try(:developer?)
   end
 end

@@ -1,0 +1,26 @@
+<h1>Listing admin_members</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_members.each do |admin_member| %>
+      <tr>
+        <td><%= admin_member.name %></td>
+        <td><%= link_to 'Show', [:admin, admin_member] %></td>
+        <td><%= link_to 'Edit', edit_admin_member_path(admin_member) %></td>
+        <td><%= link_to 'Destroy', [:admin, admin_member], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Member', new_admin_member_path %>

@@ -1,4 +1,4 @@
 <% %w{index about howto list}.each do |action| %>
   <li><%= link_to t("extensions.#{action}.human"), 
-          url_for({:controller => 'extensions', :action => action}) %></li>
+          url_for({:controller => '/extensions', :action => action}) %></li>
 <% end %>

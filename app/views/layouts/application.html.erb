@@ -15,7 +15,7 @@
 <body>
   <header>
     <nav>
-      <ul id="nav">
+      <ul id="controllers">
         <li><%= link_to 'FWRails', root_url, :class => 'page_logo' %></li>
         <% @controllers.each do |controller_name| %>
           <li  class="<%= "active" if controller_name == controller.controller_name %>">
@@ -27,7 +27,7 @@
             </ul>
           </li>
         <% end %>
-        <li><%= link_to t("statistics.human"), url_for(:controller => 'statistics') %></li>
+        <li><%= link_to t("statistics.human"), url_for(:controller => '/statistics') %></li>
       </ul>
     </nav>
     <nav id="locales">
@@ -40,6 +40,12 @@
           </li>
         <% end %>
       </ul>
+    </nav>
+    
+    <nav id="member_panel">
+      <% if member_signed_in? %>
+        <%= link_to "logout", destroy_member_session_path, method: :delete, id: "logout" %>
+      <% end %>
     </nav>
   </header>
   <section id="yield">

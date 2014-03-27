@@ -1,21 +1,20 @@
 /* common and top level styles */
-#nav span {
+#controllers span {
     display: none;
 }
-#nav, #nav ul {
+#controllers, #controllers ul {
     list-style: none outside none;
     margin: 0;
     padding: 0;
 }
-#nav {
+#controllers {
     background-color: #F5F5F5;
     border-bottom: 5px solid #333333;
     float: left;
     position: relative;
     width: 100%;
-    z-index: 99999;
 }
-#nav ul.subs {
+#controllers ul.subs {
     background-color: #FFFFFF;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     color: #333333;
@@ -26,7 +25,7 @@
     top: 54px;
     width: 96%; 
 }
-#nav > li {
+#controllers > li {
     border-bottom: 5px solid transparent;
     float: left;
     margin-bottom: -5px;
@@ -37,7 +36,7 @@
     -webkit-transition: all 300ms ease-in-out 0s;
     transition: all 300ms ease-in-out 0s;
 }
-#nav li a {
+#controllers li a {
     display: block;
     text-decoration: none;
     -moz-transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
@@ -47,7 +46,7 @@
     transition: color 450ms ease-in-out 0s, background-color 450ms ease-in-out 0s;
     white-space: normal;
 }
-#nav > li > a {
+#controllers > li > a {
     color: #333333;
     display: block;
     font-size: 1.3em;
@@ -55,39 +54,39 @@
     padding: 0 15px;
     text-transform: uppercase;
 }
-#nav > li:hover > a, #nav > a:hover {
+#controllers > li:hover > a, #controllers > a:hover {
     background-color: #F55856;
     color: #FFFFFF;
 }
-#nav li.active > a {
+#controllers li.active > a {
     background-color: #333333;
     color: #FFFFFF;
 }
 
 /* submenu */
-#nav li:hover ul.subs {
+#controllers li:hover ul.subs {
     display: block;
 }
-#nav ul.subs > li {
+#controllers ul.subs > li {
     display: inline-block;
     float: none;
     padding: 10px 1%;
     vertical-align: top;
     width: 33%;
 }
-#nav ul.subs > li a {
+#controllers ul.subs > li a {
     color: #777777;
     line-height: 20px;
 }
-#nav ul li a:hover {
+#controllers ul li a:hover {
     color: #F55856;
 }
-#nav ul.subs > li > a, #nav ul.subs > li > strong {
+#controllers ul.subs > li > a, #controllers ul.subs > li > strong {
     font-size: 1.3em;
     margin-bottom: 10px;
     text-transform: uppercase;
 }
-#nav ul.subs > li li {
+#controllers ul.subs > li li {
     float: none;
     padding-left: 8px;
     -moz-transition: padding 150ms ease-out 0s;
@@ -96,29 +95,29 @@
     -webkit-transition: padding 150ms ease-out 0s;
     transition: padding 150ms ease-out 0s;
 }
-#nav ul.subs > li li:hover {
+#controllers ul.subs > li li:hover {
     padding-left: 15px;
 }
 
 /* responsive rules */
 @media all and (max-width : 980px) {
-    #nav > li {
+    #controllers > li {
         float: none;
         border-bottom: 0;
         margin-bottom: 0;
     }
-    #nav ul.subs {
+    #controllers ul.subs {
         position: relative;
         top: 0;
     }
-    #nav li:hover ul.subs {
+    #controllers li:hover ul.subs {
         display: none;
     }
-    #nav li .anchor:target + ul.subs {
+    #controllers li .anchor:target + ul.subs {
         display: block;
     }
 
-    #nav ul.subs > li {
+    #controllers ul.subs > li {
         display: block;
         width: auto;
     }
