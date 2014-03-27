@@ -338,14 +338,24 @@ de:
         leader_id_old: "alter Leader"
         world_id: "Welt"
       clans_name_change:
+        clan_id: "ID"
         count: "%{count} Namensänderungen"
+        created_at: "Änderungsdatum"
+        name_new: "neuer Name"
+        name_old: "alter Name"
+        world_id: "Welt"
       clans_new: 
         clan_id: "ID"
         created_at: "Gründungsdatum"
         tag: "Tag"
         world_id: "Welt"
       clans_tag_change:
+        clan_id: "ID"
         count: "%{count} Tagänderungen"
+        created_at: "Änderungsdatum"
+        tag_new: "neuer Tag"
+        tag_old: "alter Tag"
+        world_id: "Welt"
       extension:
         name: "Name"
         created_at: "Erstellt am"
@@ -529,6 +539,12 @@ de:
       head: "Leaderwechsel bei Clans in FreeWar"
       human: "Leaderwechsel"
       message: "%{count} Wechsel gefunden in %{worlds}"
+    name_change:
+      head: "Namensänderungen von Clans in FreeWar"
+      human: "Namensänderungen"
+      message:
+        one: "Eine Namensänderung gefunden in %{worlds}"
+        other: "%{count} Namensänderung gefunden in %{worlds}"
     nav: 
       changes: "Änderungen"
       lists: "Listen"
@@ -578,6 +594,12 @@ de:
             zero: "keine Austritte"
             one: "ein Austritt"
             other: "%{count} Austritte"
+    tag_change:
+      head: "Tagänderungen von Clans in FreeWar"
+      human: "Tagänderungen"
+      message:
+        one: "Eine Tagänderung gefunden in %{worlds}"
+        other: "%{count} Tagänderung gefunden in %{worlds}"
   dev:
     announced: "coming soon"
   extensions:

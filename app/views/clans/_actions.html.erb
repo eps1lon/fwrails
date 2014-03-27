@@ -9,7 +9,7 @@
 
 <li><strong><%= t "clans.nav.changes" %></strong>
   <ul>
-    <% %w{leader_change coleader_change}.each do |action| %>
+    <% %w{leader_change coleader_change name_change tag_change}.each do |action| %>
       <li><%= link_to t("clans.#{action}.human"), 
                       url_for({:controller => 'clans', :action => action}) %></li>       
     <% end %>

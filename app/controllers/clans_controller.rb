@@ -23,6 +23,7 @@ class ClansController < ApplicationController
   
   before_filter :common_new_delete,    :only => [:delete, :new]
   before_filter :common_leader_change, :only => [:leader_change, :coleader_change] 
+  before_filter :common_text_change,   :only => [:name_change, :tag_change]
 
   def index
     @model = Clan.where(:world_id => @worlds).references(:clan)
@@ -50,16 +51,25 @@ class ClansController < ApplicationController
     end
   end
   
+  #new_delete
+  def delete
+  end
+  
   def new
   end
   
-  def delete
+  #leaderchange
+  def coleader_change
   end
   
   def leader_change
   end
   
-  def coleader_change
+  # textchange
+  def name_change    
+  end
+  
+  def tag_change    
   end
   
   def show
@@ -141,6 +151,33 @@ class ClansController < ApplicationController
     @clans = @model.includes(:clan, :world, "#{type}_old".to_sym, "#{type}_new".to_sym).
                     order("#{order[:db]} #{params[:by]}").offset(@offset).limit(@limit) 
     
+    @skipsearch = true
+    respond_to do |format|
+      format.html { render 'clans/index'}
+    end
+  end
+  
+  def common_text_change
+    type = action_name.split("_").slice(0).to_s
+    @model = Object.const_get("Clans#{type.capitalize}Change").where(:world_id => @worlds)
+    
+    # create attr array
+    @attributes = [
+      {:human => "clan_id"},
+      {:human => "#{type}_old"},
+      {:human => "#{type}_new"},
+      {:human => "created_at", :db => "#{@model.table_name}.created_at"},
+      {:human => "world_id"}
+    ]
+    
+    # default
+    order = order_from_attributes(@attributes, params[:order], 3)
+    
+    # query
+    @clans = @model.includes(:clan, :world).
+                    order("#{order[:db]} #{params[:by]}").offset(@offset).limit(@limit) 
+    
+    # render
     @skipsearch = true
     respond_to do |format|
       format.html { render 'clans/index'}
