@@ -118,7 +118,7 @@ while ($world = mysql_fetch_assoc($worlds)) {
         $clan_id = @(int)$data[4]; // extended dump
         
         $sql_query .= "(" . mysql_encode(+$data[0], $db) . ", ".        // user_id
-                            mysql_encode($data[1], $db) . ", ".// name
+                            mysql_encode(decode_str($data[1]), $db) . ", ".// name
                             mysql_encode(+$data[2], $db) . ", ".        // experience
                             mysql_encode($race_id, $db) . ", ".         // race_id
                             mysql_encode($world_id, $db) . ", '$now', $clan_id)"; // world_id, created_at

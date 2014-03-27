@@ -1,5 +1,5 @@
 <?php
-header('Content-Type: text/plain; charset=iso-8859-1');
+header('Content-Type: text/plain; charset=utf-8');
 
 // cron workaround
 chdir(dirname(__FILE__));
@@ -136,6 +136,10 @@ register_shutdown_function("shutdown");
 function create_dumps($db) {
     $file = basename($_SERVER['PHP_SELF'], ".php");
     include "{$file}_create.php";
+}
+
+function decode_str($s) {
+    return html_entity_decode(stripslashes($s), ENT_COMPAT | ENT_HTML401, 'ISO-8859-1');
 }
 
 echo "running in " . ENV . " environment\n";

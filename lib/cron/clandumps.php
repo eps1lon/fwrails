@@ -218,13 +218,13 @@ while ($world = mysql_fetch_assoc($worlds)) {
                                         "AND world_id = '" . $clan['world_id'] . "'";
                         error_query($update_query, $db);
                     }
-
+                      
                     //clan_id, world_id, name, tag, leader_id, coleader_id, sum_experience, 
                     //member_count, created_at
                     $sql_query .= "(" . mysql_encode($clan['id'], $db) . ", ". 
                                         mysql_encode($clan['world_id'], $db) . ", ".
-                                        mysql_encode($clan['name'], $db) . ", ". 
-                                        mysql_encode($clan['tag'], $db) . ", ". 
+                                        mysql_encode(decode_str($clan['name']), $db) . ", ". 
+                                        mysql_encode(decode_str($clan['tag']), $db) . ", ". 
                                         mysql_encode($clan['leader'], $db) . ", ". 
                                         mysql_encode($clan['coleader'], $db) . ", ". 
                                         mysql_encode($clan['sum_experience'], $db) . ", ". 
@@ -244,13 +244,13 @@ while ($world = mysql_fetch_assoc($worlds)) {
             } 
         } else {
             implode_runtime($sql_query, $i, $insert_query, $db);
-
+            
             //clan_id, world_id, name, tag, leader_id, coleader_id, sum_experience, 
             //member_count, created_at
             $sql_query .= "(" . mysql_encode($clan['id'], $db) . ", ". 
                                 mysql_encode($clan['world_id'], $db) . ", ".
-                                mysql_encode($clan['name'], $db) . ", ". 
-                                mysql_encode($clan['tag'], $db) . ", ". 
+                                mysql_encode(decode_str($clan['name']), $db) . ", ". 
+                                mysql_encode(decode_str($clan['tag']), $db) . ", ". 
                                 mysql_encode($clan['leader'], $db) . ", ". 
                                 mysql_encode($clan['coleader'], $db) . ", ". 
                                 mysql_encode($clan['sum_experience'], $db) . ", ". 
