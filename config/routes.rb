@@ -1,6 +1,7 @@
 Freewar3::Application.routes.draw do 
   # :param => /.*/ prevents failing on a name with a period
-
+  root :to => 'home#index'
+  
   # ukimgs      
   get 'ukimgs/tag/:id/:tag_id/(up|down|report)',
         :as => 'ukimgs_tag',
@@ -132,5 +133,5 @@ Freewar3::Application.routes.draw do
     root :to => 'base#index'
   end
   
-  root :to => 'home#index'
+  match "*path", :to => "application#routing_error", :via => :all
 end

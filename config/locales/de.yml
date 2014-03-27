@@ -281,7 +281,7 @@ de:
       undefined: "merkwürdiger Fehler"
       e_404: 
         head: "nicht gefunden"
-        body: "Seite nicht gefunden"
+        body: "Seite `%{path}` nicht gefunden"
 
   activerecord:
     models:
