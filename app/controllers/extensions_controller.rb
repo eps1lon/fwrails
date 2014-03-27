@@ -1,6 +1,11 @@
 class ExtensionsController < ApplicationController
-  def index
+  before_filter do 
+    flash[:notice] = I18n.t("dev.announced")
+  end
   
+  def index
+    @extensions = []
+    #@extensions = Extension.order("name asc")
   end
 
   def howto
@@ -10,12 +15,7 @@ class ExtensionsController < ApplicationController
   def about
   
   end
-
-  def list
-    @extensions = Extension.order("name asc")
-  end
   
   def show
-    
   end
 end

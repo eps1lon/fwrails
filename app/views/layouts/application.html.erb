@@ -28,6 +28,7 @@
           </li>
         <% end %>
         <li><%= link_to t("statistics.human"), url_for(:controller => '/statistics') %></li>
+        <li><%= link_to t("extensions.human"), url_for(:controller => '/extensions') %></li>
       </ul>
     </nav>
     <nav id="locales">
@@ -48,12 +49,10 @@
       <% end %>
     </nav>
   </header>
-  <section id="flash">
-    <% flash.each do |name, msg| -%>
-      <%= content_tag :p, msg, class: name %>
-    <% end -%>
-  </section>
   <section id="yield">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :p, msg, class: ['flash', name] %>
+    <% end -%>
     <%= yield %>
   </section>
   <script type="text/javascript">

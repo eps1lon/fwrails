@@ -2,7 +2,10 @@ class Admin::BaseController < ApplicationController
   protect_from_forgery
   layout "admin"
   
-  before_filter :authenticate_developer!
+  before_filter do 
+    flash[:notice] = "Admin Only Section!!!"
+    authenticate_developer!
+  end
   
   before_filter do 
     @title = "Adminpanel #{controller_name}##{action_name}"
