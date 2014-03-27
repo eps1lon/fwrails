@@ -11,6 +11,6 @@ class UsersAchievementsCache < ActiveRecord::Base
            :foreign_key => [:user_id, :world_id]
   
   def self.last_update
-    self.first.updated_at
+    self.take.updated_at
   end
 end

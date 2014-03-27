@@ -51,75 +51,75 @@
   <strong><%= t "helpers.nav.page" %></strong>
   <%= nav_links = nav(@offset, @limit, UsersAchievementsCache.count, method(:achievements_rank_url)).join.html_safe %>
 </nav>
-<% cache(cache_key_for_achievements('index', @worlds)) do %>
-  <table id="users">
-    <caption>
-      <%= t '.caption', :count => @users.length, :worlds => @worlds.collect(&:short).to_sentence %>
-    </caption>
-    <thead data-fallback_url="0">
-      <tr>
-        <th class="user_id" data-order="user_id">
-          <%= UsersAchievementsCache.human_attribute_name('user_id') %>
+
+<table id="users">
+  <caption>
+    <%= t '.caption', :count => @users.length, :worlds => @worlds.collect(&:short).to_sentence %>
+  </caption>
+  <thead data-fallback_url="0">
+    <tr>
+      <th class="user_id" data-order="user_id">
+        <%= UsersAchievementsCache.human_attribute_name('user_id') %>
+      </th>
+      <% @achievements.each do |achievement| %>
+        <th data-container-for="<%= "achiev_group_#{achievement.group}" %>" colspan="2">
+          <%= image_tag("achievements/#{achievement.gfx_file}", 
+                        :alt => achievement.group_name, 
+                        :class => "ui-draggable",
+                        :id => "achiev_group_#{achievement.group}",
+                        :title => achievement.group_name) %>
+          <%= link_to '', 
+                      achievements_rank_url(params.merge({:order => achievement.group, :by => @by, :page => 1})),
+                      :class => 'sort no-content',
+                      :data => {order: achievement.group},
+                      :title => t("helpers.links.sort", :col => achievement.group_name) %>
         </th>
-        <% @achievements.each do |achievement| %>
-          <th data-container-for="<%= "achiev_group_#{achievement.group}" %>" colspan="2">
-            <%= image_tag("achievements/#{achievement.gfx_file}", 
-                          :alt => achievement.group_name, 
-                          :class => "ui-draggable",
-                          :id => "achiev_group_#{achievement.group}",
-                          :title => achievement.group_name) %>
-            <%= link_to '', 
-                        achievements_rank_url(params.merge({:order => achievement.group, :by => @by, :page => 1})),
-                        :class => 'sort no-content',
-                        :data => {order: achievement.group},
-                        :title => t("helpers.links.sort", :col => achievement.group_name) %>
-          </th>
+      <% end %>
+      <th class="count">
+        <%= link_to UsersAchievementsCache.human_attribute_name('count'),
+                    achievements_rank_url(params.merge({:order => 'count', :by => @by, :page => 1})),
+                    :class => 'sort',
+                    :data => {order: 'count'},
+                    :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('count')) %>
+       </th>
+      <th class="reward">
+        <%= link_to UsersAchievementsCache.human_attribute_name('reward_collected'),
+                    achievements_rank_url(params.merge({:order => 'reward_collected', :by => @by, :page => 1})),
+                    :class => 'sort',
+                    :data => {order: 'reward_collected'},
+                    :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('reward_collected')) %>
+      </th>
+      <th class="world">
+        <%= UsersAchievementsCache.human_attribute_name('world_id') %>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user_cache| %>
+    <tr class="user" data-user="<%= user_cache.user.to_param %>">
+      <td class="user_id">
+        <% if user_cache.user.nil? %>
+          <del><%= user_cache.user_id %></del>
+        <% else %>
+          <%= link_to user_cache.user.name, user_url(:name => user_cache.user.name, :world => user_cache.world.short) %>
         <% end %>
-        <th class="count">
-          <%= link_to UsersAchievementsCache.human_attribute_name('count'),
-                      achievements_rank_url(params.merge({:order => 'count', :by => @by, :page => 1})),
-                      :class => 'sort',
-                      :data => {order: 'count'},
-                      :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('count')) %>
-         </th>
-        <th class="reward">
-          <%= link_to UsersAchievementsCache.human_attribute_name('reward_collected'),
-                      achievements_rank_url(params.merge({:order => 'reward_collected', :by => @by, :page => 1})),
-                      :class => 'sort',
-                      :data => {order: 'reward_collected'},
-                      :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('reward_collected')) %>
-        </th>
-        <th class="world">
-          <%= UsersAchievementsCache.human_attribute_name('world_id') %>
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @users.each do |user_cache| %>
-      <tr class="user" data-user="<%= user_cache.user.to_param %>">
-        <td class="user_id">
-          <% if user_cache.user.nil? %>
-            <del><%= user_cache.user_id %></del>
-          <% else %>
-            <%= link_to user_cache.user.name, user_url(:name => user_cache.user.name, :world => user_cache.world.short) %>
-          <% end %>
+      </td>
+      <% @achievements.each do |achievement| %>
+        <% user_achievement = @users_achievements[user_cache.to_param].select{|a| a.achievement_id == achievement.achievement_id}[0] %>
+        <td class="achiev_group progress" data-achievement_id="<%= achievement.achievement_id %>">
+          <%= user_achievement.nil? ? '-' : number_with_delimiter(user_achievement.progress)  %>
         </td>
-        <% @achievements.each do |achievement| %>
-          <% user_achievement = @users_achievements[user_cache.to_param].select{|a| a.achievement_id == achievement.achievement_id}[0] %>
-          <td class="achiev_group progress" data-achievement_id="<%= achievement.achievement_id %>">
-            <%= user_achievement.nil? ? '-' : number_with_delimiter(user_achievement.progress)  %>
-          </td>
-          <td class="achiev_group stage" data-achievement_id="<%= achievement.achievement_id %>">
-            <%= user_achievement.nil? ? '-' : number_with_delimiter(user_achievement.stage) %>
-        <% end %>
-        <td class="count"><%= number_with_delimiter user_cache.count %></td>
-        <td class="reward"><%= number_with_delimiter user_cache.reward_collected %></td>
-        <td class="world"><%= user_cache.world.name %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
-<% end %>
+        <td class="achiev_group stage" data-achievement_id="<%= achievement.achievement_id %>">
+          <%= user_achievement.nil? ? '-' : number_with_delimiter(user_achievement.stage) %>
+      <% end %>
+      <td class="count"><%= number_with_delimiter user_cache.count %></td>
+      <td class="reward"><%= number_with_delimiter user_cache.reward_collected %></td>
+      <td class="world"><%= user_cache.world.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
 <nav class="pages" data-fallback_url="2">
   <strong><%= t "helpers.nav.page" %></strong>
   <%= nav_links %>

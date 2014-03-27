@@ -1,8 +1,11 @@
 module AchievementsHelper
   def cache_key_for_achievements(action, worlds)
-    last_update = UsersAchievementsCache.last_update.try(:utc).try(:to_s, :number)
+    last_update = [
+      UsersAchievementsCache.last_update.try(:utc).try(:to_s, :number),
+      Achievement.maximum(:created_at)
+    ].max
     world_cache_key = relation_to_cache_key(worlds)
-    ["statistics", action, last_update] + world_cache_key
+    ["achievements", action, last_update] + world_cache_key
   end
   
   def achievement_url(achievement, options = {})

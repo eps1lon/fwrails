@@ -20,7 +20,6 @@ class AchievementsController < ApplicationController
       else
         @worlds = @all_worlds.where(:short => params[:world])
       end
-      
     end
   end
   
@@ -60,10 +59,16 @@ class AchievementsController < ApplicationController
     @users = @users.order(@order.map {|order| "#{order} #{params[:by]}"}.join(','))
     @users = @users.offset(@offset).limit(20)
     
-    # users_achievements
-    @users_achievements = {}
-    @users.each do |user|
-      @users_achievements[user.to_param] = user.achievements.where(:achievement_id => @achievements.collect(&:achievement_id))
+    if stale?(etag: [@achievements, @users], last_modified: @users.take.updated_at, public: true)
+      # users_achievements
+      @users_achievements = {}
+      @users.each do |user|
+        @users_achievements[user.to_param] = user.achievements.where(:achievement_id => @achievements.collect(&:achievement_id))
+      end
+      
+      respond_to do |format|
+        format.html
+      end
     end
   end
   
@@ -95,44 +100,55 @@ class AchievementsController < ApplicationController
       end
     end
     
+    # for cache_key in fragment caching
+    @last_update = UsersAchievementsCache.last_update
+    
     @title = params[:name]
+    
+    if stale?(etag: @achievement, last_modified: @last_update, public: true)
+      # various stats about this achievement each world
+      # achieved 
+      @achieved = @achievement.achieved.group(:world_id)
 
-    # various stats about this achievement each world
-    # achieved 
-    @achieved = @achievement.achieved.group(:world_id)
-    
-    @achiev_counts = []
-    @achieved.count.each do |count|
-      @achiev_counts << {
-        :count => count[1],
-        :world => @worlds[count[0]-1]
-      }
+      @achiev_counts = []
+      @achieved.count.each do |count|
+        @achiev_counts << {
+          :count => count[1],
+          :world => @worlds[count[0]-1]
+        }
+      end
+
+      @progress_sums = []
+      @achieved.sum(:progress).each do |progress_sum|
+        @progress_sums << {
+          :sum => progress_sum[1],
+          :world => @worlds[progress_sum[0]-1]
+        }
+      end
+
+      @furthest = @achievement.furthest.includes(:world, :user).group(:world_id)
+      @worlds.each do |world|
+        #@furthest << 
+      end
+      #@furthest.compact!
     end
-    
-    @progress_sums = []
-    @achieved.sum(:progress).each do |progress_sum|
-      @progress_sums << {
-        :sum => progress_sum[1],
-        :world => @worlds[progress_sum[0]-1]
-      }
-    end
-    
-    @furthest = @achievement.furthest.includes(:world, :user).group(:world_id)
-    @worlds.each do |world|
-      #@furthest << 
-    end
-    #@furthest.compact!
   end
 
   def unachieved
-    @closest = {}
-    @achievements = Achievement.unachieved(:in_worlds => @worlds).
-                                order("achievements.name")
-    
-    @achievements.each do |achievement|
-      @closest[achievement.id] = achievement.closest.includes(:user, :world).
-                                             where(:world_id => @worlds.collect(&:id)).
-                                             limit(1).first
+    if stale?(etag: @worlds, last_modified: [Achievement.maximum(:created_at), UsersAchievementsCache.last_update].max, public: true)
+      @closest = {}
+      @achievements = Achievement.unachieved(:in_worlds => @worlds).
+                                  order("achievements.name")
+
+      @achievements.each do |achievement|
+        @closest[achievement.id] = achievement.closest.includes(:user, :world).
+                                               where(:world_id => @worlds.collect(&:id)).
+                                               limit(1).first
+      end
+      
+      respond_to do |format|
+        format.html
+      end
     end
   end
 end
