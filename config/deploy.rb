@@ -64,7 +64,7 @@ namespace :deploy do
   
   after :migrate, :rake do
     on roles(:app) do
-      ["load:achievements"].each do |task|
+      ["load:achievements", "i18n:js:export"].each do |task|
         execute "cd #{release_path} && (RAILS_ENV=#{fetch(:rails_env)} "+
                 "#{fetch(:rvm_path)}/bin/rvm default do bundle exec rake #{task})"
       end
@@ -94,9 +94,9 @@ after :deploy, :fix_permissions do
 end
 
 #maintenance
-before :deploy, "deploy:web:disable"
+before :deploy, "deploy:passenger:set_environment"
 after :deploy, :reminder do 
   # notification for enabling website
-  puts "you may need to run  `rake i18n:js:export`, `rake assets:precompile RAILS_ENV=production`"
-  puts "dont forget to when everything works fine `cap deploy:web:enable`"
+  puts "you may need to run `rake assets:precompile RAILS_ENV=production`"
+  puts "when everything works fine run `cap production deploy:passenger:set_environment`"
 end

@@ -1,18 +1,31 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
-  before_filter :set_locale, :set_nav_controllers
-  before_filter do 
-    authenticate_or_request_with_http_basic('FWRails') do |user_name, password|
-      Member.auth?(user_name, password, :developer)
+
+  before_filter :auth, :set_locale, :set_nav_controllers
+  before_filter do # maintenance
+    respond_to do |format|
+      format.all { render template: "layouts/maintenance", layout: "application" }
     end
+  end if ENV['RAILS_ENV'] == 'staging'
+  
+  # error handler
+  rescue_from ActiveRecord::RecordNotFound,   with: :render_record_not_found
+  
+  unless Rails.application.config.consider_all_requests_local
+    rescue_from ActionController::RoutingError, with: :render_404
+    rescue_from StandardError, with: :render_500
   end
   
-  if ENV['RAILS_ENV'] == 'production'
-    rescue_from ActionController::RoutingError, with: :render_404
-    rescue_from ActiveRecord::RecordNotFound,   with: :render_record_not_found
-  end
-  unless Rails.application.config.consider_all_requests_local
-    rescue_from StandardError, with: :render_500
+  def auth
+    std_auth_role = case ENV['RAILS_ENV']
+      when 'production' then :public
+      else :developer
+    end
+    @auth_role ||= std_auth_role 
+    
+    authenticate_or_request_with_http_basic("FWRails needs #{@auth_role.to_s} auth") do |user_name, password|
+      Member.auth?(user_name, password, @auth_role)
+    end unless @auth_role.eql?(:public)
   end
   
   def set_nav_controllers

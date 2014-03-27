@@ -49,7 +49,7 @@
       var params = <%= params.to_json.html_safe %>;
       I18n.defaultLocale = "<%= I18n.default_locale %>";
       I18n.locale = "<%= I18n.locale %>";
-      <%= render template: "analytics/#{ANALYTICS[:service]}.js" if ANALYTICS %>
+      <%= render template: "analytics/#{ANALYTICS[:service]}.js" if ANALYTICS[:service] %>
   </script>
 </body>
 </html>

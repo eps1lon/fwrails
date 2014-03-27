@@ -6,7 +6,7 @@ $htaccess = file_get_contents(RAILS_ROOT . '/public/.htaccess');
 
 if (!defined('RAILS_ENV')) {
     if (preg_match("/RailsEnv\s+(\w+)/i", $htaccess, $matches)) {
-        define('RAILS_ENV', $matches[1]);
+        define('RAILS_ENV', str_replace(["staging"], "production", $matches[1]));
     } else {
         define('RAILS_ENV', 'test');
     }

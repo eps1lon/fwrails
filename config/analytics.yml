@@ -1,6 +1,6 @@
-development:
+production:
   service: "ga"
   tracking_code: "UA-49173813-1"
-production:
+staging:
   service: "ga"
   tracking_code: "UA-49173813-1"

@@ -1,0 +1,11 @@
+namespace :deploy do 
+  namespace :passenger do
+    desc 'Sets the correct RailsEnv value for Phusion Passenger'
+    task :set_environment do
+      on roles(:app) do
+        execute "sed 's/RailsEnv .*/RailsEnv #{fetch(:rails_env)}/'" +
+                " #{shared_path}/public/.htaccess "
+      end
+    end
+  end
+end
