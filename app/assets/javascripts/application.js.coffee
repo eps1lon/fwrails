@@ -20,5 +20,8 @@ window.set_loading = (state) ->
   $('#loading').prop 'checked', state
 
 # i18n-js wrapper
-window.l = I18n.l
-window.t = I18n.t
+window.l = (type, value) ->
+  I18n.l(type, value)
+  
+window.t = (scope, locals) ->
+  I18n.t(scope, locals);
