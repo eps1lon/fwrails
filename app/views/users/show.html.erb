@@ -1,4 +1,4 @@
-<% @title = "#{User.model_name.human} #{@user.name_primary}" %>
+<% @title = "#{@user.name_primary}" %>
 <h1><%= @user.name %> (ID: <%= @user.user_id %>)</h1>
 <p><%= t ".info", :race => @user.race.name, 
                   :world => @user.world.name, 
