@@ -1,6 +1,6 @@
 class ExtensionsController < ApplicationController
   before_filter do 
-    flash[:notice] = I18n.t("dev.announced")
+    render 'layouts/announced'
   end
   
   def index

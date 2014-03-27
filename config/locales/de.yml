@@ -492,6 +492,12 @@ de:
         other: "%{count} erreicht von %{user}"
       head: "unerreichte Errungenschaften"
       human: "unerreicht"
+  announced:
+    extensions:
+      heading: "Erweiterungen geplant"
+      text: "Dieses Feature muss vorher noch mit Sotrax abgesprochen werden.
+             Sobald die Gespräche beendet sind (müsste man erstmal damit anfangen...), 
+             wird es hier dann ein Status-Update geben."
   application:
     locale:
       change: "Sprache umstellen auf %{lang}"
@@ -610,7 +616,7 @@ de:
     howto:
       human: "Anleitung"
     index:
-      human: "Start"
+      human: "Startseite"
     list:
       caption: "Verfügbare Erweiterungen"
       human: "Verzeichnis"
