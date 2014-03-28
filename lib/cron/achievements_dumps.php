@@ -64,6 +64,9 @@ function curlm_each_dump($dump_plain, $handle, $j) {
         return true;
     }
     
+    // save
+    file_put_contents(SHARED_PATH . "public/dumps/achievements/{$world['subdomain']}.txt", $dump_plain);
+    
     $rows = explode("\n", $dump_plain);
     
     foreach ($rows as $row) {

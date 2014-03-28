@@ -21,6 +21,57 @@ html {
 body {
     color: #333333;
     font: 12px Arial,sans-serif;
+    height: 100%;
+}
+
+/* header nav */
+header {
+  * {
+    z-index: 3;
+  }
+  
+  #controllers {
+    z-index: 2;
+  }
+  
+  #locales {
+    display: none;
+  }
+  
+  #member_panel {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+  }
+  
+  & + * {
+    position: relative;
+  }
+}
+
+#yield {
+  margin-left: 2%;
+  min-height: 95%;
+  position: relative;
+}
+
+footer {
+  background-color: #F5F5F5; 
+  border-top: 2px solid #333;
+  padding: 0 2%;
+  width: 96%;
+  z-index: 2;
+  
+  a {
+    color: #333333;
+    margin: 0 2em;
+    text-decoration: none;
+    
+    &:hover {
+      background-color: #F55856;
+      color: #FFFFFF;
+    }
+  }
 }
 
  /* text-content */
@@ -116,10 +167,6 @@ p, blockquote {
   min-width: 40ch;
   max-width: 28em;
   max-width: 70ch;
-}
-
-#yield {
-  margin-left: 2%;
 }
 
 /* Links */
@@ -241,31 +288,6 @@ table.single-world {
 
 .ui-droppable {
   border: 1px dashed grey;
-}
-
-/* header nav */
-header {
-  * {
-    z-index: 3;
-  }
-  
-  #controllers {
-    z-index: 2;
-  }
-  
-  #locales {
-    display: none;
-  }
-  
-  #member_panel {
-    position: absolute;
-    right: 0px;
-    top: 0px;
-  }
-  
-  & + * {
-    position: relative;
-  }
 }
 
 /* pages nav */

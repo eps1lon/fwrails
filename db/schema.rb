@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327191404) do
+ActiveRecord::Schema.define(version: 20140328075737) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20140327191404) do
     t.integer  "needed"
     t.integer  "achievement_id", default: 0,  null: false
     t.datetime "created_at"
+  end
+
+  create_table "admin_news", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", force: true do |t|
@@ -104,6 +109,12 @@ ActiveRecord::Schema.define(version: 20140327191404) do
     t.string   "tag_new"
     t.datetime "created_at",                 null: false
     t.boolean  "deleted",    default: false, null: false
+  end
+
+  create_table "dumps", force: true do |t|
+    t.boolean "public", default: true
+    t.string  "name"
+    t.string  "path"
   end
 
   create_table "experience_changes", id: false, force: true do |t|
@@ -232,6 +243,7 @@ ActiveRecord::Schema.define(version: 20140327191404) do
     t.integer  "flags"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "short"
   end
 
   create_table "statistic_changes", id: false, force: true do |t|

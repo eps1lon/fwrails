@@ -1,3 +1,7 @@
+p {
+  font-size: 1.5em;
+}
+
 .news {
   &.heading {
     margin-bottom: .1em;
@@ -13,11 +17,11 @@
   }
   
   &.content {
-    font-size: 1.2em;
+    font-size: 1em;
     margin: 1em 2em;
     
     #read_further {
-      font-size: 0.833em;
+      font-size: 0.666em;
     }
   }
 }

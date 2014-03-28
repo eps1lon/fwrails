@@ -1,0 +1,33 @@
+<h1>Listing admin_dumps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= Dump.human_attribute_name(:name) %></th>
+      <th><%= Dump.human_attribute_name(:path) %></th>
+      <th><%= Dump.human_attribute_name(:files) %></th>
+      <th><%= Dump.human_attribute_name(:updated_at) %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @admin_dumps.each do |admin_dump| %>
+      <tr>
+        <td><%= admin_dump.name %></td>
+        <td><%= dump_path(admin_dump) %></td>
+        <td><%= admin_dump.files %></td>
+        <td><%= time_tag admin_dump.updated_at %></td>
+        <td><%= link_to 'Show', [:admin, admin_dump] %></td>
+        <td><%= link_to 'Edit', edit_admin_dump_path(admin_dump) %></td>
+        <td><%= link_to 'Destroy', [:admin, admin_dump], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Dump', new_admin_dump_path %>

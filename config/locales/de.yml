@@ -357,6 +357,11 @@ de:
         tag_new: "neuer Tag"
         tag_old: "alter Tag"
         world_id: "Welt"
+      dump:
+        files: "Dateien"
+        name: "Name"
+        path: "Ziel"
+        updated_at: "Letztes Update"
       extension:
         name: "Name"
         created_at: "Erstellt am"
@@ -691,7 +696,45 @@ de:
     stocks:
       human: "stocks"
   home:
-    human: 'Home'
+    about: 
+      analytics:
+        service: "GoogleAnalytics"
+        text: "Die Seite verwendet GoogleAnalytics um die Website für den Benutzer
+               zu verbessern. Die Daten werden gemäß den AGB von GoogleAnalytics
+               verwendet."
+      contact:
+        link: "Kontakt aufnehmen."
+        text: "Solltest du doch noch Fragen haben, kannst du gerne "
+      heading: "About, Impressum etc"
+      human: "About"
+      impressum:
+        heading: "Impressum"
+        text: "Es handelt sich hier um eine Fansite von FreeWar.de. Der Großteil
+               der Daten wurde von dieser Seite bereitgestellt. Bilder, insbesondere
+               Achievements, NPCs, Items etc., sind urheberrechtlich von FreeWar.de
+               geschützt. Die Verwendung wurde auf Fanseiten genehmigt. Jegliche
+               Erlöse aus Werbung, Spenden usw. werden ausschließlich zur Kostendeckung
+               genutzt."
+      link_text: "über FWRails"
+      tech:
+        heading: "Technisches"
+        text: ""
+      thanks:
+        heading: "Dank"
+        text: "... Sotrax gibt es vernünftige Dumps, ohne die es diese Seite gar nicht
+               geben würde. Danke für die Arbeit und Geduld die er in die Community
+               über all die Jahre gesteckt hat."
+    contact:
+      heading: "Kontakt"
+      human: "Kontakt"
+      text: "Bei sonstigen Problemen, kann eine Mail an %{mail} geschickt werden.
+             Das Postfach wird unregelmäßig geleert. Es sollten persönlichere 
+             Wege via Foren-PN an `Benu` oder Ingame `Benu (W3)` bevorzugt werden."
+    dumps:
+      heading: "Dumps"
+      human: "Dumps"
+      link_text: "Dumps"
+    human: "FWRails"
     index:
       edit: "bearbeiten"
       human: "Index"
@@ -700,6 +743,12 @@ de:
       back: "Zurück zur Übersicht"
       human: ""
       record_not_found: "News-Eintrag nicht gefunden"
+  misc:
+    links: 
+      freewar: "powered by FreeWar.de"
+      fwshop: "FreeWar Shoppreise"
+      fwwiki: "FWWiki.de - FreeWar-Enzyklopädie"
+      snigg: "Snigg's FWTools"
   sessions:
     human: "Session"
     new:

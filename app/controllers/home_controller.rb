@@ -1,4 +1,31 @@
 class HomeController < ApplicationController
+  def about   
+  end
+  
+  def contact
+    
+  end
+  
+  def dumps
+    @dumps = Dump.all
+    @dumps = @dumps.public unless current_member.try(:developer)
+    
+    if params[:path]
+      @dumps = @dumps.where(:path => params[:path]).take
+      
+      @dumps_mapped = []
+      files = @dumps.try(:files)
+      
+      files.sort.each do |file|
+        dump_file = @dumps.dup
+        dump_file.path = file
+        @dumps_mapped << dump_file
+      end if files
+      
+      @dumps = @dumps_mapped
+    end
+  end
+  
   def index
     @news = News.order("created_at DESC")
     

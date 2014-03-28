@@ -55,6 +55,14 @@
     <% end -%>
     <%= yield %>
   </section>
+  <footer>
+    <%= link_to t("home.about.link_text"), about_url %>
+    <%= link_to t("home.dumps.link_text"), dumps_url %>
+    <%= link_to t("misc.links.freewar"), freewar_url(@locale), target: :blank %>
+    <%= link_to t("misc.links.fwwiki"), wiki_url('', @locale), target: :blank %>
+    <%= link_to t("misc.links.snigg"), "http://snigg.fwtools.de", target: :blank %>
+    <%= link_to t("misc.links.fwshop"), "http://fwshop.traced.net", target: :blank %>
+  </footer>
   <script type="text/javascript">
       var params = <%= params.to_json.html_safe %>;
       I18n.defaultLocale = "<%= I18n.default_locale %>";

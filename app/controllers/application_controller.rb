@@ -72,7 +72,6 @@ class ApplicationController < ActionController::Base
   
   # 
   def staging
-    logger.debug "dev: #{current_member.try(:developer?)}"
     respond_to do |format|
       format.all { render template: "layouts/maintenance", layout: "application" }
     end if ENV['RAILS_ENV'] == 'staging' && !current_member.try(:developer?)

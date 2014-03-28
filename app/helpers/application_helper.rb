@@ -3,6 +3,10 @@ module ApplicationHelper
     request.protocol + request.host_with_port
   end
   
+  def contact_mail
+    "contact@fwrails.net"
+  end
+  
   def profile_url(user_relation)
     "#{user_relation.world.url}internal/fight.php?action=watchuser&act_user_id=#{user_relation.user_id}"
   end
@@ -12,8 +16,20 @@ module ApplicationHelper
     "#{user_relation.world.url}internal/achiev.php?act_user_id=#{user_relation.user_id}#{anchor}"
   end
   
-  def wiki_url(page)
-    "http://www.fwwiki.de/index.php/#{page.gsub(/\s?(-|\/)\s?/, '\1')}"
+  def freewar_url(lang = :de) 
+    tlds = {
+      en: 'com'
+    }
+    tld = tlds[lang] || 'de'
+    "http://freewar.#{tld}"
+  end
+  
+  def wiki_url(page, lang = :de)
+    tlds = {
+      en: 'com'
+    }
+    tld = tlds[lang] || 'de'
+    "http://www.fwwiki.#{tld}/index.php/#{page.gsub(/\s?(-|\/)\s?/, '\1')}"
   end
   
   def link_to_wiki(content, page = nil)

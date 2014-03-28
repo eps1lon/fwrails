@@ -1,4 +1,8 @@
 Freewar3::Application.routes.draw do 
+  namespace :admin do
+    resources :dumps
+  end
+
   devise_for :members,
              controllers: {
                sessions: "sessions"
@@ -16,9 +20,10 @@ Freewar3::Application.routes.draw do
         :to => 'ukimgs#index'
   
   # about
-  scope :as => 'about', :controller => :about, :path => '' do
-    get '/about', :action => :index
+  scope :controller => :home, :path => '/' do
+    get '/about', :action => :about, :as => 'about'
     get '/contact', :action => :contact, :as => 'contact'
+    get '/dumps(/:path)', :action => :dumps, :as => 'dumps'
     get '/impressum', :action => :impressum, :as => 'impressum'
   end
   
@@ -135,7 +140,7 @@ Freewar3::Application.routes.draw do
  
   # adminpanel
   namespace :admin do 
-    resources :achievements, :members, :news, :races, :worlds
+    resources :achievements, :dumps, :members, :news, :races, :worlds
     root :to => 'base#index'
   end
   

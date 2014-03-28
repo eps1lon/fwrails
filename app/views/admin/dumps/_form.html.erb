@@ -1,0 +1,32 @@
+<%= form_for([:admin, @admin_dump]) do |f| %>
+  <% if @admin_dump.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@admin_dump.errors.count, "error") %> prohibited this admin_dump from being saved:</h2>
+
+      <ul>
+      <% @admin_dump.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :name, Dump.human_attribute_name(:name) %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :path, Dump.human_attribute_name(:path) %>
+    <%= f.text_field :path %>
+  </div>
+
+  <div class="field">
+    <%= f.label :public, Dump.human_attribute_name(:public) %>
+    <%= f.check_box :public %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
