@@ -676,6 +676,11 @@ de:
     index: 
       human: "Index"
       message: "Wähle eine der oben aufgeführten Kategorien"
+    profile: 
+      about: "Damit die Links zu den Graphen Vorwärtskompatibel sind, müssen
+              die Daten kodiert werden, da die HTML-Escapes im Freewar-Profil
+              unschädlich gemacht werden."
+      summary: "Zugriff auf Graph"
     xp:
       human: "XP"
       image:

@@ -39,7 +39,8 @@
     <%= image_tag img_url %>
     
     <details class="graph">
-      <summary><%= t "graphs.summary" %></summary>
+      <summary><%= t "graphs.profile.summary" %></summary>
+      <p><%= t "graphs.profile.about" %></p>
       <%= label_tag "img_url", t("graphs.img_url") %>
       <%= text_field_tag "img_url", img_url, :disabled => true %>
       
