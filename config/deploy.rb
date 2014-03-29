@@ -24,6 +24,9 @@ set :ssh_options, {
 set :deploy_to, "/var/www/vhosts/fwrails.net/rails"
 set :deploy_via, :checkout
 
+# Stable path
+set :stable_path, "#{fetch(:deploy_to)}/stable"
+
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
@@ -37,7 +40,7 @@ set :log_level, :debug
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/initializers/secret_token.rb public/.htaccess tmp/restart.txt}
+set :linked_files, %w{config/database.yml config/initializers/secret_token.rb}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
@@ -50,14 +53,34 @@ set :linked_dirs, fetch(:linked_dirs) + %w{public/dumps public/assets}
 set :keep_releases, 5
 
 namespace :deploy do 
+  desc 'Sets Stable'
+  task :symlink_stable do
+    on roles(:app) do
+      execute "readlink '#{current_path}'"
+      
+    end
+  end
+  
+  namespace :passenger do
+    desc 'Sets the correct RailsEnv value for Phusion Passenger'
+    task :set_environment, :in, :to do |task, args|
+      on roles(:app) do
+        execute "sed -i 's/RailsEnv .*/RailsEnv #{args[:to]}/' #{File.join(deploy_to, args[:in], "public", ".htaccess")}" 
+      end
+      
+      invoke "deploy:restart[#{args[:in]}]"
+    end
+    
+  end
+  
   desc 'Restart application'
-  task :restart do
+  task :restart, :in do |task, args|
     on roles(:app), in: :sequence, wait: 5 do
-      execute :touch, release_path.join('tmp/restart.txt')
+      execute :touch, File.join(deploy_to, args[:in], "tmp", "restart.txt")
     end
   end
 
-  after :publishing, "deploy:passenger:restart"
+  #after :publishing, "deploy:restart"
   
   after :migrate, :rake do
     on roles(:app) do
@@ -91,7 +114,6 @@ after :deploy, :fix_permissions do
 end
 
 #maintenance
-before :deploy, "deploy:passenger:set_environment"
 after :deploy, :reminder do 
   # notification for enabling website
   puts "when everything works fine run `RAILS_ENV=production cap production deploy:passenger:set_environment`"
