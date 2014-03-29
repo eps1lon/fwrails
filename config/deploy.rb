@@ -26,6 +26,7 @@ set :deploy_via, :checkout
 
 # Stable path
 set :stable_path, deploy_path.join("stable")
+set :current_dir, "current"
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
@@ -53,6 +54,15 @@ set :linked_dirs, fetch(:linked_dirs) + %w{public/dumps public/assets}
 set :keep_releases, 5
 
 namespace :deploy do 
+  namespace :assets do 
+    desc 'pushes assets'
+    task :sync do
+      on roles(:all) do
+        upload!("./public/assets/", current_path.join("public/assets"), via: :scp, recursive: true)
+      end
+    end
+  end
+  
   namespace :symlink do
     desc 'Sets Stable'
     task :stable do
@@ -83,13 +93,13 @@ namespace :deploy do
   end
 
   after :publishing, :set_environment do
-    puts "`#{fetch(:rails_env)}`, `#{fetch(:current_dir)}`, `#{rails_env}`, `#{current_dir}`"
+    puts "`#{fetch(:rails_env)}`, `#{fetch(:current_dir)}`"
     Rake::Task["deploy:passenger:set_environment"].invoke(fetch(:current_dir), fetch(:rails_env))
   end
   
   after :migrate, :rake do
     on roles(:app) do
-      ["assets:precompile"].each do |task|
+      [].each do |task|
         execute "cd #{release_path} && (RAILS_ENV=#{fetch(:rails_env)} "+
                 "#{fetch(:rvm_path)}/bin/rvm default do bundle exec rake #{task})"
       end
@@ -104,6 +114,8 @@ namespace :deploy do
       # end
     end
   end
+  
+  after :updating, "deploy:assets:sync"
 end
 
 # Fix Permissions
