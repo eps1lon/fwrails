@@ -25,7 +25,7 @@ set :deploy_to, "/var/www/vhosts/fwrails.net/rails"
 set :deploy_via, :checkout
 
 # Stable path
-set :stable_path, "#{fetch(:deploy_to)}/stable"
+set :stable_path, deploy_path.join("stable")
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
@@ -53,19 +53,22 @@ set :linked_dirs, fetch(:linked_dirs) + %w{public/dumps public/assets}
 set :keep_releases, 5
 
 namespace :deploy do 
-  desc 'Sets Stable'
-  task :symlink_stable do
-    on roles(:app) do
-      execute "readlink '#{current_path}'"
-      
+  namespace :symlink do
+    desc 'Sets Stable'
+    task :stable do
+      on roles(:app) do
+        latest = capture(:readlink, '', deploy_path.join("current"))
+        execute "ln -s '#{latest}' '#{fetch(:stable_path)}'"   
+      end
     end
   end
+  
   
   namespace :passenger do
     desc 'Sets the correct RailsEnv value for Phusion Passenger'
     task :set_environment, :in, :to do |task, args|
       on roles(:app) do
-        execute "sed -i 's/RailsEnv .*/RailsEnv #{args[:to]}/' #{File.join(deploy_to, args[:in], "public", ".htaccess")}" 
+        execute "sed -i 's/RailsEnv .*/RailsEnv #{args[:to]}/' #{deploy_path.join(args[:in], "public", ".htaccess")}" 
       end
       
       invoke "deploy:restart[#{args[:in]}]"
