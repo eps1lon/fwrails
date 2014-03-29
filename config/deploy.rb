@@ -62,8 +62,7 @@ namespace :deploy do
       end
     end
   end
-  
-  
+
   namespace :passenger do
     desc 'Sets the correct RailsEnv value for Phusion Passenger'
     task :set_environment, :in, :to do |task, args|
@@ -71,23 +70,26 @@ namespace :deploy do
         execute "sed -i 's/RailsEnv .*/RailsEnv #{args[:to]}/' #{deploy_path.join(args[:in], "public", ".htaccess")}" 
       end
       
-      invoke "deploy:restart[#{args[:in]}]"
+      Rake::Task["deploy:restart"].invoke(args[:in])
+      #invoke "deploy:restart[#{args[:in]}]"
     end
-    
   end
   
   desc 'Restart application'
   task :restart, :in do |task, args|
-    on roles(:app), in: :sequence, wait: 5 do
+    on roles(:app), in: :sequence do
       execute :touch, File.join(deploy_to, args[:in], "tmp", "restart.txt")
     end
   end
 
-  #after :publishing, "deploy:restart"
+  after :publishing, :set_environment do
+    puts "`#{fetch(:rails_env)}`, `#{fetch(:current_dir)}`, `#{rails_env}`, `#{current_dir}`"
+    Rake::Task["deploy:passenger:set_environment"].invoke(fetch(:current_dir), fetch(:rails_env))
+  end
   
   after :migrate, :rake do
     on roles(:app) do
-      ["i18n:js:export", "assets:precompile"].each do |task|
+      ["assets:precompile"].each do |task|
         execute "cd #{release_path} && (RAILS_ENV=#{fetch(:rails_env)} "+
                 "#{fetch(:rvm_path)}/bin/rvm default do bundle exec rake #{task})"
       end
@@ -119,5 +121,5 @@ end
 #maintenance
 after :deploy, :reminder do 
   # notification for enabling website
-  puts "when everything works fine run `RAILS_ENV=production cap production deploy:passenger:set_environment`"
+  puts "when everything works fine run `cap production deploy:symlink:stable`"
 end
