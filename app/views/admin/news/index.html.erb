@@ -18,7 +18,7 @@
         <td><%= time_tag admin_news.publish_at %></td>
         <td><%= link_to 'Show', admin_news %></td>
         <td><%= link_to 'Edit', edit_admin_news_path(admin_news) %></td>
-        <td><%= link_to 'Destroy', admin_news, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', [:admin, admin_news], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

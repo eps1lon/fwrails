@@ -162,6 +162,11 @@ q:before {
 
 p, blockquote {
   clear: both;
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+
+p, blockquote, .long_text {
   min-width: 16em;
   min-width: 40ch;
   max-width: 28em;

@@ -9,7 +9,9 @@
     <em><%= News.human_attribute_name("updated_at") %></em>
     <%= time_tag @news.public_updated_at %>
   </p>
-  <p class="news content"><%= @news.content.html_safe %></p>
+  <div class="news content simple_format long_text">
+    <%= news_format(@news.content) %>
+  </div>
 </section>
 
 <%= link_to t(".back"), root_url %>
