@@ -5,9 +5,13 @@
 <p><%= t ".world_change" %></p>
 <ul class="worlds">
   <% @worlds_all.each do |world| %>
-    <li><%= link_to world.short, 
-                    statistics_url(:world => world.short), 
-                    :title => "#{world.localized_name}" %></li>
+    <li>
+      <%= link_to statistics_url(:world => world.short), 
+            class: ["tooltip"] do %>
+        <%= world.short %>
+        <%= tooltip_markup content_tag(:strong, world.localized_name) %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 <% cache(cache_key_for_statistics(@worlds)) do %>

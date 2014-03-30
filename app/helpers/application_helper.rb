@@ -53,8 +53,14 @@ module ApplicationHelper
     end     
   end
   
+  # creates markup for loading.css
   def loading_markup
     "<ul class='spinner'><li/><li/><li/></ul>".html_safe
+  end
+  
+  # creates markup for tooltip.css
+  def tooltip_markup(markup)
+    content_tag :span, markup.html_safe
   end
   
   def render_locale_partial(partial = nil, locale = nil)

@@ -5,6 +5,11 @@ Freewar3::Application.configure do
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
+  
+  # dont use http caching in dev mode
+  # but this solution doesnt work
+  #config.middleware.delete "Rack::ETag"
+  #config.middleware.delete "Rack::ConditionalGet"
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true

@@ -12,9 +12,13 @@
                 achievements_index_url(params.merge({:world => '!W1'})) %>
   </li>
   <% @all_worlds.each do |world| %>
-    <li><%= link_to world.short, 
-                    achievements_index_url(:world => world.short), 
-                    :title => world.localized_name %></li>
+    <li>
+      <%= link_to achievements_index_url(world: world.short), 
+            class: ["tooltip"] do %>
+      <%= world.short %>
+      <%= tooltip_markup content_tag(:strong, world.localized_name) %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 <p id="last_update">

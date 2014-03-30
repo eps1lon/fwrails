@@ -6,6 +6,7 @@
  *= require jquery.ui.all
  *= require colorpicker
  *= require loading
+ *= require tooltip
  *= require_self
  *= require themes/responsive-dropdown
 */
@@ -278,14 +279,9 @@ table.single-world {
     text-align: center;
     padding   : 0 3px;
     
-    a[title] {
-      &:hover {
-        font-size: 0px; /* hide text */
-        &:after {
-          content: attr(title);
-          font-size: 12px; /* default font-size */
-        }
-      }
+    a.tooltip span {
+      margin-left: 2em;
+      margin-top: -1em;
     }
   }
 }

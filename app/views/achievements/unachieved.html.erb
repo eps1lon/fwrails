@@ -8,14 +8,19 @@
                   achievements_unachieved_url(params.merge({:world => nil})) %>
   </li>
   <li>
-    <%= link_to t("achievements.common.not_testworld"), 
-                achievements_unachieved_url(params.merge({:world => '!W1'})) %>
+    <%= link_to achievements_rank_url(params.merge({world: "!W1", page: 1})), 
+          class: ["tooltip"], data: {world: "!W1"} do %>
+      <%= "!W1" %>
+      <%= tooltip_markup content_tag(:strong, t("achievements.common.not_testworld")) %>
+    <% end %>
   </li>
   <% @all_worlds.each do |world| %>
     <li>
-      <%= link_to world.short, 
-                  achievements_unachieved_url(params.merge({:world => world.short})),
-                  :title => world.localized_name %>
+      <%= link_to achievements_rank_url(params.merge({world: world.short, page: 1})), 
+            class: ["tooltip"], data: {world: world.short} do %>
+        <%= world.short %>
+        <%= tooltip_markup content_tag(:strong, world.localized_name) %>
+      <% end %>
     </li>
   <% end %>
 </ul>
@@ -40,9 +45,9 @@
         <td class="closest">
           <% unless @closest[achievement.id].nil? %>
             <%= t(".progress", :count => number_with_delimiter(@closest[achievement.id].progress),
-                               :user => link_to(@closest[achievement.id].user.name,
-                                                user_url(:name => @closest[achievement.id].user.name, 
-                                                         :world => @closest[achievement.id].world.short))).html_safe %>
+                               :user => link_to_user_or_del(@closest[achievement.id].user,
+                                                            @closest[achievement.id].user_id,
+                                                            @closest[achievement.id].world.short)).html_safe %>
           <% end %>
         </td>
       </tr>

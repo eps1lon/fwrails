@@ -9,15 +9,19 @@
                 data: {world: ''}%>
   </li>
   <li>
-    <%= link_to t("achievements.common.not_testworld"), 
-                achievements_rank_url(params.merge({:world => '!W1'})),
-                data: {world: '!W1'}%>
+    <%= link_to achievements_rank_url(params.merge({world: "!W1", page: 1})), 
+          class: ["tooltip"], data: {world: "!W1"} do %>
+      <%= "!W1" %>
+      <%= tooltip_markup content_tag(:strong, t("achievements.common.not_testworld")) %>
+    <% end %>
   </li>
   <% @all_worlds.each do |world| %>
     <li>
-      <%= link_to world.short, 
-                  achievements_rank_url(params.merge({:world => world.short, :page => 1})),
-                  data: {world: world.short} %>
+      <%= link_to achievements_rank_url(params.merge({world: world.short, page: 1})), 
+            class: ["tooltip"], data: {world: world.short} do %>
+        <%= world.short %>
+        <%= tooltip_markup content_tag(:strong, world.localized_name) %>
+      <% end %>
     </li>
   <% end %>
 </ul>

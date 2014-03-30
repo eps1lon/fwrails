@@ -5,9 +5,13 @@
     <%= link_to t("users.common.worlds.all") %>
   </li>
   <% @worlds_all.each do |world| %>
-    <li><%= link_to world.short, 
-            users_url(:action => params[:action], :world => world.short),
-            :title => "#{world.localized_name}" %></li>
+    <li>
+      <%= link_to users_url(:action => params[:action], :world => world.short), 
+            class: ["tooltip"] do %>
+      <%= world.short %>
+      <%= tooltip_markup content_tag(:strong, world.localized_name) %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 
@@ -18,9 +22,13 @@
       <%= link_to t("users.common.races.all") %>
     </li>
     <% @races.each do |race| %>
-      <li><%= link_to race.short, 
-              users_url(:action => params[:action], :race => race.short),
-              :title => race.name %> </li>
+      <li>
+        <%= link_to users_url(:action => params[:action], :race => race.short),
+              class: ["tooltip"] do %> 
+        <%= race.short %>
+        <%= tooltip_markup content_tag(:strong, race.name) %>
+        <% end %>
+      </li>
     <% end %>
   </ul>
 <% end %>
