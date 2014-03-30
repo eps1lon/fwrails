@@ -66,7 +66,7 @@ namespace :deploy do
         release_path = releases_path.join(releases[-1])
         
         # sync with old, skip if no assets exists
-        run "cp -R #{previous_release_path.join(asset_dir)} #{release_path.join(public_dir)} || :"
+        execute "cp -R #{previous_release_path.join(asset_dir)} #{release_path.join(public_dir)} || :"
         
         #servers = find_servers_for_task(current_task)
         servers = %w{fwrails.net}
@@ -75,7 +75,6 @@ namespace :deploy do
             execute :rsync, '-av --size-only', File.join(asset_dir, ""), "#{fetch(:user)}@#{server}:#{release_path.join(asset_dir)}"
           end
         end
-        
       end
     end
   end
@@ -85,7 +84,7 @@ namespace :deploy do
     task :stable do
       on roles(:app) do
         latest = capture(:readlink, '', deploy_path.join("current"))
-        execute "ln -s '#{latest}' '#{fetch(:stable_path)}'"   
+        execute "ln -fs '#{latest}' '#{fetch(:stable_path)}'"   
       end
     end
   end
