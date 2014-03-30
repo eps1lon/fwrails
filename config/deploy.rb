@@ -45,7 +45,7 @@ set :linked_files, %w{config/database.yml config/initializers/secret_token.rb}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle}
-set :linked_dirs, fetch(:linked_dirs) + %w{public/dumps public/assets}
+set :linked_dirs, fetch(:linked_dirs) + %w{public/dumps}
 
 # Default value for default_env is {}
 # set :default_env, { path: "/opt/ruby/bin:$PATH" }
@@ -58,7 +58,24 @@ namespace :deploy do
     desc 'pushes assets'
     task :sync do
       on roles(:all) do
-        upload!("./public/assets/", current_path.join("public/assets"), via: :scp, recursive: true)
+        public_dir = "public"
+        asset_dir = File.join(public_dir, "assets")
+        
+        releases = capture(:ls, '-X', releases_path).split.sort
+        previous_release_path = releases_path.join(releases[-2])
+        release_path = releases_path.join(releases[-1])
+        
+        # sync with old, skip if no assets exists
+        run "cp -R #{previous_release_path.join(asset_dir)} #{release_path.join(public_dir)} || :"
+        
+        #servers = find_servers_for_task(current_task)
+        servers = %w{fwrails.net}
+        servers.each do |server|
+          run_locally do
+            execute :rsync, '-av --size-only', File.join(asset_dir, ""), "#{fetch(:user)}@#{server}:#{release_path.join(asset_dir)}"
+          end
+        end
+        
       end
     end
   end
