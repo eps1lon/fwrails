@@ -39,15 +39,19 @@ module ApplicationHelper
   
   def link_to_user_or_del(user, user_id, world_short)
     if user.nil?
-      "<del class='user'>{#{user_id}}</del>".html_safe
+      content_tag :del, class: %w{user tooltip} do
+        ''.html_safe + "{#{user_id}}" + tooltip_markup(t("users.common.deleted"))
+      end
     else
-      link_to(user.name, user_url(user.name, world_short))
+      link_to user.name, user_url(user.name, world_short)
     end
   end
   
   def link_to_clan_or_del(clan, tag, world_short)
     if clan.nil?
-      "<del class='clan'>{#{tag}}</del>".html_safe
+      content_tag :del, class: %w{clan tooltip} do
+        ''.html_safe + "{#{tag}}" + tooltip_markup(t("clans.common.deleted"))
+      end
     else
       link_to(tag_markup(clan, 'em'), clan_url(clan.clan_id, world_short))
     end     

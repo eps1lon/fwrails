@@ -524,6 +524,7 @@ de:
     commons:
       all_worlds: "Alle Welten"
       change_world: "Welt wechseln"
+      deleted: "Clan gelöscht"
       id_as_tag: "Clan-ID fungiert als Tag"
       members:  
         zero: "Keine Mitglieder"
@@ -820,6 +821,7 @@ de:
       head: "Clanwechsel in FreeWar"
       noclan: "keiner"
     common:
+      deleted: "User gelöscht oder gebannt"
       worlds:
         all: "Alle"
         change: "Welt wechseln"

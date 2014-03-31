@@ -1,4 +1,4 @@
-a.tooltip {
+.tooltip {
   span {
     z-index: 2;
     display: none;
@@ -15,7 +15,7 @@ a.tooltip {
 }
 
 /*CSS3 extras*/
-a.tooltip span
+.tooltip span
 {
     border-radius:4px;
     -moz-border-radius: 4px;
