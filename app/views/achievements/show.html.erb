@@ -82,11 +82,7 @@
             <td class="world" id="world_<%= furthest.world.id %>"><%= furthest.world.short %></td>
             <td class="progress"><%= number_with_delimiter furthest.progress %></td>
             <td class="user">
-              <% unless furthest.user.nil? %>
-              <%= link_to furthest.user.name, 
-                          user_url(:name => furthest.user.name, 
-                                   :world => furthest.world.short) %>
-              <% end %>
+              <%= link_to_user_or_del(furthest.user, furthest.user_id, furthest.world.short) %>
             </td>
           </tr>
         <% end %>
