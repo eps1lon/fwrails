@@ -161,7 +161,7 @@ q:before {
   content: open-quote;
 }
 
-p, blockquote {
+p, blockquote, .news ul.content {
   clear: both;
   font-size: 1.2em;
   line-height: 1.5em;
