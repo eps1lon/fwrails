@@ -75,15 +75,17 @@ Freewar3::Application.routes.draw do
         :to => 'clans#show'
   # clans
   scope :as => 'clans', :controller => 'clans', :path => '/clans' do
-    get '/:action(/:world)(/page/:page)(/order/:order)(/:by)(.:format)',  
-        :constraints => {
-          :by => /(asc|desc)/i
-        },
-        :defaults => {
-          :by     => 'desc',
-          :page   => 1
-        },
-        :name => /.*/
+    match '/:action(/:world)(/page/:page)(/order/:order)(/:by)(.:format)',  
+          :constraints => {
+            :by => /(asc|desc)/i
+          },
+          :defaults => {
+            :by     => 'desc',
+            :page   => 1
+          },
+          :name => /.*/,
+          :via => [:get, :post]
+    root action: 'index'
   end
   
   # single extension
