@@ -16,9 +16,7 @@
       <tr>
         <td><%= admin_news.heading %></td>
         <td><%= time_tag admin_news.publish_at %></td>
-        <td><%= link_to 'Show', admin_news %></td>
-        <td><%= link_to 'Edit', edit_admin_news_path(admin_news) %></td>
-        <td><%= link_to 'Destroy', [:admin, admin_news], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%= news_action_bar(admin_news, wrap: %w{<td> </td>}) %>
       </tr>
     <% end %>
   </tbody>

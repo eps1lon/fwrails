@@ -5,7 +5,7 @@
   <% news.max_content_summary_count = 40 %>
   <h2 class="news heading">
     <%= news.heading %>
-    <%= link_to t(".edit"), edit_admin_news_url(news) if current_member.try(:developer?) %>
+    <%= news_action_bar(news) if current_member.try(:developer?) %>
   </h2>
   <p class="news publish_at">
     <em><%= News.human_attribute_name("publish_at") %></em>

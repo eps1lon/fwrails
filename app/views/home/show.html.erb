@@ -1,6 +1,9 @@
 <% @title = "#{News.model_name.human}: #{@news.heading}" %>
 <section id="news">
-  <h1 class="news heading"><%= @title %></h1>
+  <h1 class="news heading">
+    <%= @title %>
+    <%= news_action_bar(@news) if current_member.try(:developer?) %>
+  </h1>
   <p class="news publish_at">
     <em><%= News.human_attribute_name("publish_at") %></em>
     <%= time_tag @news.publish_at.to_date %>
