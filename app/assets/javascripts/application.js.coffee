@@ -6,9 +6,19 @@
 //= require datepicker
 //= require_self
 $(document).ready ->
+  # toggle links
   $('[data-toggle-for]').click ->
     t_key = if $('#' + $(this).data('toggle-for')).toggle().css('display') == 'none' then 'show' else 'hide'
     $(this).text t('helpers.toggle.' + t_key);
+  
+  # selects form value when clicked
+  console.log $("input.auto_select, textarea.auto_select")
+  $(document).on "focus", "input.auto_select, textarea.auto_select", ->
+    return if window.focused_element == this
+    window.focused_element = this
+    setTimeout -> 
+      window.focused_element.select()
+    , 0 # focus doesnt stick in chrome without timeout
 
 $('.races li, .worlds li').tooltip {
   content: ->

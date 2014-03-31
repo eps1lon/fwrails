@@ -42,10 +42,11 @@
       <summary><%= t "graphs.profile.summary" %></summary>
       <p><%= t "graphs.profile.about" %></p>
       <%= label_tag "img_url", t("graphs.img_url") %>
-      <%= text_field_tag "img_url", img_url, :disabled => true %>
+      <%= text_field_tag "img_url", img_url, class: "auto_select", readonly: true %>
       
       <%= label_tag "graph_profile_code", t("graphs..graph_profile_code") %>
-      <%= text_area_tag "graph_profile_code", graph_profile_code([@data, @config]), :disabled => true, :rows => 5 %>
+      <%= text_area_tag "graph_profile_code", graph_profile_code([@data, @config]), 
+                        class: "auto_select", readonly: true, rows: 5 %>
     </details>
   <% end %>
 <% end %>
