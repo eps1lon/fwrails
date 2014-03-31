@@ -877,7 +877,7 @@ de:
           message: "%{reward} durch %{count}"
           reward: "%{count} AP"
       UsersClanChange:
-        old: "Clan %{old} verlasse"
+        old: "Clan %{old} verlassen"
         new: "Clan %{new} beigetreten"
       UsersNameChange:
         old: "%{old}"

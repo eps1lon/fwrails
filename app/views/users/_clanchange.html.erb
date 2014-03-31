@@ -15,10 +15,12 @@
   <% end %>
 </td>
 <td>
-  <% unless user.new_clan.nil? %>
-    <%= link_to user.new_clan.tag, clan_url(user.new_clan.clan_id, user.world.short) %>
-  <% else %>
+  <% if user.clan_id_new.eql?(0) %>
+    <%= t ".noclan" %>
+  <% elsif user.new_clan.nil? %>
     <del><%= user.clan_id_new %></del>
+  <% else %>
+    <%= link_to user.new_clan.tag, clan_url(user.new_clan.clan_id, user.world.short) %>
   <% end %>
 </td>
 <td><time datetime="<%= user.created_at %>"><%= l user.created_at, :format => :long %></time></td>
