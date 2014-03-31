@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
   
-  before_filter :set_locale, :set_nav_controllers, :staging
+  before_filter :set_locale, :set_nav_controllers, :set_view_vars, :staging
   
   # error handler
   unless Rails.application.config.consider_all_requests_local
@@ -68,6 +68,11 @@ class ApplicationController < ActionController::Base
     end
     
     I18n.locale = @locale
+  end
+  
+  def set_view_vars
+    @stylesheets = [] << (controller_name unless Freewar3::Application.assets.find_asset("#{controller_name}.css").nil?)
+    @javascripts = [] << (controller_name unless Freewar3::Application.assets.find_asset("#{controller_name}.js").nil?)
   end
   
   # 

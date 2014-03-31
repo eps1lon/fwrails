@@ -7,9 +7,14 @@
   <title><%= @title or "#{t("#{controller.controller_name}.human")}: \
                         #{t("#{controller.controller_name}.#{controller.action_name}.human")}" %></title>
   <%= stylesheet_link_tag    "application" %>
-  <%= stylesheet_link_tag     controller.controller_name %>
+  <% @stylesheets.each do |stylesheet| %>
+    <%= stylesheet_link_tag stylesheet %>
+  <% end %>
+  
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag controller.controller_name %>
+  <% @javascripts.each do |javascript| %>
+    <%= javascript_include_tag javascript %>
+  <% end %>
   <%= csrf_meta_tags %>
 </head>
 <body>
