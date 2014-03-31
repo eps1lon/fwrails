@@ -35,7 +35,7 @@ function number_in_magnitudes($i) {
     $exponent = strlen((string)$i) - 1;
     
     foreach ($magnitudes as $magnitude => $postfix) {
-        if ($magnitude < $exponent) {
+        if ($magnitude <= $exponent) {
             return round($i / pow(10, $magnitude), 1) . $postfix;
         }
     }

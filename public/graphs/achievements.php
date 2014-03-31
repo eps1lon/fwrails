@@ -104,27 +104,39 @@ if ($mode == 'user') {
     if ($worlds) {
         $world_shorts = array_map([$db, 'escape_string'], $worlds);
         
-        // get world_ids
-        $sql_query = "SELECT id, short FROM worlds WHERE id $achievement_worlds " .
-                     "AND short IN ('" . implode("','", $world_shorts) . "')";
-        $worlds = $db->query($sql_query);
-        while ($world = $worlds->fetch_assoc()) {
-            $world_ids[] = $world['id'];
+        if ($world_shorts[0]) {
+            // get world_ids
+            $sql_query = "SELECT id, short FROM worlds WHERE id $achievement_worlds " .
+                         "AND short IN ('" . implode("','", $world_shorts) . "')";
+            $worlds = $db->query($sql_query);
+            while ($world = $worlds->fetch_assoc()) {
+                $world_ids[] = $world['id'];
+
+                // init data group
+                $data[$world['id']] = [];
+
+                // legend mapper
+                $legend[$world['id']] = $world['short'];
+            }
+          
+            $sql_query = "SELECT world_id, progress, " .
+                         "UNIX_TIMESTAMP(created_at) as created_at " .
+                         "FROM worlds_achievements_changes ".
+                         "WHERE world_id IN (" . implode(",", $world_ids) . ") " .
+                         "AND achievement_id = '$achievement_id'";
+        } else {
+            $legend["all_worlds"] = "Alle Welten";
             
-            // init data group
-            $data[$world['id']] = [];
-            
-            // legend mapper
-            $legend[$world['id']] = $world['short'];
-           
+            $sql_query = "SELECT 'all_worlds' AS world_id, SUM(progress) as progress, " .
+                         "UNIX_TIMESTAMP(created_at) as created_at " .
+                         "FROM worlds_achievements_changes ".
+                         "WHERE achievement_id = '$achievement_id' " .
+                         "GROUP BY created_at";
         }
         
+        
         // get data, TODO: time distance
-        $sql_query = "SELECT world_id, progress, " .
-                     "UNIX_TIMESTAMP(created_at) as created_at " .
-                     "FROM worlds_achievements_changes ".
-                     "WHERE world_id IN (" . implode(",", $world_ids) . ") " .
-                     "AND achievement_id = '$achievement_id'";
+        
         $changes = $db->query($sql_query);
         while ($change = $changes->fetch_assoc()) {
             $data[$change['world_id']][$change['created_at']] = $change['progress'];

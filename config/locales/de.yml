@@ -655,6 +655,7 @@ de:
           users: "ausgewählte User"
         world:
           worlds: "Welten"
+          worlds_all: "alle Welten"
       heading: "Graph-Generator"
       human: "Errungenschaften"
       modes: 

@@ -66,9 +66,16 @@ class GraphsController < ApplicationController
       # for the select tag
       @world_value = :short
       
+      # 
+      @worlds_for_select = @achievement_worlds.map { |w| [w.name, w[@world_value]] }
+      @worlds_for_select.insert(0, [view_context.t("graphs.achievements.data.world.worlds_all"), 0])
+      
       # searched worlds
       @data[:worlds] = @achievement_worlds.where(@world_value => params[:worlds])
                                           .collect(&@world_value)
+      
+      # all worlds if none selected
+      @data[:worlds] << 0 if @data[:worlds].empty?
       
       @graph_ready &&= !@data[:worlds].empty?
     elsif params[:mode] == 'user'

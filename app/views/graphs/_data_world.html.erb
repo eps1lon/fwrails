@@ -1,8 +1,5 @@
 <p><%= t("helpers.select.multiple") %></p>
 <%= label_tag "worlds[]", t("graphs.achievements.data.world.worlds") %>
 <%= select_tag "worlds[]", 
-               options_from_collection_for_select(@achievement_worlds, 
-                                                  @world_value, 
-                                                  :name,
-                                                  @data[:worlds]),
-               :multiple => true %>
+               options_for_select(@worlds_for_select, @data[:worlds]),
+               multiple: true %>
