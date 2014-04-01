@@ -107,6 +107,14 @@ namespace :deploy do
       execute :touch, File.join(deploy_to, args[:in], "tmp", "restart.txt")
     end
   end
+  
+  desc 'Uploads Files specified in FILES'
+  task :upload do
+    on roles(:all) do
+      puts "upload #{ENV['FILES']} to #{release_path}"
+      upload!(ENV['FILES'], release_path) unless ENV['FILES'].nil?
+    end
+  end
 
   after :publishing, :set_environment do
     puts "`#{fetch(:rails_env)}`, `#{fetch(:current_dir)}`"
