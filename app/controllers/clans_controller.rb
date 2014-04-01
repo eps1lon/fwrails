@@ -1,14 +1,12 @@
 class ClansController < ApplicationController
   before_filter :only => [:index, :new, :delete, :leader_change, :coleader_change, :tag_change, :name_change] do 
-    params[:by] ||= 'desc' # root route
-    
-    @std_params = params.permit(:action, :world, :order, :by, :tag)
+    @std_params = list_params
        
     @limit = 20
     @suggest_limit = 5
     @offset = ([1, params[:page].to_i].max - 1) * @limit
     
-    if params[:by].to_s.downcase.eql?('desc') # define sorting order for sort_links
+    if @std_params[:by].to_s.downcase.eql?('desc') # define sorting order for sort_links
       @by = 'asc'
     else
       @by = 'desc'
@@ -28,6 +26,7 @@ class ClansController < ApplicationController
   before_filter :common_text_change,   :only => [:name_change, :tag_change]
 
   def index
+    clan_params = list_params
     @model = Clan.where(:world_id => @worlds).references(:clan)
     
     # create attributes
@@ -36,15 +35,15 @@ class ClansController < ApplicationController
       @attributes << {:human => attr, :db => "#{attr}"}
     end
     # default
-    order = order_from_attributes(@attributes, params[:order], 3)
+    order = order_from_attributes(@attributes, clan_params[:order], 3)
     
     @clans = @model.includes(:coleader, :leader, :world).
-                    order("#{order[:db]} #{params[:by]}").
+                    order("#{order[:db]} #{clan_params[:by]}").
                     offset(@offset).limit(@limit) 
     
-    unless params[:name].nil?
-      @clans = @clans.where("#{@model.table_name}.name LIKE ?", "%#{params[:name]}%").references(:clan)
-      @model = @model.where("#{@model.table_name}.name LIKE ?", "%#{params[:name]}%").references(:clan)
+    unless clan_params[:name].nil?
+      @clans = @clans.where("#{@model.table_name}.name LIKE ?", "%#{clan_params[:name]}%").references(:clan)
+      @model = @model.where("#{@model.table_name}.name LIKE ?", "%#{clan_params[:name]}%").references(:clan)
     end
     
     respond_to do |format|
@@ -105,6 +104,7 @@ class ClansController < ApplicationController
   private
   
   def common_new_delete
+    clan_params = list_params
     @model = Object.const_get("Clans#{action_name.camelize}").where(:world_id => @worlds)
     
     # create attributes array
@@ -116,15 +116,15 @@ class ClansController < ApplicationController
     ]
     
     # default
-    order = order_from_attributes(@attributes, params[:order], 2)
+    order = order_from_attributes(@attributes, clan_params[:order], 2)
     
     # query
-    @clans = @model.includes(:clan, :world).order("#{order[:db]} #{params[:by]}").
+    @clans = @model.includes(:clan, :world).order("#{order[:db]} #{clan_params[:by]}").
                     offset(@offset).limit(@limit) 
     
     unless params[:name].nil?
-      @clans = @clans.where("#{@model.table_name}.tag LIKE ?", "%#{params[:name]}%") 
-      @model = @model.where("#{@model.table_name}.tag LIKE ?", "%#{params[:name]}%") 
+      @clans = @clans.where("#{@model.table_name}.tag LIKE ?", "%#{clan_params[:name]}%") 
+      @model = @model.where("#{@model.table_name}.tag LIKE ?", "%#{clan_params[:name]}%") 
     end
     
     respond_to do |format|
@@ -134,6 +134,7 @@ class ClansController < ApplicationController
   end
   
   def common_leader_change
+    clan_params = list_params
     type = action_name.split("_").slice(0).to_s
     @model = Object.const_get("Clans#{type.capitalize}Change").where(:world_id => @worlds)
     
@@ -147,11 +148,11 @@ class ClansController < ApplicationController
     ]
     
     # default
-    order = order_from_attributes(@attributes, params[:order], 3)
+    order = order_from_attributes(@attributes, clan_params[:order], 3)
     
     # query
     @clans = @model.includes(:clan, :world, "#{type}_old".to_sym, "#{type}_new".to_sym).
-                    order("#{order[:db]} #{params[:by]}").offset(@offset).limit(@limit) 
+                    order("#{order[:db]} #{clan_params[:by]}").offset(@offset).limit(@limit) 
     
     @skipsearch = true
     respond_to do |format|
@@ -160,6 +161,7 @@ class ClansController < ApplicationController
   end
   
   def common_text_change
+    clan_params = list_params
     type = action_name.split("_").slice(0).to_s
     @model = Object.const_get("Clans#{type.capitalize}Change").where(:world_id => @worlds)
     
@@ -173,16 +175,21 @@ class ClansController < ApplicationController
     ]
     
     # default
-    order = order_from_attributes(@attributes, params[:order], 3)
+    order = order_from_attributes(@attributes, clan_params[:order], 3)
     
     # query
     @clans = @model.includes(:clan, :world).
-                    order("#{order[:db]} #{params[:by]}").offset(@offset).limit(@limit) 
+                    order("#{order[:db]} #{clan_params[:by]}").offset(@offset).limit(@limit) 
     
     # render
     @skipsearch = true
     respond_to do |format|
       format.html { render 'clans/index'}
     end
+  end
+  
+  def list_params
+    params[:page] = params[:page].to_i
+    filter_sql_by(params.permit(:action, :world, :order, :by, :tag, :page), :by, :desc)
   end
 end

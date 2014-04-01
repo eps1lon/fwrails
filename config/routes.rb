@@ -36,9 +36,6 @@ Freewar3::Application.routes.draw do
     get '/rank(/:world)(/show/:ids)(/page/:page)(/order/:order)(/:by)',
           :action => 'rank',
           :as     => 'rank',
-          :constraints => {
-            :by => /(asc|desc)/i
-          },
           :defaults => {
             :by    => 'desc',
             :ids   => '',
@@ -73,9 +70,6 @@ Freewar3::Application.routes.draw do
   # clans
   scope :as => 'clans', :controller => 'clans', :path => '/clans' do
     match '/:action(/:world)(/page/:page)(/order/:order)(/:by)(.:format)',  
-          :constraints => {
-            :by => /(asc|desc)/i
-          },
           :defaults => {
             :by     => 'desc',
             :page   => 1
@@ -128,9 +122,6 @@ Freewar3::Application.routes.draw do
   # users
   scope :as => 'users', :controller => 'users', :path => 'users' do
     match '/:action(/race/:race)(/like/:name)(/:world)(/page/:page)(/order/:order)(/:by)(.:format)', 
-          :constraints => {
-            :by => /(asc|desc)/i
-          },
           :defaults => {
             :by     => 'desc',
             :page   => 1

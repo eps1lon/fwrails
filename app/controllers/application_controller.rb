@@ -39,6 +39,12 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+  # filters sql by in params
+  def filter_sql_by(hash, key, std = :desc) 
+    hash[key] = std unless %w{asc desc}.include?(hash[key])
+    hash
+  end
+  
   # attr order helper
   def order_from_attributes(attributes, param, default = 0)
     order = attributes.select { |attr| attr[:human] == param.to_s.downcase && !attr[:db].nil? }.first
