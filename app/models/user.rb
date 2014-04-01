@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include UserNaming
   self.primary_keys = :user_id, :world_id
   
   after_initialize :build_world
@@ -67,10 +68,6 @@ class User < ActiveRecord::Base
       return []
     end
     where(primaries.join(' OR '))
-  end
-  
-  def name_primary
-    "#{self.name} (#{self.world.short})"
   end
   
   # URL to the users's ingame profil

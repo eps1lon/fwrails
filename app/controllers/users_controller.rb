@@ -1,12 +1,12 @@
 class UsersController < ApplicationController 
   before_filter :only => [:index, :new, :delete, :racechange, :namechange, :clanchange] do 
-    @std_params = list_params
+    @params = list_params
     
     @limit = 20
     @suggest_limit = 5
-    @offset = (@std_params[:page]  - 1) * @limit
+    @offset = (@params[:page]  - 1) * @limit
     
-    if @std_params[:by].to_s.downcase.eql?('desc') # define sorting order for sort_links
+    if @params[:by].to_s.downcase.eql?('desc') # define sorting order for sort_links
       @by = 'asc'
     else
       @by = 'desc'
@@ -97,7 +97,7 @@ class UsersController < ApplicationController
     end
     
     respond_to do |format|
-      format.json { render :json => @users.limit(@suggest_limit) }
+      format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
       format.html {render 'users/index'}
     end
   end
@@ -115,7 +115,7 @@ class UsersController < ApplicationController
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
     @users = @model.where(:world_id => @worlds).
-             order("#{order[:db]} #{params[:by]}").references(@model).
+             order("#{order[:db]} #{@params[:by]}").references(@model).
              offset(@offset).limit(@limit) 
     
     unless params[:name].nil?
@@ -124,19 +124,13 @@ class UsersController < ApplicationController
     end    
     
     respond_to do |format|
-      format.json { render :json => @users.limit(@suggest_limit).to_json(:includes => {:world => {:only => [:short]}}) }
-      format.jpeg { render_image('jpeg', [
-        {:attr => 'user_id', :left => 0},
-        {:attr => 'name', :left => 0.1},
-        {:attr => 'created_at', :left => 0.3},
-        {:attr => 'world_id', :left => 0.9}
-      ])}
+      format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
       format.html {render 'users/index'}
     end
   end
   
   def delete
-    user_params = list_params
+    user_params = @params
     @model = UsersDelete
     @attributes = [
       {:human => "user_id", :db => "#{@model.table_name}.user_id"},
@@ -151,25 +145,19 @@ class UsersController < ApplicationController
              order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit)
     
-    unless params[:name].nil?
+    unless user_params[:name].nil?
       @users = @users.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
       @model = @model.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
     end    
     
     respond_to do |format|
-      format.json { render :json => @users.limit(@suggest_limit) }
-      format.jpeg { render_image('jpeg', [
-        {:attr => 'user_id', :left => 0},
-        {:attr => 'name', :left => 0.1},
-        {:attr => 'created_at', :left => 0.3},
-        {:attr => 'world_id', :left => 0.9}
-      ])}
+      format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
       format.html {render 'users/index'}
     end      
   end
   
   def namechange
-    user_params = list_params
+    user_params = @params
     @model = UsersNameChange
     @attributes = [
       {:human => "user_id"},
@@ -181,31 +169,25 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @suggest_limit = 0 # disable autocomplete
+    @suggest_limit = 5
     
     @users = @model.where(:world_id => @worlds).
              order("#{order[:db]} #{user_params[:by]}").references(@model).
              offset(@offset).limit(@limit) 
     
-    unless params[:name].nil?
+    unless user_params[:name].nil?
       @users = @users.where("#{@model.table_name}.name_old LIKE ? OR #{@model.table_name}.name_new LIKE ?", "%#{user_params[:name]}%", "%#{params[:name]}%") 
       @model = @model.where("#{@model.table_name}.name_old LIKE ? OR #{@model.table_name}.name_new LIKE ?", "%#{user_params[:name]}%", "%#{params[:name]}%") 
     end    
     
     respond_to do |format|
-      format.json { render :json => @users.limit(@suggest_limit) }
-      format.jpeg { render_image('jpeg', [
-        {:attr => 'user_id', :left => 0},
-        {:attr => 'name', :left => 0.1},
-        {:attr => 'created_at', :left => 0.3},
-        {:attr => 'world_name', :left => 0.9}
-      ])}
+      format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
       format.html {render 'users/index'}
     end   
   end
   
   def racechange
-    user_params = list_params
+    user_params = @params
     # keine Suche möglich
     @skipsearch = true
     # Rasse eingrenzen
@@ -250,19 +232,13 @@ class UsersController < ApplicationController
     end
     
     respond_to do |format|
-      format.json { render :json => @users.limit(@suggest_limit) }
-      format.jpeg { render_image('jpeg', [
-        {:attr => 'user_id', :left => 0},
-        {:attr => 'name', :left => 0.1},
-        {:attr => 'created_at', :left => 0.3},
-        {:attr => 'world_id', :left => 0.9}
-      ])}
+      format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
       format.html {render 'users/index'}
     end
   end
   
   def clanchange
-    user_params = list_params
+    user_params = @params
     @skipsearch = true
     @model = UsersClanChange
     @attributes = [
@@ -280,13 +256,7 @@ class UsersController < ApplicationController
              offset(@offset).limit(@limit) 
     
     respond_to do |format|
-      format.json { render :json => @users.limit(@suggest_limit) }
-      format.jpeg { render_image('jpeg', [
-        {:attr => 'user_id', :left => 0},
-        {:attr => 'name', :left => 0.1},
-        {:attr => 'created_at', :left => 0.3},
-        {:attr => 'world_id', :left => 0.9}
-      ])}
+      format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
       format.html {render 'users/index'}
     end
   end

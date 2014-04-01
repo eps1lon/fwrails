@@ -1,4 +1,5 @@
 class UsersAchievements < ActiveRecord::Base
+  include UserNaming
   self.primary_keys = :user_id, :world_id, :achievement_id
   
   belongs_to :achievement, :foreign_key => [:achievement_id, :stage],

@@ -4,7 +4,7 @@
   <li><%= link_to t("clans.commons.all_worlds"), clans_url(:action => params[:action]) %></li>
   <% @worlds_all.each do |world| %>
     <li>
-        <%= link_to clans_url(:action => params[:action], :world => world.short), 
+        <%= link_to clans_url(@params.merge(world: world.short)), 
               class: ["tooltip"] do %>
         <%= world.short %>
         <%= tooltip_markup content_tag(:strong, world.localized_name) %>
@@ -46,7 +46,7 @@
         <th class="<%= attr[:human] %>">
           <% if attr[:db] %>
             <%= link_to @model.human_attribute_name(attr[:human]), 
-                        clans_url(@std_params.merge({"order" => attr[:human], "by" => @by})),
+                        clans_url(@params.merge({"order" => attr[:human], "by" => @by})),
                         :class => 'sort',
                         :title => t('helpers.links.sort', :col => @model.human_attribute_name(attr[:human])) %>
           <% else %>
@@ -69,7 +69,7 @@
   <%= nav_links %>
 </nav>
 <script type="text/javascript">
-  var clans_url = <%= clans_url(@std_params.merge({"format" => "json", "name" => '_name_'})).to_json.html_safe %>,
+  var clans_url = <%= clans_url(action: params[:action], format: "json", name: "_name_").to_json.html_safe %>,
       clan_url = <%= clan_url({"world" => '_world_', "id" => '_id_'}).to_json.html_safe %>,
       suggest_limit = <%= @suggest_limit %>,
       worlds = <%= @worlds.to_json(:only => [:id, :short]).html_safe %>;

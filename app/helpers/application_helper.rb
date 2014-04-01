@@ -50,7 +50,7 @@ module ApplicationHelper
   def link_to_clan_or_del(clan, tag, world_short)
     if clan.nil?
       content_tag :del, class: %w{clan tooltip} do
-        ''.html_safe + "{#{tag}}" + tooltip_markup(t("clans.common.deleted"))
+        ''.html_safe + "{#{tag}}" + tooltip_markup(t("clans.commons.deleted"))
       end
     else
       link_to(tag_markup(clan, 'em'), clan_url(clan.clan_id, world_short))
@@ -138,7 +138,7 @@ module ApplicationHelper
   def link_to_nav(page, url_helper, options = {})
     options[:class] ||= ''
     link_to page, 
-            url_helper.call(@std_params.merge({"page" => page})), 
+            url_helper.call(@params.merge({"page" => page})), 
             :class => ["page", options[:class]].join(" "), 
             :data => {:page => page}
   end

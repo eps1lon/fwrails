@@ -1,12 +1,12 @@
 class ClansController < ApplicationController
   before_filter :only => [:index, :new, :delete, :leader_change, :coleader_change, :tag_change, :name_change] do 
-    @std_params = list_params
+    @params = list_params
        
     @limit = 20
     @suggest_limit = 5
-    @offset = ([1, params[:page].to_i].max - 1) * @limit
+    @offset = ([1, @params[:page].to_i].max - 1) * @limit
     
-    if @std_params[:by].to_s.downcase.eql?('desc') # define sorting order for sort_links
+    if @params[:by].to_s.downcase.eql?('desc') # define sorting order for sort_links
       @by = 'asc'
     else
       @by = 'desc'
@@ -26,14 +26,20 @@ class ClansController < ApplicationController
   before_filter :common_text_change,   :only => [:name_change, :tag_change]
 
   def index
-    clan_params = list_params
+    clan_params = @params
     @model = Clan.where(:world_id => @worlds).references(:clan)
     
     # create attributes
-    @attributes = []    
-    %w{clan_id tag name sum_experience member_count leader_id coleader_id world_id}.each do |attr|
-      @attributes << {:human => attr, :db => "#{attr}"}
-    end
+    @attributes = [
+      {human: "clan_id", db: "#{@model.table_name}.clan_id"},
+      {human: "tag", db: "#{@model.table_name}.tag"},
+      {human: "name", db: "#{@model.table_name}.name"},
+      {human: "sum_experience", db: "#{@model.table_name}.sum_experience"},
+      {human: "member_count", db: "#{@model.table_name}.member_count"},
+      {human: "leader_id"},
+      {human: "coleader_id"},
+      {human: "world_id"},
+    ]    
     # default
     order = order_from_attributes(@attributes, clan_params[:order], 3)
     
@@ -47,7 +53,7 @@ class ClansController < ApplicationController
     end
     
     respond_to do |format|
-      format.json { render :json => @clans.limit(@suggest_limit) }
+      format.json { render :json => @clans.limit(@suggest_limit), methods: :name_primary }
       format.html { render 'clans/index'}
     end
   end
@@ -104,7 +110,7 @@ class ClansController < ApplicationController
   private
   
   def common_new_delete
-    clan_params = list_params
+    clan_params = @params
     @model = Object.const_get("Clans#{action_name.camelize}").where(:world_id => @worlds)
     
     # create attributes array
@@ -128,13 +134,13 @@ class ClansController < ApplicationController
     end
     
     respond_to do |format|
-      format.json { render :json => @clans.limit(@suggest_limit) }
+      format.json { render :json => @clans.limit(@suggest_limit), methods: :name_primary }
       format.html { render 'clans/index'}
     end
   end
   
   def common_leader_change
-    clan_params = list_params
+    clan_params = @params
     type = action_name.split("_").slice(0).to_s
     @model = Object.const_get("Clans#{type.capitalize}Change").where(:world_id => @worlds)
     
@@ -161,7 +167,7 @@ class ClansController < ApplicationController
   end
   
   def common_text_change
-    clan_params = list_params
+    clan_params = @params
     type = action_name.split("_").slice(0).to_s
     @model = Object.const_get("Clans#{type.capitalize}Change").where(:world_id => @worlds)
     
@@ -190,6 +196,6 @@ class ClansController < ApplicationController
   
   def list_params
     params[:page] = [1, params[:page].to_i].max
-    filter_sql_by(params.permit(:action, :world, :order, :by, :tag, :page), :by, :desc)
+    filter_sql_by(params.permit(:action, :world, :order, :by, :tag, :page, :name), :by, :desc)
   end
 end

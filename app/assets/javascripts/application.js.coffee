@@ -12,7 +12,6 @@ $(document).ready ->
     $(this).text t('helpers.toggle.' + t_key);
   
   # selects form value when clicked
-  console.log $("input.auto_select, textarea.auto_select")
   $(document).on "focus", "input.auto_select, textarea.auto_select", ->
     return if window.focused_element == this
     window.focused_element = this

@@ -1,4 +1,5 @@
 class UsersAchievementsCache < ActiveRecord::Base
+  include UserNaming
   alias_attribute :updated_at, :created_at
   
   self.primary_keys = :user_id, :world_id

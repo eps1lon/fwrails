@@ -1,4 +1,5 @@
 class Clan < ActiveRecord::Base
+  include ClanNaming
   self.primary_keys = :clan_id, :world_id
   
   TAG_FLAGS = Hash[%w{notag inspected}.each_with_index.map {|flag,i| [flag.to_sym, 2**i]}]
@@ -31,10 +32,6 @@ class Clan < ActiveRecord::Base
   has_many :outs, :class_name => 'UsersClanChange', 
                   :foreign_key => [:clan_id_old, :world_id],
                   :primary_key => [:clan_id, :world_id]
-  
-  def name_primary
-    "#{self.tag} (#{self.world.short})"
-  end
   
   def tag
     self.tag_printable

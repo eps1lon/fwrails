@@ -6,7 +6,7 @@
   </li>
   <% @worlds_all.each do |world| %>
     <li>
-      <%= link_to users_url(:action => params[:action], :world => world.short), 
+      <%= link_to users_url(@params.merge(world: world.short)), 
             class: ["tooltip"] do %>
       <%= world.short %>
       <%= tooltip_markup content_tag(:strong, world.localized_name) %>
@@ -23,7 +23,7 @@
     </li>
     <% @races.each do |race| %>
       <li>
-        <%= link_to users_url(params.merge(page: 1, race: race.short)),
+        <%= link_to users_url(@params.merge(page: 1, race: race.short)),
               class: ["tooltip"] do %> 
         <%= race.short %>
         <%= tooltip_markup content_tag(:strong, race.name) %>
@@ -71,7 +71,7 @@
           <th class="<%= attr[:human] %>">
             <% if attr[:db] %>
               <%= link_to @model.human_attribute_name(attr[:human]), 
-                          users_url(params.merge(order: attr[:human], by: @by, page: 1)),
+                          users_url(@params.merge(order: attr[:human], by: @by, page: 1)),
                           :class => 'sort',
                           :title => t('helpers.links.sort', :col => @model.human_attribute_name(attr[:human])) %>
             <% else %>
@@ -97,7 +97,7 @@
 <% #end %>
 
 <script type="text/javascript">
-  var users_url = <%= users_url(@std_params.merge({"name" => '_name_'})).to_json.html_safe %>,
+  var users_url = <%= users_url(action: params[:action], format: "json", name: "_name_").to_json.html_safe %>,
       user_url = <%= user_url('_name_', '_world_').to_json.html_safe %>,
       suggest_limit = <%= @suggest_limit %>,
       worlds = <%= @worlds.to_json(:only => [:id, :short]).html_safe %>;
