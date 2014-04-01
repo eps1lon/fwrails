@@ -1,4 +1,4 @@
-class Admin::DumpsController < ApplicationController
+class Admin::DumpsController < Admin::BaseController
   before_action :set_admin_dump, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/dumps

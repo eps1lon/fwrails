@@ -54,3 +54,5 @@ gem "devise", "~>3.2.4"
 
 # for has_secure_password
 #gem 'bcrypt', '~> 3.1.7'
+
+gem "request-log-analyzer"
