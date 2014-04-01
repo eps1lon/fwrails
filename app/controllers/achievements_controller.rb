@@ -59,7 +59,7 @@ class AchievementsController < ApplicationController
     @users = @users.order(@order.map {|order| "#{order} #{params[:by]}"}.join(','))
     @users = @users.offset(@offset).limit(20)
     
-    if stale?(etag: [@achievements, @users], last_modified: @users.take.updated_at, public: true)
+    if stale?(etag: [@achievements, @users], last_modified: @users.take.try(:updated_at), public: true)
       # users_achievements
       @users_achievements = {}
       @users.each do |user|

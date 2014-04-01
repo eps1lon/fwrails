@@ -33,7 +33,7 @@ Freewar3::Application.routes.draw do
           :action => 'group_progress',
           :as     => 'group_progress'
           
-    get '/rank(/:world)(/show/:ids)(/page/:page)(/order/:order)(/:by)',
+    get '/rank(/show/:ids)(/page/:page)(/order/:order/:by)(/:world)',
           :action => 'rank',
           :as     => 'rank',
           :defaults => {
@@ -69,9 +69,8 @@ Freewar3::Application.routes.draw do
         :to => 'clans#show'
   # clans
   scope :as => 'clans', :controller => 'clans', :path => '/clans' do
-    match '/:action(/:world)(/page/:page)(/order/:order)(/:by)(.:format)',  
+    match '/:action(/page/:page)(/order/:order/:by)(/:world)(.:format)',  
           :defaults => {
-            :by     => 'desc',
             :page   => 1
           },
           :name => /.*/,
@@ -121,13 +120,14 @@ Freewar3::Application.routes.draw do
         :to => 'users#show'
   # users
   scope :as => 'users', :controller => 'users', :path => 'users' do
-    match '/:action(/race/:race)(/like/:name)(/:world)(/page/:page)(/order/:order)(/:by)(.:format)', 
+    match '/:action(/race/:race)(/like/:name)(/page/:page)(/order/:order/:by)(/:world)(.:format)', 
           :defaults => {
-            :by     => 'desc',
             :page   => 1
           },
           :name => /.*/,
+          :race => /.*/,
           :via => [:get, :post]
+    root action: 'index'
   end
  
   # adminpanel

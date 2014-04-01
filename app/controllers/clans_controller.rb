@@ -189,7 +189,7 @@ class ClansController < ApplicationController
   end
   
   def list_params
-    params[:page] = params[:page].to_i
+    params[:page] = [1, params[:page].to_i].max
     filter_sql_by(params.permit(:action, :world, :order, :by, :tag, :page), :by, :desc)
   end
 end
