@@ -35,7 +35,7 @@ class News < ActiveRecord::Base
   end
   
   def self.published
-    where("publish_at >= ?", DateTime.now)
+    where("publish_at < ?", DateTime.now)
   end
   
   private 
