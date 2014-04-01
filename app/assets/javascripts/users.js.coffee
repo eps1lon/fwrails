@@ -18,7 +18,6 @@ $(document).ready ->
       url = users_url.replace /_name_/, request.term
       users = []
       set_loading true
-      console.log url
       
       $.getJSON url, (data) ->
         #console.log data

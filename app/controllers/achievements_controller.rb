@@ -4,7 +4,7 @@ class AchievementsController < ApplicationController
     
     @limit = 20
     @offset = ([1, params[:page].to_i].max - 1) * @limit
-    @std_params = params
+    @params = params
     
     # define sorting order for sort_links
     if params[:by].to_s.downcase.eql?('desc') 

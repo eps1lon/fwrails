@@ -4,7 +4,6 @@ $(document).ready ->
       url = clans_url.replace /_name_/, request.term
       clans = []
       set_loading true
-      console.log url
       
       $.getJSON url, (data) ->
         #console.log data
