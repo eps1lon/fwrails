@@ -1,9 +1,7 @@
-require '../test_helper'
-require '../../lib/nav'
+require 'test_helper'
 
 class NavTest < ActiveSupport::TestCase
-  test "vars" do
-    nav = Nav.new(1, World.first, {}, 20)
-    assert true
-  end
+  #test "vars" do
+  #  assert true
+  #end
 end

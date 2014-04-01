@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140328075737) do
+ActiveRecord::Schema.define(version: 20140328080130) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20140328075737) do
     t.integer  "needed"
     t.integer  "achievement_id", default: 0,  null: false
     t.datetime "created_at"
+  end
+
+  create_table "admin_dumps", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "admin_news", force: true do |t|
