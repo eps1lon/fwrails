@@ -1,8 +1,4 @@
 Freewar3::Application.routes.draw do 
-  namespace :admin do
-    resources :dumps
-  end
-
   devise_for :members,
              controllers: {
                sessions: "sessions"
@@ -37,10 +33,6 @@ Freewar3::Application.routes.draw do
           :action => 'group_progress',
           :as     => 'group_progress'
           
-    get '/index(/:world)', 
-          :action => 'index',
-          :as     => 'index'
-          
     get '/rank(/:world)(/show/:ids)(/page/:page)(/order/:order)(/:by)',
           :action => 'rank',
           :as     => 'rank',
@@ -56,6 +48,11 @@ Freewar3::Application.routes.draw do
     get '/unachieved(/:world)', 
           :action => 'unachieved',
           :as     => 'unachieved'
+    
+    get '(/:world)', 
+        :action => 'index',
+        :as     => 'index'
+    root action: 'index'
   end
   
   # Areas  
@@ -101,12 +98,12 @@ Freewar3::Application.routes.draw do
       
   # graphs
   scope :as => 'graphs', :controller => :graphs, :path => '/graphs' do
+    root :action => 'index'
+    
     match '/achievements(/:mode)', 
           :action => 'achievements', 
           :as => 'achievements',
-          :via => [:get, :post]
-    
-    root :action => 'index'
+          :via => [:get, :post] 
   end
   
   get '/news/:id', :to => 'home#show', :as => 'news'
@@ -118,6 +115,8 @@ Freewar3::Application.routes.draw do
   
   # statistics
   scope :as => 'statistics', :controller => :statistics, :path => '/statistics' do
+    root action: 'index'
+    
     get '/:action(/:world)'
   end
   

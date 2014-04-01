@@ -1,6 +1,8 @@
 class ClansController < ApplicationController
   before_filter :only => [:index, :new, :delete, :leader_change, :coleader_change, :tag_change, :name_change] do 
-    @std_params = params.reject {|key,v| !["action", "world", "order", "by", "tag"].include?(key)}
+    params[:by] ||= 'desc' # root route
+    
+    @std_params = params.permit(:action, :world, :order, :by, :tag)
        
     @limit = 20
     @suggest_limit = 5
