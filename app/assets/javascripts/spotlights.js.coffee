@@ -15,6 +15,15 @@ build_message = (type, i18n_key, count) ->
   })
 
 $(document).ready ->
+  $('#spotlight').draggable {
+    cursor: "move"
+    zIndex: 999
+  }
+  
+  $('#spotlight h1 + a').click ->
+    $('#spotlight').hide()
+    false
+  
   $.getJSON spotlight_urls.spotlights, (json) ->
     for type, spotlight of json
       $('p.spotlight.' + type).append build_url(spotlight[type], type), 

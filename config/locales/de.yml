@@ -756,6 +756,7 @@ de:
     new:
       human: "Login"
   spotlights:
+    close: "Schließen"
     heading: "Licht an für"
     clan:
       heading: "Clan"

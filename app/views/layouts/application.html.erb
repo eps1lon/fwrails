@@ -63,8 +63,10 @@
       <% end -%>
       <%= yield %>
     </section>
+    <% if params[:hide_spotlight].blank? %>
     <section id="spotlight">
       <h1><%= t "spotlights.heading" %></h1>
+      <%= link_to t("spotlights.close"), params.merge(hide_spotlight: 1), title: t("spotlights.close") %>
       <%= check_box_tag "loading_spotlights", 1, true, :disabled => true, :class => 'loading' %>
       <%= label_tag "loading_spotlights", loading_markup %>
       
@@ -72,8 +74,8 @@
         <h2><%= t "spotlights.#{spotlight}.heading" %></h2>
         <p class="spotlight <%= spotlight %>"></p>
       <% end %>
-      
     </section>
+    <% end %>
   </div>
   <footer>
     <%= link_to t("home.about.link_text"), about_url %>
