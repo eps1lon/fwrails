@@ -10,4 +10,6 @@ class UsersAchievements < ActiveRecord::Base
   belongs_to :world
   has_many :changes, :class_name => 'UsersAchievementsChange',
                      :primary_key => :achievement_id
+  
+  scope :active, -> { where(deleted: false) }
 end

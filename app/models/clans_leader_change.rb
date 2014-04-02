@@ -11,4 +11,6 @@ class ClansLeaderChange < ActiveRecord::Base
   has_one :leader_new, :class_name => 'User', 
                        :primary_key => [:leader_id_new, :world_id],
                        :foreign_key => [:user_id, :world_id]
+
+  scope :active, -> { where(deleted: false) }
 end

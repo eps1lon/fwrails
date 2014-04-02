@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
                         :class_name => 'UsersAchievements',
                         :foreign_key => [:user_id, :world_id]
   
+  scope :in_clans, -> { where("clan_id != 0") }
+  
   def build_world
     self.world = World.new if self.world.nil?
   end

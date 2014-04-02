@@ -5,6 +5,8 @@ class UsersNameChange < ActiveRecord::Base
   belongs_to :world
   belongs_to :user, :foreign_key => [:user_id, :world_id] 
   
+  scope :active, -> { where(deleted: false) }
+  
   def old
     {:name => self.name_old}
   end

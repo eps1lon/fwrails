@@ -1,5 +1,5 @@
 class UsersAchievementsCache < ActiveRecord::Base
-  include UserNaming
+  include UserNaming 
   alias_attribute :updated_at, :created_at
   
   self.primary_keys = :user_id, :world_id
@@ -10,6 +10,8 @@ class UsersAchievementsCache < ActiveRecord::Base
   has_many :achievements, -> { where(:deleted => false) },
            :class_name => 'UsersAchievements',
            :foreign_key => [:user_id, :world_id]
+  
+  scope :active, -> { where(deleted: false) }
   
   def self.last_update
     self.take.updated_at

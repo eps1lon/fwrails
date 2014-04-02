@@ -11,4 +11,6 @@ class ClansColeaderChange < ActiveRecord::Base
   has_one :coleader_new, :class_name => 'User', 
                          :primary_key => [:coleader_id_new, :world_id],
                          :foreign_key => [:user_id, :world_id]
+
+  scope :active, -> { where(deleted: false) }
 end

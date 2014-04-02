@@ -5,6 +5,8 @@ class ClansTagChange < ActiveRecord::Base
   belongs_to :clan, :foreign_key => [:clan_id, :world_id]
   belongs_to :world
   
+  scope :active, -> { where(deleted: false) }
+  
   def tag_new
     self.tag('tag_new')
   end
