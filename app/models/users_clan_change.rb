@@ -2,15 +2,16 @@ class UsersClanChange < ActiveRecord::Base
   include UserNaming
   self.primary_keys = :user_id, :world_id, :created_at
   
-  alias_method :old, :old_clan
-  alias_method :new, :new_clan
-  
   belongs_to :world
   belongs_to :user, :foreign_key => [:user_id, :world_id]
   belongs_to :old_clan, :class_name => 'Clan', 
                         :foreign_key => [:clan_id_old, :world_id]
   belongs_to :new_clan, :class_name => 'Clan', 
                         :foreign_key => [:clan_id_new, :world_id]
+  
+  # alias relation
+  alias_method :old, :old_clan
+  alias_method :new, :new_clan
   
   scope :active, -> { where(deleted: false) }
   
