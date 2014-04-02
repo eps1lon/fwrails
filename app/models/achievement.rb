@@ -1,4 +1,6 @@
 class Achievement < ActiveRecord::Base  
+  include ActiveRecordRandom
+  
   alias_attribute :group, :achievement_id
   alias_attribute :achievement_group, :achievement_id
   self.primary_keys = :achievement_id, :stage
@@ -17,9 +19,8 @@ class Achievement < ActiveRecord::Base
   validates :max_stage, :numericality => {:greater_than => 0}
   validates :name, :presence => true
   
-  def self.base_stage
-    where(:stage => 1)
-  end
+  scope :base_stage, -> { where(:stage => 1) }
+  scope :levelable, -> { where("max_stage > 1") }
   
   def self.including_achiev_count(options = {})
     including_achiev_count = self.select("achievements.*, COUNT(*) as achiev_count")
