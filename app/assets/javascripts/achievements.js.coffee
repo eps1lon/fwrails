@@ -127,7 +127,7 @@ hide_achiev_group = ($item, shown) ->
 
 $(document).ready ->  
   # rank drag drop
-  $('.ui-draggable').draggable {
+  $('img.ui-draggable').draggable {
     cursor: "move"
     helper: "clone"
     revert: "invalid"

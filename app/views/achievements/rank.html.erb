@@ -5,11 +5,11 @@
 <ul class="worlds" data-fallback_url="1">
   <li>
     <%= link_to t("achievements.common.worlds_all"), 
-                achievements_rank_url(params.merge({:world => nil})),
+                achievements_rank_url(@params.merge({:world => nil})),
                 data: {world: ''}%>
   </li>
   <li>
-    <%= link_to achievements_rank_url(params.merge({world: "!W1", page: 1})), 
+    <%= link_to achievements_rank_url(@params.merge({world: "!W1", page: 1})), 
           class: ["tooltip"], data: {world: "!W1"} do %>
       <%= "!W1" %>
       <%= tooltip_markup content_tag(:strong, t("achievements.common.not_testworld")) %>
@@ -17,7 +17,7 @@
   </li>
   <% @all_worlds.each do |world| %>
     <li>
-      <%= link_to achievements_rank_url(params.merge({world: world.short, page: 1})), 
+      <%= link_to achievements_rank_url(@params.merge({world: world.short, page: 1})), 
             class: ["tooltip"], data: {world: world.short} do %>
         <%= world.short %>
         <%= tooltip_markup content_tag(:strong, world.localized_name) %>
@@ -43,9 +43,9 @@
 
 <p id="permalink">
     <em><%= t ".current_link" %></em>
-    <%= link_to achievements_rank_url(params), 
-                achievements_rank_url(params), 
-                :data => {template: achievements_rank_url(params.merge(ids: '_ids_'))} %>
+    <%= link_to achievements_rank_url(@params), 
+                achievements_rank_url(@params), 
+                :data => {template: achievements_rank_url(@params.merge(ids: '_ids_'))} %>
 </p>
 <p id="last_update">
   <em><%= t "time.last_update" %></em>:
@@ -73,7 +73,7 @@
                         :id => "achiev_group_#{achievement.group}",
                         :title => achievement.group_name) %>
           <%= link_to '', 
-                      achievements_rank_url(params.merge({:order => achievement.group, :by => @by, :page => 1})),
+                      achievements_rank_url(@params.merge({:order => achievement.group, :by => @by, :page => 1})),
                       :class => 'sort no-content',
                       :data => {order: achievement.group},
                       :title => t("helpers.links.sort", :col => achievement.group_name) %>
@@ -81,14 +81,14 @@
       <% end %>
       <th class="count">
         <%= link_to UsersAchievementsCache.human_attribute_name('count'),
-                    achievements_rank_url(params.merge({:order => 'count', :by => @by, :page => 1})),
+                    achievements_rank_url(@params.merge({:order => 'count', :by => @by, :page => 1})),
                     :class => 'sort',
                     :data => {order: 'count'},
                     :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('count')) %>
        </th>
       <th class="reward">
         <%= link_to UsersAchievementsCache.human_attribute_name('reward_collected'),
-                    achievements_rank_url(params.merge({:order => 'reward_collected', :by => @by, :page => 1})),
+                    achievements_rank_url(@params.merge({:order => 'reward_collected', :by => @by, :page => 1})),
                     :class => 'sort',
                     :data => {order: 'reward_collected'},
                     :title => t("helpers.links.sort", :col => UsersAchievementsCache.human_attribute_name('reward_collected')) %>
@@ -132,14 +132,14 @@
   var achievements_group_progress_url = <%= achievements_group_progress_url(:format => 'json',
                                                                             :group => '_group_', 
                                                                             :users => '_users_').to_json.html_safe %>,
-      achievements_rank_url = <%= achievements_rank_url(params.merge(ids: '_ids_')).to_json.html_safe %>,
+      achievements_rank_url = <%= achievements_rank_url(@params.merge(ids: '_ids_')).to_json.html_safe %>,
       fallback_urls = <%= [
         {'replace' => 'order', 
-         'href' => achievements_rank_url(params.merge({:order => '_order_', :by => @by, :ids => '_ids_', :page => 1}))},
+         'href' => achievements_rank_url(@params.merge({:order => '_order_', :by => @by, :ids => '_ids_', :page => 1}))},
         {'replace' => 'world', 
-         'href' => achievements_rank_url(params.merge({:world => '_world_', :ids => '_ids_', :page => 1}))},
+         'href' => achievements_rank_url(@params.merge({:world => '_world_', :ids => '_ids_', :page => 1}))},
         {'replace' => 'page', 
-         'href' => achievements_rank_url(params.merge({:page => '_page_', :ids => '_ids_',}))}
+         'href' => achievements_rank_url(@params.merge({:page => '_page_', :ids => '_ids_',}))}
       ].to_json.html_safe %>,
-      users_nav_url = <%= achievements_rank_url(params.merge({:page => '_page_', :by => @by, :ids => '_ids_'})).to_json.html_safe %>;
+      users_nav_url = <%= achievements_rank_url(@params.merge({:page => '_page_', :by => @by, :ids => '_ids_'})).to_json.html_safe %>;
 </script>

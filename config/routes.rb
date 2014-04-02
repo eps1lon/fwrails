@@ -35,13 +35,7 @@ Freewar3::Application.routes.draw do
           
     get '/rank(/show/:ids)(/page/:page)(/order/:order/:by)(/:world)',
           :action => 'rank',
-          :as     => 'rank',
-          :defaults => {
-            :by    => 'desc',
-            :ids   => '',
-            :order => 'count',
-            :page  => 1
-          }
+          :as     => 'rank'
     get '/unachieved(/:world)', 
           :action => 'unachieved',
           :as     => 'unachieved'

@@ -1,18 +1,7 @@
 class AchievementsController < ApplicationController
   before_filter :only => [:index, :unachieved, :rank] do 
     @last_update = UsersAchievementsCache.last_update
-    
-    @limit = 20
-    @offset = ([1, params[:page].to_i].max - 1) * @limit
-    @params = params
-    
-    # define sorting order for sort_links
-    if params[:by].to_s.downcase.eql?('desc') 
-      @by = 'asc'
-    else
-      @by = 'desc'
-    end
-    
+
     @all_worlds = @worlds = World.includes(:language).where(:language_id => 1)
     unless params[:world].nil?
       if params[:world][0].eql?('!')
@@ -29,11 +18,23 @@ class AchievementsController < ApplicationController
   end
   
   def rank 
+    @params = rank_params
+    
+    @limit = 20
+    @offset = (@params[:page] - 1) * @limit
+    
+    # define sorting order for sort_links
+    if @params[:by].to_s.downcase.eql?('desc') 
+      @by = 'asc'
+    else
+      @by = 'desc'
+    end
+    
     @users = UsersAchievementsCache.includes(:user, :achievements, :world).
                                     where(:deleted => false, :world_id => @worlds.collect { |world| world.id })
     
-    if UsersAchievementsCache.column_names.include?(params[:order].to_s)
-      @order = [params[:order]]
+    if UsersAchievementsCache.column_names.include?(@params[:order].to_s)
+      @order = [@params[:order]]
     else
       @order = ['count']
     end
@@ -42,13 +43,13 @@ class AchievementsController < ApplicationController
     @achiev_groups = Achievement.base_stage.order(:name)
     
     # show correspondending achievement_progress
-    if params[:ids]
+    if @params[:ids]
       @achievements = @achiev_groups.where(:achievement_id => params[:ids].split(','))
       @achiev_groups = @achiev_groups.where("achievement_id NOT IN (?)", @achievements.collect { |a| a.group }.join(','))
       
-      if params[:order].is_numeric? && !@achievements.to_a.select {|a| a.achievement_id == params[:order].to_i}.empty?
+      if @params[:order].is_numeric? && !@achievements.to_a.select {|a| a.achievement_id == @params[:order].to_i}.empty?
         @users = @users.joins(:achievements).
-                        where(:users_achievements => {:achievement_id => params[:order]})
+                        where(:users_achievements => {:achievement_id => @params[:order]})
         @order = ["#{UsersAchievements.table_name}.stage", 
                   "#{UsersAchievements.table_name}.progress"]
       end
@@ -56,7 +57,7 @@ class AchievementsController < ApplicationController
       @achievements = []
     end
 
-    @users = @users.order(@order.map {|order| "#{order} #{params[:by]}"}.join(','))
+    @users = @users.order(@order.map {|order| "#{order} #{@params[:by]}"}.join(','))
     @users = @users.offset(@offset).limit(20)
     
     if stale?(etag: [@achievements, @users], last_modified: @users.take.try(:updated_at), public: true)
@@ -152,5 +153,14 @@ class AchievementsController < ApplicationController
         format.html
       end
     end
+  end
+  
+  private
+  def rank_params
+    # defaults and sanitize
+    params[:order] ||= 'count'
+    params[:page] = [params[:page].to_i, 1].max
+    # strong params
+    filter_sql_by(params.permit(:ids, :page, :order, :by, :world), :by, :desc)
   end
 end
