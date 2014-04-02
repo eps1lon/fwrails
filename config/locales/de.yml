@@ -755,6 +755,65 @@ de:
     human: "Session"
     new:
       human: "Login"
+  spotlights:
+    heading: "Licht an für"
+    clan:
+      heading: "Clan"
+      message: "mit %{count} %{type}"
+      types:
+        ClansColeaderChange: "Coleaderwechseln"
+        ClansLeaderChange: "Leaderwechseln"
+        ClansNameChange: "Nickwechseln"
+        ClansTagChange: "Tagänderungen"
+        Member: "Mitgliedern"
+    user: 
+      heading: "User"
+      message: "mit %{count} %{type}"
+      types: 
+        achievement_id_1: "getöteten Weltenwandlern"
+        achievement_id_2: "abgegebenen Gewebeproben"
+        achievement_id_3: Glückspilze
+        achievement_id_4: Kombinatorischer Meister
+        achievement_id_5: "getöteten Undaron"
+        achievement_id_6: "absolvierten Aufträgen"
+        achievement_id_7: "Inspirationen in einer Gruppe"
+        achievement_id_8: Wettkönige
+        achievement_id_9: Zu zweit ist man stärker
+        achievement_id_10: Tollo-Superjackpotknacker
+        achievement_id_11: "geernteten Todesgrottenmoosen"
+        achievement_id_12: Stärkekolosse
+        achievement_id_13: "getöteten Phasenwesen"
+        achievement_id_14: Blitzableiter
+        achievement_id_15: "verjagten NPC"
+        achievement_id_16: "geernteten Pflanzen"
+        achievement_id_17: "abgeholten Stiftungsgeldern"
+        achievement_id_18: "aktiven Kills"
+        achievement_id_19: "gewonnenen Rukirunden"
+        achievement_id_20: "gelöschten Feuern"
+        achievement_id_21: "abgegebenen Blutproben"
+        achievement_id_22: "gemischten Zutaten im Chaoslabor"
+        achievement_id_23: Sprengstoffmischer
+        achievement_id_24: "Fraktionswechseln"
+        achievement_id_25: "gehobenen Schätzen"
+        achievement_id_26: "getötenen Unterwelt-Dämonen"
+        achievement_id_27: "überstandenen Clan-Kriegen"
+        achievement_id_28: "Vermessungen"
+        achievement_id_29: "Rassenwechsel"
+        achievement_id_30: "getötetenen Geistern der Welt"
+        achievement_id_31: "gezähmten NPC"
+        achievement_id_32: "gehackten Ingerium"
+        achievement_id_33: "getriebenen Ziegen"
+        achievement_id_34: "getöteten Ziegen"
+        achievement_id_35: "gekochten Gerichte"
+        achievement_id_36: "getöteten Gruppen in einer aktiven Gruppe"
+        achievement_id_37: "Dividendenausschüttungen"
+        achievement_id_38: "geknackten Truhen"
+        achievement_id_39: "zerhackten Schotterwurmsegmenten"
+        achievement_id_40: "gewonnenen Goldmünzen im Casino"
+        achievement_id_41: "verlorenen Goldmünzen im Casino"
+        UsersClanChange: "Clanänderungen"
+        UsersNameChange: "Nickwechseln"
+        UsersRaceChange: "Rassenwechseln"
   statistics:
     index:
       head: "ausgewählte Statistiken"

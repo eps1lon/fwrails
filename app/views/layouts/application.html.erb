@@ -56,12 +56,25 @@
       <% end %>
     </nav>
   </header>
-  <section id="yield">
-    <% flash.each do |name, msg| %>
-      <%= content_tag :p, msg, class: ['flash', name] %>
-    <% end -%>
-    <%= yield %>
-  </section>
+  <div id="wrapper">
+    <section id="yield">
+      <% flash.each do |name, msg| %>
+        <%= content_tag :p, msg, class: ['flash', name] %>
+      <% end -%>
+      <%= yield %>
+    </section>
+    <section id="spotlight">
+      <h1><%= t "spotlights.heading" %></h1>
+      <%= check_box_tag "loading_spotlights", 1, true, :disabled => true, :class => 'loading' %>
+      <%= label_tag "loading_spotlights", loading_markup %>
+      
+      <% @spotlights.each do |spotlight| %>
+        <h2><%= t "spotlights.#{spotlight}.heading" %></h2>
+        <p class="spotlight <%= spotlight %>"></p>
+      <% end %>
+      
+    </section>
+  </div>
   <footer>
     <%= link_to t("home.about.link_text"), about_url %>
     <%= link_to t("home.dumps.link_text"), dumps_url %>
@@ -71,7 +84,12 @@
     <%= link_to t("misc.links.fwshop"), "http://fwshop.traced.net", target: :blank %>
   </footer>
   <script type="text/javascript">
-      var params = <%= params.to_json.html_safe %>;
+      var params = <%= params.to_json.html_safe %>,
+          spotlight_urls = <%= {
+            spotlights: spotlights_url(format: "json"),
+            clan: clan_url("*clan_id*", "*world.short*"),
+            user: user_url("*name*", "*world.short*")
+          }.to_json.html_safe %>;
       I18n.defaultLocale = "<%= I18n.default_locale %>";
       I18n.locale = "<%= I18n.locale %>";
       <%= render template: "analytics/#{ANALYTICS[:service]}.js" if ANALYTICS[:service] %>

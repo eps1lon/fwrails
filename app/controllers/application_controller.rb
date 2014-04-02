@@ -79,6 +79,9 @@ class ApplicationController < ActionController::Base
   def set_view_vars
     @stylesheets = [] << (controller_name unless Freewar3::Application.assets.find_asset("#{controller_name}.css").nil?)
     @javascripts = [] << (controller_name unless Freewar3::Application.assets.find_asset("#{controller_name}.js").nil?)
+    
+    # actions of spotlight controller
+    @spotlights = %w{user clan}
   end
   
   # 

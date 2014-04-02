@@ -4,6 +4,7 @@
 //= require i18n
 //= require i18n/translations
 //= require datepicker
+//= require spotlights
 //= require_self
 $(document).ready ->
   # toggle links
@@ -25,8 +26,19 @@ $('.races li, .worlds li').tooltip {
   track: true
 }
 
-window.set_loading = (state) ->
-  $('#loading').prop 'checked', state
+window.url_for = (url, record) ->
+  url.replace /\*([^\*]+)\*/g, (_, key) ->
+    value_deep(key, record)
+
+window.set_loading = (state, for_selector) ->
+  for_selector ||= '#loading'
+  $(for_selector).prop 'checked', state
+
+window.value_deep = (key_deep, obj) ->
+  for key in key_deep.split "."
+    break if !obj[key]
+    obj = obj[key]
+  obj
 
 # i18n-js wrapper
 window.l = (type, value) ->
