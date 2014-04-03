@@ -167,7 +167,7 @@ class UsersController < ApplicationController
       {:human => "world", :db => "#{@model.table_name}.world_id"}
     ]
     # default
-    order = order_from_attributes(@attributes, user_params[:order], 2)
+    order = order_from_attributes(@attributes, user_params[:order], 3)
     
     @suggest_limit = 5
     
