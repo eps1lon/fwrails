@@ -64,3 +64,14 @@ a.listimg {
     font-weight: bold;
   }
 }
+
+.user {
+  &.urls {
+    li {
+      border: 1px solid black;
+      border-width: 0 1px 0 1px;
+      float: left;
+      padding: 0 .5em;
+    }
+  }
+}

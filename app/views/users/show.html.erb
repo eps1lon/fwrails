@@ -3,7 +3,11 @@
 <p><%= t ".info", :race => @user.race.name, 
                   :world => @user.world.name, 
                   :xp => number_with_delimiter(@user.experience) %>.</p>
-<%= link_to t(".profile"), @user.profile_url, :target => '_blank' %>
+<ul class="user urls">
+  <li><%= link_to t("users.urls.profile"), @user.profile_url, :target => '_blank' %></li>
+  <li><%= link_to t("users.urls.achievements"), @user.profile_achievement_url, :target => '_blank' %></li>
+  <li><%= link_to t("users.urls.rank"), @user.rank_url, :target => '_blank' %></li>
+</ul>
 
 <h2><%= Clan.model_name.human %></h2>
 <p>

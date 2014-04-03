@@ -30,8 +30,11 @@
   <dt class="xp_stat max"><%= t '.xp_stat.max' %>:</dt>
   <dd><%= member_summary(@xp_max_member, @clan) %></dd>
   
-  <dt class="profile_url"><%= t 'clans.commons.profile' %>:</dt>
+  <dt class="url profile"><%= t 'clans.urls.profile' %>:</dt>
   <dd><%= link_to @clan.profile_url, @clan.profile_url, :target => '_blank' %></dd>
+  
+  <dt class="url rank"><%= t 'clans.urls.rank' %>:</dt>
+  <dd><%= link_to @clan.rank_url, @clan.rank_url, :target => '_blank' %></dd>
   
   <dt class="leader"><%= Clan.human_attribute_name('leader_id') %>:</dt>
   <dd>

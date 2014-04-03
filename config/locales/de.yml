@@ -537,6 +537,7 @@ de:
       notag: "Keiner"
       noleader: "keiner"
       nocoleader: "keiner"
+      # deprecated
       profile: "Ingame-Profil"
       states:
         coleader: "Co-Leader"
@@ -621,6 +622,9 @@ de:
       message:
         one: "Eine Tagänderung gefunden in %{worlds}"
         other: "%{count} Tagänderung gefunden in %{worlds}"
+    urls:
+      profile: "Ingame-Profil"
+      rank: "Ingame-Rang"
   dev:
     announced: "coming soon"
   extensions:
@@ -926,7 +930,6 @@ de:
     show:
       human: "Details"
       info: "spielt als %{race} in %{world} und hat %{xp} Erfahrung"
-      profile: "Ingame-Profil"
       claninfo: "%{state} von "
       noclan: "in keinem Clan"
       achievements:
@@ -948,4 +951,9 @@ de:
       UsersRaceChange:
         old: "%{old}"
         new: "%{new}"
+    # deprecated
     profile: "Ingame-Profil"
+    urls:
+      achievements: "Ingame-Achievements"
+      profile: "Ingame-Profil"
+      rank: "Ingame-Rang"
