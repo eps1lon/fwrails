@@ -1,4 +1,5 @@
 class UsersAchievementsChange < ActiveRecord::Base
+  include AchievementUrls
   include UserNaming
   self.primary_keys = :user_id, :world_id, :achievement_id
   

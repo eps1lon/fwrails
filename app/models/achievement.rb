@@ -1,5 +1,6 @@
 class Achievement < ActiveRecord::Base  
   include ActiveRecordRandom
+  include AchievementUrls
   
   alias_attribute :group, :achievement_id
   alias_attribute :achievement_group, :achievement_id

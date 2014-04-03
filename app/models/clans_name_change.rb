@@ -1,5 +1,6 @@
 class ClansNameChange < ActiveRecord::Base
   include ClanNaming 
+  include ClanUrls
   include DeleteMarkable
   self.primary_keys = :clan_id, :world_id, :created_at
   

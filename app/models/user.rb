@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   include UserNaming
+  include UserUrls
   self.primary_keys = :user_id, :world_id
   
   after_initialize :build_world
@@ -70,21 +71,6 @@ class User < ActiveRecord::Base
       return []
     end
     where(primaries.join(' OR '))
-  end
-  
-  # URL to the users's ingame profil
-  def profile_url
-    ApplicationController.helpers.profile_url(self)
-  end
-  
-  # link to achievement profile including anchor
-  def achievement_url(achievement)
-    ApplicationController.helpers.achievement_profile_url(self, achievement)
-  end
-  
-  # link to achievement profile
-  def profile_achievement_url
-    ApplicationController.helpers.achievement_profile_url(self)
   end
   
   def clanstate

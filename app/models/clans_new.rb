@@ -1,5 +1,6 @@
 class ClansNew < ActiveRecord::Base
   include ClanNaming
+  include ClanUrls
   self.primary_keys = :clan_id, :world_id, :created_at
   
   belongs_to :clan, :foreign_key => [:clan_id, :world_id]

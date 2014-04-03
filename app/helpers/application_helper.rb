@@ -8,12 +8,11 @@ module ApplicationHelper
   end
   
   def profile_url(user_relation)
-    "#{user_relation.world.url}internal/fight.php?action=watchuser&act_user_id=#{user_relation.user_id}"
+    user_relation.profile_url
   end
   
   def achievement_profile_url(user_relation, achievement = nil)
-    anchor = "#achiev#{achievement.achievement_id}s#{achievement.stage}" unless achievement.nil?
-    "#{user_relation.world.url}internal/achiev.php?act_user_id=#{user_relation.user_id}#{anchor}"
+    user_relation.profile_achievement_url(achievement)
   end
   
   def freewar_url(lang = :de) 

@@ -3,6 +3,7 @@ class Clan < ActiveRecord::Base
   # a new clean.
   # they remain in the database for historical reasons.
   include ClanNaming
+  include ClanUrls
   self.primary_keys = :clan_id, :world_id
   
   TAG_FLAGS = Hash[%w{notag inspected}.each_with_index.map {|flag,i| [flag.to_sym, 2**i]}]
@@ -79,10 +80,6 @@ class Clan < ActiveRecord::Base
   
   def tag_with_flags
     {:tag => self.tag_printable, :flags => self.tag_flags}
-  end
-  
-  def profile_url
-    "#{self.world.url}internal/fight.php?action=watchclan&act_clan_id=#{self.clan_id}"
   end
   
   def changes

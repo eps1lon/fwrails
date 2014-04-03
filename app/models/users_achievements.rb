@@ -1,6 +1,9 @@
 class UsersAchievements < ActiveRecord::Base
-  include UserNaming
+  include AchievementUrls
   include DeleteMarkable
+  include UserNaming
+  include UserUrls
+  
   self.primary_keys = :user_id, :world_id, :achievement_id
   
   belongs_to :achievement, :foreign_key => [:achievement_id, :stage],
