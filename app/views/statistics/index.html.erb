@@ -4,6 +4,7 @@
 <p><%= t ".head_paragraph" %></p>
 <p><%= t ".world_change" %></p>
 <ul class="worlds">
+  <li><%= link_to t(".worlds_all"), statistics_url(params.merge(world: nil)) %></li>
   <% @worlds_all.each do |world| %>
     <li>
       <%= link_to statistics_url(:world => world.short), 

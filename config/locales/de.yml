@@ -824,6 +824,7 @@ de:
       head: "ausgewählte Statistiken"
       head_paragraph: "Diese Seite beinhaltet diverse Gold- und Mengenstatistiken 
                        sowie Statistiken über Errungenschaften in FreeWar."
+      worlds_all: "Alle Welten"
       world_change: "Welt wechseln:"
       world_text: "Statistiken in %{worlds}"
     human: "Statistiken"

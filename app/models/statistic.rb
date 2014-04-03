@@ -27,7 +27,7 @@ class Statistic < ActiveRecord::Base
     end
     
     # self.includes(:last_change) much slower than calling this relation within each statistic
-    self.all.each do |stat|
+    stats + self.all.each do |stat|
       stat.last_change = stat.changes.where(world_id: options[:in_worlds]).last
     end
   end
