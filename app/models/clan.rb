@@ -1,4 +1,7 @@
 class Clan < ActiveRecord::Base
+  # the changes assaociations are not removed from the db upon creation of
+  # a new clean.
+  # they remain in the database for historical reasons.
   include ClanNaming
   self.primary_keys = :clan_id, :world_id
   
@@ -15,13 +18,17 @@ class Clan < ActiveRecord::Base
                      :foreign_key => [:user_id, :world_id], 
                      :primary_key => [:coleader_id, :world_id]
   
-  has_many :coleader_changes, :class_name => 'ClansColeaderChange', 
+  has_many :coleader_changes, -> { active },
+                              :class_name => 'ClansColeaderChange', 
                               :foreign_key => [:clan_id, :world_id]
-  has_many :leader_changes, :class_name => 'ClansLeaderChange', 
+  has_many :leader_changes, -> { active },
+                            :class_name => 'ClansLeaderChange', 
                             :foreign_key => [:clan_id, :world_id]
-  has_many :name_changes, :class_name => 'ClansNameChange', 
+  has_many :name_changes, -> { active },
+                          :class_name => 'ClansNameChange', 
                           :foreign_key => [:clan_id, :world_id]
-  has_many :tag_changes, :class_name => 'ClansTagChange', 
+  has_many :tag_changes, -> { active },
+                         :class_name => 'ClansTagChange', 
                          :foreign_key => [:clan_id, :world_id]
   
   has_many :members, :class_name => 'User', :foreign_key => [:clan_id, :world_id]
