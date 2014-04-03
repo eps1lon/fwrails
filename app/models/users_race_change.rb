@@ -1,5 +1,6 @@
 class UsersRaceChange < ActiveRecord::Base
   include UserNaming
+  include DeleteMarkable
   self.primary_keys = :user_id, :world_id, :created_at
   
   belongs_to :world
@@ -8,6 +9,8 @@ class UsersRaceChange < ActiveRecord::Base
                         :foreign_key => :race_id_old
   belongs_to :new_race, :class_name => 'Race',
                         :foreign_key => :race_id_new
+  
+  on_deleted_nullify_relation :user
   
   # alias relation
   alias_method :old, :old_race

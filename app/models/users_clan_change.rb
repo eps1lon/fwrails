@@ -1,5 +1,6 @@
 class UsersClanChange < ActiveRecord::Base
   include UserNaming
+  include DeleteMarkable
   self.primary_keys = :user_id, :world_id, :created_at
   
   belongs_to :world
@@ -13,11 +14,7 @@ class UsersClanChange < ActiveRecord::Base
   alias_method :old, :old_clan
   alias_method :new, :new_clan
   
-  scope :active, -> { where(deleted: false) }
+  on_deleted_nullify_relation :user
   
-  # belongs_to :user, :conditions => {:self => {:deleted => false}}
-  alias_method :__user, :user
-  def user
-    self.__user if !self.deleted
-  end
+  scope :active, -> { where(deleted: false) }
 end

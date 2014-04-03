@@ -1,5 +1,6 @@
 class UsersAchievementsCache < ActiveRecord::Base
   include UserNaming 
+  include DeleteMarkable
   alias_attribute :updated_at, :created_at
   
   self.primary_keys = :user_id, :world_id
@@ -10,6 +11,8 @@ class UsersAchievementsCache < ActiveRecord::Base
   has_many :achievements, -> { where(:deleted => false) },
            :class_name => 'UsersAchievements',
            :foreign_key => [:user_id, :world_id]
+
+  on_deleted_nullify_relation :user
   
   scope :active, -> { where(deleted: false) }
   

@@ -1,5 +1,6 @@
 class UsersAchievements < ActiveRecord::Base
   include UserNaming
+  include DeleteMarkable
   self.primary_keys = :user_id, :world_id, :achievement_id
   
   belongs_to :achievement, :foreign_key => [:achievement_id, :stage],
@@ -10,6 +11,8 @@ class UsersAchievements < ActiveRecord::Base
   belongs_to :world
   has_many :changes, :class_name => 'UsersAchievementsChange',
                      :primary_key => :achievement_id
+  
+  on_deleted_nullify_relation :user
   
   scope :active, -> { where(deleted: false) }
 end
