@@ -30,11 +30,13 @@
         <td>
           <%= link_to t("statistics.names.#{statistic.name}"), statistic_url(statistic) %>
         </td>
-        <td><%= number_with_delimiter statistic.last_change.value  %></td>
+        <td><%= number_with_delimiter statistic.last_change.try(:value)  %></td>
         <td>
-          <time datetime="<%= statistic.last_change.created_at %>">
-            <%= l statistic.last_change.created_at.to_date %>
-          </time>
+          <% if statistic.last_change.nil? %>
+          <%= t ".no_values" %>
+          <% else %>
+          <%= time_tag statistic.last_change.created_at %>
+          <% end %>
         </td>
       </tr>
     <% end %>

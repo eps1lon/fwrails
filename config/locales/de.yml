@@ -869,6 +869,10 @@ de:
       group_kills: "getötete NPC in Gruppe"
       paid_dividend: "ausgezahlte Dividende"
       opened_locks: "geöffnete Kisten"
+      worm_segments: "abgebrochene Schotterwurmsegmente"
+      casino_won: "gewonnene Goldmünzen im Casion"
+      casino_lost: "verlorene Goldmünzen im Casino"
+      plants_small: "geerntete, kleine Pflanzen"
     not_found: "`%{record}` nicht gefunden"
     show:
       back: "Zurück zur Übersicht"

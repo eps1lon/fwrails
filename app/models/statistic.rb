@@ -1,7 +1,14 @@
 class Statistic < ActiveRecord::Base
-  has_many :changes, :class_name => 'StatisticChange'
-  has_one :last_change, -> { order('created_at desc').limit(1) },
-                        :class_name => 'StatisticChange'
+  attr_accessor :last_change
+  has_many :changes, :class_name => 'StatisticChange' do
+    def last
+      order("created_at desc").limit(1).take
+    end
+  end
+  
+  def last_change
+    @last_change || changes.last
+  end
   
   def world_grouped
     StatisticChange.select("b.*").from("(#{StatisticChange.where(:statistic_id => self).order("created_at desc").to_sql}) as b").group(:world_id)
@@ -20,7 +27,9 @@ class Statistic < ActiveRecord::Base
     end
     
     # self.includes(:last_change) much slower than calling this relation within each statistic
-    stats + self.all
+    self.all.each do |stat|
+      stat.last_change = stat.changes.where(world_id: options[:in_worlds]).last
+    end
   end
   
   def self.achievement_statistic(group, options = {})
@@ -67,11 +76,15 @@ class Statistic < ActiveRecord::Base
       'cooks'                              => 35,
       'group_kills'                        => 36,
       'paid_dividend'                      => 37,
-      'opened_locks'                       => 38
+      'opened_locks'                       => 38,
+      'worm_segments'                      => 39,
+      'casino_won'                         => 40,
+      'casino_lost'                        => 41,
+      'plants_small'                       => 42
     }
   end
   
   def self.last_update
-    Statistic.first.last_change.created_at
+    StatisticChange.order("created_at desc").take.created_at
   end
 end
