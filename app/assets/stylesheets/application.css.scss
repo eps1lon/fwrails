@@ -326,7 +326,7 @@ nav.pages {
     text-align: center;
     text-decoration: none;
     
-    &:hover {
+    &:hover, &.active {
       background-color: #F55856;
     }
     

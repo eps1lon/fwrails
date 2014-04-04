@@ -135,10 +135,11 @@ module ApplicationHelper
   
   private
   def link_to_nav(page, url_helper, options = {})
-    options[:class] ||= ''
+    logger.debug([options[:class]] << ('active' if page == @params[:page]))
+    options[:class] = ([options[:class]] << ('active' if page == @params[:page])).compact
     link_to page, 
             url_helper.call(@params.merge({"page" => page})), 
-            :class => ["page", options[:class]].join(" "), 
+            :class => ["page"] + options[:class], 
             :data => {:page => page}
   end
   
