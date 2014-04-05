@@ -7,5 +7,7 @@ class UsersExperienceChange < ActiveRecord::Base
   belongs_to :world
   belongs_to :user, :foreign_key => [:user_id, :world_id]
   
+  scope :active, -> { where(deleted: false) }
+  
   on_deleted_nullify_relation :user
 end

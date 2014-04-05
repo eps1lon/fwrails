@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
                          :foreign_key => [:user_id, :world_id]
   has_many :unbans, -> { active.order("created_at DESC").offset(1) },
                     class_name: 'UsersNew',
-                    foreign_key => [:user_id, :world_id]
+                    :foreign_key => [:user_id, :world_id]
   
   has_many :achievements, :through => :progresses
   has_many :clan_changes, -> { active },
