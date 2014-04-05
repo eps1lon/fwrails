@@ -196,52 +196,46 @@ if ($new = mysql_fetch_assoc($result)) {
         $recovered = false;
         if ($old = mysql_fetch_assoc($result_old)) {
             if ($new['name'] == $old['name_delete']) {
-                
+                // get register date
+                $sql_query = "SELECT created_at as datetime FROM users_news " .
+                             "WHERE user_id = '{$new['user_id']}' AND world_id = '{$new['world_id']}' " .
+                             "ORDER BY created_at DESC LIMIT 1";
+                $register_result = mysql_query($sql_query, $db);
+                # defaults to beginning of time
+                if (!$register = mysql_fetch_assoc($register_result)) { 
+                    $register = ['datetime' => strftime("%Y-%m-%d %T", 0)];
+                }
+                             
                 $recovered = true;
                 
-                echo "recovered: \n";
+                echo "recovered: from {$register['datetime']}\n";
                 print_r($old);
                 print_r($new);
                 
-                // changes als wiederhergestellt markieren                
+                // changes, die seit dem anmeldedatum gemacht wurden,
+                // als wiederhergestellt markieren                
                 for ($j = 0; $j < $mark_tables_count; ++$j) {
                     implode_runtime($sql_queries[$j], $recovered_i, $update_queries[$j], $db, " OR ");
                     
                     $sql_queries[$j] .= "(user_id = '" . $new['user_id'] . "' ".
-                                        "AND world_id = '" . $new['world_id'] . "')";
+                                        "AND world_id = '" . $new['world_id'] . "' " .
+                                        "AND created_at >= '" . $register['datetime'] . "')";
                 }
                 
                 ++$recovered_i;
+                
+                // letztes Anmeldedatum wiederherstellen
+                $sql_query = "UPDATE users_news SET deleted = '0' WHERE ".
+                             "user_id = '" . $new['user_id'] . "' AND world_id = '" . $new['world_id'] . "'".
+                             " AND deleted = '1' ORDER BY created_at DESC LIMIT 1";
+                error_query($sql_query, $db);
             }
         }
         
-        if ($recovered === false) {
-            implode_runtime($sql_query_news, $i, $insert_query, $db);
-            $sql_query_news .= "('" . $new['user_id'] . "', '" . $new['world_id'] . "'," . 
-                               " '" . mysql_real_escape_string($new['name'], $db) . "', '$now')";
-            
-            // delete old logs
-            $delete_where = "user_id = '" . $new['user_id'] . "' AND ".
-                            "world_id = '" . $new['world_id'] . "' AND ".
-                            "deleted = '1'";
-            foreach ($mark_tables as $key => $table) {
-                $sql_query = "INSERT INTO stellari_freewar3_backup.$table (" . $backup_cols[$key] . ")".
-                             "SELECT " . $backup_cols[$key] . " FROM stellari_freewar3_" . ENV . ".$table ".
-                             "WHERE $delete_where";
-                error_query($sql_query, $db);
-                
-                $sql_query = "DELETE FROM $table WHERE $delete_where";
-                error_query($sql_query, $db);
-            }
-            
-            $i += 1;
-        } else {
-            // letztes Anmeldedatum wiederherstellen
-            $sql_query = "UPDATE users_news SET deleted = '0' WHERE ".
-                         "user_id = '" . $new['user_id'] . "' AND world_id = '" . $new['world_id'] . "'".
-                         " AND deleted = '1' ORDER BY created_at DESC LIMIT 1";
-            error_query($sql_query, $db);
-        }        
+        implode_runtime($sql_query_news, $i, $insert_query, $db);
+        $sql_query_news .= "('" . $new['user_id'] . "', '" . $new['world_id'] . "'," . 
+                           " '" . mysql_real_escape_string($new['name'], $db) . "', '$now')";
+        $i += 1;
     } while ($new = mysql_fetch_assoc($result));
     
     #print_r($sql_queries);
@@ -269,11 +263,6 @@ for ($j = 0; $j < $mark_tables_count; ++$j) {
 
 // Anmeldedatum hier löschen
 $update_queries[$mark_tables_count] = "UPDATE users_news SET deleted = '1' WHERE ";
-$sql_queries[$mark_tables_count] = $update_queries[$mark_tables_count];
-++$mark_tables_count;
-
-// Achievements permanent löschen
-$update_queries[$mark_tables_count] = "DELETE FROM users_achievements WHERE ";
 $sql_queries[$mark_tables_count] = $update_queries[$mark_tables_count];
 ++$mark_tables_count;
 

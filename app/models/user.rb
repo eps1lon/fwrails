@@ -11,27 +11,30 @@ class User < ActiveRecord::Base
   belongs_to :race
   belongs_to :world
   
-  has_one :achievement_cache, -> { where(:deleted => false) },
+  has_one :achievement_cache, -> { active },
                               :class_name => 'UsersAchievementsCache',
                               :foreign_key => [:user_id, :world_id]
-  has_one :registration, -> { order('users_news.created_at DESC') },
+  has_one :registration, -> { active.order("created_at ASC").limit(1) },
                          :class_name => 'UsersNew',
                          :foreign_key => [:user_id, :world_id]
+  has_many :unbans, -> { active.order("created_at DESC").offset(1) },
+                    class_name: 'UsersNew',
+                    foreign_key => [:user_id, :world_id]
   
   has_many :achievements, :through => :progresses
-  has_many :clan_changes, -> { where(:deleted => false) },
+  has_many :clan_changes, -> { active },
                           :class_name => 'UsersClanChange',
                           :foreign_key =>[:user_id, :world_id]
-  has_many :experience_changes, -> { where(:deleted => false) },
+  has_many :experience_changes, -> { active },
                                 :class_name => 'UsersExperienceChange',
                                 :foreign_key =>[:user_id, :world_id]
-  has_many :name_changes, -> { where(:deleted => false) },
+  has_many :name_changes, -> { active },
                           :class_name => 'UsersNameChange',
                           :foreign_key =>[:user_id, :world_id]   
-  has_many :race_changes, -> { where(:deleted => false) },
+  has_many :race_changes, -> { active },
                           :class_name => 'UsersRaceChange',
                           :foreign_key =>[:user_id, :world_id]    
-  has_many :progresses, -> { where(:deleted => false) },
+  has_many :progresses, -> { active },
                         :class_name => 'UsersAchievements',
                         :foreign_key => [:user_id, :world_id]
   

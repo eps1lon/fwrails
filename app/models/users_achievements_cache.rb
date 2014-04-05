@@ -1,6 +1,7 @@
 class UsersAchievementsCache < ActiveRecord::Base
-  include UserNaming 
   include DeleteMarkable
+  include UserNaming
+  include UserUrls
   alias_attribute :updated_at, :created_at
   
   self.primary_keys = :user_id, :world_id

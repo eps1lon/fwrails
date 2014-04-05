@@ -1,6 +1,7 @@
 class UsersNameChange < ActiveRecord::Base
-  include UserNaming
   include DeleteMarkable
+  include UserNaming
+  include UserUrls
 
   self.primary_keys = :user_id, :world_id, :created_at
   

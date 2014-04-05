@@ -1,5 +1,4 @@
 class UsersAchievements < ActiveRecord::Base
-  include AchievementUrls
   include DeleteMarkable
   include UserNaming
   include UserUrls
