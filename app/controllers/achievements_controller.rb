@@ -39,6 +39,8 @@ class AchievementsController < ApplicationController
       @order = ['count']
     end
     
+    @order << 'progress'
+    
     # groups of achievements which can be display
     @achiev_groups = Achievement.base_stage.order(:name)
     
