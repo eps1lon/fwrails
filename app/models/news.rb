@@ -23,7 +23,7 @@ class News < ActiveRecord::Base
   end
   
   def published?
-    self.publish_at > Time.now
+    self.publish_at < Time.now
   end
   
   def content_summarized?
