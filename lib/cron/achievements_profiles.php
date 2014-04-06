@@ -28,6 +28,10 @@ function curlm_each_profile($html, $handle, $j) {
     // area with achieved achievements
     preg_match('/' . PATTERN_CAPTION . '(.+?)' . PATTERN_CAPTION . '(.*)/i', 
                $html, $achiev_groups);
+    if (count($achiev_groups) < 3) {
+        echo "didnt get all groups in " . $html;
+        return true;
+    }
     #print_r($achiev_groups);
     
     #$achieved = $matches[1];
