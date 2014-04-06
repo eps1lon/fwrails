@@ -42,7 +42,7 @@ module ApplicationHelper
         ''.html_safe + "{#{user_id}}" + tooltip_markup(t("users.common.deleted"))
       end
     else
-      link_to user.name, user_url(user.name, world_short)
+      link_to user.name_primary, user_url(user.name, world_short)
     end
   end
   
