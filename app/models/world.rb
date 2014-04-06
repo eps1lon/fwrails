@@ -21,6 +21,11 @@ class World < ActiveRecord::Base
   has_many :stock_changes
   has_many :statistic_changes
   
+  def number
+    return short[1..-1] if short[1].is_numeric?
+    short
+  end
+  
   def url
     "http://#{self.subdomain}.freewar.#{self.language.tld}/freewar/"
   end

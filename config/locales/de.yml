@@ -467,6 +467,11 @@ de:
         head: "verfügbare Errungenschaften"
         message: "Bewege die Errungenschaften per Drag&Drop in die gestrichelten 
                   Bereiche, damit sie in der Rangliste ein- oder ausgeblendet werden."
+      attributes:
+        count: erreicht
+        reward_collected: AP
+        user_id: User
+        world_id: Welt
       caption: 
         zero: "keine User gefunden"
         one: "ein User gefunden aus %{worlds}"
