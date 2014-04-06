@@ -495,10 +495,12 @@ de:
         sum_abbr: "Gesamtfortschritt"
       rank_url: "Rangliste aller %{name}"
       stages: "Stufen"
+      unknown_value: "unbekannt"
       user: "User"
       world: "Welt"
       world_datas: "Daten nach Welt"
     reward: 
+      nil: unbekannt
       zero: "keine"
       other: "%{count} AP"
     unachieved:

@@ -4,13 +4,31 @@
   <h1><%= params[:name] %></h1>
   <% unless @grouped %>
     <h2><%= Achievement.human_attribute_name("description") %></h2>
-    <p id="description"><%= @achievement.description %></p>
+    <p id="description">
+      <% unless @achievement.reward.nil? %>
+        <%= @achievement.description %>
+      <% else %>
+        <%= t "achievements.show.unknown_value" %>
+      <% end %>
+    </p>
     <h2><%= t ".data" %></h2>
     <dl id="data">
       <dt class="needed"><%= Achievement.human_attribute_name("needed") %></dt>
-      <dd class="needed"><%= number_with_delimiter @achievement.needed %></dd>
+      <dd class="needed">
+        <% unless @achievement.needed.nil? %>
+          <%= number_with_delimiter @achievement.needed %>
+        <% else %>
+          <%= t "achievements.show.unknown_value" %>
+        <% end %>
+      </dd>
       <dt class="reward"><%= Achievement.human_attribute_name("reward") %></dt>
-      <dd class="reward"><%= t "achievements.reward", :count => number_with_delimiter(@achievement.reward) %></dd>
+      <dd class="reward">
+        <% unless @achievement.reward.nil? %>
+          <%= t "achievements.reward", :count => number_with_delimiter(@achievement.reward) %>
+        <% else %>
+          <%= t "achievements.show.unknown_value" %>
+        <% end %>
+      </dd>
       <dt class="created_at"><%= Achievement.human_attribute_name("created_at") %></dt>
       <dd class="created_at"><time datetime="<%= @achievement.created_at %>"><%= l @achievement.created_at.to_date %></time></dd>
     </dl>
