@@ -11,7 +11,7 @@ module GraphsHelper
     # skip url escape since freewar escapes url escapes
     config_url = URI.decode(url_for(:only_path => false, :base64 => graph_options_for_query(graph_options)))
     graph_url = graph_img_url(graph_options)
-    "[url=#{config_url}][img]#{graph_url}[/img][/url]"
+    "[url=#{config_url}][img]#{graph_url}[/img][/url]".gsub(/\s*/, '')
   end
   
   def graph_options_for_query(options = [])
