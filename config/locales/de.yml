@@ -862,6 +862,7 @@ de:
       no_sex_M: "Anzahl männlicher User"
       no_sex_N: "Anzahl neutraler User"
       no_sex_W: "Anzahl weiblicher User"
+      no_sex_1: "unbekanntes Geschlecht"
       no_user: "Anzahl User"
       no_user_in_clans: "User in Clans"
       no_user_active: "aktive User (48 Stunden)"
