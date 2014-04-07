@@ -6,11 +6,11 @@ class Achievement < ActiveRecord::Base
   alias_attribute :achievement_group, :achievement_id
   self.primary_keys = :achievement_id, :stage
   
-  has_many :progresses, -> { where(:deleted => false) },
+  has_many :progresses, -> { active },
            :class_name => 'UsersAchievements',
            :foreign_key => :achievement_id,
            :primary_key => :achievement_id
-  has_many :users_achievements, -> { where(:deleted => false) },
+  has_many :users_achievements, -> { active },
            :class_name => 'UsersAchievements',
            :foreign_key => [:achievement_id, :stage]
   has_many :users, :through => :users_achievements
