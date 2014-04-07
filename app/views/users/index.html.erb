@@ -63,7 +63,7 @@
     <caption>
       <%= @users.length %> 
       <%= t '.message' %>
-      <%= raw @worlds.collect(&:short).to_sentence %>
+      <%= @worlds.collect(&:short).to_sentence %>
     </caption>
     <thead>
       <tr>

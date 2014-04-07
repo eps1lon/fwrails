@@ -33,5 +33,5 @@ Freewar3::Application.configure do
   
   config.action_mailer.default_url_options = { :host => 'localhost:8001' }
   
-  config.eager_load = false
+  config.eager_load = true
 end

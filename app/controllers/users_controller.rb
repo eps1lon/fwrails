@@ -82,8 +82,8 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @model.includes(:world, :clan, :race).where(:world_id => @worlds).
-             order("#{order[:db]} #{user_params[:by]}").references(@model).
+    @users = @model.preload(:clan, :race, :world).where(:world_id => @worlds).
+             order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit)   
     
     unless params[:name].nil?
@@ -114,8 +114,8 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @model.where(:world_id => @worlds).
-             order("#{order[:db]} #{@params[:by]}").references(@model).
+    @users = @model.where(:world_id => @worlds).preload(:user, :world).
+             order("#{order[:db]} #{@params[:by]}").
              offset(@offset).limit(@limit) 
     
     unless params[:name].nil?
@@ -141,7 +141,7 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @model.where(:world_id => @worlds).
+    @users = @model.where(:world_id => @worlds).preload(:world).
              order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit)
     
@@ -171,8 +171,8 @@ class UsersController < ApplicationController
     
     @suggest_limit = 5
     
-    @users = @model.where(:world_id => @worlds).
-             order("#{order[:db]} #{user_params[:by]}").references(@model).
+    @users = @model.where(:world_id => @worlds).preload(:user, :world).
+             order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit) 
     
     unless user_params[:name].nil?
@@ -220,8 +220,8 @@ class UsersController < ApplicationController
     
     params[:order] = order[:human]
     
-    @users = @model.where(:world_id => @worlds).
-             order("#{order[:db]}").references(@model).
+    @users = @model.where(:world_id => @worlds).preload(:new_race, :old_race, :user, :world).
+             order("#{order[:db]}").
              offset(@offset).limit(@limit)
            
     unless @race.nil?
@@ -251,8 +251,8 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 3)
     
-    @users = @model.where(:world_id => @worlds).
-             order("#{order[:db]} #{user_params[:by]}").references(@model).
+    @users = @model.where(:world_id => @worlds).preload(:new_clan, :old_clan, :user, :world).
+             order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit) 
     
     respond_to do |format|

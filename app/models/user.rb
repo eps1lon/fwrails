@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include UserUrls
   self.primary_keys = :user_id, :world_id
   
-  after_initialize :build_world
+  #after_initialize :build_world
   
   alias_attribute :updated_at, :created_at
   
@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
   end
   
   def self.last_update
-    self.first.updated_at
+    self.take.updated_at
   end
   
   # to_param override

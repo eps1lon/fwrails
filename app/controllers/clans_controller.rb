@@ -27,7 +27,7 @@ class ClansController < ApplicationController
 
   def index
     clan_params = @params
-    @model = Clan.where(:world_id => @worlds).references(:clan)
+    @model = Clan.where(:world_id => @worlds)
     
     # create attributes
     @attributes = [
@@ -43,7 +43,7 @@ class ClansController < ApplicationController
     # default
     order = order_from_attributes(@attributes, clan_params[:order], 3)
     
-    @clans = @model.includes(:coleader, :leader, :world).
+    @clans = @model.preload(:coleader, :leader, :world).
                     order("#{order[:db]} #{clan_params[:by]}").
                     offset(@offset).limit(@limit) 
     
@@ -125,7 +125,7 @@ class ClansController < ApplicationController
     order = order_from_attributes(@attributes, clan_params[:order], 2)
     
     # query
-    @clans = @model.includes(:clan, :world).order("#{order[:db]} #{clan_params[:by]}").
+    @clans = @model.preload(:clan, :world).order("#{order[:db]} #{clan_params[:by]}").
                     offset(@offset).limit(@limit) 
     
     unless params[:name].nil?
@@ -157,7 +157,9 @@ class ClansController < ApplicationController
     order = order_from_attributes(@attributes, clan_params[:order], 3)
     
     # query
-    @clans = @model.includes(:clan, :world, "#{type}_old".to_sym, "#{type}_new".to_sym).
+    # since we are using name_primary in the view rails also queries clan.leader_old.world
+    # this is redundant but we know no way to prevent this kind of behavior
+    @clans = @model.preload(:clan, :world, "#{type}_old".to_sym, "#{type}_new".to_sym).
                     order("#{order[:db]} #{clan_params[:by]}").offset(@offset).limit(@limit) 
     
     @skipsearch = true
@@ -184,7 +186,7 @@ class ClansController < ApplicationController
     order = order_from_attributes(@attributes, clan_params[:order], 3)
     
     # query
-    @clans = @model.includes(:clan, :world).
+    @clans = @model.preload(:clan, :world).
                     order("#{order[:db]} #{clan_params[:by]}").offset(@offset).limit(@limit) 
     
     # render
