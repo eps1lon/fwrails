@@ -36,13 +36,13 @@ module ApplicationHelper
     link_to content, wiki_url(page), :class => 'wiki', :target => :blank
   end
   
-  def link_to_user_or_del(user, user_id, world_short)
+  def link_to_user_or_del(user, user_id, world_short, name_method = :name_primary)
     if user.nil?
       content_tag :del, class: %w{user tooltip} do
         ''.html_safe + "{#{user_id}}" + tooltip_markup(t("users.common.deleted"))
       end
     else
-      link_to user.name_primary, user_url(user.name, world_short)
+      link_to user[name_method], user_url(user.name, world_short)
     end
   end
   

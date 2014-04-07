@@ -86,7 +86,7 @@
           </td>
         </tr>
       </table>
-      <table id="closests">
+      <table id="furthest">
         <caption>
           <%= t ".closests.caption" %>
         </caption>
@@ -100,7 +100,7 @@
             <td class="world" id="world_<%= furthest.world.id %>"><%= furthest.world.short %></td>
             <td class="progress"><%= number_with_delimiter furthest.progress %></td>
             <td class="user">
-              <%= link_to_user_or_del(furthest.user, furthest.user_id, furthest.world.short) %>
+              <%= link_to_user_or_del(furthest.user, furthest.user_id, furthest.world.short, :name) %>
             </td>
           </tr>
         <% end %>
