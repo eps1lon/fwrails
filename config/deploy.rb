@@ -24,8 +24,7 @@ set :ssh_options, {
 set :deploy_to, "/var/www/vhosts/fwrails.net/rails"
 set :deploy_via, :checkout
 
-# Stable path
-set :stable_path, deploy_path.join("stable")
+# current path
 set :current_dir, "current"
 
 # Default branch is :master
@@ -78,33 +77,22 @@ namespace :deploy do
       end
     end
   end
-  
-  namespace :symlink do
-    desc 'Sets Stable'
-    task :stable do
-      on roles(:app) do
-        latest = capture(:readlink, '', deploy_path.join("current"))
-        execute "ln -fs '#{latest}' '#{fetch(:stable_path)}'"   
-      end
-    end
-  end
 
   namespace :passenger do
     desc 'Sets the correct RailsEnv value for Phusion Passenger'
-    task :set_environment, :in, :to do |task, args|
+    task :set_environment do 
       on roles(:app) do
-        execute "sed -i 's/RailsEnv .*/RailsEnv #{args[:to]}/' #{deploy_path.join(args[:in], "public", ".htaccess")}" 
+        execute "sed -i 's/RailsEnv .*/RailsEnv #{fetch(:stage)}/' #{deploy_path.join(fetch(:current_dir), "public", ".htaccess")}" 
       end
-      
-      Rake::Task["deploy:restart"].invoke(args[:in])
-      #invoke "deploy:restart[#{args[:in]}]"
+
+      invoke "deploy:restart"
     end
   end
   
   desc 'Restart application'
-  task :restart, :in do |task, args|
+  task :restart do 
     on roles(:app), in: :sequence do
-      execute :touch, File.join(deploy_to, args[:in], "tmp", "restart.txt")
+      execute :touch, deploy_path.join(fetch(:current_dir), "tmp", "restart.txt")
     end
   end
   
@@ -115,11 +103,6 @@ namespace :deploy do
       upload!(ENV['FILES'], release_path) unless ENV['FILES'].nil?
     end
   end
-
-  after :publishing, :set_environment do
-    puts "`#{fetch(:rails_env)}`, `#{fetch(:current_dir)}`"
-    Rake::Task["deploy:passenger:set_environment"].invoke(fetch(:current_dir), fetch(:rails_env))
-  end
   
   after :migrate, :rake do
     on roles(:app) do
@@ -129,16 +112,7 @@ namespace :deploy do
       end
     end
   end
-      
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
-  end
-  
+
   after :updating, "deploy:assets:sync"
 end
 
@@ -155,7 +129,9 @@ after :deploy, :fix_permissions do
 end
 
 #maintenance
+before :deploy, "deploy:passenger:set_environment"
+
 after :deploy, :reminder do 
   # notification for enabling website
-  puts "when everything works fine run `cap production deploy:symlink:stable`"
+  puts "when everything works fine run `cap production deploy:set_environment`"
 end
