@@ -1,4 +1,4 @@
-toggle_duration = "slow"
+toggle_duration = 0
 
 ids_ = -> 
   ids = []
@@ -8,7 +8,11 @@ ids_ = ->
 
 ids_changed = ->
   $link = $('#permalink a')
-  href = $link.data('template').replace(/_ids_/, ids_().join(','))
+  ids = ids_()
+  if ids.length
+    href = $link.data('template').replace('_ids_', ids_().join(','))
+  else
+    href = $link.data('template').replace('/show/_ids_', '')
   $link.attr('href', href).html(href)
 
 add_ids_to_href = (event, selector) ->
@@ -49,7 +53,8 @@ create_col = ($from, after) ->
   create = $th.length == 0
   
   if create
-    $th = $('<th ' + attr + ' colspan="2"></th>').css('display', 'none').insertAfter('th' + after)
+    th_real = $('<th ' + attr + ' colspan="2"></th>').css('display', 'none').insertAfter('th' + after)
+    $th = $('<div class="position_on_table_element"></div>').appendTo(th_real)
 
     $sort = $('<a data-order="' + group + '" class="sort no-content"></a>')
     $sort.click override_fallback_url
@@ -113,7 +118,7 @@ show_achiev_group = ($item, shown) ->
     
 hide_achiev_group = ($item, shown) ->
   $('#users tbody td.achiev_group[data-achievement_id="' + group_($item) + '"]').hide toggle_duration
-  $item.parent('th').hide toggle_duration
+  $item.parents('th').hide toggle_duration
   #$item.hide toggle_duration, ->
   attr = 'data-container-for="' + $item.attr('id') + '"'
   $li = $('#achiev_groups li[' + attr + ']')

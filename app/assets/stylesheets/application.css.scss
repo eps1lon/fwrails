@@ -184,6 +184,10 @@ p, blockquote, .long_text {
   max-width: 80ch;
 }
 
+p.no_text {
+  max-width: none;
+}
+
 /* Links */
 a.back {
   clear: both;
