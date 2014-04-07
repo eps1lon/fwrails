@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
   
+  before_filter :update_cache_location
   before_filter :set_locale, :set_nav_controllers, :set_view_vars, :staging
   
   # error handler
@@ -39,6 +40,10 @@ class ApplicationController < ActionController::Base
   end
   
   protected
+  def current_subdomain
+    request.subdomains.first
+  end
+  
   # filters sql by in params
   def filter_sql_by(hash, key, std = :desc) 
     hash[key] = std unless %w{asc desc}.include?(hash[key])
@@ -60,6 +65,11 @@ class ApplicationController < ActionController::Base
     authenticate_member! unless current_member.try(:content_admin?)
   end
   
+  def update_cache_location
+    path = [Rails.root, 'tmp', 'cache', current_subdomain]
+    Freewar3::Application.config.action_controller.page_cache_directory = File.join(path.compact)
+  end
+  
   private
   def set_nav_controllers
     @controllers = %w{users clans graphs achievements}
@@ -67,7 +77,7 @@ class ApplicationController < ActionController::Base
   
   def set_locale
     @locales = %w{de}
-    @locale = request.subdomains.first
+    @locale = current_subdomain
     
     unless @locales.include?(@locale)
       @locale = I18n.default_locale
