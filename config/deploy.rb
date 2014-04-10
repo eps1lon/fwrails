@@ -106,7 +106,7 @@ namespace :deploy do
   
   after :migrate, :rake do
     on roles(:app) do
-      [].each do |task|
+      ["tmp:cache:clear"].each do |task|
         execute "cd #{release_path} && (RAILS_ENV=#{fetch(:rails_env)} "+
                 "#{fetch(:rvm_path)}/bin/rvm default do bundle exec rake #{task})"
       end
@@ -133,5 +133,5 @@ before :deploy, "deploy:passenger:set_environment"
 
 after :deploy, :reminder do 
   # notification for enabling website
-  puts "when everything works fine run `cap production deploy:set_environment`"
+  puts "when everything works fine run `cap production deploy:passenger:set_environment`"
 end
