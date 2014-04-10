@@ -22,6 +22,7 @@ class Admin::NewsController < Admin::BaseController
   # POST /admin/news
   def create
     @admin_news = ::News.new(admin_news_params)
+    @admin_news.author = current_member
 
     if @admin_news.save
       redirect_to @admin_news, notice: 'News was successfully created.'
