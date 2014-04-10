@@ -17,7 +17,8 @@
   <% end %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag "/favicon.ico" %>
-  <%=  %>
+  <%= auto_discovery_link_tag :atom, "/news" %>
+  <%= auto_discovery_link_tag :rss, "/news.rss" %>
 </head>
 <body>
   <header>

@@ -652,6 +652,9 @@ de:
       permission_pending: "Warte auf Freigabe"
       beta: "Testphase"
       available: "verfügbar"
+  feeds:
+    news:
+      title: "FWRails - News"
   graphs:
     graph_profile_code: "Profilcode"
     graph_ready: "Fertiger Graph"

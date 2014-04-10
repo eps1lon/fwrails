@@ -76,12 +76,9 @@ class ApplicationController < ActionController::Base
   end
   
   def set_locale
-    @locales = %w{de}
-    @locale = current_subdomain
-    
-    unless @locales.include?(@locale)
-      @locale = I18n.default_locale
-    end
+    @locales = Language.all.map(&:language_code)
+    @language = Language.find_by_language_code(current_subdomain)
+    @locale = @language.language_code
     
     I18n.locale = @locale
   end

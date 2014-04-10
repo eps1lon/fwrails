@@ -92,6 +92,11 @@ Freewar3::Application.routes.draw do
           :via => [:get, :post] 
   end
   
+  #news
+  get '/news' => 'feeds#news', :as => 'news_feed',
+      :defaults => {
+        :format => 'atom'
+      }
   get '/news/:id', :to => 'home#show', :as => 'news'
   
   get '/spotlights', as: "spotlights", to: "spotlights#show"
