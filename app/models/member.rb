@@ -2,6 +2,7 @@ class Member < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable, :registerable, :recoverable, :confirmable
   devise :database_authenticatable, :rememberable, :trackable, :validatable  
+  has_many :news
   
   ROLES = %w{developer content_admin}.map &:to_sym
 
