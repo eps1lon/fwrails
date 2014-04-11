@@ -2,7 +2,6 @@ class Language < ActiveRecord::Base
   has_many :worlds
   
   def self.find_by_language_code(language_code = nil)
-    logger.debug "i18n: #{I18n.default_locale}"
     language_code ||= I18n.default_locale
     language = where(language_code: language_code).take
     language = where(language_code: I18n.default_locale).take if language.nil?
