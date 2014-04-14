@@ -63,7 +63,7 @@ Freewar3::Application.routes.draw do
         :to => 'clans#show'
   # clans
   scope :as => 'clans', :controller => 'clans', :path => '/clans' do
-    match '/:action(/page/:page)(/order/:order/:by)(/:world)(/like/*name)', 
+    match '/:action(/page/:page)(/order/:order/:by)(/:world)(/from/:starttime/till/:endtime)(/like/*name)', 
           :defaults => {
             :page   => 1
           },
@@ -120,7 +120,7 @@ Freewar3::Application.routes.draw do
         :to => 'users#show'
   # users
   scope :as => 'users', :controller => 'users', :path => 'users' do
-    match '/:action(/page/:page)(/order/:order/:by)(/:world)(/race/:race)(/like/*name)', 
+    match '/:action(/page/:page)(/order/:order/:by)(/:world)(/race/:race)(/from/:starttime/till/:endtime)(/like/*name)', 
           :defaults => {
             :page   => 1
           },

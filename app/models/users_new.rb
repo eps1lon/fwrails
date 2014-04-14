@@ -9,6 +9,7 @@ class UsersNew < ActiveRecord::Base
   belongs_to :world
   
   scope :active, -> { where(deleted: false) }
+  scope :name_like, ->(name) { where(name: name) unless name.nil? }
   
   on_deleted_nullify_relation :user
 end

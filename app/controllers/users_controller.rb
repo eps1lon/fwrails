@@ -123,7 +123,7 @@ class UsersController < ApplicationController
   
   def new
     user_params = list_params
-    @scope = UsersNew
+    @scope = UsersNew.where(world_id: @worlds).name_like(@params[:name]).in_recording_period_date(@recording_period)
     @attributes = [
       {:db => "#{@scope.table_name}.user_id", :human => "user_id"},
       {:db => "#{@scope.table_name}.name", :human => "name"},
@@ -133,14 +133,9 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @scope.where(:world_id => @worlds).preload(:user, :world).
+    @users = @scope.preload(:user, :world).
              order("#{order[:db]} #{@params[:by]}").
              offset(@offset).limit(@limit) 
-    
-    unless params[:name].nil?
-      @users = @users.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
-      @scope = @scope.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
-    end    
     
     respond_to do |format|
       format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
@@ -150,7 +145,7 @@ class UsersController < ApplicationController
   
   def delete
     user_params = @params
-    @scope = UsersDelete
+    @scope = UsersDelete.where(world_id: @worlds).name_like(@params[:name]).in_recording_period_date(@recording_period)
     @attributes = [
       {:human => "user_id", :db => "#{@scope.table_name}.user_id"},
       {:human => "name", :db => "#{@scope.table_name}.name"},
@@ -160,14 +155,9 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @scope.where(:world_id => @worlds).preload(:world).
+    @users = @scope.preload(:world).
              order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit)
-    
-    unless user_params[:name].nil?
-      @users = @users.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
-      @scope = @scope.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
-    end    
     
     respond_to do |format|
       format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
@@ -178,7 +168,7 @@ class UsersController < ApplicationController
   def name_change
     @suggest_limit = 5
     
-    @scope = @scope.where(world_id: @worlds).name_like(@params[:name])
+    @scope = @scope.where(world_id: @worlds).name_like(@params[:name]).in_recording_period_date(@recording_period)
     
     @attributes = [
       {:human => "user_id"},
@@ -207,7 +197,7 @@ class UsersController < ApplicationController
     # Rasse eingrenzen
     @change_race = true
     
-    @scope = UsersRaceChange.race(@race)
+    @scope = UsersRaceChange.where(:world_id => @worlds).race(@race).in_recording_period_date(@recording_period)
     @attributes = [
       {:human => "user_id"},
       {:db => "#{@scope.table_name}.race_id_old", :human => "old_race"},
@@ -217,15 +207,7 @@ class UsersController < ApplicationController
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 3)
-    
-    unless @race.nil?
-      if order[:human] == 'old_race'
-        order[:db] = "#{@scope.table_name}.race_id_old = #{@race.id}"
-      elsif order[:human] == 'new_race'
-        order[:db] = "#{@scope.table_name}.race_id_new = #{@race.id}"
-      end
-    end
-    
+
     order[:db] += " #{user_params[:by]}"
     
     unless order[:human].eql?('created_at')
@@ -234,7 +216,7 @@ class UsersController < ApplicationController
     
     params[:order] = order[:human]
     
-    @users = @scope.where(:world_id => @worlds).preload(:new_race, :old_race, :user, :world).
+    @users = @scope.preload(:new_race, :old_race, :user, :world).
              order("#{order[:db]}").
              offset(@offset).limit(@limit)
     
@@ -247,7 +229,9 @@ class UsersController < ApplicationController
   def clan_change
     user_params = @params
     @skipsearch = true
+    
     @scope = UsersClanChange.where(:world_id => @worlds).in_recording_period_date(@recording_period)
+    
     @attributes = [
       {:human => "user_id"},
       {:human => "old_clan"},
