@@ -2,6 +2,7 @@ class ClansTagChange < ActiveRecord::Base
   include ClanNaming
   include ClanUrls
   include DeleteMarkable
+  include Timestamps
   self.primary_keys = :clan_id, :world_id, :created_at
   
   belongs_to :clan, :foreign_key => [:clan_id, :world_id]
@@ -10,6 +11,7 @@ class ClansTagChange < ActiveRecord::Base
   on_deleted_nullify_relation :clan
   
   scope :active, -> { where(deleted: false) }
+  scope :tag_like, ->(tag) { where("tag_old LIKE ? OR tag_new LIKE ?", "%#{tag}%", "%#{tag}%") unless tag.nil? }
   
   def tag_new
     self.tag('tag_new')

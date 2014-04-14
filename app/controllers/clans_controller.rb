@@ -1,10 +1,22 @@
 class ClansController < ApplicationController
   before_filter :only => [:index, :new, :delete, :leader_change, :coleader_change, :tag_change, :name_change] do 
+    # get model from action
+    @scope = Object.const_get("clans_#{action_name.gsub("index", "")}".camelize.singularize)
+    
+    # get hole recording period
+    @hole_recording_period = @scope.record_period
+    
     @params = list_params
-       
+    
+    # submitted period
+    @recording_period = (@params[:starttime].try(:to_date) || @hole_recording_period.begin)..(@params[:endtime].try(:to_date) || @hole_recording_period.end)
+    
+    # we have a period and not only one timeframe
+    @has_recording_period = @hole_recording_period.begin < @hole_recording_period.end
+    
     @limit = 20
     @suggest_limit = 5
-    @offset = ([1, @params[:page].to_i].max - 1) * @limit
+    @offset = (@params[:page] - 1) * @limit
     
     if @params[:by].to_s.downcase.eql?('desc') # define sorting order for sort_links
       @by = 'asc'
@@ -18,7 +30,7 @@ class ClansController < ApplicationController
       @worlds = World.where(:short => params[:world]).references(:world)
     end
     
-    @last_update = Clan.last_update
+    @last_update = @hole_recording_period.end
   end
   
   before_filter :common_new_delete,    :only => [:delete, :new]
@@ -26,32 +38,26 @@ class ClansController < ApplicationController
   before_filter :common_text_change,   :only => [:name_change, :tag_change]
 
   def index
-    clan_params = @params
-    @model = Clan.where(:world_id => @worlds)
+    @scope = Clan.where(:world_id => @worlds).name_like(@params[:name])
     
     # create attributes
     @attributes = [
-      {human: "clan_id", db: "#{@model.table_name}.clan_id"},
-      {human: "tag", db: "#{@model.table_name}.tag"},
-      {human: "name", db: "#{@model.table_name}.name"},
-      {human: "sum_experience", db: "#{@model.table_name}.sum_experience"},
-      {human: "member_count", db: "#{@model.table_name}.member_count"},
+      {human: "clan_id", db: "#{@scope.table_name}.clan_id"},
+      {human: "tag", db: "#{@scope.table_name}.tag"},
+      {human: "name", db: "#{@scope.table_name}.name"},
+      {human: "sum_experience", db: "#{@scope.table_name}.sum_experience"},
+      {human: "member_count", db: "#{@scope.table_name}.member_count"},
       {human: "leader_id"},
       {human: "coleader_id"},
       {human: "world_id"},
     ]    
     # default
-    order = order_from_attributes(@attributes, clan_params[:order], 3)
+    order = order_from_attributes(@attributes, @params[:order], 3)
     
-    @clans = @model.preload(:coleader, :leader, :world).
-                    order("#{order[:db]} #{clan_params[:by]}").
+    @clans = @scope.preload(:coleader, :leader, :world).
+                    order("#{order[:db]} #{@params[:by]}").
                     offset(@offset).limit(@limit) 
-    
-    unless clan_params[:name].nil?
-      @clans = @clans.where("#{@model.table_name}.name LIKE ?", "%#{clan_params[:name]}%").references(:clan)
-      @model = @model.where("#{@model.table_name}.name LIKE ?", "%#{clan_params[:name]}%").references(:clan)
-    end
-    
+
     respond_to do |format|
       format.json { render :json => @clans.limit(@suggest_limit), methods: :name_primary }
       format.html { render 'clans/index'}
@@ -74,9 +80,11 @@ class ClansController < ApplicationController
   
   # textchange
   def name_change    
+    @scope = @scope.where(:world_id => @worlds).name_like(@params[:name]).in_recording_period_date(@recording_period)
   end
   
   def tag_change    
+    @scope = @scope.where(:world_id => @worlds).tag_like(@params[:name]).in_recording_period_date(@recording_period)
   end
   
   def show
@@ -110,28 +118,22 @@ class ClansController < ApplicationController
   private
   
   def common_new_delete
-    clan_params = @params
-    @model = Object.const_get("Clans#{action_name.camelize}").where(:world_id => @worlds)
+    @scope = @scope.where(:world_id => @worlds).tag_like(@params[:name]).in_recording_period_date(@recording_period)
     
     # create attributes array
     @attributes = [
-      {:human => "clan_id", :db => "#{@model.table_name}.clan_id"},
-      {:human => "tag", :db => "#{@model.table_name}.tag"},
-      {:human => "created_at", :db => "#{@model.table_name}.created_at"},
+      {:human => "clan_id", :db => "#{@scope.table_name}.clan_id"},
+      {:human => "tag", :db => "#{@scope.table_name}.tag"},
+      {:human => "created_at", :db => "#{@scope.table_name}.created_at"},
       {:human => "world_id"}
     ]
     
     # default
-    order = order_from_attributes(@attributes, clan_params[:order], 2)
+    order = order_from_attributes(@attributes, @params[:order], 2)
     
     # query
-    @clans = @model.preload(:clan, :world).order("#{order[:db]} #{clan_params[:by]}").
+    @clans = @scope.preload(:clan, :world).order("#{order[:db]} #{@params[:by]}").
                     offset(@offset).limit(@limit) 
-    
-    unless params[:name].nil?
-      @clans = @clans.where("#{@model.table_name}.tag LIKE ?", "%#{clan_params[:name]}%") 
-      @model = @model.where("#{@model.table_name}.tag LIKE ?", "%#{clan_params[:name]}%") 
-    end
     
     respond_to do |format|
       format.json { render :json => @clans.limit(@suggest_limit), methods: :name_primary }
@@ -140,27 +142,26 @@ class ClansController < ApplicationController
   end
   
   def common_leader_change
-    clan_params = @params
     type = action_name.split("_").slice(0).to_s
-    @model = Object.const_get("Clans#{type.capitalize}Change").where(:world_id => @worlds)
+    @scope = @scope.where(:world_id => @worlds).in_recording_period_date(@recording_period)
     
     # create attribute array
     @attributes = [
-      {:human => "clan_id", :db => "#{@model.table_name}.clan_id"},
+      {:human => "clan_id", :db => "#{@scope.table_name}.clan_id"},
       {:human => "#{type}_id_old"},
       {:human => "#{type}_id_new"},
-      {:human => "created_at", :db => "#{@model.table_name}.created_at"},
-      {:human => "world_id", :db => "#{@model.table_name}.world_id"}
+      {:human => "created_at", :db => "#{@scope.table_name}.created_at"},
+      {:human => "world_id", :db => "#{@scope.table_name}.world_id"}
     ]
     
     # default
-    order = order_from_attributes(@attributes, clan_params[:order], 3)
+    order = order_from_attributes(@attributes, @params[:order], 3)
     
     # query
     # since we are using name_primary in the view rails also queries clan.leader_old.world
     # this is redundant but we know no way to prevent this kind of behavior
-    @clans = @model.preload(:clan, :world, "#{type}_old".to_sym, "#{type}_new".to_sym).
-                    order("#{order[:db]} #{clan_params[:by]}").offset(@offset).limit(@limit) 
+    @clans = @scope.preload(:clan, :world, "#{type}_old".to_sym, "#{type}_new".to_sym).
+                    order("#{order[:db]} #{@params[:by]}").offset(@offset).limit(@limit) 
     
     @skipsearch = true
     respond_to do |format|
@@ -169,25 +170,23 @@ class ClansController < ApplicationController
   end
   
   def common_text_change
-    clan_params = @params
     type = action_name.split("_").slice(0).to_s
-    @model = Object.const_get("Clans#{type.capitalize}Change").where(:world_id => @worlds)
     
     # create attr array
     @attributes = [
       {:human => "clan_id"},
       {:human => "#{type}_old"},
       {:human => "#{type}_new"},
-      {:human => "created_at", :db => "#{@model.table_name}.created_at"},
+      {:human => "created_at", :db => "#{@scope.table_name}.created_at"},
       {:human => "world_id"}
     ]
     
     # default
-    order = order_from_attributes(@attributes, clan_params[:order], 3)
+    order = order_from_attributes(@attributes, @params[:order], 3)
     
     # query
-    @clans = @model.preload(:clan, :world).
-                    order("#{order[:db]} #{clan_params[:by]}").offset(@offset).limit(@limit) 
+    @clans = @scope.preload(:clan, :world).
+                    order("#{order[:db]} #{@params[:by]}").offset(@offset).limit(@limit) 
     
     # render
     @skipsearch = true
@@ -197,7 +196,16 @@ class ClansController < ApplicationController
   end
   
   def list_params
+    @errors ||= {}
+    # validating
     params[:page] = [1, params[:page].to_i].max
-    filter_sql_by(params.permit(:action, :world, :order, :by, :tag, :page, :name), :by, :desc)
+    [:starttime, :endtime].each do |datetime|
+      params[datetime] = params[datetime].try(:to_date)
+      
+      if !params[datetime].nil? && !@hole_recording_period.cover?(params[datetime])
+        (@errors[datetime] ||= []) << :not_in_range
+      end
+    end
+    filter_sql_by(params.permit(:action, :world, :order, :by, :tag, :page, :name, :starttime, :endtime), :by, :desc)
   end
 end

@@ -1,10 +1,14 @@
 class ClansNew < ActiveRecord::Base
   include ClanNaming
   include ClanUrls
+  include Timestamps
   self.primary_keys = :clan_id, :world_id, :created_at
   
   belongs_to :clan, :foreign_key => [:clan_id, :world_id]
   belongs_to :world
+  
+  scope :active, -> { where(deleted: false) }
+  scope :tag_like, ->(tag) { where(tag: tag) unless tag.nil? }
   
   def tag
     return self.clan_id if self['tag'].empty?

@@ -13,25 +13,52 @@
   <% end %>
 </ul>
 
-<% unless @skipsearch.eql?(true) %>
-  <%= form_tag(clans_url(:action => params[:action], :world => params[:world]), 
-                         :class => ("suggest" if @suggest_limit > 0), 
-                         :id=> 'search', :autocomplete => 'off') do 
-  %>
-    <%= label_tag :name, "#{Clan.human_attribute_name("name")}:" %>
-    <%= text_field_tag(:name, params[:name]) %>
-    <%= submit_tag t "helpers.submit.search" %>
-  
-    <%= check_box_tag 'loading', 1, false, :disabled => true, :class => 'loading' %>
-    <%= label_tag 'loading', loading_markup %>
+<%= form_tag(clans_url(:action => params[:action], :world => params[:world]), 
+                       :class => ("suggest" if @suggest_limit > 0), 
+                       :id=> 'search', :autocomplete => 'off') do 
+%>
+  <% unless @skipsearch %>
+    <%= label_tag :name, Clan.human_attribute_name("name") %>
+    <%= text_field_tag(:name, params[:name], tabindex: 1) %>
   <% end %>
+  
+  <% if @has_recording_period %>
+    <%= label_tag :starttime, t("clans.commons.starttime") %>
+    <%= date_field_tag :starttime, @params[:starttime], 
+                       min: @hole_recording_period.begin, 
+                       max: @hole_recording_period.end,
+                       placeholder: @hole_recording_period.begin,
+                       tabindex: 2 %>
+  
+    <%= label_tag :endtime, t("clans.commons.endtime") %>
+    <%= date_field_tag :endtime, @params[:endtime], 
+                       min: @hole_recording_period.begin, 
+                       max: @hole_recording_period.end,
+                       placeholder: @hole_recording_period.end,
+                       tabindex: 3  %>
+  <% end %>
+  
+  <%= submit_tag t "helpers.submit.search", tabindex: 4 %>
+  <%= check_box_tag 'loading', 1, false, :disabled => true, :class => 'loading' %>
+  <%= label_tag 'loading', loading_markup %>
 <% end %>
 
-<p id="last_update"><%= t "time.last_update" %>: <time datetime="<%= @last_update %>"><%= l @last_update %></time></p>
+<p id="recording_period">
+  <% if @has_recording_period %>
+    <strong><%= t "time.recording_period.caption" %></strong>
+    <em><%= t "time.recording_period.from" %></em>
+    <%= time_tag(@hole_recording_period.begin, format: :long) %>
+    <em><%= t "time.recording_period.till" %></em>
+    <%= time_tag(@hole_recording_period.end, format: :long) %>
+  <% else %>
+    <em><%= t "time.last_update" %></em>
+    <%= time_tag @last_update %>
+  <% end %>
+</p>
 
 <nav class="pages">
   <strong><%= t "helpers.nav.page" %></strong>
-  <%= nav_links = nav(@offset, @limit, @model.count, method(:clans_url)).join.html_safe %>
+  <%= nav_links = nav(@offset, @limit, @scope.count, method(:clans_url)).join.html_safe %>
 </nav>
 
 <table class="clans <%= 'single-world' if @worlds.count.eql?(1) %>">
@@ -45,12 +72,12 @@
       <% @attributes.each do |attr| %>
         <th class="<%= attr[:human] %>">
           <% if attr[:db] %>
-            <%= link_to @model.human_attribute_name(attr[:human]), 
+            <%= link_to @scope.human_attribute_name(attr[:human]), 
                         clans_url(@params.merge({"order" => attr[:human], "by" => @by})),
                         :class => 'sort',
-                        :title => t('helpers.links.sort', :col => @model.human_attribute_name(attr[:human])) %>
+                        :title => t('helpers.links.sort', :col => @scope.human_attribute_name(attr[:human])) %>
           <% else %>
-            <%=  @model.human_attribute_name(attr[:human]) %>
+            <%=  @scope.human_attribute_name(attr[:human]) %>
           <% end %>
         </th>
       <% end %>

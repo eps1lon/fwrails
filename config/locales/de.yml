@@ -536,6 +536,7 @@ de:
       all_worlds: "Alle Welten"
       change_world: "Welt wechseln"
       deleted: "Clan gelöscht"
+      endtime: "Bis"
       id_as_tag: "Clan-ID fungiert als Tag"
       members:  
         zero: "Keine Mitglieder"
@@ -550,6 +551,7 @@ de:
       nocoleader: "keiner"
       # deprecated
       profile: "Ingame-Profil"
+      starttime: "Von"
       states:
         coleader: "Co-Leader"
         leader: "Leader"
