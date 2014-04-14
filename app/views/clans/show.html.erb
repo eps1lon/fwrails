@@ -55,7 +55,7 @@
   </dd>
   
   <dt class="members">
-    <%= t 'clans.commons.members', :count => @members.count %>: 
+    <%= t 'clans.commons.members', :count => @members.length %>: 
     [<a  href="javascript: ;" data-toggle-for="members"><%= t "helpers.toggle.show" %></a>]
   </dt>
   <dd>
@@ -69,15 +69,15 @@
 <h2><%= t ".changes.head" %></h2>
 <h3>
   <%= t ".changes.tag.human" %>
-  <% if @clan.changes[:tag].count > 0 %>
+  <% if @clan.changes[:tag].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:tag].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:tag].human_attribute_name("count", :count => @clan.changes[:tag].count) %>
-  <%= ':' if @clan.changes[:tag].count > 0 %>
+  <%= @clan.changes[:tag].human_attribute_name("count", :count => @clan.changes[:tag].length) %>
+  <%= ':' if @clan.changes[:tag].length > 0 %>
 </p>
 <ul id="<%= @clan.changes[:tag].model.table_name %>" class="changes">
   <% @clan.changes[:tag].order("created_at asc").each do |change| %>
@@ -89,15 +89,15 @@
 </ul>
 <h3>
   <%= t ".changes.name.human" %>
-  <% if @clan.changes[:name].count > 0 %>
+  <% if @clan.changes[:name].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:name].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:name].human_attribute_name("count", :count => @clan.changes[:name].count) %>
-  <%= ':' if @clan.changes[:name].count > 0 %>
+  <%= @clan.changes[:name].human_attribute_name("count", :count => @clan.changes[:name].length) %>
+  <%= ':' if @clan.changes[:name].length > 0 %>
 </p>
 <ul id="<%= @clan.changes[:name].model.table_name %>" class="changes">
   <% @clan.changes[:name].order("created_at asc").each do |change| %>
@@ -109,15 +109,15 @@
 </ul>
 <h3>
   <%= t ".changes.leader.human" %>
-  <% if @clan.changes[:leader].count > 0 %>
+  <% if @clan.changes[:leader].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:leader].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:leader].human_attribute_name("count", :count => @clan.changes[:leader].count) %>
-  <%= ':' if @clan.changes[:leader].count > 0 %>
+  <%= @clan.changes[:leader].human_attribute_name("count", :count => @clan.changes[:leader].length) %>
+  <%= ':' if @clan.changes[:leader].length > 0 %>
 </p>
 <ul id="<%= @clan.changes[:leader].model.table_name %>" class="changes">
   <% @clan.changes[:leader].order("created_at asc").each do |change| %>
@@ -131,15 +131,15 @@
 </ul>
 <h3>
   <%= t ".changes.coleader.human" %>
-  <% if @clan.changes[:coleader].count > 0 %>
+  <% if @clan.changes[:coleader].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:coleader].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:coleader].human_attribute_name("count", :count => @clan.changes[:coleader].count) %>
-  <%= ':' if @clan.changes[:coleader].count > 0 %>
+  <%= @clan.changes[:coleader].human_attribute_name("count", :count => @clan.changes[:coleader].length) %>
+  <%= ':' if @clan.changes[:coleader].length > 0 %>
 </p>
 <ul id="<%= @clan.changes[:coleader].model.table_name %>" class="changes">
   <% @clan.changes[:coleader].order("created_at asc").each do |change| %>
@@ -153,15 +153,15 @@
 </ul>
 <h3>
   <%= t ".changes.adds.human" %>
-  <% if @clan.changes[:adds].count > 0 %>
+  <% if @clan.changes[:adds].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="clan_adds">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= t ".changes.adds.message", :count => @clan.changes[:adds].count %>
-  <%= ':' if @clan.changes[:adds].count > 0 %>
+  <%= t ".changes.adds.message", :count => @clan.changes[:adds].length %>
+  <%= ':' if @clan.changes[:adds].length > 0 %>
 </p>
 <ul id="clan_adds" class="changes">
   <% @clan.changes[:adds].order("created_at asc").each do |change| %>
@@ -173,15 +173,15 @@
 </ul>
 <h3>
   <%= t ".changes.outs.human" %>
-  <% if @clan.changes[:outs].count > 0 %>
+  <% if @clan.changes[:outs].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="clan_outs">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= t ".changes.outs.message", :count => @clan.changes[:outs].count %>
-  <%= ':' if @clan.changes[:outs].count > 0 %>
+  <%= t ".changes.outs.message", :count => @clan.changes[:outs].length %>
+  <%= ':' if @clan.changes[:outs].length > 0 %>
 </p>
 <ul id="clan_outs" class="changes">
   <% @clan.changes[:outs].order("created_at asc").each do |change| %>

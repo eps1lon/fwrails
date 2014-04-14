@@ -22,7 +22,7 @@
 <% end %>
 </p>
 <h2><%= UsersAchievements.model_name.human %></h2>
-<% unless @achievements_progresses.count.eql?(0) %>
+<% unless @achievements_progresses.length.eql?(0) %>
   <p>
     <%= t ".achievements.stats.message", 
         :count => t(".achievements.stats.count", :count => number_with_delimiter(@user.achievement_cache.count)),
@@ -54,13 +54,13 @@
 <% @changes.each do |changes| %>
   <h2>
     <%= changes.model_name.human %>
-    <% if changes.count > 0 %>
+    <% if changes.length > 0 %>
       [<a href="javascript: ;" data-toggle-for="<%= changes.model.table_name %>"><%= t "helpers.toggle.show" %></a>]
     <% end %>
   </h2>
   <p>
-    <%= changes.human_attribute_name("count", :count => changes.count) %>
-    <%= ':' if changes.count > 0 %>
+    <%= changes.human_attribute_name("count", :count => changes.length) %>
+    <%= ':' if changes.length > 0 %>
   </p>
   <ol id="<%= changes.model.table_name %>" class="changes">
     <% changes.each do |change| %>
