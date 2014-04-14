@@ -7,13 +7,28 @@
 // ==/UserScript==
 'use strict';
 var styles = {
-        'freewar3-quickchange-caption': 'display: inline-block;',
-        'freewar3-quickchange-close': 'float: right;',
-        'freewar3-quickchange-container': 'position: fixed; display: inline-block; top: 0px; left: 0px; max-height: 100%; background-color: #ECE9E6; z-index: 9999999; overflow: auto;',
-        'freewar3-quickchange-li': 'display: inline-block;',
+        'freewar3-quickchange-caption': '',
+        'freewar3-quickchange-close': '',
+        'freewar3-quickchange-container': '',
+        'freewar3-quickchange-li': '',
         'freewar3-quickchanger': ''
     },
     document = window.document,
+    addEvent = function (obj, type, fn) {
+        var r = true;
+        if (obj.addEventListener) {
+            obj.addEventListener(type, fn, false);
+        } else if (obj.attachEvent) {
+            obj['e' + type + fn] = fn;
+            obj[type + fn] = function () {
+                obj['e' + type + fn](window.event);
+            };
+            r = obj.attachEvent('on' + type, obj[type + fn]);
+        } else {
+            obj['on' + type] = fn;
+        }
+        return r;
+    },
     create_linklist = function (items) {
         var close = document.createElement('a'),
             container = document.createElement('div'),
@@ -23,9 +38,8 @@ var styles = {
 
         container.className = 'freewar3-quickchange-container';
         container.setAttribute('style', styles['freewar3-quickchange-container']);
-        container.innerHTML = '<p stlye="' + styles['freewar3-quickchange-caption'] + '" ' +
-                                 'class="listcaption ' +
-                                        'freewar3-quickchange-caption">' +
+        container.innerHTML = '<p style="' + styles['freewar3-quickchange-caption'] + '" ' +
+                                 'class="freewar3-quickchange-caption">' +
                                  'Wähle </p>';
 
         document.body.appendChild(container);
@@ -49,57 +63,27 @@ var styles = {
 
         // generate list
         for (i = 0; i < items.length; i += 1) {
-            list_element = '<p class="listitemrow freewar3-quickchange-li" ' +
-                           'stlye="' + styles['freewar3-quickchange-li'] + '">' +
-                           '<a href="' + items[i].href + '">' +
-                           items[i].name + '</a></p>';
+            list_element = '<p class="freewar3-quickchange-li" ' +
+                           'style="' + styles['freewar3-quickchange-li'] + '">' +
+                           '<b class="' + items[i].className + '">' + items[i].name + '</b>' + 
+                           '<a href="' + items[i].href + '">Aktivieren</a></p>';
             list.innerHTML += list_element;
         }
     },
-    get_inventory_state = function (parent) {
-        var filterrow = parent.getElementById('filterrow'),
-            selcat = 1,
-            selcats = [],
-            state = {
-                'action': filterrow ? 'openinv' : 'closeinv',
-                'selcat': ''
-            },
-            i = 0;
+    get_list = function (event) {
+        var path = this.href,
+            xhr = new window.XMLHttpRequest();
 
-        if (filterrow) {
-            selcats = filterrow.getElementsByTagName('a');
-            for (i = 0, selcat = 1; i < selcats.length; i += 1, selcat += 1) {
-                // skipped selcat is the current
-                if (selcats[i].getAttribute('href') !== 'item.php?selcat=' + selcat) {
-                    state.selcat = selcat;
-                    break;
-                }
-            }
-        }
-
-        return state;
-    },
-    get_list = function () {
-        var basename = window.location.protocol + '//' +
-                       window.location.hostname +
-                       window.location.pathname,
-            filter = this.getAttribute('data-filter'),
-            xhr = new window.XMLHttpRequest(),
-            inventory_state = get_inventory_state(document);
-
-        xhr.open('GET', basename + '?action=openinv&' + filter, true);
+        xhr.open('GET', path, true);
         // set RequestHeader is ignored in FF, Chrome automatically detects
         // the correct charset. FF would give %uFFFD chars
         xhr.overrideMimeType('text/html; charset=iso-8859-1');
         xhr.onreadystatechange = function () {
             var dom_helper = null,
-                equipped = [],
                 i = 0,
                 itemrows = [],
                 items = [],
-                name = '',
-                xhr_close = null,
-                recover_url = '';
+                name = '';
 
             if (xhr.readyState === 4) {
                 // dom temporär erstellen
@@ -108,77 +92,54 @@ var styles = {
 
                 itemrows = dom_helper.getElementsByClassName('listitemrow');
 
-                // skip filterrow
+                // skip first, only desc
                 for (i = 1; i < itemrows.length; i += 1) {
-                    equipped = itemrows[i].getElementsByClassName('itemequipped');
-                    if (equipped.length > 0) {
-                        name = equipped[0].innerHTML;
-                    } else {
-                        name = itemrows[i].getElementsByTagName('b')[0].innerHTML;
-                    }
+                    name = itemrows[i].firstChild.innerHTML;
 
                     items.push({
                         'name': name,
-                        'href': itemrows[i].getElementsByTagName('a')[0].href
+                        'href': itemrows[i].getElementsByTagName('a')[0].href,
+                        'className': itemrows[i].firstChild.className
                     });
                 }
 
                 // linkliste erstellen
                 create_linklist(items);
-
-                // recover inventory state
-                recover_url = basename + '?action=' + inventory_state.action +
-                              '&selcat=' + inventory_state.selcat;
-                xhr_close = new window.XMLHttpRequest();
-                xhr_close.open('GET', recover_url, true);
-                xhr_close.send(null);
             }
         };
         xhr.send(null);
+        
+        event.preventDefault();
+        return false;
     },
-    append_listlink = function (selectors, filter) {
+    append_listlink = function (selector, filter, text) {
         var container = null,
-            i = 0,
-            link = document.createElement('a'),
-            replace = null;
-
-        // generate link
-        link.className = 'freewar3-quickchanger';
-        link.setAttribute('style', styles['freewar3-quickchanger']);
-        link.setAttribute('data-filter', filter);
-        link.setAttribute('title', 'Schnellwechsel ' + selectors[0].split('_')[1]);
-        link.innerHTML = '?';
-        link.href = '#';
-        link.onclick = get_list;
+            link;
 
         // search container
-        for (i = 0; i < selectors.length; i += 1) {
-            container = document.getElementById(selectors[i]);
-            if (container !== null) {
-                // replace
-                replace = container.getElementsByTagName('b')[0];
-                if (replace) {
-                    link.innerHTML = replace.innerHTML;
-                    container.replaceChild(link, replace);
-                } else {
-                    container.appendChild(link);
-                }
-                return container;
-            }
+        container = document.getElementById(selector);
+        if (container === null) {
+            link = document.createElement('a');
+            link.href = 'item.php?action=' + filter + 'select';
+            link.innerHTML = text;
+           
+            document.getElementById('listrow_status').appendChild(link);
+        } else {
+            link = container.getElementsByTagName('a')[0];
         }
-
-        return null;
+            
+            
+        link.className = 'freewar3-quickchanger';
+        link.setAttribute('style', styles['freewar3-quickchanger']);
+        link.setAttribute('title', 'Schnellwechsel ' + text);
+        addEvent(link, 'click', get_list);
+            
+        return container;
     };
 
-// append_listlink([Selectoren die der Reihe nach versucht werden], 
-//                 "selcat aus der die Items genommen werden, frei lassen
-//                 für die Aktuelle, selcat=1 für Alle")
-
 // angriffswaffe
-append_listlink(['listrow_attackw'], 'selcat=2');
+append_listlink('listrow_attackw', 'a', 'Angriffswaffe');
 // verteidigungswaffe
-append_listlink(['listrow_defensew'], 'selcat=3');
-// hals, als fallback in der statusleiste
-append_listlink(['listrow_neck', 'listrow_status'], 'selcat=4');
-// Zauber in Intelligenz
-// append_listlink(['listrow_int'], 'selcat=5');
+append_listlink('listrow_defensew', 'd', 'Verteidigungswaffe');
+// hals
+append_listlink('listrow_neck', 'h', 'Halsschmuck');

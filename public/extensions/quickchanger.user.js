@@ -1,4 +1,4 @@
-// ==UserScript==
+﻿// ==UserScript==
 // @name           Itemwechsel
 // @description    Schnelles wechseln von Items
 // @include        http://*.freewar.de/freewar/internal/item.php*
