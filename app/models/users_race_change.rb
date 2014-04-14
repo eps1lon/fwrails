@@ -1,5 +1,6 @@
 class UsersRaceChange < ActiveRecord::Base
   include DeleteMarkable
+  include Timestamps
   include UserNaming
   include UserUrls
   self.primary_keys = :user_id, :world_id, :created_at
@@ -18,4 +19,6 @@ class UsersRaceChange < ActiveRecord::Base
   alias_method :new, :new_race
   
   scope :active, -> { where(deleted: false) }
+  scope :race, ->(race) { where("race_id_old = ? OR "+
+                                "race_id_new = ?", race.id, race.id) unless race.nil?}
 end

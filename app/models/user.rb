@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Timestamps
   include UserNaming
   include UserUrls
   self.primary_keys = :user_id, :world_id

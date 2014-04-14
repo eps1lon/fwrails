@@ -1,5 +1,6 @@
 class UsersNameChange < ActiveRecord::Base
   include DeleteMarkable
+  include Timestamps
   include UserNaming
   include UserUrls
 
@@ -11,6 +12,7 @@ class UsersNameChange < ActiveRecord::Base
   on_deleted_nullify_relation :user
   
   scope :active, -> { where(deleted: false) }
+  scope :name_like, ->(name) { where("name_old LIKE ? OR name_new LIKE ?", "%#{name}%", "%#{name}%") unless name.nil? }
   
   def old
     {:name => self.name_old}

@@ -1,5 +1,6 @@
 class UsersClanChange < ActiveRecord::Base
   include DeleteMarkable
+  include Timestamps
   include UserNaming
   include UserUrls
   self.primary_keys = :user_id, :world_id, :created_at
