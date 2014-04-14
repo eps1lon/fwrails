@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140407053838) do
+ActiveRecord::Schema.define(version: 20140412091319) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -58,12 +58,16 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.boolean  "deleted",         default: false, null: false
   end
 
+  add_index "clans_coleader_changes", ["created_at"], name: "index_clans_coleader_changes_on_created_at", using: :btree
+
   create_table "clans_deletes", id: false, force: true do |t|
     t.integer  "clan_id",    default: 0, null: false
     t.integer  "world_id",   default: 0, null: false
     t.string   "tag"
     t.datetime "created_at",             null: false
   end
+
+  add_index "clans_deletes", ["created_at"], name: "index_clans_deletes_on_created_at", using: :btree
 
   create_table "clans_leader_changes", id: false, force: true do |t|
     t.integer  "clan_id",       default: 0,     null: false
@@ -74,6 +78,8 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.boolean  "deleted",       default: false, null: false
   end
 
+  add_index "clans_leader_changes", ["created_at"], name: "index_clans_leader_changes_on_created_at", using: :btree
+
   create_table "clans_name_changes", id: false, force: true do |t|
     t.integer  "clan_id",    default: 0,     null: false
     t.integer  "world_id",   default: 0,     null: false
@@ -83,12 +89,16 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.boolean  "deleted",    default: false, null: false
   end
 
+  add_index "clans_name_changes", ["created_at"], name: "index_clans_name_changes_on_created_at", using: :btree
+
   create_table "clans_news", id: false, force: true do |t|
     t.integer  "clan_id",    default: 0, null: false
     t.integer  "world_id",   default: 0, null: false
     t.string   "tag"
     t.datetime "created_at",             null: false
   end
+
+  add_index "clans_news", ["created_at"], name: "index_clans_news_on_created_at", using: :btree
 
   create_table "clans_old", id: false, force: true do |t|
     t.integer  "clan_id",        default: 0, null: false
@@ -110,6 +120,8 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.datetime "created_at",                 null: false
     t.boolean  "deleted",    default: false, null: false
   end
+
+  add_index "clans_tag_changes", ["created_at"], name: "index_clans_tag_changes_on_created_at", using: :btree
 
   create_table "dumps", force: true do |t|
     t.boolean "public", default: true
@@ -317,6 +329,8 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.boolean  "deleted",        default: false, null: false
   end
 
+  add_index "users_achievements_changes", ["created_at"], name: "index_users_achievements_changes_on_created_at", using: :btree
+
   create_table "users_achievements_old", id: false, force: true do |t|
     t.integer  "user_id",        default: 0,     null: false
     t.integer  "world_id",       default: 0,     null: false
@@ -338,6 +352,7 @@ ActiveRecord::Schema.define(version: 20140407053838) do
 
   add_index "users_clan_changes", ["clan_id_new"], name: "index_users_clan_changes_on_clan_id_new", using: :btree
   add_index "users_clan_changes", ["clan_id_old"], name: "index_users_clan_changes_on_clan_id_old", using: :btree
+  add_index "users_clan_changes", ["created_at"], name: "index_users_clan_changes_on_created_at", using: :btree
 
   create_table "users_deletes", id: false, force: true do |t|
     t.integer  "user_id",    default: 0, null: false
@@ -345,6 +360,8 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.string   "name"
     t.datetime "created_at",             null: false
   end
+
+  add_index "users_deletes", ["created_at"], name: "index_users_deletes_on_created_at", using: :btree
 
   create_table "users_experience_changes", id: false, force: true do |t|
     t.integer  "user_id",    default: 0,     null: false
@@ -363,6 +380,8 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.boolean  "deleted",    default: false, null: false
   end
 
+  add_index "users_name_changes", ["created_at"], name: "index_users_name_changes_on_created_at", using: :btree
+
   create_table "users_news", id: false, force: true do |t|
     t.integer  "user_id",    default: 0,     null: false
     t.integer  "world_id",   default: 0,     null: false
@@ -370,6 +389,8 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.datetime "created_at",                 null: false
     t.boolean  "deleted",    default: false, null: false
   end
+
+  add_index "users_news", ["created_at"], name: "index_users_news_on_created_at", using: :btree
 
   create_table "users_old", id: false, force: true do |t|
     t.integer  "user_id",    default: 0, null: false
@@ -390,6 +411,8 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.boolean  "deleted",     default: false, null: false
   end
 
+  add_index "users_race_changes", ["created_at"], name: "index_users_race_changes_on_created_at", using: :btree
+
   create_table "worlds", force: true do |t|
     t.string   "name"
     t.string   "subdomain"
@@ -404,5 +427,7 @@ ActiveRecord::Schema.define(version: 20140407053838) do
     t.integer  "progress"
     t.datetime "created_at",                 null: false
   end
+
+  add_index "worlds_achievements_changes", ["created_at"], name: "index_worlds_achievements_changes_on_created_at", using: :btree
 
 end

@@ -1,7 +1,24 @@
-class UsersController < ApplicationController 
-  before_filter :only => [:index, :new, :delete, :racechange, :namechange, :clanchange] do 
+class UsersController < ApplicationController
+  # init error hash
+  before_filter do
+    @errors = {}
+  end
+  
+  before_filter :only => [:index, :new, :delete, :race_change, :name_change, :clan_change] do 
+    # get model from action
+    @scope = Object.const_get("users_#{action_name.gsub("index", "")}".camelize.singularize)
+    
+    # get hole recording period
+    @hole_recording_period = @scope.record_period
+    
     @params = list_params
     
+    # submitted period
+    @recording_period = (@params[:starttime].try(:to_date) || @hole_recording_period.begin)..(@params[:endtime].try(:to_date) || @hole_recording_period.end)
+    
+    # we have a period and not only one timeframe
+    @has_recording_period = @hole_recording_period.begin < @hole_recording_period.end
+
     @limit = 20
     @suggest_limit = 5
     @offset = (@params[:page]  - 1) * @limit
@@ -30,7 +47,7 @@ class UsersController < ApplicationController
     # Rasse wechseln per default nicht möglich
     @change_race = false
     
-    @last_update = User.last_update
+    @last_update = @hole_recording_period.end
   end
 
   def show
@@ -70,11 +87,13 @@ class UsersController < ApplicationController
     # Rasse eingrenzen
     @change_race = true
     
-    @model = User
+    @timeframe = false
+    
+    @scope = User.all
     @attributes = [
-      {:db => "#{@model.table_name}.user_id", :human => "user_id"},
-      {:db => "#{@model.table_name}.name", :human => "name"},
-      {:db => "#{@model.table_name}.experience", :human => "experience"},
+      {:db => "#{@scope.table_name}.user_id", :human => "user_id"},
+      {:db => "#{@scope.table_name}.name", :human => "name"},
+      {:db => "#{@scope.table_name}.experience", :human => "experience"},
       {:human => "race"},
       {:human => "world"},
       {:human => "clan"}     
@@ -82,18 +101,18 @@ class UsersController < ApplicationController
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @model.preload(:clan, :race, :world).where(:world_id => @worlds).
+    @users = @scope.preload(:clan, :race, :world).where(:world_id => @worlds).
              order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit)   
     
     unless params[:name].nil?
-      @users = @users.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
-      @model = @model.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
+      @users = @users.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
+      @scope = @scope.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
     end 
     
     unless @race.nil?
-      @users = @users.where("#{@model.table_name}.race_id = ?", @race.id)
-      @model = @model.where("#{@model.table_name}.race_id = ?", @race.id)
+      @users = @users.where("#{@scope.table_name}.race_id = ?", @race.id)
+      @scope = @scope.where("#{@scope.table_name}.race_id = ?", @race.id)
     end
     
     respond_to do |format|
@@ -104,23 +123,23 @@ class UsersController < ApplicationController
   
   def new
     user_params = list_params
-    @model = UsersNew
+    @scope = UsersNew
     @attributes = [
-      {:db => "#{@model.table_name}.user_id", :human => "user_id"},
-      {:db => "#{@model.table_name}.name", :human => "name"},
-      {:db => "#{@model.table_name}.created_at", :human => "created_at"},
+      {:db => "#{@scope.table_name}.user_id", :human => "user_id"},
+      {:db => "#{@scope.table_name}.name", :human => "name"},
+      {:db => "#{@scope.table_name}.created_at", :human => "created_at"},
       {:human => "world"}
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @model.where(:world_id => @worlds).preload(:user, :world).
+    @users = @scope.where(:world_id => @worlds).preload(:user, :world).
              order("#{order[:db]} #{@params[:by]}").
              offset(@offset).limit(@limit) 
     
     unless params[:name].nil?
-      @users = @users.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
-      @model = @model.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
+      @users = @users.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
+      @scope = @scope.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
     end    
     
     respond_to do |format|
@@ -131,23 +150,23 @@ class UsersController < ApplicationController
   
   def delete
     user_params = @params
-    @model = UsersDelete
+    @scope = UsersDelete
     @attributes = [
-      {:human => "user_id", :db => "#{@model.table_name}.user_id"},
-      {:human => "name", :db => "#{@model.table_name}.name"},
-      {:db => "#{@model.table_name}.created_at", :human => "created_at"},
-      {:human => "world", :db => "#{@model.table_name}.world_id"}
+      {:human => "user_id", :db => "#{@scope.table_name}.user_id"},
+      {:human => "name", :db => "#{@scope.table_name}.name"},
+      {:db => "#{@scope.table_name}.created_at", :human => "created_at"},
+      {:human => "world", :db => "#{@scope.table_name}.world_id"}
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
     
-    @users = @model.where(:world_id => @worlds).preload(:world).
+    @users = @scope.where(:world_id => @worlds).preload(:world).
              order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit)
     
     unless user_params[:name].nil?
-      @users = @users.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
-      @model = @model.where("#{@model.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
+      @users = @users.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
+      @scope = @scope.where("#{@scope.table_name}.name LIKE ?", "%#{user_params[:name]}%") 
     end    
     
     respond_to do |format|
@@ -156,49 +175,44 @@ class UsersController < ApplicationController
     end      
   end
   
-  def namechange
-    user_params = @params
-    @model = UsersNameChange
-    @attributes = [
-      {:human => "user_id"},
-      {:human => "name_old", :db => "#{@model.table_name}.name_old"},
-      {:human => "name_new", :db => "#{@model.table_name}.name_new"},
-      {:db => "#{@model.table_name}.created_at", :human => "created_at"},
-      {:human => "world", :db => "#{@model.table_name}.world_id"}
-    ]
-    # default
-    order = order_from_attributes(@attributes, user_params[:order], 3)
-    
+  def name_change
     @suggest_limit = 5
     
-    @users = @model.where(:world_id => @worlds).preload(:user, :world).
-             order("#{order[:db]} #{user_params[:by]}").
+    @scope = @scope.where(world_id: @worlds).name_like(@params[:name])
+    
+    @attributes = [
+      {:human => "user_id"},
+      {:human => "name_old", :db => "#{@scope.table_name}.name_old"},
+      {:human => "name_new", :db => "#{@scope.table_name}.name_new"},
+      {:db => "#{@scope.table_name}.created_at", :human => "created_at"},
+      {:human => "world", :db => "#{@scope.table_name}.world_id"}
+    ]
+    # default
+    order = order_from_attributes(@attributes, @params[:order], 3)
+    
+    @users = @scope.preload(:user, :world).
+             order("#{order[:db]} #{@params[:by]}").
              offset(@offset).limit(@limit) 
-    
-    unless user_params[:name].nil?
-      @users = @users.where("#{@model.table_name}.name_old LIKE ? OR #{@model.table_name}.name_new LIKE ?", "%#{user_params[:name]}%", "%#{params[:name]}%") 
-      @model = @model.where("#{@model.table_name}.name_old LIKE ? OR #{@model.table_name}.name_new LIKE ?", "%#{user_params[:name]}%", "%#{params[:name]}%") 
-    end    
-    
+
     respond_to do |format|
       format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
       format.html {render 'users/index'}
     end   
   end
   
-  def racechange
+  def race_change
     user_params = @params
     # keine Suche möglich
     @skipsearch = true
     # Rasse eingrenzen
     @change_race = true
     
-    @model = UsersRaceChange
+    @scope = UsersRaceChange.race(@race)
     @attributes = [
       {:human => "user_id"},
-      {:db => "#{@model.table_name}.race_id_old", :human => "old_race"},
-      {:db => "#{@model.table_name}.race_id_new", :human => "new_race"},
-      {:db => "#{@model.table_name}.created_at", :human => "created_at"},
+      {:db => "#{@scope.table_name}.race_id_old", :human => "old_race"},
+      {:db => "#{@scope.table_name}.race_id_new", :human => "new_race"},
+      {:db => "#{@scope.table_name}.created_at", :human => "created_at"},
       {:human => "world"}
     ]
     # default
@@ -206,30 +220,23 @@ class UsersController < ApplicationController
     
     unless @race.nil?
       if order[:human] == 'old_race'
-        order[:db] = "#{@model.table_name}.race_id_old = #{@race.id}"
+        order[:db] = "#{@scope.table_name}.race_id_old = #{@race.id}"
       elsif order[:human] == 'new_race'
-        order[:db] = "#{@model.table_name}.race_id_new = #{@race.id}"
+        order[:db] = "#{@scope.table_name}.race_id_new = #{@race.id}"
       end
     end
     
     order[:db] += " #{user_params[:by]}"
     
     unless order[:human].eql?('created_at')
-      order[:db] += ", #{@model.table_name}.created_at desc"
+      order[:db] += ", #{@scope.table_name}.created_at desc"
     end
     
     params[:order] = order[:human]
     
-    @users = @model.where(:world_id => @worlds).preload(:new_race, :old_race, :user, :world).
+    @users = @scope.where(:world_id => @worlds).preload(:new_race, :old_race, :user, :world).
              order("#{order[:db]}").
              offset(@offset).limit(@limit)
-           
-    unless @race.nil?
-      @model = @model.where("#{@model.table_name}.race_id_old = ? OR "+
-                            "#{@model.table_name}.race_id_new = ?", @race.id, @race.id)
-      @users = @users.where("#{@model.table_name}.race_id_old = ? OR "+
-                            "#{@model.table_name}.race_id_new = ?", @race.id, @race.id)
-    end
     
     respond_to do |format|
       format.json { render :json => @users.limit(@suggest_limit), methods: :name_primary }
@@ -237,21 +244,21 @@ class UsersController < ApplicationController
     end
   end
   
-  def clanchange
+  def clan_change
     user_params = @params
     @skipsearch = true
-    @model = UsersClanChange
+    @scope = UsersClanChange.where(:world_id => @worlds).in_recording_period_date(@recording_period)
     @attributes = [
       {:human => "user_id"},
       {:human => "old_clan"},
       {:human => "new_clan"},
-      {:db => "#{@model.table_name}.created_at", :human => "created_at"},
+      {:db => "#{@scope.table_name}.created_at", :human => "created_at"},
       {:human => "world"}
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 3)
     
-    @users = @model.where(:world_id => @worlds).preload(:new_clan, :old_clan, :user, :world).
+    @users = @scope.preload(:new_clan, :old_clan, :user, :world).
              order("#{order[:db]} #{user_params[:by]}").
              offset(@offset).limit(@limit) 
     
@@ -264,7 +271,15 @@ class UsersController < ApplicationController
   private
   
   def list_params
+    # validating
     params[:page] = [1, params[:page].to_i].max
-    filter_sql_by(params.permit(:action, :world, :order, :by, :name, :page, :race), :by, :desc)
+    [:starttime, :endtime].each do |datetime|
+      params[datetime] = params[datetime].try(:to_date)
+      
+      if !params[datetime].nil? && !@hole_recording_period.cover?(params[datetime])
+        (@errors[datetime] ||= []) << :not_in_range
+      end
+    end
+    filter_sql_by(params.permit(:action, :world, :order, :by, :name, :page, :race, :starttime, :endtime), :by, :desc)
   end
 end

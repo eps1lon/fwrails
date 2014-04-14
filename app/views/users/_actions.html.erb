@@ -9,7 +9,7 @@
 
 <li><strong><%= t "users.nav.changes" %></strong>
   <ul>
-    <% %w{clanchange namechange racechange}.each do |action| %>
+    <% %w{clan_change name_change race_change}.each do |action| %>
       <li><%= link_to t("users.#{action}.human"), 
                       url_for({:controller => '/users', :action => action}) %></li>       
     <% end %>

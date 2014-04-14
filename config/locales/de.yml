@@ -71,6 +71,10 @@ de:
     am: "vormittags"
     pm: "nachmittags"
     last_update: "Letztes Update"
+    recording_period:
+      caption: "Erfassungszeitraum"
+      from: "Von"
+      till: "Bis"
 
   datetime:
     distance_in_words:
@@ -896,7 +900,7 @@ de:
   users:
     achivements:
       human: "Errungenschaften"
-    clanchange:
+    clan_change:
       human: "Clanänderungen"
       head: "Clanwechsel in FreeWar"
       noclan: "keiner"
@@ -908,6 +912,8 @@ de:
       races: 
         all: "Alle Rassen"
         change: "Rasse wechseln"
+      starttime: "Von"
+      endtime: "Bis"
     delete:
       human: "Nachruf"
       head: "gelöschte und (temporär) gebannte User in FreeWar"
@@ -920,7 +926,7 @@ de:
       message: "User angezeigt aus"
       img: "Rangliste als Bild" 
       noclan: "clanlos"
-    namechange:
+    name_change:
       human: "Nickwechsel"
       head: "Nickwechsel in FreeWar"
       message: "Namenswechsel in"
@@ -938,7 +944,7 @@ de:
       head: "Neuanmeldungen und Entbannungen in FreeWar"
       message: "Neuanmeldungen aus"
       img: "Liste als Bild"
-    racechange:
+    race_change:
       human: "Rassenwechsel"
       head: "Rassenwechsel in FreeWar"
       message: "Rassenwechsel in"
