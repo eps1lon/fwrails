@@ -87,12 +87,12 @@ class Clan < ActiveRecord::Base
   
   def changes
     {
-      :adds     => self.adds.includes(:user),
-      :coleader => self.coleader_changes.includes(:coleader_old, :coleader_new),
-      :leader   => self.leader_changes.includes(:leader_old, :leader_new),
-      :name     => self.name_changes,
-      :tag      => self.tag_changes,
-      :outs     => self.outs.includes(:user)
+      :adds     => self.adds.includes(:user).order("created_at desc"),
+      :coleader => self.coleader_changes.includes(:coleader_old, :coleader_new).order("created_at desc"),
+      :leader   => self.leader_changes.includes(:leader_old, :leader_new).order("created_at desc"),
+      :name     => self.name_changes.order("created_at desc"),
+      :tag      => self.tag_changes.order("created_at desc"),
+      :outs     => self.outs.includes(:user).order("created_at desc")
     }
   end
   

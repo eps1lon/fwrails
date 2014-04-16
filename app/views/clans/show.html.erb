@@ -69,18 +69,18 @@
 <h2><%= t ".changes.head" %></h2>
 <h3>
   <%= t ".changes.tag.human" %>
-  <% if @clan.changes[:tag].length > 0 %>
-    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:tag].model.table_name %>">
+  <% if @changes[:tag].length > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @changes[:tag].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:tag].human_attribute_name("count", :count => @clan.changes[:tag].length) %>
-  <%= ':' if @clan.changes[:tag].length > 0 %>
+  <%= @changes[:tag].human_attribute_name("count", :count => @changes[:tag].length) %>
+  <%= ':' if @changes[:tag].length > 0 %>
 </p>
-<ul id="<%= @clan.changes[:tag].model.table_name %>" class="changes">
-  <% @clan.changes[:tag].order("created_at asc").each do |change| %>
+<ul id="<%= @changes[:tag].model.table_name %>" class="changes">
+  <% @changes[:tag].each do |change| %>
     <li>
       <%= t ".changes.tag.message", :old => change.tag_old, :new => change.tag_new %>,
       <%= time_tag change.created_at.to_date, :format => :long %>
@@ -89,18 +89,18 @@
 </ul>
 <h3>
   <%= t ".changes.name.human" %>
-  <% if @clan.changes[:name].length > 0 %>
-    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:name].model.table_name %>">
+  <% if @changes[:name].length > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @changes[:name].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:name].human_attribute_name("count", :count => @clan.changes[:name].length) %>
-  <%= ':' if @clan.changes[:name].length > 0 %>
+  <%= @changes[:name].human_attribute_name("count", :count => @changes[:name].length) %>
+  <%= ':' if @changes[:name].length > 0 %>
 </p>
-<ul id="<%= @clan.changes[:name].model.table_name %>" class="changes">
-  <% @clan.changes[:name].order("created_at asc").each do |change| %>
+<ul id="<%= @changes[:name].model.table_name %>" class="changes">
+  <% @changes[:name].each do |change| %>
     <li>
       <%= t ".changes.name.message", :old => change.name_old, :new => change.name_new %>,
       <%= time_tag change.created_at.to_date, :format => :long %>
@@ -109,18 +109,18 @@
 </ul>
 <h3>
   <%= t ".changes.leader.human" %>
-  <% if @clan.changes[:leader].length > 0 %>
-    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:leader].model.table_name %>">
+  <% if @changes[:leader].length > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @changes[:leader].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:leader].human_attribute_name("count", :count => @clan.changes[:leader].length) %>
-  <%= ':' if @clan.changes[:leader].length > 0 %>
+  <%= @changes[:leader].human_attribute_name("count", :count => @changes[:leader].length) %>
+  <%= ':' if @changes[:leader].length > 0 %>
 </p>
-<ul id="<%= @clan.changes[:leader].model.table_name %>" class="changes">
-  <% @clan.changes[:leader].order("created_at asc").each do |change| %>
+<ul id="<%= @changes[:leader].model.table_name %>" class="changes">
+  <% @changes[:leader].each do |change| %>
     <li>
       <%= link_to_user_or_del(change.leader_old, change.leader_id_old, @clan.world.short) %>
       =>
@@ -131,18 +131,18 @@
 </ul>
 <h3>
   <%= t ".changes.coleader.human" %>
-  <% if @clan.changes[:coleader].length > 0 %>
-    [<a href="javascript: ;" data-toggle-for="<%= @clan.changes[:coleader].model.table_name %>">
+  <% if @changes[:coleader].length > 0 %>
+    [<a href="javascript: ;" data-toggle-for="<%= @changes[:coleader].model.table_name %>">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= @clan.changes[:coleader].human_attribute_name("count", :count => @clan.changes[:coleader].length) %>
-  <%= ':' if @clan.changes[:coleader].length > 0 %>
+  <%= @changes[:coleader].human_attribute_name("count", :count => @changes[:coleader].length) %>
+  <%= ':' if @changes[:coleader].length > 0 %>
 </p>
-<ul id="<%= @clan.changes[:coleader].model.table_name %>" class="changes">
-  <% @clan.changes[:coleader].order("created_at asc").each do |change| %>
+<ul id="<%= @changes[:coleader].model.table_name %>" class="changes">
+  <% @changes[:coleader].each do |change| %>
     <li>
       <%= link_to_user_or_del(change.coleader_old, change.coleader_id_old, @clan.world.short) %>
       =>
@@ -153,18 +153,18 @@
 </ul>
 <h3>
   <%= t ".changes.adds.human" %>
-  <% if @clan.changes[:adds].length > 0 %>
+  <% if @changes[:adds].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="clan_adds">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= t ".changes.adds.message", :count => @clan.changes[:adds].length %>
-  <%= ':' if @clan.changes[:adds].length > 0 %>
+  <%= t ".changes.adds.message", :count => @changes[:adds].length %>
+  <%= ':' if @changes[:adds].length > 0 %>
 </p>
 <ul id="clan_adds" class="changes">
-  <% @clan.changes[:adds].order("created_at asc").each do |change| %>
+  <% @changes[:adds].each do |change| %>
     <li>
       <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short, :name) %>
       <%= time_tag change.created_at.to_date, :format => :long %>
@@ -173,18 +173,18 @@
 </ul>
 <h3>
   <%= t ".changes.outs.human" %>
-  <% if @clan.changes[:outs].length > 0 %>
+  <% if @changes[:outs].length > 0 %>
     [<a href="javascript: ;" data-toggle-for="clan_outs">
       <%= t "helpers.toggle.show" %>
      </a>]
   <% end %>
 </h3>
 <p>
-  <%= t ".changes.outs.message", :count => @clan.changes[:outs].length %>
-  <%= ':' if @clan.changes[:outs].length > 0 %>
+  <%= t ".changes.outs.message", :count => @changes[:outs].length %>
+  <%= ':' if @changes[:outs].length > 0 %>
 </p>
 <ul id="clan_outs" class="changes">
-  <% @clan.changes[:outs].order("created_at asc").each do |change| %>
+  <% @changes[:outs].each do |change| %>
     <li>
       <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short, :name) %>
       <%= time_tag change.created_at.to_date, :format => :long %>

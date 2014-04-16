@@ -96,27 +96,16 @@ class ClansController < ApplicationController
     
     raise ActiveRecord::RecordNotFound if @world.nil?
     
-    @clan = Clan.where(:world_id => @world.id, :clan_id => params[:id]).
-                 includes(:adds, :coleader, :leader, :members, :outs).first
-               
+    @clan = Clan.where(:world_id => @world.id, :clan_id => params[:id]).first
+    
     raise ActiveRecord::RecordNotFound if @clan.nil?
 
-    @members = @clan.members.order("name asc")
+    @members = @clan.members.preload(:world).order("name asc")
     
     @xp_min_member = @clan.members.order("experience asc").first
     @xp_max_member = @clan.members.order("experience desc").first
     
-    # undefined method `order' for nil:NilClass
-    # dont want to check for nil? every time so we put the order in the view
-    #@changes = {
-    #  :adds     => @clan.changes[:adds].order("created_at desc"),
-    #  :coleader => @clan.changes[:coleade].order("created_at desc"),
-    #  :leader   => @clan.changes[:leader].order("created_at desc"),
-    #  :name     => @clan.changes[:name].order("created_at desc"),
-    #  :outs     => @clan.changes[:outs].order("created_at desc"),
-    #  :tag      => @clan.changes[:tag].order("created_at desc")
-    #}
-    
+    @changes = @clan.changes
   end
   
   private
