@@ -15,7 +15,7 @@ class News < ActiveRecord::Base
   def content_summary
     self.content.split(self.content_summary_sep)[0..self.max_content_summary_count-1]
                  .join(self.content_summary_sep) + 
-    ("#{self.content_summary_sep}…" if self.content_summarized?)
+    ("#{self.content_summary_sep}…" if self.content_summarized?).to_s
   end
   
   def max_content_summary_count
