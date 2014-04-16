@@ -528,7 +528,7 @@ de:
     coleader_change:
       head: "Co-Leaderwechsel bei Clans in FreeWar"
       human: "Co-Leaderwechsel"
-      caption: "%{shown} von %{count} gefundenen Wechsel angezeigt in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Wechseln angezeigt in %{worlds}"
     commons:
       all_worlds: "Alle Welten"
       change_world: "Welt wechseln"
@@ -566,11 +566,11 @@ de:
     leader_change:
       head: "Leaderwechsel bei Clans in FreeWar"
       human: "Leaderwechsel"
-      caption: "%{shown} von %{count} gefundenen Wechsel angezeigt in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Wechseln angezeigt in %{worlds}"
     name_change:
       head: "Namensänderungen von Clans in FreeWar"
       human: "Namensänderungen"
-      caption: "%{shown} von %{count} gefundenen Namensänderung angezeigt in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Namensänderungen angezeigt in %{worlds}"
     nav: 
       changes: "Änderungen"
       lists: "Listen"
