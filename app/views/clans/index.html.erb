@@ -58,14 +58,14 @@
 
 <nav class="pages">
   <strong><%= t "helpers.nav.page" %></strong>
-  <%= nav_links = nav(@offset, @limit, @scope.count, method(:clans_url)).join.html_safe %>
+  <%= nav_links = nav(@offset, @limit, @scope.size, method(:clans_url)).join.html_safe %>
 </nav>
 
-<table class="clans <%= 'single-world' if @worlds.count.eql?(1) %>">
+<table class="clans <%= 'single-world' if @worlds.size.eql?(1) %>">
   <caption>
-    <%= t("clans.#{controller.action_name}.message", 
-          :count => @clans.length, 
-          :worlds => @worlds.collect(&:short).to_sentence) %>
+    <%= t '.caption', count: number_with_delimiter(@scope.size), 
+                      shown: number_with_delimiter(@clans.length), 
+                      worlds: @worlds.collect(&:short).to_sentence %>
   </caption>
   <thead>
     <tr>

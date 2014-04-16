@@ -476,10 +476,7 @@ de:
         reward_collected: AP
         user_id: User
         world_id: Welt
-      caption: 
-        zero: "keine User gefunden"
-        one: "ein User gefunden aus %{worlds}"
-        other: "%{count} User gefunden aus %{worlds}"
+      caption: "%{shown} von %{count} angezeigt aus %{worlds}"
       current_link: "Link zur aktuellen Auswahl"
       head: "Rangliste nach Errungenschaften"
       human: "Rangliste"
@@ -531,7 +528,7 @@ de:
     coleader_change:
       head: "Co-Leaderwechsel bei Clans in FreeWar"
       human: "Co-Leaderwechsel"
-      message: "%{count} Wechsel gefunden in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Wechsel angezeigt in %{worlds}"
     commons:
       all_worlds: "Alle Welten"
       change_world: "Welt wechseln"
@@ -560,26 +557,20 @@ de:
     delete:
       head: "augelöste Clans in FreeWar"
       human: "Auflösungen"
-      message: 
-        one: "Eine Auflösung gefunden in %{worlds}"
-        other: "%{count} Auflösungen gefunden in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Auflösungen angezeigt in %{worlds}"
     index:
       head: "Rangliste aller Clans in FreeWar"
       human: "Rangliste"
-      message: 
-        one: "Ein Clan gefunden in %{worlds}"
-        other: "%{count} Clans gefunden in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Clans angezeigt in %{worlds}"
     human: "Clans"
     leader_change:
       head: "Leaderwechsel bei Clans in FreeWar"
       human: "Leaderwechsel"
-      message: "%{count} Wechsel gefunden in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Wechsel angezeigt in %{worlds}"
     name_change:
       head: "Namensänderungen von Clans in FreeWar"
       human: "Namensänderungen"
-      message:
-        one: "Eine Namensänderung gefunden in %{worlds}"
-        other: "%{count} Namensänderung gefunden in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Namensänderung angezeigt in %{worlds}"
     nav: 
       changes: "Änderungen"
       lists: "Listen"
@@ -587,9 +578,7 @@ de:
     new:
       head: "Neu gegründete Clans in FreeWar"
       human: "Gründungen"
-      message: 
-        one: "Eine Gründung gefunden in %{worlds}"
-        other: "%{count} Gründungen gefunden in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Gründungen angezeigt in %{worlds}"
     show: 
       data: "Daten"
       hide: "Verbergen"
@@ -632,9 +621,7 @@ de:
     tag_change:
       head: "Tagänderungen von Clans in FreeWar"
       human: "Tagänderungen"
-      message:
-        one: "Eine Tagänderung gefunden in %{worlds}"
-        other: "%{count} Tagänderung gefunden in %{worlds}"
+      caption: "%{shown} von %{count} gefundenen Tagänderungen angezeigt in %{worlds}"
     urls:
       profile: "Ingame-Profil"
       rank: "Ingame-Rang"
@@ -925,7 +912,7 @@ de:
     index:
       head: "Rangliste der User in FreeWar"
       human: "Rangliste"
-      message: "User angezeigt aus"
+      caption: "%{shown} von %{count} angezeigt aus %{worlds}"
       img: "Rangliste als Bild" 
       noclan: "clanlos"
     name_change:

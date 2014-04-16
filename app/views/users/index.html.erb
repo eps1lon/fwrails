@@ -83,11 +83,11 @@
     <%= nav_links = nav(@offset, @limit, @scope.size, method(:users_url)).join.html_safe %>
   </nav>
 
-  <table class="users <%= ' single-world' if @worlds.length.eql?(1) %>">
+  <table class="users <%= ' single-world' if @worlds.size.eql?(1) %>">
     <caption>
-      <%= @users.length %> 
-      <%= t '.message' %>
-      <%= @worlds.collect(&:short).to_sentence %>
+      <%= t '.caption', count: number_with_delimiter(@scope.size), 
+                        shown: number_with_delimiter(@users.length), 
+                        worlds: @worlds.collect(&:short).to_sentence %>
     </caption>
     <thead>
       <tr>

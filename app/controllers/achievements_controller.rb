@@ -58,7 +58,8 @@ class AchievementsController < ApplicationController
     else
       @achievements = []
     end
-
+    
+    @scope = @users
     @users = @users.order(@order.map {|order| "#{order} #{@params[:by]}"}.join(','))
     @users = @users.offset(@offset).limit(20)
     
