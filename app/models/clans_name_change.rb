@@ -11,5 +11,5 @@ class ClansNameChange < ActiveRecord::Base
   on_deleted_nullify_relation :clan
   
   scope :active, -> { where(deleted: false) }
-  scope :name_like, ->(name) { where("name_old LIKE ? OR name_new LIKE ?", "%#{name}%", "%#{name}%") unless name.nil? }
+  scope :text_ident_like, ->(name) { where("name_old LIKE ? OR name_new LIKE ?", "%#{name}%", "%#{name}%") unless name.nil? }
 end

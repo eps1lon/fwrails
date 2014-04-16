@@ -11,7 +11,7 @@ class ClansTagChange < ActiveRecord::Base
   on_deleted_nullify_relation :clan
   
   scope :active, -> { where(deleted: false) }
-  scope :tag_like, ->(tag) { where("tag_old LIKE ? OR tag_new LIKE ?", "%#{tag}%", "%#{tag}%") unless tag.nil? }
+  scope :text_ident_like, ->(tag) { where("tag_old LIKE ? OR tag_new LIKE ?", "%#{tag}%", "%#{tag}%") unless tag.nil? }
   
   def tag_new
     self.tag('tag_new')

@@ -80,16 +80,12 @@ class ClansController < ApplicationController
   
   # textchange
   def name_change    
-    @scope = @scope.where(:world_id => @worlds).name_like(@params[:name]).in_recording_period_date(@recording_period)
-    
     respond_to do |format|
       format.html { render 'clans/index'}
     end
   end
   
   def tag_change    
-    @scope = @scope.where(:world_id => @worlds).tag_like(@params[:name]).in_recording_period_date(@recording_period)
-    
     respond_to do |format|
       format.html { render 'clans/index'}
     end
@@ -179,6 +175,7 @@ class ClansController < ApplicationController
   
   def common_text_change
     type = action_name.split("_").slice(0).to_s
+    @scope = @scope.where(:world_id => @worlds).text_ident_like(@params[:name]).in_recording_period_date(@recording_period)
     
     # create attr array
     @attributes = [
