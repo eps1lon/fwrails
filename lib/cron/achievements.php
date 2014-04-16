@@ -86,6 +86,17 @@ echo ($number_fetch[0] - $achievement_number) . " new; $achievement_number curre
 $sql_query = "TRUNCATE TABLE  users_achievements_caches";
 error_query($sql_query, $db);
 
+$sql_query = "INSERT INTO users_achievements_caches " .
+             "(user_id, world_id, reward_collected, count, deleted, created_at) " .
+             "SELECT users_achievements.user_id, users_achievements.world_id, " .
+             "SUM(achievements.reward), COUNT(users_achievements.stage), " .
+             "users_achievements.deleted, NOW() FROM users_achievements " .
+             "LEFT JOIN achievements USING(achievement_id) " .
+             "WHERE achievements.stage <= users_achievements.stage " .
+             "GROUP BY user_id, world_id";
+error_query($sql_query, $db);
+
+/*
 $primary_old = '0-0';
 $i = 0;
 
@@ -137,6 +148,7 @@ while ($achievement = mysql_fetch_assoc($result)) {
     $primary_old = $primary;
 }
 achievements_cache($primary_old, $count, $reward_collected, $now, $db, true);
+//*/
 
 // achievement progress changes
 $sql_query = "SELECT new_table.user_id, new_table.world_id, ".
