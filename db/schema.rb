@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140412091319) do
+ActiveRecord::Schema.define(version: 20140416175148) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -207,6 +207,20 @@ ActiveRecord::Schema.define(version: 20140412091319) do
     t.datetime "updated_at"
   end
 
+  create_table "notifies", force: true do |t|
+    t.string   "class_name"
+    t.string   "sender"
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notifies_readers", id: false, force: true do |t|
+    t.integer "notify_id"
+    t.integer "reader_id"
+    t.integer "world_id"
+  end
+
   create_table "npcs", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -256,6 +270,13 @@ ActiveRecord::Schema.define(version: 20140412091319) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "short"
+  end
+
+  create_table "readers", force: true do |t|
+    t.string   "email",      null: false
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "statistic_changes", id: false, force: true do |t|
@@ -419,6 +440,7 @@ ActiveRecord::Schema.define(version: 20140412091319) do
     t.string   "short"
     t.integer  "language_id"
     t.datetime "created_at"
+    t.string   "tld"
   end
 
   create_table "worlds_achievements_changes", id: false, force: true do |t|

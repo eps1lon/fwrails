@@ -27,7 +27,7 @@ class World < ActiveRecord::Base
   end
   
   def url
-    "http://#{self.subdomain}.freewar.#{self.language.tld}/freewar/"
+    "http://#{self.subdomain}.freewar.#{self.tld}/freewar/"
   end
   
   def urls 
