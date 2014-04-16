@@ -166,7 +166,7 @@
 <ul id="clan_adds" class="changes">
   <% @clan.changes[:adds].order("created_at asc").each do |change| %>
     <li>
-      <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short) %>
+      <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short, :name) %>
       <%= time_tag change.created_at.to_date, :format => :long %>
     </li>
   <% end %>
@@ -186,7 +186,7 @@
 <ul id="clan_outs" class="changes">
   <% @clan.changes[:outs].order("created_at asc").each do |change| %>
     <li>
-      <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short) %>
+      <%= link_to_user_or_del(change.user, change.user_id, @clan.world.short, :name) %>
       <%= time_tag change.created_at.to_date, :format => :long %>
     </li>
   <% end %>
