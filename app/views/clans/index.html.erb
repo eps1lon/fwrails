@@ -63,9 +63,9 @@
 
 <table class="clans <%= 'single-world' if @worlds.size.eql?(1) %>">
   <caption>
-    <%= t '.caption', count: number_with_delimiter(@scope.size), 
-                      shown: number_with_delimiter(@clans.length), 
-                      worlds: @worlds.collect(&:short).to_sentence %>
+    <%= t "clans.#{action_name}.caption", count: number_with_delimiter(@scope.size), 
+                                          shown: number_with_delimiter(@clans.length), 
+                                          worlds: @worlds.collect(&:short).to_sentence %>
   </caption>
   <thead>
     <tr>
