@@ -35,7 +35,7 @@ window.set_loading = (state, for_selector) ->
   $(for_selector).prop 'checked', state
 
 window.value_deep = (key_deep, obj) ->
-  return obj if typeof obj != 'Object'
+  return obj if (typeof obj).toLowerCase() != 'object'
   for key in key_deep.split "."
     break if !obj[key]
     obj = obj[key]
