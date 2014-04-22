@@ -8,6 +8,7 @@ require_once JPGRAPH_INCLUDE . '/jpgraph.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_line.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_date.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_utils.inc.php';
+require_once JPGRAPH_INCLUDE . '/jpgraph_table.php';
 
 if (RAILS_ENV == 'production') {
     JpGraphError::SetErrLocale('de.fwrails');
@@ -24,7 +25,7 @@ define('DIMENSIONS_FIXED_IMAGE', 2);
 define('GRAPH_INCLUDED', true);
 
 // functions
-function number_in_magnitudes($i) {
+function number_in_magnitudes($i, $precision = 1) {
     $magnitudes = [
         3 => 'k',
         6 => 'M',
@@ -32,15 +33,28 @@ function number_in_magnitudes($i) {
     ];
     krsort($magnitudes);
     
-    $exponent = strlen((string)$i) - 1;
+    $exponent = strlen((string)(int)$i) - 1;
     
     foreach ($magnitudes as $magnitude => $postfix) {
         if ($magnitude <= $exponent) {
-            return round($i / pow(10, $magnitude), 1) . $postfix;
+            return round($i / pow(10, $magnitude), $precision) . $postfix;
         }
     }
     
-    return $i;
+    return round($i, $precision);
+}
+
+function data_stats($data) {
+    $max = max($data);
+    $min = min($data);
+    $avg = ($max + $min) / 2;
+    
+    return [
+        "cur" => end($data),
+        "max" => $max,
+        "min" => $min,
+        "avg" => $avg
+    ];
 }
 
 // parse base64
@@ -52,5 +66,5 @@ if ($base64 = filter_input(INPUT_GET, 'base64')) {
 $title = '';
 $subtitle = '';
 $data = [];
-$date_format = 'M, Y';
-$legend = [0];
+$date_format = 'j.n';
+$legend = [];

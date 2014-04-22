@@ -71,7 +71,7 @@ if ($mode == 'user') {
             }
         }
     }
-    
+
     if (!empty($user_primaries)) {
         // legend
         $sql_query = "SELECT users.name, worlds.short, users.user_id, users.world_id " .
@@ -141,11 +141,7 @@ if ($mode == 'user') {
         while ($change = $changes->fetch_assoc()) {
             $data[$change['world_id']][$change['created_at']] = $change['progress'];
         }
-        
-        // map ksort, faster then order by in sql statement
-        foreach ($data as &$world_data) {
-            ksort($world_data, SORT_NUMERIC);
-        }
+
     } else {
         // graph error no worlds TODO
     }   
@@ -165,15 +161,14 @@ unset($group_data); // break the reference with the last element
 $width = 600;
 $height = 300;
 $margin = [
-    'left'   => 60,
-    'top'    => 30,
-    'right'  => 5,
-    'bottom' => 30
+    40,
+    0,
+    15,
+    0
 ];
 $graph_dimensions_mode = DIMENSIONS_FIXED_GRAPH;
 
 $graph_tick_count_major = 6;
 $graph_tick_count_minor = 12;
-
 // draw graph
 include RAILS_ROOT . '/lib/php/graphs/graphs.scaffold.php';
