@@ -189,6 +189,11 @@ p.no_text {
   max-width: none;
 }
 
+label {
+  cursor: hand; /* IE */
+  cursor: pointer;
+}
+
 /* Links */
 a.back {
   clear: both;
