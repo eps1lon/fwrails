@@ -508,9 +508,7 @@ de:
       achievements: "Errungenschaften"
       caption: "Angezeigt werden alle Errungenschaften, die noch keiner aus %{worlds} erreicht hat."
       closest: "weitester Fortschritt"
-      progress:
-        zero: "kein Fortschritt"
-        other: "%{count} erreicht von %{user}"
+      progress: "%{value} von %{max}"
       head: "unerreichte Errungenschaften"
       human: "unerreicht"
   announced:

@@ -59,7 +59,7 @@ dl#data + a {
     border-width: 0 0 1px 0;
   }
   
-  .achievement {
+  td.achievement {
     vertical-align: middle;
     border-right  : 1px solid black;
     
@@ -138,5 +138,45 @@ h1, h2, h3, h4 {
     caption {
       white-space: nowrap;
     }
+  }
+}
+
+progress.achievement {
+  /* Reset the default appearance */
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  
+  /* general appearance */
+  cursor: help;
+  display: block;
+  height: 1.2em;
+  margin-bottom: .5em;
+  
+  /* color */
+  background-color: #F5F5F5;
+  color: #F5F5F5; /* IE 10 color = background-color */
+  border: 1px solid #333333;
+  
+  /* webkit only */
+  &::-webkit-progress-bar {
+    background-color: #F5F5F5;
+  }
+  
+  &::-webkit-progress-value {
+    background: limegreen;
+  }
+  
+  &::-moz-progress-bar {
+    background: limegreen;
+  }
+  
+  /* display value */
+  &:after {
+    color: black;
+    content: attr(title);
+    display: block;
+    margin-top: -1.1em;
   }
 }

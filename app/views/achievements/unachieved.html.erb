@@ -44,10 +44,14 @@
         </td>
         <td class="closest">
           <% unless @closest[achievement.id].nil? %>
-            <%= t(".progress", :count => number_with_delimiter(@closest[achievement.id].progress),
-                               :user => link_to_user_or_del(@closest[achievement.id].user,
-                                                            @closest[achievement.id].user_id,
-                                                            @closest[achievement.id].world.short)).html_safe %>
+            <progress class="achievement"
+                      title="<%= t ".progress", max: number_with_delimiter(achievement.needed), 
+                                                value: number_with_delimiter(@closest[achievement.id].progress) %>"
+                      value="<%= @closest[achievement.id].progress %>" 
+                      max="<%= achievement.needed %>"></progress>
+            <%=  link_to_user_or_del(@closest[achievement.id].user,
+                                     @closest[achievement.id].user_id,
+                                     @closest[achievement.id].world.short) %>
           <% end %>
         </td>
       </tr>
