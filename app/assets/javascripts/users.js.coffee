@@ -1,15 +1,18 @@
 $(document).ready ->
   $('#achievements li.achievement').mouseover ->
-    achievement_id = $(this).data('achievement_id')
+    $this = $(this)
+    achievement_id = $this.data('achievement_id')
     
     users_achievement = (achievement for achievement in user.achievements when achievement.achievement_id is achievement_id)[0]
+    achievement = users_achievement.achievement || users_achievement.next_stage
     
-    $('#achievements_progress').html l("number", users_achievement.progress)
+    $('#achievements_progress').html l("number", $this.data('progress_value')) + " / " + 
+                                     l("number", $this.data('progress_max'))
     
-    if users_achievement.achievement
-      $('#achievements_caption').html users_achievement.achievement.name
-      $('#achievements_description').html users_achievement.achievement.description
-      $('#achievements_reward').html l("number", users_achievement.achievement.reward)
+    if achievement
+      $('#achievements_caption').html achievement.name
+      $('#achievements_description').html achievement.description
+      $('#achievements_reward').html l("number", achievement.reward)
     
     $('#achievements_data').show 0
   

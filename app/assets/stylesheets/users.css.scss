@@ -75,3 +75,28 @@ a.listimg {
     }
   }
 }
+
+ol#achievements a {
+  margin-bottom: 1px;
+  margin-right: 5px;
+  display: block;
+  position: relative;
+  height: 40px;
+  width: 40px;
+  
+  img {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    
+    &.active {
+      border-left: 5px solid limegreen;
+      z-index: 2;
+    }
+    
+    &.inactive {
+      padding-left: 5px;
+      z-index: 1;
+    }
+  }
+}

@@ -35,10 +35,10 @@ class User < ActiveRecord::Base
   has_many :race_changes, -> { active },
                           :class_name => 'UsersRaceChange',
                           :foreign_key =>[:user_id, :world_id]    
-  has_many :progresses, -> { active },
+  has_many :progresses, -> { active.includes(:achievement, :next_stage) },
                         :class_name => 'UsersAchievements',
                         :foreign_key => [:user_id, :world_id]
-  
+    
   scope :in_clans, -> { where("clan_id != 0") }
   
   def build_world

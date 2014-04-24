@@ -14,7 +14,7 @@ class Achievement < ActiveRecord::Base
            :class_name => 'UsersAchievements',
            :foreign_key => [:achievement_id, :stage]
   has_many :users, :through => :users_achievements
-  
+    
   validates :achievement_id, :numericality => {:greater_than => 0}
   validates :created_at, :presence => true
   validates :max_stage, :numericality => {:greater_than => 0}
@@ -82,6 +82,10 @@ class Achievement < ActiveRecord::Base
     else
       "#{self.gfx}.gif"
     end
+  end
+  
+  def gfx_file_inactive
+    gfx_file.sub /\d+\.gif$/, "0.gif"
   end
   
   def gfx?

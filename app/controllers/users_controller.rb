@@ -57,12 +57,8 @@ class UsersController < ApplicationController
     end
 
     @user = User.includes(:achievement_cache,
-                          :clan_changes, 
                           :experience_changes,
-                          :name_changes,
-                          :progresses,
                           :race,
-                          :race_changes,
                           :registration, 
                           :world).
                  where(:name => params[:name], :world_id => @world).first
@@ -71,7 +67,7 @@ class UsersController < ApplicationController
     end
     
     # achievements
-    @achievements_progresses = @user.progresses.includes(:achievement).order("achievements.name asc")
+    @achievements_progresses = @user.progresses.order("achievements.name asc").references(:achievements)
     
     # changes
     @changes = [

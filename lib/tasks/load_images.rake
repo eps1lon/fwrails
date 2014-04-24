@@ -30,5 +30,22 @@ namespace "load" do
         end         
       }
     end
+    
+    groups.base_stage.find_each do |base|
+      Net::HTTP.start("welt1.freewar.de") { |http|
+        filename = base.gfx_file_inactive
+        resp = http.get("/freewar/images/achiev/#{filename}")
+
+        case resp
+        when Net::HTTPSuccess
+          open("#{path}/#{filename}", "wb") { |file|
+            file.write(resp.body)
+          }
+          puts "successfully loaded #{filename}"
+        else
+          puts "skipped #{filename}"
+        end         
+      }
+    end
   end
 end
