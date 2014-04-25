@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140416175148) do
+ActiveRecord::Schema.define(version: 20140425081833) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -25,7 +25,19 @@ ActiveRecord::Schema.define(version: 20140416175148) do
     t.datetime "created_at"
   end
 
+  create_table "admin_dumps", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "admin_news", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "areas", force: true do |t|
+    t.string   "name"
+    t.integer  "type",       default: 0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -164,6 +176,31 @@ ActiveRecord::Schema.define(version: 20140416175148) do
     t.datetime "updated_at"
   end
 
+  create_table "items", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items_npcs", id: false, force: true do |t|
+    t.integer  "item_id",    default: 0, null: false
+    t.integer  "npc_id",     default: 0, null: false
+    t.integer  "member_id",  default: 0, null: false
+    t.integer  "count"
+    t.integer  "action",     default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "items_places", id: false, force: true do |t|
+    t.integer  "item_id",    default: 0, null: false
+    t.integer  "pos_x",      default: 0, null: false
+    t.integer  "pos_y",      default: 0, null: false
+    t.integer  "count"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "languages", force: true do |t|
     t.string   "country_code"
     t.string   "language_code"
@@ -193,6 +230,7 @@ ActiveRecord::Schema.define(version: 20140416175148) do
     t.integer  "failed_attempts",        default: 0,  null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
+    t.string   "authenticity_token"
   end
 
   add_index "members", ["email"], name: "index_members_on_email", unique: true, using: :btree
@@ -222,20 +260,30 @@ ActiveRecord::Schema.define(version: 20140416175148) do
   end
 
   create_table "npcs", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "strength"
+    t.integer  "live"
+    t.integer  "pos_x",       default: -10, null: false
+    t.integer  "pos_y",       default: -9,  null: false
+    t.integer  "unique_npc",  default: 0,   null: false
+    t.integer  "flags",       default: 0,   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.string   "desc"
-    t.string   "gfx"
-    t.integer  "pos_x"
-    t.integer  "pos_y"
-    t.integer  "unique_npc"
-    t.integer  "live"
-    t.integer  "strength"
-    t.integer  "maxdmg"
-    t.integer  "flags"
-    t.integer  "killcount"
   end
+
+  add_index "npcs", ["pos_x", "pos_y"], name: "index_npcs_on_pos_x_and_pos_y", using: :btree
+
+  create_table "npcs_members", id: false, force: true do |t|
+    t.integer  "npc_id"
+    t.integer  "member_id"
+    t.integer  "chasecount", default: 0, null: false
+    t.integer  "killcount",  default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "npcs_members", ["npc_id", "member_id"], name: "index_npcs_members_on_npc_id_and_member_id", unique: true, using: :btree
 
   create_table "other_changes", id: false, force: true do |t|
     t.integer  "user_id",    null: false
@@ -247,18 +295,33 @@ ActiveRecord::Schema.define(version: 20140416175148) do
   end
 
   create_table "places", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "name"
-    t.string   "desc"
+    t.text     "desc"
     t.string   "gfx"
     t.integer  "pos_x"
     t.integer  "pos_y"
-    t.integer  "flags"
+    t.integer  "flags",      default: 0, null: false
     t.integer  "area_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "places", ["area_id"], name: "index_places_on_area_id", using: :btree
+  add_index "places", ["pos_x", "pos_y"], name: "index_places_on_pos_x_and_pos_y", unique: true, using: :btree
+
+  create_table "places_nodes", id: false, force: true do |t|
+    t.integer  "entry_pos_x"
+    t.integer  "entry_pos_y"
+    t.integer  "exit_pos_x"
+    t.integer  "exit_pos_y"
+    t.string   "via"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "places_nodes", ["entry_pos_x", "entry_pos_y", "exit_pos_x", "exit_pos_y"], name: "unique_node", unique: true, using: :btree
+  add_index "places_nodes", ["entry_pos_x", "entry_pos_y"], name: "by_entry", using: :btree
+  add_index "places_nodes", ["exit_pos_x", "exit_pos_y"], name: "by_exit", using: :btree
 
   create_table "races", force: true do |t|
     t.string   "name"
@@ -317,7 +380,7 @@ ActiveRecord::Schema.define(version: 20140416175148) do
     t.integer  "world_id",   default: 0,  null: false
     t.integer  "clan_id"
     t.integer  "race_id"
-    t.string   "name",       default: ""
+    t.string   "name",       default: "", null: false
     t.integer  "experience", default: 0,  null: false
     t.datetime "created_at"
   end
@@ -374,6 +437,15 @@ ActiveRecord::Schema.define(version: 20140416175148) do
   add_index "users_clan_changes", ["clan_id_new"], name: "index_users_clan_changes_on_clan_id_new", using: :btree
   add_index "users_clan_changes", ["clan_id_old"], name: "index_users_clan_changes_on_clan_id_old", using: :btree
   add_index "users_clan_changes", ["created_at"], name: "index_users_clan_changes_on_created_at", using: :btree
+
+  create_table "users_clan_changes_old", id: false, force: true do |t|
+    t.integer  "user_id",     default: 0,     null: false
+    t.integer  "world_id",    default: 0,     null: false
+    t.integer  "clan_id_old"
+    t.integer  "clan_id_new"
+    t.datetime "created_at",                  null: false
+    t.boolean  "deleted",     default: false, null: false
+  end
 
   create_table "users_deletes", id: false, force: true do |t|
     t.integer  "user_id",    default: 0, null: false
