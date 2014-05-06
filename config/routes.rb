@@ -90,6 +90,10 @@ Freewar3::Application.routes.draw do
           :action => 'achievements', 
           :as => 'achievements',
           :via => [:get, :post] 
+    match '/statistics',
+          action: 'statistics',
+          as: 'statistics',
+          via: [:get, :post]
   end
   
   #news
@@ -100,6 +104,20 @@ Freewar3::Application.routes.draw do
   get '/news/:id', :to => 'home#show', :as => 'news'
   
   get '/spotlights', as: "spotlights", to: "spotlights#show"
+  
+  # slmania
+  scope as: 'slmania', controller: :slmania, path: '/slmania' do
+    root action: 'index', as: 'index'
+    
+    scope path: '/:authenticity_token', as: 'user' do 
+      get '/soul_capsule', action: 'soul_capsule', as: 'soul_capsule'
+      get '/npc/:name',    action: 'evaluate_npc'
+      get '/item/:name',   action: 'evaluate_item'
+      
+      root action: 'list_actions'
+    end
+  end
+  
   
   # single statistic/
   get 'statistic/:name(/:world)', 

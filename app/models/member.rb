@@ -3,6 +3,10 @@ class Member < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable, :registerable, :recoverable, :confirmable
   devise :database_authenticatable, :rememberable, :trackable, :validatable  
   has_many :news
+  has_many :npc_kills, class_name: "npcs_members"
+  
+  scope :slmania_participants, -> { where.not(authenticity_token: nil) }
+  scope :slmania_public, -> { slmania_participants }
   
   ROLES = %w{developer content_admin}.map &:to_sym
 

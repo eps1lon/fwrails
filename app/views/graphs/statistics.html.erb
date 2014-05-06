@@ -1,0 +1,22 @@
+<h2><%= t ".heading" %></h2>
+<%= form_tag(url_for(:mode => params[:mode]), :method => 'POST', :id => 'statistic_graph') do %>
+
+<%= field_set_tag t(".data.heading"), :id => 'data' do %>
+  <%= label_tag "statistic", t(".data.statistic") %>
+  <%= select_tag "statistic",
+                  options_for_select(@statistics_for_select, @data[:statistic]) %>
+  
+  <%= render partial: "data_world" %>
+<% end %>
+
+<%= field_set_tag t("graphs.config.heading"), :id => 'config' do %>
+  <%= render :partial => 'config' %>
+<% end %>
+
+<%= submit_tag t "graphs.create" %>
+<% end %>
+
+<% if @graph_ready %>
+  <%= render partial: 'graph' %>
+<% end %>
+

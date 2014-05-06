@@ -10,6 +10,8 @@ require_once JPGRAPH_INCLUDE . '/jpgraph_date.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_utils.inc.php';
 require_once JPGRAPH_INCLUDE . '/jpgraph_table.php';
 
+$locale = 'de';
+
 if (RAILS_ENV == 'production') {
     JpGraphError::SetErrLocale('de.fwrails');
 }
@@ -66,5 +68,5 @@ if ($base64 = filter_input(INPUT_GET, 'base64')) {
 $title = '';
 $subtitle = '';
 $data = [];
-$date_format = 'j.n';
+$date_format = 'j.n.y';
 $legend = [];

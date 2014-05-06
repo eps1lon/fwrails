@@ -107,4 +107,35 @@ class GraphsController < ApplicationController
       format.html 
     end
   end
+  
+  def statistics
+    # graph ready
+    @graph_ready = true
+    
+    # data for graph
+    @data = {}
+    
+    # for the select tag
+    @world_value = :short
+
+    # Welten
+    @worlds = World.all
+    @worlds_for_select = @worlds.map { |w| [w.name, w[@world_value]] }
+    @worlds_for_select.insert(0, [view_context.t("graphs.achievements.data.world.worlds_all"), 0])
+
+    # searched worlds
+    @data[:worlds] = @worlds.where(@world_value => params[:worlds])
+                                        .collect(&@world_value)
+
+    # all worlds if none selected
+    @data[:worlds] << 0 if @data[:worlds].empty?
+    
+    # statistics
+    @statistics = Statistic.all
+    @statistics_for_select = @statistics.map { |s| [I18n.t("statistics.names.#{s.name}"), s.id] }
+    @data[:statistic] = params[:statistic] if @statistics.collect(&:id).include?(params[:statistic].to_i)
+    
+    # graph ready
+    @graph_ready &&= !@data[:statistic].nil?
+  end
 end

@@ -1,4 +1,4 @@
-<% "achievements".split.each do |action| %>
+<% %w{achievements statistics}.each do |action| %>
   <li><%= link_to t("graphs.#{action}.human"), 
           url_for({:controller => '/graphs', :action => action}) %></li>
 <% end %>
