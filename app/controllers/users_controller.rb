@@ -162,7 +162,7 @@ class UsersController < ApplicationController
   end
   
   def name_change
-    @suggest_limit = 5
+    @suggest_limit = 0
     
     @scope = @scope.where(world_id: @worlds).name_like(@params[:name]).in_recording_period_date(@recording_period)
     
