@@ -20,12 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     
 error_reporting(E_ALL ^ E_DEPRECATED);
 header('Content-Type: application/json; charset=iso-8859-1');
-require_once 'db.php';
+require_once 'db.consts.php';
 
 $ob = array("msg" => "", 
             "what" => array(),
             "plants_logged" => 0,
             "plants_inserted" => 0);
+$now = date("c");
 
 function shutdown () {
     echo json_encode($GLOBALS['ob']);
@@ -70,8 +71,22 @@ function error_query($sql_query) {
     return $result;
 }
 
+function action_($action) {
+    $actions = [
+        "kill" => 1,
+        "chase" => 2
+    ];
+    
+    if (isset($actions[$action])) {
+        return $actions[$action];
+    } else {
+        return 3;
+    }
+}
+
 register_shutdown_function("shutdown");
 
+$starttime = microtime(true);
 $db = mysql_connect(DB_HOST, DB_USER, DB_PASS);
         
 if (!$db) {
@@ -85,15 +100,19 @@ if (!$db) {
     exit;
 }
 
-$sql_query = "SELECT id FROM users WHERE authenticity_token = '" . mysql_real_escape_string($_POST['id'], $db) . "'";
+$sql_query = "SELECT id FROM members WHERE authenticity_token = '" . mysql_real_escape_string($_POST['id'], $db) . "'";
 $result = error_query($sql_query, $db);
-if ($user = mysql_fetch_row($result)) { // User stimmt
+if ($user = mysql_fetch_assoc($result)) { // User stimmt
     // parse msg
-    $log = utf8_encode(stripslashes($_POST['log']));
+    $log = utf8_encode($_POST['log']);
     $log = array_filter(json_decode($log));
-    $length = count($log);
+    $passages = json_decode(utf8_encode($_POST['passages']), true);
+    $places = json_decode(utf8_encode($_POST['places'])); 
+    
+    $length = count($log) + count($places) + count($passages);
 
     if ($length > 0) {
+        $places_changed = 0;
         $inserted = 0;
         $updated = 0;
         $dropcount = 0;
@@ -111,7 +130,8 @@ if ($user = mysql_fetch_row($result)) { // User stimmt
                     if ($item = mysql_fetch_assoc($result)) {
                         $item_id = $item['id'];
                     } else {
-                        $sql_query = "INSERT INTO items (name) VALUES ('" . mysql_real_escape_string($plant, $db) . "')";
+                        $sql_query = "INSERT INTO items (name, created_at, updated_at) " .
+                                        "VALUES ('" . mysql_real_escape_string($plant, $db) . "', '$now', '$now')";
                         mysql_query($sql_query, $db);
                         $item_id = mysql_insert_id($db);
                     }
@@ -120,8 +140,8 @@ if ($user = mysql_fetch_row($result)) { // User stimmt
                     $items[$plant] = $item_id;
                 }
                 
-                $sql_query = "INSERT IGNORE INTO items_places (item_id, pos_x, pos_y) VALUES ".
-                             "('$item_id', '" . $entry->place->x . "', '" . $entry->place->y . "')";
+                $sql_query = "INSERT IGNORE INTO items_places (item_id, pos_x, pos_y, count, created_at, updated_at) VALUES ".
+                             "('$item_id', '" . +$entry->place->x . "', '" . +$entry->place->y . "', '1', '$now', '$now')";
                 mysql_query($sql_query, $db);
                 
                 $ob['plants_inserted'] += mysql_affected_rows($db);
@@ -162,12 +182,12 @@ if ($user = mysql_fetch_row($result)) { // User stimmt
                     }
                 }
 
-                if ($npc_id !== false) { // NPC persistent und/oder schon eingetragen
+                if ($npc_id !== false) { // NPC persistestent und/oder schon eingetragen
                     $sql_query = "UPDATE npcs SET live = '" . (int)$npc->live . "', ".
                                  "strength = '" . (int)$npc->strength . "', ".
-                                 "unique_npc = '" . (int)$npc->unique . "', ".
-                                 "chasecount = chasecount + " . $chaseadd . ", ".
-                                 "killcount = killcount + " . $killadd . "$pos_update_on_update WHERE id = '$npc_id'";
+                                 "unique_npc = '" . ((int)$npc->unique + 1) . "', ".
+                                 "updated_at = '$now' $pos_update_on_update " .
+                                 "WHERE id = '$npc_id'";
                     mysql_query($sql_query, $db);
 
                     $ob['what'][] = "updated: $npc_id (" . utf8_encode($npc->name) . ")";
@@ -182,16 +202,32 @@ if ($user = mysql_fetch_row($result)) { // User stimmt
                         $npc_id = $npc_id[0] - 1;
                     } 
                     $ob['what'][] = "inserted: $npc_id (" . utf8_encode($npc->name) . ")";
-                    $sql_query = "INSERT IGNORE INTO npcs (id, name, live, strength, unique_npc, pos_x, pos_y, killcount, chasecount) VALUES ".
+                    $sql_query = "INSERT IGNORE INTO npcs (id, name, live, strength, unique_npc, pos_x, pos_y, created_at, updated_at) VALUES ".
                                  "('" . $npc_id . "', '" . mysql_real_escape_string($npc->name, $db) . "', ".
                                  "'" . (int)$npc->live . "', '" . (int)$npc->strength . "', ".
-                                 "'" . (int)$npc->unique . "'$pos_update_on_insert, '$killadd', '$chaseadd')";
+                                 "'" . (int)$npc->unique . "'$pos_update_on_insert, '$now', '$now')";
                     mysql_query($sql_query, $db) or die(mysql_error());
 
                     $inserted += mysql_affected_rows($db);
                 } else {
                     $updated += 1;
                 }
+                
+                // npcs_members
+                $sql_query = "UPDATE npcs_members SET ".
+                                "chasecount = chasecount + $chaseadd, " .
+                                "killcount = killcount + $killadd, updated_at = '$now' " .
+                             "WHERE npc_id = '$npc_id' AND member_id = '{$user['id']}'";
+                mysql_query($sql_query, $db) or die(mysql_error());
+                if (!mysql_affected_rows($db)) {
+                    $sql_query = "INSERT INTO npcs_members ".
+                                    "(npc_id, member_id, chasecount, killcount, created_at, updated_at) VALUES (" .
+                                    "'$npc_id', '{$user['id']}', '$chaseadd', " .
+                                    "'$killadd', '$now', '$now')";
+                    mysql_query($sql_query, $db) or die(mysql_error());
+                }
+                
+                
 
                 if (true) {
                     foreach ($log[$i]->drops as $item_name) {
@@ -203,7 +239,8 @@ if ($user = mysql_fetch_row($result)) { // User stimmt
                             if ($item = mysql_fetch_assoc($result)) {
                                 $item_id = $item['id'];
                             } else {
-                                $sql_query = "INSERT INTO items (name) VALUES ('" . mysql_real_escape_string($item_name, $db) . "')";
+                                $sql_query = "INSERT INTO items (name, created_at, updated_at) " .
+                                              "VALUES ('" . mysql_real_escape_string($item_name, $db) . "', '$now', '$now')";
                                 mysql_query($sql_query, $db);
                                 $item_id = mysql_insert_id($db);
                             }
@@ -212,14 +249,17 @@ if ($user = mysql_fetch_row($result)) { // User stimmt
                             $items[$item_name] = $item_id;
                         }
 
-                        $sql_query = "UPDATE items_npcs SET count = count + 1 ".
+                        $sql_query = "UPDATE items_npcs SET count = count + 1, updated_at = '$now' ".
                                      "WHERE npc_id = '$npc_id' AND item_id = '$item_id' ".
-                                     "AND action = '" . $log[$i]->action . "'";
+                                     "AND member_id = '{$user['id']}' " .
+                                     "AND action = '" . action_($log[$i]->action) . "'";
                         mysql_query($sql_query, $db);
 
                         if (mysql_affected_rows($db) < 1) { // neue Drop-Beziehung
-                            $sql_query = "INSERT INTO items_npcs (item_id, npc_id, count, action)".
-                                         " VALUES ('$item_id', '$npc_id', '1', '" . $log[$i]->action . "')";
+                            $sql_query = "INSERT INTO items_npcs (item_id, npc_id, member_id, count, action, created_at, updated_at)".
+                                         " VALUES ('$item_id', '$npc_id', '{$user['id']}', " .
+                                                  "'1', '" . action_($log[$i]->action) . "', " .
+                                                  "'$now', '$now')";
                             mysql_query($sql_query, $db);
                         }
 
@@ -228,15 +268,73 @@ if ($user = mysql_fetch_row($result)) { // User stimmt
                 }
             }
         } 
+        
+        $place_queries = array();
+        foreach ($places as $key => $place) {
+            $pos = explode("|", $key);
+            
+            $pathinfo = explode("/",$place->gfx);
+            $gfx = implode("/", array_slice($pathinfo, array_search("images", $pathinfo) + 1));
+            
+            $place_queries[] = "(" . (int)$pos[0] . ", " . (int)$pos[1] . ", ".
+                               "'" . mysql_real_escape_string(utf8_decode($place->name), $db) . "', ".
+                               "'" . mysql_real_escape_string($gfx, $db) . "', ".
+                               "'" . mysql_real_escape_string(utf8_decode($place->desc), $db) . "', ".
+                               "'" . (int)$place->area_id . "')";
+            
+            
+        }
+        $sql_query = "REPLACE INTO places (pos_x, pos_y, name, gfx, `desc`, area_id) ".
+                     "VALUES " . implode(", ", $place_queries);
+        mysql_query($sql_query, $db);
+        $places_changed += mysql_affected_rows($db);
+        
+        $passage_queries = array();
+        
+        $args = array(
+            'from' => array('flags' => FILTER_FORCE_ARRAY),
+            'to' => array('flags' => FILTER_FORCE_ARRAY),
+            'via' => array('flags' => FILTER_FORCE_ARRAY)
+        );
+        
+        $place_arg = array(
+            'x' => array('filter' => FILTER_VALIDATE_INT,
+                         'options' => array('default' => -9)),
+            'y' => array('filter' => FILTER_VALIDATE_INT,
+                         'options' => array('default' => -10))
+        );
+        
+        foreach ($passages as $passage) {
+            $data = filter_var_array($passage, $args);
+            
+            if (!$data['from'] || !$data['to'] || !$data['via']) {
+                continue;
+            }
 
+            $from = filter_var_array($data['from'], $place_arg);
+            $to = filter_var_array($data['to'], $place_arg);
+            
+            $passage_queries[] = "(" . $from['x'] . ", " . $from['y'] . ", " .
+                                  "" . $to['x'] . ", " . $to['y'] . ", " .
+                                 "'" . mysql_real_escape_string(json_encode($data['via']), $db) . "')";
+            
+            
+        }
+        $sql_query = "REPLACE INTO places_nodes (exit_pos_x, exit_pos_y, entry_pos_x, entry_pos_y, via) ".
+                     "VALUES " . implode(", ", $passage_queries);
+        mysql_query($sql_query, $db);
+        $ob['passages'] = mysql_affected_rows($db);
+        
         $ob['msg'] = true;
         $ob['inserted'] = $inserted;
         $ob['updated'] = $updated;
         $ob['drops'] = $dropcount;
+        $ob['places_changed'] = $places_changed;
     } else {
         $ob['msg'] = "Keien Einträge übermittelt";
     }    
 } else {
-    $ob['msg'] = "User konnte nicht authentifiziert werden";
+    $ob['msg'] = "User konnte nicht authentiziert werden";
 }
 
+$ob['runtime'] = microtime(true) - $starttime;

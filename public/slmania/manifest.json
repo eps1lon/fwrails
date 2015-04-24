@@ -9,9 +9,7 @@
       "images/sign_cacel.png"
   ],
   "permissions": [
-      // hier Host zur zum Backend/Frontend Eintragen
-      // nicht notwendig wenn localhost
-      "http://localhost/" 
+      "http://fwshadow.fwrails.net/" 
   ],
   "icons": {
       "16": "images/icons/16.png",

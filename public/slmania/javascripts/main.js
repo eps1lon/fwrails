@@ -1,7 +1,7 @@
     // Schlüssel des Users (nicht mit Name oder ID verwechseln)
-var AUTHENTICITY_TOKEN = 'test',
+var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
     // Adresse zum Ordner des Tools mit Backend und Frontend
-    SLMANIA_URL = 'http://localhost/';
+    SLMANIA_URL = 'http://fwrails.net/slmania/';
 
 /*jslint devel: true, browser: true, continue: true, nomen: true, regexp: true, maxerr: 50, indent: 4 */
 (function (window, __undefined) {
@@ -9,24 +9,48 @@ var AUTHENTICITY_TOKEN = 'test',
     var $ = window.jQuery,
         attacked_npc,
         container = null,
+        data = (function () {
+            var key_ = function (key) {
+                return ['slmania', key].join('-');
+            };
+            
+            return {
+                get: function (key, init) {
+                    if (init === __undefined) {
+                        init = null;
+                    }
+                    return (JSON.parse(localStorage.getItem(key_(key))) || init);
+                },
+                save: function (key, data) {
+                    return localStorage.setItem(key_(key), JSON.stringify(data));
+                }
+            };
+        })(),
         drops = [],
         hint_msg = '',
-        old_items = JSON.parse(localStorage.getItem('slmania-items')) || {},
+        old_items = JSON.parse(data.get('items')) || {},
         items = {},
         item_id = 0,
-        log = JSON.parse(localStorage.getItem('slmania-log')) || [],
+        log = JSON.parse(data.get('log')) || [],
         log_msg = '',
         matches = [],
-        old_npcs = JSON.parse(localStorage.getItem('slmania-npcs')) || {},
+        old_npcs = JSON.parse(data.get('npcs')) || {},
         npcs = {},
         params = $SERVER.params,
+        passages = data.get('passages', []),
         place = null,
         unique_npcs = {
-            "": -1,
-            "NPC": 0,
-            "Unique-NPC": 1,
-            "Gruppen-NPC": 2
-        };
+            // in db unique_npc + 1
+            "": 0,
+            "Unique-": 1,
+            "Gruppen-": 2,
+            "Interaktions-": 4, // taucht so nicht im Spiel auf. wird nur in db verwendet
+            "Resistenz-": 5,
+            "Superresistenz-": 6
+        },
+        unique_npc_pattern = new RegExp('((' + $.map(unique_npcs, function (_, key) { return key; }).join('|') + ')NPC)'),
+        house = data.get('house', null);
+     
         
     // get position
     container = $('table.areadescription');
@@ -48,6 +72,44 @@ var AUTHENTICITY_TOKEN = 'test',
             place.x = -10;
             place.y = -10;
         }
+    }
+    
+    if (place.x <= -51000 + 20 && place.x >= -51000 - 499 * 43 + 20) {        
+        (function () {
+            var id_offset = 0,
+                id_start = 0,
+                offset_x = Math.round((-place.x - 51000) / 43),
+                offset_y = Math.round((-place.y - 51000) / 43);
+            
+            id_start = offset_y * 500;
+            id_offset = offset_x;
+            
+            house = id_start + id_offset;
+        })();
+        
+        if (params.do === 'go') {
+            passages.push({'from': place, 'to': null, 'via': params});
+            data.save('passages', passages);
+        }
+    } else {
+        house = null;
+    }
+    
+    localStorage.setItem('slmania-house', house);
+    
+    // check if moved via passage
+    if (passages.length && passages[passages.length - 1].to === null) {
+        var diff = {
+                x: Math.abs(passages[passages.length - 1].from.x - place.x),
+                y: Math.abs(passages[passages.length - 1].from.y - place.y)
+            };
+        if (diff.x > 1 || diff.y > 1) {
+            passages[passages.length - 1].to = place;
+        } else if (diff.x == 1 || diff.y == 1) { // just moved
+            passages.splice(passages.length - 1, 1);
+        }
+        
+        data.save('passages', passages);
     }
     
     container = $('p.listusersrow');
@@ -87,8 +149,9 @@ var AUTHENTICITY_TOKEN = 'test',
                     live = -1;
                 }
 
-                matches = content.text().match(/\(((Gruppen-|Unique-|)NPC)\)/);
-
+                //matches = content.text().match(/\(((Gruppen-|Unique-|)NPC)\)/);
+                matches = unique_npc_pattern.exec(content.text());
+                
                 if (matches !== null) {
                     unique = unique_npcs[matches[1]];
                 } else {
@@ -165,7 +228,7 @@ var AUTHENTICITY_TOKEN = 'test',
                 item: item,
                 place: place,
                 action: 'take'
-            }
+            };
 
             hint_msg = item + ' erfasst';
         }
@@ -177,11 +240,11 @@ var AUTHENTICITY_TOKEN = 'test',
     }
     //console.log('log:', log);
 
-    /*
+    //*
     console.log('Items: ', old_items, items);
     console.log('NPCs: ', old_npcs, npcs);
     console.log('place: ', place);
-    */
+    //*/
 
     // Log Interface erstellen
     $('body').prepend($('<div/>', {
@@ -261,7 +324,7 @@ var AUTHENTICITY_TOKEN = 'test',
                             place: log[i].place
                         },
                         drops: []
-                    }
+                    };
                 } else {
                     row = log[i];
                 }
