@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
   
-  before_filter :set_locale, :set_nav_controllers, :set_view_vars
+  before_filter :set_view_vars, :set_nav_controllers
+  before_filter :set_locale
   before_filter :update_cache_location, :staging
   
   # error handler
