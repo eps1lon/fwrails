@@ -8,7 +8,7 @@ class HomeController < ApplicationController
   
   def dumps
     @dumps = Dump.all
-    @dumps = @dumps.public unless current_member.try(:developer)
+    @dumps = @dumps.shared unless current_member.try(:developer)
     
     if params[:path]
       @dumps = @dumps.where(:path => params[:path]).take

@@ -20,5 +20,7 @@ class Place < ActiveRecord::Base
     alias_attribute :pos_y, :exit_pos_y
   end
 
-  
+  def gfx_path
+    "http://welt1.freewar.de/freewar/images/map/#{self.gfx}"
+  end
 end

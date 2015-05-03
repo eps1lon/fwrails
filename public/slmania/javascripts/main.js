@@ -28,13 +28,13 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
         })(),
         drops = [],
         hint_msg = '',
-        old_items = JSON.parse(data.get('items')) || {},
+        old_items = data.get('items', {}),
         items = {},
         item_id = 0,
-        log = JSON.parse(data.get('log')) || [],
+        log = data.get('log', []),
         log_msg = '',
         matches = [],
-        old_npcs = JSON.parse(data.get('npcs')) || {},
+        old_npcs = data.get('npcs', {}),
         npcs = {},
         params = $SERVER.params,
         passages = data.get('passages', []),
@@ -50,7 +50,6 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
         },
         unique_npc_pattern = new RegExp('((' + $.map(unique_npcs, function (_, key) { return key; }).join('|') + ')NPC)'),
         house = data.get('house', null);
-     
         
     // get position
     container = $('table.areadescription');
@@ -95,7 +94,7 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
         house = null;
     }
     
-    localStorage.setItem('slmania-house', house);
+    data.save('house', house);
     
     // check if moved via passage
     if (passages.length && passages[passages.length - 1].to === null) {
@@ -134,8 +133,9 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
                 id = parseInt(idlink.href.slice(idlink.href.search('act_npc_id=')).replace(/act_npc_id=/, ''), 10);
 
                 name = $('b:first', content).text().trim();
-
-                matches = content.text().match(/Angriffsst.rke: (\d+)/);
+                
+                // probleme mit sonderzeichen in "stärke". kein konsistentes pattern gefunden
+                matches = content.text().match(/(\d+)\.\s*$/);
                 if (matches !== null) {
                     strength = +matches[1];
                 } else {
@@ -149,13 +149,13 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
                     live = -1;
                 }
 
-                //matches = content.text().match(/\(((Gruppen-|Unique-|)NPC)\)/);
-                matches = unique_npc_pattern.exec(content.text());
+                //matches = content.text().match(/\(((Gruppen-|Unique-|)NPC)\)/); //matches[1]
+                matches = unique_npc_pattern.exec(content.text()); //matches[2]
                 
                 if (matches !== null) {
-                    unique = unique_npcs[matches[1]];
+                    unique = unique_npcs[matches[2]];
                 } else {
-                    unique = 0;
+                    unique = -1;
                 }
 
                 //console.log(id, name, strength, live);
@@ -240,11 +240,39 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
     }
     //console.log('log:', log);
 
-    //*
+    /*
     console.log('Items: ', old_items, items);
     console.log('NPCs: ', old_npcs, npcs);
     console.log('place: ', place);
     //*/
+      
+      // Ort Verarbeitung 
+    if (place !== null) {
+        if (house !== null) {
+            (function () {
+                var key = place.x + '|' + place.y,
+                    places = data.get('places', {}),
+                    desc = '';
+                
+                $('table.areadescription td.areadescription').contents().each(function () {
+                    if (this.nodeType == 3) {
+                        desc += $(this).text();
+                    } else if ($(this).hasClass('editcaption')) { // break vor den uk gegenständen
+                        return false;
+                    }
+                });
+                
+                places[key] = {
+                  area_id: house,
+                  desc: $.trim(desc),
+                  gfx: $('#mainmapx' + place.x + 'y' + place.y).attr('src'),
+                  name: $('table.areadescription td.mainheader').text().trim()
+                };
+                
+                data.save('places', places);
+            })();
+        }
+    }
 
     // Log Interface erstellen
     $('body').prepend($('<div/>', {
@@ -258,37 +286,42 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
         href: '#',
         style: 'background-image: url(' + chrome.extension.getURL('images/save_labled_go.png') + ') !important;',
         click: function () {
-            if (log.length === 0) {
-                $('#slmania-hint').text('Keine Einträge gefunden');
-            } else {
-                $.ajax({
-                    url: SLMANIA_URL + 'backend/entry.php',
-                    type: 'POST',
-                    data: 'id=' + escape(AUTHENTICITY_TOKEN) + "&log=" + escape(JSON.stringify(log)),
-                    dataType: 'json',
-                    complete: function (data) {
-                        var msg = "";
-                        console.log(data.responseText);
-                        data = JSON.parse(data.responseText);
-                        console.log(data);
+            var passages = data.get('passages', []),
+                places = data.get('places', {});
+            
+            $.ajax({
+                url: SLMANIA_URL + 'backend/entry.php',
+                type: 'POST',
+                data: 'id=' + escape(AUTHENTICITY_TOKEN) + "&log=" + escape(JSON.stringify(log)) + 
+                      "&places=" + escape(JSON.stringify(places)) +
+                      "&passages=" + escape(JSON.stringify(passages)),
+                dataType: 'json',
+                complete: function (xhr) {
+                    var msg = "", json;
+                    console.log(xhr.responseText);
+                    json = JSON.parse(xhr.responseText);
+                    console.log(json);
 
-                        if (typeof data.msg === 'string') {
-                            msg = data.msg;
-                        } else {
-                            log = [];
-                            localStorage.setItem('slmania-log', JSON.stringify(log));
-                            msg = data.inserted + " neu, " + data.updated + " updated";
-                        }
-
-                        $('#slmania-hint').text(msg);
-                        $('#slmania-hint').removeClass('slmania-timeout');
+                    if (typeof json.msg === 'string') {
+                        msg = json.msg;
+                    } else {
+                        log = [];
+                        localStorage.setItem('slmania-log', JSON.stringify(log));
+                        data.save('places', null);
+                        data.save('passages', null);
+                        
+                        msg = json.inserted + " neu, " + json.updated + " updated, " + 
+                              json.places_changed + " places";
                     }
-                }).fail(function () {
-                    $('#slmania-hint').text('Kritischer Fehler');
+
+                    $('#slmania-hint').text(msg);
                     $('#slmania-hint').removeClass('slmania-timeout');
-                    console.log(this);
-                });
-            }
+                }
+            }).fail(function () {
+                $('#slmania-hint').text('something went terribly wrong');
+                $('#slmania-hint').removeClass('slmania-timeout');
+                console.log(this);
+            });
         }
     }), $('<a/>', {
         id: 'slmania-show',

@@ -72,7 +72,7 @@ class ApplicationController < ActionController::Base
   
   private
   def set_nav_controllers
-    @controllers = %w{users clans graphs achievements}
+    @controllers = %w{users clans graphs achievements npcs}
   end
   
   def set_locale

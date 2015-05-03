@@ -1,3 +1,3 @@
 class Stock < ActiveRecord::Base
-  has_many :changes, :class_name => 'StockChanges'
+  has_many :diffs, :class_name => 'StockChanges'
 end

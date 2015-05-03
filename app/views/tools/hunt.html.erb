@@ -1,0 +1,55 @@
+<div id="npc_form">
+  <%= render partial: "npc_form", locals: {npc: Npc.new} %>
+</div>
+
+<div id="map_wrapper">
+  <% %i(y x).each do |coord| %>
+    <ol id="<%= coord %>_grid">
+      <%= @range[coord].collect { |val| content_tag :li, val }.join.html_safe %>
+    </ol>
+  <% end %>
+
+  <div id="map" style="height: <%= (@radius[:x] * 2 + 1) * 50 %>px; 
+                       width: <%= (@radius[:y] * 2 + 1) * 50 %>px;">
+    <% @places.each do |place| %>
+      <%= image_tag place.gfx_path, 
+                    class: "place",
+                    data: {x: place.pos_x, y: place.pos_y},
+                    style: "top: #{(place.pos_y - @pos[:y] + 2) * 50}px; " +
+                           "left: #{(place.pos_x - @pos[:x] + 2) * 50}px;" %>
+    <% end %>
+  </div>
+</div>
+
+
+<ul id="npcs"></ul>
+
+<div id="options">
+  <%= label_tag :plunder_stage, "Plünderung" %>
+  <%= select_tag "plunder_stage", options_for_select(0..30) %>
+  
+  <%= label_tag :chase_stage, "Verjagen" %>
+  <%= select_tag "chase_stage", options_for_select(0..100) %>
+  
+  <%= field_set_tag "global drops" do %>
+    <div class="drop">
+      <%= form_for DropsNpc.new, url: '' do |f| %>
+        <%= render partial: 'drop_form', locals: {form: f} %>
+      <% end %>
+    </div>
+  
+    <div class="actions">
+      <%= button_tag "add", class: "add_drop" %>
+    </div>
+  <% end %>
+</div>
+
+<%= button_tag "calculate", id: "calculate" %>
+
+<div id="result">
+  
+</div>
+
+<script type="text/javascript">
+  var npcs = <%= @npcs.to_json(include: :drops).html_safe %>;
+</script>

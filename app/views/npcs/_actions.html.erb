@@ -1,0 +1,3 @@
+<% "index api".split.each do |action| %>
+  <li><%= link_to t("npcs.#{action}.human"), url_for({:controller => '/npcs', :action => action}) %></li>
+<% end %>

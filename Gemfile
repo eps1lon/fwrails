@@ -1,13 +1,18 @@
 source 'http://rubygems.org'
 
-gem 'rails', '~> 4.0'
+gem 'rails', "~> 4.1.4"
 gem 'passenger', "~> 4.0.37 "
 
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', "~> 0.3.15"
-gem "composite_primary_keys", "~> 6.0.1"
+#gem "composite_primary_keys", "~> 6.0.1"
+# http://stackoverflow.com/questions/11023167/no-such-file-to-load-active-record-associations-has-and-belongs-to-many-associat/23142066#23142066
+gem 'composite_primary_keys', {
+  :git => 'git://github.com/composite-primary-keys/composite_primary_keys.git',
+  :branch => 'ar_4.1.x'
+}
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,7 +31,7 @@ gem 'jquery-ui-rails', "~> 4.1.1"
 gem "i18n-js", "~> 2.1.2"
 
 # Deploy with Capistrano
-gem 'capistrano', '~> 3.0', require: false, group: :development
+gem 'capistrano', '=3.1', require: false, group: :development
 
 group :development do
   gem 'capistrano-rails',   '~> 1.1', require: false

@@ -1,0 +1,41 @@
+#map_wrapper {
+  & + * {
+    clear: both;
+  }
+  
+  #x_grid {
+    float: left;
+    position: relative;
+    
+    li {
+      display: inline-block;
+      text-align: center;
+      width: 50px;
+    }
+  }
+  
+  #y_grid {
+    float: left;
+    padding-top: 1em;
+    
+    li {
+      height: 50px;
+      width: 50px;
+      
+      line-height: 50px;
+      text-align: right;
+    }
+  }
+  
+  #map {
+    position: relative;
+    left: 50px;
+    top: 1em;
+
+    .place {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+    }
+  }
+}

@@ -1,13 +1,13 @@
 class Statistic < ActiveRecord::Base
   attr_accessor :last_change
-  has_many :changes, :class_name => 'StatisticChange' do
+  has_many :diffs, :class_name => 'StatisticChange' do
     def last
       order("created_at desc").limit(1).take
     end
   end
   
   def last_change
-    @last_change || changes.last
+    @last_change || diffs.last
   end
   
   def world_grouped
@@ -28,7 +28,7 @@ class Statistic < ActiveRecord::Base
     
     # self.includes(:last_change) much slower than calling this relation within each statistic
     stats + self.all.each do |stat|
-      stat.last_change = stat.changes.where(world_id: options[:in_worlds]).last
+      stat.last_change = stat.diffs.where(world_id: options[:in_worlds]).last
     end
   end
   

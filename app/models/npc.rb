@@ -1,22 +1,61 @@
 class Npc < ActiveRecord::Base
   belongs_to :place, foreign_key: [:pos_x, :pos_y],
                      primary_key: [:pos_x, :pos_y]
+  enum unique_npc: {npc: 1, unique_npc: 2, group_npc: 3, unknown: 4, passiv: 5, resistance: 6, superresistance: 7}
   
+  has_many :drops, class_name: "DropsNpc",
+                   foreign_key: :npc_id
   
-  scope :slmania_list, -> { where.not(Slmania::Conditions.bloodnpcs[:all]).
-                            where.not(Slmania::Conditions.shadowcreatures[:all]).
+  scope :in_ressurect_range, ->(x, y) { where(pos_x: (x-2)..(x+2), pos_y: (y-2)..(y+2)) }
+  
+  scope :slmania_list, -> { where.not(Npc::Conditions.bloodnpcs[:all]).
+                            where.not(Npc::Conditions.shadowcreatures[:all]).
                             group(:name).order(:name) }
   
+  scope :persistent_npcs, -> { where.not(Npc::Conditions.bloodnpcs[:all]).
+                               where.not(Npc::Conditions.shadowcreatures[:all]).
+                               where.not(Npc::Conditions.dancer).
+                               where.not(Npc::Conditions.servant).
+                               order(:id)
+                               }
+  
+  module Conditions
+    def self.table
+      Npc.arel_table
+    end
+    
+    def self.bloodnpcs
+      npcs = Npc.arel_table
+      {
+        :all => npcs[:id].lt(0).
+                and(npcs[:unique_npc].gt(1)).
+                and(Arel::Nodes::NamedFunction.new("LOCATE", ['-', npcs[:name]]).gt(0))   
+      }
+    end
+    
+    def self.shadowcreatures
+      npcs = Npc.arel_table
+      types = {all: npcs[:id].lt(0).and(npcs[:name].matches("Schattenkreatur %"))}
+      Npc.group(:unique_npc).each do |npc|
+        types[npc.unique_npc] = types[:all].and(npcs[:unique_npc].eq(npc.unique_npc))
+      end
+      types
+    end
+    
+    def self.dancer
+      table[:id].lt(0).and(table[:name].matches("Tänzerin von %"))
+    end
+    
+    def self.servant
+      table[:id].lt(0).and(table[:name].matches("Diener von %"))
+    end
+    
+    def self.npc(name)
+      {name => Npc.arel_table[:name].eq(name)}
+    end
+  end
+  
   FLAGS = [:aggressive]
-  UNIQUE_NPC = {
-    1 => :npc,
-    2 => :unique_npc,
-    3 => :group_npc,
-    4 => :unknown,
-    5 => :passiv,
-    6 => :resistence,
-    7 => :superresistence
-  }
   
   def flags
     FLAGS.reject do |r|
@@ -26,14 +65,6 @@ class Npc < ActiveRecord::Base
   
   def flags=(flags)
     self['flags'] = (flags & FLAGS).map { |r| 2**FLAGS.index(r) }.inject(0, :+)
-  end
-  
-  def unique_npc
-    UNIQUE_NPC[self['unique_npc']]
-  end
-  
-  def unique_npc=(unique_npc)
-    self['unique_npc'] = UNIQUE_NPC.index_at(unique_npc) || 4
   end
   
   def self.letters

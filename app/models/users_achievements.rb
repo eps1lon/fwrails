@@ -15,8 +15,8 @@ class UsersAchievements < ActiveRecord::Base
                      :primary_key => :achievement_id
   belongs_to :user, :foreign_key => [:user_id, :world_id]
   belongs_to :world
-  has_many :changes, :class_name => 'UsersAchievementsChange',
-                     :primary_key => :achievement_id
+  has_many :diffs, :class_name => 'UsersAchievementsChange',
+                   :primary_key => :achievement_id
   
   on_deleted_nullify_relation :user
   

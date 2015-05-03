@@ -1,9 +1,14 @@
-﻿<?php
-// Host der Datenbank
-define('DB_HOST', 'localhost');
-// Benutzer benötigte CREATE, SELECT, INSERT, UPDATE rechte
-define('DB_USER', 'root');
-// Passwort des Benutzers
-define('DB_PASS', 'select11');
-// Name der Datenbank (muss vor der Installation manuell erstellt werden)
-define('DB_NAME', 'stellari_freewar3_prduction');
+<?php
+require_once 'db.consts.php';
+$db = mysql_connect(DB_HOST, DB_USER, DB_PASS);
+        
+if (!$db) {
+    $ob['msg'] = "Verbindung fehlgeschlagen";
+    exit;
+}
+
+mysql_select_db(DB_NAME, $db);
+if (!$db) {
+    $ob['msg'] = "Verbindung fehlgeschlagen";
+    exit;
+}

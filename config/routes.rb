@@ -1,4 +1,8 @@
 Freewar3::Application.routes.draw do 
+  get 'npcs/index'
+
+  get 'npcs/show'
+
   devise_for :members,
              controllers: {
                sessions: "sessions"
@@ -103,13 +107,17 @@ Freewar3::Application.routes.draw do
       }
   get '/news/:id', :to => 'home#show', :as => 'news'
   
+  # npcs
+  get '/npcs/api(.:format)', :to => 'npcs#api', :as => 'npcs_api'
+  resources :npcs, only: [:index, :show]
+  
   get '/spotlights', as: "spotlights", to: "spotlights#show"
   
   # slmania
   scope as: 'slmania', controller: :slmania, path: '/slmania' do
     root action: 'index', as: 'index'
     
-    scope path: '/:authenticity_token', as: 'user' do 
+    scope path: '/:id', as: 'user' do 
       get '/soul_capsule', action: 'soul_capsule', as: 'soul_capsule'
       get '/npc/:name',    action: 'evaluate_npc'
       get '/item/:name',   action: 'evaluate_item'
@@ -118,6 +126,7 @@ Freewar3::Application.routes.draw do
     end
   end
   
+  get '/tools/hunt', to: 'tools#hunt'
   
   # single statistic/
   get 'statistic/:name(/:world)', 
@@ -148,7 +157,7 @@ Freewar3::Application.routes.draw do
  
   # adminpanel
   namespace :admin do 
-    resources :achievements, :dumps, :members, :news, :races, :worlds
+    resources :achievements, :dumps, :members, :npcs, :news, :races, :worlds
     root :to => 'base#index'
   end
   

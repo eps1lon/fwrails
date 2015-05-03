@@ -1,0 +1,27 @@
+<h1><%= t ".heading" %></h1>
+<p><%= t "npcs.api.disclaimer" %></p>
+<table>
+  <caption><%= t ".table.caption" %></caption>
+  <thead>
+    <tr>
+      <th><%= Npc.human_attribute_name(:id) %></th>
+      <th><%= Npc.human_attribute_name(:name) %></th>
+      <th><%= Npc.human_attribute_name(:unique_npc) %></th>
+      <th><%= Npc.human_attribute_name(:strength) %></th>
+      <th><%= Npc.human_attribute_name(:live) %></th>
+      <th><%= t ".table.position" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @npcs.each do |npc| %>
+    <tr>
+      <td><%= npc.id %></td>
+      <td><%= npc.name %></td>
+      <td><%= t "npcs.unique_npc.#{npc.unique_npc}" %></td>
+      <td><%= number_with_delimiter npc.strength %></td>
+      <td><%= number_with_delimiter npc.live %></td>
+      <td><%= position_text(npc) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -32,6 +32,4 @@ Freewar3::Application.configure do
   config.assets.raise_runtime_errors = true
   
   config.action_mailer.default_url_options = { :host => 'localhost:8001' }
-  
-  config.eager_load = true
 end

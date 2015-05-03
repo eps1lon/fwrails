@@ -1,0 +1,14 @@
+<h1><%= t ".heading" %></h1>
+
+<% if member_signed_in? %>
+  <%= link_to ".own_profile", slmania_user_root_url(current_member.id, action: 'list_actions') %>
+<% else %>
+  <%= t ".no_profile" %>
+<% end %>
+
+<h2><%= t ".public_profiles" %></h2>
+<ul>
+  <% @slmania_users.each do |user| %>
+  <li><%= link_to user.name, slmania_user_root_url(user.id, action: 'list_actions') %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,29 @@
+<h1><%= t ".heading", name: @slmania_user.name %></h1>
+<ul id="slmania_actions" class="nav">
+  <li><%= link_to t(".soul_capsule"), slmania_user_soul_capsule_path(@slmania_user.id) %></li>
+</ul>
+
+<ol class="nav alphabetic">
+  <% @alphanumerics.each do |char| %>
+  <li><%= link_to char, "#letter_#{char}" %></li>
+  <% end %>
+</ol>
+
+<ol class="letters">
+  <% letter = nil %>
+  <% @entities.each do |entity| %>
+    <% if entity.name[0].downcase != letter %>
+      <%= "</ol></li>".html_safe unless letter.nil? %>
+      <li>
+        <a name="letter_<%= entity.name[0].downcase %>"></a>
+        <ol class="entities">
+    <% end %>
+    <li>
+      <%= link_to entity.name, slmania_user_path(@slmania_user.id, 
+                                                action: "evaluate_#{entity.class.to_s.downcase}", 
+                                                name: entity.name) %>
+    </li>
+    
+    <% letter = entity.name[0].downcase %>
+  <% end %>
+</ol>

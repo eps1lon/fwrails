@@ -376,6 +376,17 @@ de:
         ratings: "Bewertungen"
         status: "Status"
         updated_at: "Letztes Update"
+      npc:
+        id: "NPC-ID"
+        name: "Name"
+        description: "Beschreibung"
+        pos_x: "X"
+        pos_y: "Y"
+        strength: "Stärke"
+        live: "LP"
+        unique_npc: "Art"
+        created_at: "erste Sichtung"
+        updated_at: "letztes Update"
       news:
         content: "Inhalt"
         created_at: "geschrieben am"
@@ -760,6 +771,72 @@ de:
       fwshop: "FreeWar Shoppreise"
       fwwiki: "FWWiki.de - FreeWar-Enzyklopädie"
       snigg: "Snigg's FWTools"
+  npcs:
+    human: "NPCs"
+    unique_npc:
+      npc: "NPC"
+      unique_npc: "Unique-NPC"
+      group_npc: "Gruppen-NPC"
+      unknown: "Unbekannt"
+      passiv: "Unangreifbar"
+      resistance: "Resistenz-NPC"
+      superresistance: "Superresisitenz-NPC"
+    index:
+      human: "Übersicht"
+      heading: "Übersicht"
+      table:
+        caption: "komplette NPC-Liste"
+        position: "Position"
+    api:
+      human: "API"
+      heading: "NPC API"
+      disclaimer: "Bei der Benutzung der NPC-Liste gibt es einiges zu beachten: 
+                   Die NPCs werden aktuell nur von mir erfasst. Gerade bei neuen Gebieten
+                   kann es also eine Weile dauern. Invasions-NPC werden vom System
+                   auf den NPC-Abstellplatz gestellt und dann kopiert. Ich kann
+                   also nicht genau feststellen was die ID des Ur-NPCs ist. Invasions-NPCs 
+                   haben daher oft eine negative ID. Zudem könnt ihr die Liste in verschiedenen 
+                   Formaten über eine API abrufen."
+      howto_heading: "HowTo"
+      parameters_explanation: "Die folgenden Parameter kann die API verarbeiten:"
+      parameters_table:
+        name: "Parameter"
+        description: "Beschreibung"
+        parameters: 
+          id: "ID(s) des gesuchten NPCs. Mehrfachnennung möglich."
+          name: "Name(n) des des gesuchten NPCs. Mehrfachnennung möglich."
+          x: "X-Position"
+          x_range: "X-Radius"
+          y: "Y-Position"
+          y_range: "Y-Radius"
+          unique_npc: "NPC-Art"
+      parameters_multiple: "Mehrfachnennung abgrenzen mit"
+      formats:
+        heading: "Formate"
+      examples:
+        heading: "Beispiele"
+        unique_npc:
+          heading: "nach NPC-Art"
+          explanation: "Alle Gruppen-NPC"
+          table:
+            caption: "Übersicht der verwendeten NPC-Arten"
+            parameter_value: "Parameterwert"
+            desc: "Art"
+        ressurect: 
+          heading: "NPC in Kartenausschnitt"
+          explanation: "alle NPC im Radius von 2 Feldern um X: 92 Y: 105"
+        rats:
+          heading: "nach Namen"
+          explanation: "alle Klauenratten und Wühlratten"
+        combination:
+          heading: "Kombination von Parametern"
+          explanation: "Alle Goldballenwürmer im Radius von 2 Feldern um X: 37 Y: 97"
+      example_npc_row: "Beispiel-NPC"
+      missing_id_explanation: "bedeutet, dass mindestens eine vorangegangene NPC-ID noch nicht erfasst wurde.
+                               Es kann aber auch sein, dass kein NPC mit dieser ID existiert. 
+                               Funktioniert nur, wenn aufeinanderfolgende IDs ausgegeben werden."
+      list_heading: "NPC-Liste"
+      position: "Position"
   sessions:
     human: "Session"
     new:
@@ -821,6 +898,9 @@ de:
         achievement_id_39: "zerhackten Schotterwurmsegmenten"
         achievement_id_40: "gewonnenen Goldmünzen im Casino"
         achievement_id_41: "verlorenen Goldmünzen im Casino"
+        achievement_id_42: "geerntete Kleinpflanzen"
+        achievement_id_43: "erhaltenes Bonugold"
+        achievement_id_44: "erstellte Wunderstäbe"
         UsersClanChange: "Clanänderungen"
         UsersNameChange: "Nickwechseln"
         UsersRaceChange: "Rassenwechseln"

@@ -1,0 +1,96 @@
+<h1><%= t ".heading" %></h1>
+<p><%= t ".disclaimer" %></p>
+
+<h2><%= t ".howto_heading" %></h2>
+<p><%= t ".parameters_explanation" %></p>
+<table>
+  <thead>
+    <tr>
+      <th><%= t ".parameters_table.name" %></th>
+      <th><%= t ".parameters_table.description" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <%  @api_parameters.each do |parameter| %>
+    <tr>
+      <td><code><%= parameter %></code></td>
+      <td><%= t ".parameters_table.parameters.#{parameter}" %></td>
+    </tr>
+     <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= t ".parameters_multiple" %> 
+  <em id="parameters_multiple_delimiter"><%= @delimiter %></em>
+</p>
+
+<h3><%= t ".formats.heading" %></h3>
+<ul id="api_formats">
+  <% @formats.each do |format| %>
+  <li><%= format %></li>
+  <% end %>
+</ul>
+
+<h2><%= t ".examples.heading" %></h2>
+<h3><%= t ".examples.unique_npc.heading" %></h3>
+<code class="api_example"><%= npcs_api_url(format: 'json', params: {unique_npc: Npc.unique_npcs[:unique_npc]}) %></code>
+<p><%= t ".examples.unique_npc.explanation" %></p>
+<table id="unique_npc_overview">
+  <caption><%= t ".examples.unique_npc.table.caption" %></caption>
+  <thead>
+    <tr>
+      <th><%= t ".examples.unique_npc.table.parameter_value" %></th>
+      <th><%= t ".examples.unique_npc.table.desc" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% Npc.unique_npcs.each do |unique_npc| %>
+    <tr>
+      <td><%= unique_npc[1]  %></td>
+      <td><%=  t "npcs.unique_npc.#{unique_npc[0]}" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h3><%= t ".examples.ressurect.heading" %></h3>
+<code class="api_example"><%= npcs_api_url(format: 'json', params: {x: 92, y: 105, x_range: 2, y_range: 2}) %></code>
+<p><%= t ".examples.ressurect.explanation" %></p>
+
+<h3><%= t ".examples.rats.heading" %></h3>
+<code class="api_example"><%= npcs_api_url(format: 'json', params: {name: %w{Klauenratte Wühlratte}.join(@delimiter)}) %></code>
+<p><%= t ".examples.rats.explanation" %></p>
+
+<h3><%= t ".examples.combination.heading" %></h3>
+<code class="api_example"><%= npcs_api_url(format: 'json', params: {name: ['alter Goldballenwurm', 'knurrender Goldballenwurm', 'Goldballenwurm', 'dickhäutiger Goldballenwurm'].join(@delimiter), x: 37, y: 97, x_range: 2, y_range: 2}) %></code>
+<p><%= t ".examples.combination.explanation" %></p>
+
+<h2><%= t ".list_heading" %></h2>
+<p><span class="missing_npc_id"><%= t ".example_npc_row" %></span> <%= t ".missing_id_explanation" %></p>
+<table>
+  <thead>
+    <tr>
+      <th><%= Npc.human_attribute_name(:id) %></th>
+      <th><%= Npc.human_attribute_name(:name) %></th>
+      <th><%= Npc.human_attribute_name(:unique_npc) %></th>
+      <th><%= Npc.human_attribute_name(:strength) %></th>
+      <th><%= Npc.human_attribute_name(:live) %></th>
+      <th><%= t ".position" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% old_id = @npcs[0].id unless @npcs.empty? %>
+    <% @npcs.each do |npc| %>
+    <tr>
+      <td class="<%= "missing_npc_id" if old_id + 1 != npc.id && npc.id > 1 %>"><%= npc.id %></td>
+      <td><%= npc.name %></td>
+      <td><%= t "npcs.unique_npc.#{npc.unique_npc}" %></td>
+      <td><%= number_with_delimiter npc.strength %></td>
+      <td><%= number_with_delimiter npc.live %></td>
+      <td><%= position_text(npc) %></td>
+      <% old_id = npc.id %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

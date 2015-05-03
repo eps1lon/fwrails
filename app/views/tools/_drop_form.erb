@@ -1,0 +1,18 @@
+<div class="field">
+  <%= form.label :drop_id, "drop_id" %>
+  <%= form.text_field "drop_id" %>
+</div>
+
+<div class="field">
+  <%= form.label :chance, "chance" %>
+  <%= form.number_field "chance" %>
+</div>
+
+<div class="field">
+  <%= label_tag :value, "value" %>
+  <%= number_field_tag :value %>
+</div>
+
+<div class="actions">
+  <%= form.button "remove", type: "button", class: "remove_drop" %>
+</div>

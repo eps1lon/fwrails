@@ -1,0 +1,52 @@
+<%= form_for npc do |f| %>
+  <%= f.hidden_field :id %>
+
+  <div class="field">
+    <%= f.label :name, "name" %>
+    <%= f.text_field "name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pos_x, "pos_x" %>
+    <%= f.number_field "pos_x" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :pos_y, "pos_y" %>
+    <%= f.number_field "pos_y" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :strength, "strength" %>
+    <%= f.number_field "strength" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :live, "live" %>
+    <%= f.number_field "live" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gold, "gold" %>
+    <%= number_field(:npc, "gold") %>
+  </div> 
+
+  <%= field_set_tag "Drops" do %>
+    <div class="association drop">
+      <%= f.fields_for :drop do |ff| %>
+        <%= render partial: 'drop_form', locals: {form: ff} %>
+      <% end %>
+    </div>
+    
+    <div class="actions">
+      <%= button_tag "add", class: "add_drop" %>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.button "dupe", type: "button", id: "npc_dupe" %>
+    <%= f.button "save", type: "button", id: "npc_save" %>
+    <%= f.button "remove", type: "button", id: "npc_remove" %>
+    <%= f.button "add", type: "button", id: "npc_add" %>
+  </div>
+<% end %>

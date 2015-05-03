@@ -1,0 +1,28 @@
+<%= debug @evaluations %>
+<% @evaluations.each do |group_name, evaluation| %>
+  <dl>
+    <% evaluation[:npcs][:counts].each do |action, count| %>
+      <dt><%= NpcsMember.human_attribute_name("#{action}count") %></dt>
+      <dd><%= number_with_delimiter count %></dd>
+    <% end %>
+  </dl>
+  <table class="slmania evaluation" id="<%= group_name.parameterize %>">
+  <caption><%= group_name %></caption>
+  <thead>
+    <tr>
+      <th><%= t ".drop.name" %></th>
+      <th><%= t ".drop.count" %></th>
+      <th><%= t ".drop.action" %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% evaluation[:drops].each do |drop| %>
+    <tr>
+      <td><%= drop.item.try(:name) || drop.item_id %></td>
+      <td><%= drop.count %></td>
+      <td><%= drop.action %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  </table>
+<% end %>

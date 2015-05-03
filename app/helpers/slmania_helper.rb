@@ -1,0 +1,2 @@
+module SlmaniaHelper
+end

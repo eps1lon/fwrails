@@ -1,5 +1,5 @@
 class Dump < ActiveRecord::Base
-  scope :public, -> { where(public: true) }
+  scope :shared, -> { where(public: true) }
   
   def children
     return system_path.children(false) if subs?

@@ -38,5 +38,10 @@ module Freewar3
     config.assets.version = '1.0'
     
     config.autoload_paths += Dir["#{config.root}/lib/**/"] # TODO
+    
+    # remove in Rails 4.1
+    config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']
+    
+    config.eager_load = true
   end
 end

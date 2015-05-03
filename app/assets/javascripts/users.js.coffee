@@ -25,8 +25,8 @@ $(document).ready ->
       $.getJSON url, (data) ->
         #console.log data
         for user in data
-            world = (world for world in worlds when world.id is user.world_id)[0]['short']
-            users.push {value: user.name, label: user.name_primary, world: world}
+          world = (world for world in worlds when world.id is user.world_id)[0]['short']
+          users.push {value: user.name, label: user.name_primary, world: world}
           response users
         set_loading false
     focus: (event, ui) ->

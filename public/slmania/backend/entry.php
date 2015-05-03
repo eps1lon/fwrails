@@ -1,26 +1,28 @@
 <?php
 // Allow from any origin
 if (isset($_SERVER['HTTP_ORIGIN'])) {
-    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+    header('Access-Control-Allow-Origin: ' . filter_input(INPUT_SERVER, 'HTTP_ORIGIN'));
     header('Access-Control-Allow-Credentials: true');
     header('Access-Control-Max-Age: 86400');    // cache for 1 day
 }
 
 // Access-Control headers are received during OPTIONS requests
-if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+if (filter_input(INPUT_SERVER, 'REQUEST_METHOD') == 'OPTIONS') {
 
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_METHOD']))
-        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");         
+    if (filter_input(INPUT_SERVER, 'HTTP_ACCESS_CONTROL_REQUEST_METHOD')) {
+        header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+    }
 
-    if (isset($_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']))
-        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+    if (filter_input(INPUT_SERVER, 'HTTP_ACCESS_CONTROL_REQUEST_HEADERS')) {
+        header('Access-Control-Allow-Headers: ' - filter_input(INPUT_SERVER, 'HTTP_ACCESS_CONTROL_REQUEST_HEADERS'));
+    }
 
     exit(0);
 }
-    
+
 error_reporting(E_ALL ^ E_DEPRECATED);
 header('Content-Type: application/json; charset=iso-8859-1');
-require_once 'db.consts.php';
+require_once 'db.php';
 
 $ob = array("msg" => "", 
             "what" => array(),
@@ -43,7 +45,7 @@ function mysql_encode($var, $db) {
 }
 
 function db_error_handler ($db) {
-    $ob['err'] = "mysql-error#" . mysql_errno($db) . ": \n" . 
+    echo "mysql-error#" . mysql_errno($db) . ": \n" . 
                  mysql_error($db);
     
     print_r(debug_backtrace());
@@ -53,7 +55,6 @@ function db_error_handler ($db) {
 
 function error_query($sql_query) {
     global $db;
-    global $connection_count;
     
     $result = mysql_query($sql_query, $db);
     if ($result === false) {
@@ -87,27 +88,30 @@ function action_($action) {
 register_shutdown_function("shutdown");
 
 $starttime = microtime(true);
-$db = mysql_connect(DB_HOST, DB_USER, DB_PASS);
-        
-if (!$db) {
-    $ob['msg'] = "Verbindung fehlgeschlagen";
-    exit;
-}
 
-mysql_select_db(DB_NAME, $db);
-if (!$db) {
-    $ob['msg'] = "Verbindung fehlgeschlagen";
-    exit;
-}
-
-$sql_query = "SELECT id FROM members WHERE authenticity_token = '" . mysql_real_escape_string($_POST['id'], $db) . "'";
+$sql_query = "SELECT id FROM members WHERE authenticity_token = '" . mysql_real_escape_string(filter_input(INPUT_POST, 'id'), $db) . "'";
 $result = error_query($sql_query, $db);
 if ($user = mysql_fetch_assoc($result)) { // User stimmt
     // parse msg
-    $log = utf8_encode($_POST['log']);
-    $log = array_filter(json_decode($log));
-    $passages = json_decode(utf8_encode($_POST['passages']), true);
-    $places = json_decode(utf8_encode($_POST['places'])); 
+    $log_utf8 = utf8_encode(filter_input(INPUT_POST, 'log'));
+    $log_unfiltered = json_decode($log_utf8);
+    $passages = json_decode(utf8_encode(filter_input(INPUT_POST, 'passages')), true);
+    $places = json_decode(utf8_encode(filter_input(INPUT_POST, 'places'))); 
+    
+    // defaults
+    if (!is_array($log_unfiltered)) {
+        $log = [];
+    } else {
+        $log = array_filter($log_unfiltered);
+    }
+    
+    if (!is_array($passages)) {
+        $passages = [];
+    }
+    
+    if (!is_object($places)) {
+        $places = new stdClass();
+    }
     
     $length = count($log) + count($places) + count($passages);
 
@@ -198,8 +202,7 @@ if ($user = mysql_fetch_assoc($result)) { // User stimmt
                     if ($npc_id === false) { // temp NPC > neue Id suchen
                         $sql_query = "SELECT MIN(id) FROM npcs WHERE id < 0";
                         $result = mysql_query($sql_query, $db);
-                        $npc_id = mysql_fetch_row($result);
-                        $npc_id = $npc_id[0] - 1;
+                        $npc_id = mysql_fetch_row($result)[0] - 1;
                     } 
                     $ob['what'][] = "inserted: $npc_id (" . utf8_encode($npc->name) . ")";
                     $sql_query = "INSERT IGNORE INTO npcs (id, name, live, strength, unique_npc, pos_x, pos_y, created_at, updated_at) VALUES ".
