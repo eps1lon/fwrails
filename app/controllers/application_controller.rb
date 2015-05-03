@@ -71,7 +71,6 @@ class ApplicationController < ActionController::Base
     Freewar3::Application.config.action_controller.page_cache_directory = File.join(path.compact)
   end
   
-  private
   def set_nav_controllers
     @controllers = %w{users clans graphs achievements npcs}
   end
@@ -85,8 +84,8 @@ class ApplicationController < ActionController::Base
   end
   
   def set_view_vars
-    @stylesheets = [] << (controller_name unless Freewar3::Application.assets.find_asset("#{controller_name}.css").nil?)
-    @javascripts = [] << (controller_name unless Freewar3::Application.assets.find_asset("#{controller_name}.js").nil?)
+    @stylesheets = [] << (controller_name if asset_exists?("#{controller_name}.css"))
+    @javascripts = [] << (controller_name if asset_exists?("#{controller_name}.js").nil?)
     
     # actions of spotlight controller
     @spotlights = %w{user clan}
@@ -97,5 +96,15 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.all { render template: "layouts/maintenance", layout: "application" }
     end if ENV['RAILS_ENV'] == 'staging' && !current_member.try(:developer?)
+  end
+  
+  # Returns true if an asset exists in the Asset Pipeline, false if not.
+  def asset_exists?(path)
+    begin
+      pathname = Rails.application.assets.resolve(path)
+      return !!pathname # double-bang turns String into boolean
+    rescue Sprockets::FileNotFound
+      return false
+    end
   end
 end
