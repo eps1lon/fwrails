@@ -10,7 +10,7 @@ class Spotlight
     case rng.rand(2)
     when 0
       model = [ClansNameChange, ClansTagChange, ClansLeaderChange, ClansColeaderChange].sample(random: rng)
-      record = model.active.select(Clan.primary_keys, "COUNT(*) AS num")
+      record = model.active.select(Clan.primary_keys, :deleted, "COUNT(*) AS num")
                            .group(Clan.primary_keys).order("num DESC").take
       hash = {num: record.num, i18n_key: record.class.name, clan: record.clan}
     when 1
@@ -28,11 +28,11 @@ class Spotlight
     case rng.rand(2)
     when 0
       model = [UsersClanChange, UsersNameChange, UsersRaceChange].sample(random: rng)
-      record = model.active.select(User.primary_keys, "COUNT(*) AS num").group(User.primary_keys).order("num DESC").take
+      record = model.active.select(User.primary_keys, :deleted, "COUNT(*) AS num").group(User.primary_keys).order("num DESC").take
       hash = {num: record.num, i18n_key: record.class.name, user: record.user}
     when 1
       achievement = Achievement.levelable.base_stage.sample(random: rng).take
-      record = UsersAchievements.select(User.primary_keys, :progress)
+      record = UsersAchievements.select(User.primary_keys, :deleted, :progress)
                                 .where(achievement_id: achievement.achievement_id)
                                 .group(User.primary_keys)
                                 .order("progress DESC").take
