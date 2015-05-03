@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base  
   protect_from_forgery
   
-  before_filter :update_cache_location
-  before_filter :set_locale, :set_nav_controllers, :set_view_vars, :staging
+  before_filter :set_locale, :set_nav_controllers, :set_view_vars
+  before_filter :update_cache_location, :staging
   
   # error handler
   unless Rails.application.config.consider_all_requests_local
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   
   def render_error_page(status) 
     respond_to do |format|
-      format.all { render template: "layouts/error", layout: "application", status: status }
+      format.all { render template: "layouts/error", formats: "html", layout: "application", status: status }
     end
   end
   
