@@ -8,7 +8,7 @@ module DeleteMarkable
       alias_method alias_name, relation.to_s
       
       define_method relation do
-        self.send(alias_name) if !self.deleted
+        self.send(alias_name) if !self.try(:deleted)
       end
     end
   end
