@@ -85,7 +85,7 @@ class ApplicationController < ActionController::Base
   
   def set_view_vars
     @stylesheets = [] << (controller_name if asset_exists?("#{controller_name}.css"))
-    @javascripts = [] << (controller_name if asset_exists?("#{controller_name}.js").nil?)
+    @javascripts = [] << (controller_name if asset_exists?("#{controller_name}.js"))
     
     # actions of spotlight controller
     @spotlights = %w{user clan}
