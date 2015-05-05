@@ -57,7 +57,7 @@ class Admin::AchievementsController < Admin::BaseController
         attributes[:gfx] = "#{params[:achievement][:gfx]}#{stage}"
       end
       
-      @admin_achievement = Achievement.find_or_create_by_stage_and_achievement_group(stage, params[:achievement][:achievement_group])
+      @admin_achievement = Achievement.where(stage: stage, achievement_id: params[:achievement][:achievement_group]).first_or_create
       @admin_achievement.update_attributes(attributes)
       
       @save = @admin_achievement.save
