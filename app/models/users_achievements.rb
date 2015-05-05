@@ -7,12 +7,9 @@ class UsersAchievements < ActiveRecord::Base
   
   belongs_to :achievement, :primary_key => [:achievement_id, :stage],
                            :foreign_key => [:achievement_id, :stage] 
-  has_one :next_stage, ->(achievement) { where("next_stages_users_achievements.stage = users_achievements.stage + 1") },
-          :class_name => 'Achievement',
-          :foreign_key => :achievement_id,
-          :primary_key => :achievement_id
-  belongs_to :group, :foreign_key => :achievement_id,
-                     :primary_key => :achievement_id
+  has_many :stages, :class_name => 'Achievement',
+                    :foreign_key => :achievement_id,
+                    :primary_key => :achievement_id
   belongs_to :user, :foreign_key => [:user_id, :world_id]
   belongs_to :world
   has_many :diffs, :class_name => 'UsersAchievementsChange',
@@ -28,5 +25,9 @@ class UsersAchievements < ActiveRecord::Base
   
   def needed
     next_stage.try(:needed) || achievement.try(:needed)
+  end
+  
+  def next_stage
+    self.stages.to_a.select { |achievement| achievement.stage == self.stage + 1}[0]
   end
 end

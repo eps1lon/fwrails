@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   has_many :race_changes, -> { active },
                           :class_name => 'UsersRaceChange',
                           :foreign_key =>[:user_id, :world_id]    
-  has_many :progresses, -> { active.includes(:achievement, :next_stage) },
+  has_many :progresses, -> { active.includes(:achievement, :stages) },
                         :class_name => 'UsersAchievements',
                         :foreign_key => [:user_id, :world_id]
     
