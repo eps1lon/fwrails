@@ -22,4 +22,11 @@ $(document).ready ->
 
     # and toggle the `highlight` class according to checked state
     place(npc.pos_x, npc.pos_y).toggleClass("highlight", $(this).prop("checked"))
+    
+  # position tooltip
+  $('.place[title]').tooltip {
+    content: ->
+      return $(this).attr 'title'
+    track: true
+  }
       
