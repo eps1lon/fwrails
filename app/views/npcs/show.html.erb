@@ -1,2 +1,39 @@
-<h1>Npcs#show</h1>
-<p>Find me in app/views/npcs/show.html.erb</p>
+<% @title = "NPC: `#{@npc.name}`" %>
+<h1><%= @npc.name %> (<%= t "npcs.unique_npc.#{@npc.unique_npc}" %>)</h1>
+
+<h2><%= Npc.human_attribute_name(:description) %></h2>
+<p><%= @npc.description %></p>
+
+<h2><%= t ".variants.heading" %></h2>
+<table>
+  <thead>
+    <tr>
+      <th><%= Npc.human_attribute_name(:id) %></th>
+      <th><%= t ".variants.place" %></th>
+      <th><%= Npc.human_attribute_name(:strength) %></th>
+      <th><%= Npc.human_attribute_name(:live) %></th>
+      <th><%= Npc.human_attribute_name(:gold) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @variants.each do |npc| %>
+    <tr>
+      <td><%= npc.id %></td>
+      <td>
+        <%= link_to "#{npc.place.name} (#{position_text(npc.place)})", 
+                    map_root_url(npc.place.pos_x, npc.place.pos_y) %>
+      </td>
+      <td><%= number_with_delimiter(npc.strength) %></td>
+      <td><%= number_with_delimiter(npc.live) %></td>
+      <td><%= number_with_delimiter(npc.gold) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2><%= t ".drops.heading" %></h2>
+<ul>
+  <% @drops.each do |drop| %>
+  <li><%= drop.item.name %></li>
+  <%  end %>
+</ul>

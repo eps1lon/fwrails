@@ -808,6 +808,12 @@ de:
       table:
         caption: "komplette NPC-Liste"
         position: "Position"
+    show:
+      variants:
+        heading: "Varianten"
+        place: "Feld"
+      drops:
+        heading: "bekannte Drops"
     api:
       human: "API"
       heading: "NPC API"

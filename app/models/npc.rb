@@ -3,8 +3,8 @@ class Npc < ActiveRecord::Base
                      primary_key: [:pos_x, :pos_y]
   enum unique_npc: {npc: 1, unique_npc: 2, group_npc: 3, unknown: 4, passiv: 5, resistance: 6, superresistance: 7}
   
-  has_many :drops, class_name: "DropsNpc",
-                   foreign_key: :npc_id
+  has_many :drops, -> { where(items_npcs: {action: ItemsNpc.actions[:kill]}) }, 
+                   class_name: "ItemsNpc"
   
   scope :in_range, ->(x, y, r) { where(pos_x: (x - r)..(x + r), pos_y: (y - r)..(y + r)) }
   scope :in_ressurect_range, ->(x, y) { in_rage(x, y, 2) }

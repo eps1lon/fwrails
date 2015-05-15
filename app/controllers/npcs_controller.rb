@@ -3,7 +3,20 @@ class NpcsController < ApplicationController
     @npcs = Npc.persistent_npcs.order(:id)
   end
 
-  def show
+  def show  
+    @variants = Npc.where("name = ? OR id = ?", params[:id], params[:id])
+                   .includes(:place, drops: :item).order(:id)
+    @npc = @variants.take
+    
+    @drops = @variants.map { |npc|
+      npc.drops
+    }.flatten
+    
+    @image_world = World.image_world
+    
+    if @npc.nil?
+      raise ActiveRecord::RecordNotFound
+    end
   end
   
   def api
