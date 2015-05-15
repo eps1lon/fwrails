@@ -13,7 +13,8 @@ if (($handle = fopen($file, 'r')) !== false) {
 }
 
 // area names
-$areas = array_unique(array_column($places, 0));
+# $areas = array_unique(array_column($places, 0)); php >= 5.5
+$areas = array_unique(array_map(function ($place) { return $place[0]; }, $places));
 
 // area insert values
 $area_values = [];
