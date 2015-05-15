@@ -10,7 +10,9 @@ class MapController < ApplicationController
     @tile_size = 50
     
     # get places and draw border
-    @places = Place.invert(:houses).invert(:dummyplace).minimap(@params[:x], @params[:y], @params[:radius] + 1)
+    @places = Place.invert(:houses)
+                   .minimap(@params[:x], @params[:y], @params[:radius] + 1)
+                   .includes(:npcs)
     @places_with_border = draw_border @places
     
     # npcs
