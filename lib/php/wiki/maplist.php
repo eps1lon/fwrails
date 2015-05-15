@@ -95,7 +95,7 @@ function parse_field_template($wiki_text) {
     // Vorlagewerte maschinenlesbar machen
     $field['pos_x'] = (int)$template['X'];
     $field['pos_y'] = (int)$template['Y'];
-    $field['url']   = $template['Bild'];
+    $field['url']   = preg_replace('/(.*)\/images\/map\/(.+?)$/', '$2', $template['Bild']);
     $field['name']  = $template['Name'];
     $field['flags'] |= (int)(strpos($template['Friedlich'], 'nein') === false) * pow(2, 1);
 
