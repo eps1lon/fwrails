@@ -35,32 +35,15 @@ class MapController < ApplicationController
     places = places.to_a
     
     # get boundary
-    map_size = map_dimensions(places)
-    min_x = map_size[:min_x]
-    max_x = map_size[:max_x]
-    min_y = map_size[:min_y]
-    max_y = map_size[:max_y]
+    dimensions = map_dimensions(places)
     
-    # walk each place
-    (min_x..max_x).each do |x|
-      (min_y..max_y).each do |y|
-        # place already exists here
-        next unless places.select { |place| place.pos_x == x && place.pos_y == y}.empty?
-        
-        # and check if a surrounding place is an actual place
-        ((x-1)..(x+1)).each do |edge_x|
-          ((y-1)..(y+1)).each do |edge_y|
-            # not the current place
-            next if edge_x == x && edge_y = y
-
-            place_edges = places.select { |place| place.pos_x == edge_x && place.pos_y == edge_y}
-            place_edge = place_edges.first
-
-            # surrounding place exists and is not already a border place
-            if !place_edge.nil? && !place_edge.is_border_place?
-              places << Place.border_place(x, y)
-            end
-          end
+    # walk dimensions
+    (dimensions[:min_x]..dimensions[:max_x]).each do |x|
+      (dimensions[:min_y]..dimensions[:max_y]).each do |y|
+        # no place at the coordinates
+        if places.select { |place| place.pos_x == x && place.pos_y == y}.empty?
+          # so draw border
+          places << Place.border_place(x, y)
         end
       end
     end
@@ -69,6 +52,8 @@ class MapController < ApplicationController
     places
   end
   
+  # calculates dimensions
+  # min, max, width, height
   def map_dimensions(places)
     boundaries = {
       min_x: places.min_by { |p| p.pos_x }.pos_x,
@@ -83,6 +68,7 @@ class MapController < ApplicationController
     })
   end
   
+  # strong params
   def map_params
     # numeric only params
     [:x, :y, :radius].each do |key|
