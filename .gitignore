@@ -5,6 +5,10 @@ config/database.yml
 public/dumps
 public/assets
 
+# wiki scripts out files
+lib/php/wiki/*.out
+lib/php/wiki/*.sql
+
 # example gitignore
 *.rbc
 capybara-*.html
