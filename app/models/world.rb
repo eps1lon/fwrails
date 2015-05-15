@@ -34,18 +34,18 @@ class World < ActiveRecord::Base
   
   def urls 
     {
-      :chat => "#{self.url}/internal/chattext.php",
-      :clans => "#{self.url}/internal/list_clans.php",
+      :chat => "#{self.url}internal/chattext.php",
+      :clans => "#{self.url}internal/list_clans.php",
       :landing_page => "#{self.url}index.php",
       :login => "#{self.url}",
-      :images => "#{self.url}/images",
-      :items => "#{self.url}/internal/list_items588.php",
-      :npcs => "#{self.url}/internal/list_npcs588.php",
-      :players => "#{self.url}/internal/list_players.php",
-      :pwmailer => "#{self.url}/pwmailer.php",
+      :images => "#{self.url}images",
+      :items => "#{self.url}internal/list_items588.php",
+      :npcs => "#{self.url}internal/list_npcs588.php",
+      :players => "#{self.url}internal/list_players.php",
+      :pwmailer => "#{self.url}pwmailer.php",
       :registration => "#{self.url}register.php",
-      :stats => "#{self.url}/internal/list_stats.php",
-      :stocks => "#{self.url}/internal/list_stocks.php",
+      :stats => "#{self.url}internal/list_stats.php",
+      :stocks => "#{self.url}internal/list_stocks.php",
     }
   end
   
