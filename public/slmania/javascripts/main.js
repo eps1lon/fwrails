@@ -9,23 +9,7 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
     var $ = window.jQuery,
         attacked_npc,
         container = null,
-        data = (function () {
-            var key_ = function (key) {
-                return ['slmania', key].join('-');
-            };
-            
-            return {
-                get: function (key, init) {
-                    if (init === __undefined) {
-                        init = null;
-                    }
-                    return (JSON.parse(localStorage.getItem(key_(key))) || init);
-                },
-                save: function (key, data) {
-                    return localStorage.setItem(key_(key), JSON.stringify(data));
-                }
-            };
-        })(),
+        data = window.Data,
         drops = [],
         hint_msg = '',
         old_items = data.get('items', {}),
@@ -273,7 +257,10 @@ var AUTHENTICITY_TOKEN = '721366d55104bb1765173fe40895a29cf76c7dae',
             })();
         }
     }
-
+    
+    // items speichern
+    data.save('items', items);
+    
     // Log Interface erstellen
     $('body').prepend($('<div/>', {
         id: 'slmania-overlay'

@@ -6,7 +6,8 @@ class Npc < ActiveRecord::Base
   has_many :drops, class_name: "DropsNpc",
                    foreign_key: :npc_id
   
-  scope :in_ressurect_range, ->(x, y) { where(pos_x: (x-2)..(x+2), pos_y: (y-2)..(y+2)) }
+  scope :in_range, ->(x, y, r) { where(pos_x: (x - r)..(x + r), pos_y: (y - r)..(y + r)) }
+  scope :in_ressurect_range, ->(x, y) { in_rage(x, y, 2) }
   
   scope :slmania_list, -> { where.not(Npc::Conditions.bloodnpcs[:all]).
                             where.not(Npc::Conditions.shadowcreatures[:all]).

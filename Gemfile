@@ -7,12 +7,12 @@ gem 'passenger', "~> 4.0.37 "
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2', "~> 0.3.15"
-#gem "composite_primary_keys", "~> 6.0.1"
+gem "composite_primary_keys", "=7.0.13"
 # http://stackoverflow.com/questions/11023167/no-such-file-to-load-active-record-associations-has-and-belongs-to-many-associat/23142066#23142066
-gem 'composite_primary_keys', {
-  :git => 'git://github.com/composite-primary-keys/composite_primary_keys.git',
-  :branch => 'ar_4.1.x'
-}
+#gem 'composite_primary_keys', {
+#  :git => 'git://github.com/composite-primary-keys/composite_primary_keys.git',
+#  :branch => 'ar_4.1.x'
+#}
 
 # Gems used only for assets and not required
 # in production environments by default.

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723090029) do
+ActiveRecord::Schema.define(version: 20150515084032) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20140723090029) do
     t.datetime "created_at"
   end
 
+  create_table "admin_dumps", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "admin_news", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -36,6 +41,8 @@ ActiveRecord::Schema.define(version: 20140723090029) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "areas", ["name"], name: "index_areas_on_name", unique: true, using: :btree
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -384,7 +391,7 @@ ActiveRecord::Schema.define(version: 20140723090029) do
     t.integer  "world_id",   default: 0,  null: false
     t.integer  "clan_id"
     t.integer  "race_id"
-    t.string   "name",       default: ""
+    t.string   "name",       default: "", null: false
     t.integer  "experience", default: 0,  null: false
     t.datetime "created_at"
   end
@@ -441,6 +448,15 @@ ActiveRecord::Schema.define(version: 20140723090029) do
   add_index "users_clan_changes", ["clan_id_new"], name: "index_users_clan_changes_on_clan_id_new", using: :btree
   add_index "users_clan_changes", ["clan_id_old"], name: "index_users_clan_changes_on_clan_id_old", using: :btree
   add_index "users_clan_changes", ["created_at"], name: "index_users_clan_changes_on_created_at", using: :btree
+
+  create_table "users_clan_changes_old", id: false, force: true do |t|
+    t.integer  "user_id",     default: 0,     null: false
+    t.integer  "world_id",    default: 0,     null: false
+    t.integer  "clan_id_old"
+    t.integer  "clan_id_new"
+    t.datetime "created_at",                  null: false
+    t.boolean  "deleted",     default: false, null: false
+  end
 
   create_table "users_deletes", id: false, force: true do |t|
     t.integer  "user_id",    default: 0, null: false

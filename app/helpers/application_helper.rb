@@ -101,6 +101,11 @@ module ApplicationHelper
     url
   end
   
+  # creates a number image path for soul capsule
+  def capsule_map_path(count, world)
+    "#{world.urls[:images]}/map/npczahl#{count}.gif"
+  end
+  
   def link_to_back
     link_to t("helpers.nav.back"), back_url, :class => "back"
   end
@@ -131,6 +136,10 @@ module ApplicationHelper
     end
 
     links
+  end
+  
+  def position_text(x, y)
+    "X: #{number_with_delimiter(x)} Y: #{number_with_delimiter(y)}"
   end
   
   private

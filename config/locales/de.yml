@@ -765,6 +765,27 @@ de:
       back: "Zurück zur Übersicht"
       human: ""
       record_not_found: "News-Eintrag nicht gefunden"
+  map:
+    human: "Map"
+    index:
+      human: "Minimap"
+      heading: "Minimap"
+      link_to_this_page: "Link auf diese Seite"
+      control:
+        heading: "Ausschnitt"
+        label:
+          x: "X"
+          y: "Y"
+          radius: "Radius"
+        submit: "Anzeigen"
+      npcs:
+        heading: "NPCs in Ausschnitt"
+        table:
+          head:
+            show: "Alle anzeigen"
+            position: "Position"
+    show:
+      human: "Feldinfo"
   misc:
     links: 
       freewar: "powered by FreeWar.de"

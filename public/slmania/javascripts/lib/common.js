@@ -30,6 +30,24 @@
         return server;
     }());
     
+    window.Data = (function (__undefined) {
+        var key_ = function (k) {
+            return ['slmania', k].join('-');
+        };
+
+        return {
+            get: function (key, init) {
+                if (init === __undefined) {
+                    init = null;
+                }
+                return (JSON.parse(localStorage.getItem(key_(key))) || init);
+            },
+            save: function (key, data) {
+                return localStorage.setItem(key_(key), JSON.stringify(data));
+            }
+        };
+    })();
+    
     window.create_interface = function () {
         return $('<div/>', {
             id: 'slmania-body'
@@ -38,7 +56,7 @@
         }), $('<div/>', {
             id: 'slmania-content'
         }));
-    }
+    };
     
     Array.prototype.find = function (val, offset, strict) {
         var i = offset || 0,

@@ -1,5 +1,5 @@
 module NpcsHelper
   def position_text(npc)
-    "X: #{npc.pos_x} Y: #{npc.pos_y}"
+    super(npc.pos_x, npc.pos_y)
   end
 end

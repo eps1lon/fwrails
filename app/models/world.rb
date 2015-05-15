@@ -21,6 +21,8 @@ class World < ActiveRecord::Base
   has_many :stock_changes
   has_many :statistic_changes
   
+  scope :image_world, -> { where(id: 1) }
+  
   def number
     return short[1..-1] if short[1].is_numeric?
     short
@@ -36,6 +38,7 @@ class World < ActiveRecord::Base
       :clans => "#{self.url}/internal/list_clans.php",
       :landing_page => "#{self.url}index.php",
       :login => "#{self.url}",
+      :images => "#{self.url}/images",
       :items => "#{self.url}/internal/list_items588.php",
       :npcs => "#{self.url}/internal/list_npcs588.php",
       :players => "#{self.url}/internal/list_players.php",

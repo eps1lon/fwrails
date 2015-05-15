@@ -1,8 +1,4 @@
 Freewar3::Application.routes.draw do 
-  get 'npcs/index'
-
-  get 'npcs/show'
-
   devise_for :members,
              controllers: {
                sessions: "sessions"
@@ -98,6 +94,19 @@ Freewar3::Application.routes.draw do
           action: 'statistics',
           as: 'statistics',
           via: [:get, :post]
+  end
+  
+  # map
+  scope :as => 'map', :controller => :map, :path => '/map' do
+    post '',
+         :action => 'index'
+    get '(/:x,:y)(/radius/:radius)',
+        :action => 'index',
+        :as => 'root'
+
+    get '/show/:x,:y',
+        :action => 'show',
+        :as => 'place'
   end
   
   #news

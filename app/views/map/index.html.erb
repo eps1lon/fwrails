@@ -1,0 +1,67 @@
+<h1><%= t ".heading" %></h1>
+
+<%= link_to t(".link_to_this_page"), map_root_url(@params), class: "to_this_page" %>
+
+<%= field_set_tag t(".control.heading") do %>
+  <%= form_tag(map_root_url, method: :post, id: "map_control") do %>
+
+  <%= label_tag :x, t(".control.label.x") %>
+  <%= number_field_tag :x, @params[:x] %>
+
+  <%= label_tag :y, t(".control.label.y") %>
+  <%= number_field_tag :y, @params[:y] %>
+
+  <%= label_tag :radius, t(".control.label.radius") %>
+  <%= select_tag :radius, options_for_select(1..@max_radius, @params[:radius]) %>
+
+  <%= submit_tag t(".control.submit") %>
+  <% end %>
+<% end %>
+
+<div id="minimap" style="height: <%= @map_dimensions[:height] * @tile_size %>px; 
+                         width: <%= @map_dimensions[:width] * @tile_size %>px;">
+  <% @places_with_border.each do |place| %>
+    <% top = (place.pos_y - @map_dimensions[:min_y]) * @tile_size %>
+    <% left = (place.pos_x - @map_dimensions[:min_x]) * @tile_size %>
+    <%= content_tag(:div , id: "place#{place.pos_key}", 
+                           class: ["place"] << ("out_of_bounds" if place.los_distance(@params[:x], @params[:y]) > @params[:radius]),
+                           style: "top: #{top}px; " +
+                                  "left: #{left}px; " +
+                                  "background: url(#{place.gfx_path(@image_world)});") do %>
+      <%= image_tag capsule_map_path(place.npcs.size, @image_world),
+                    alt: "#{place.npcs.size}_npcs",
+                    class: "soul_capsule" %>
+    <% end %>
+  <% end %>
+</div>
+
+<h2><%= t ".npcs.heading" %></h2>
+<table id="npcs">
+  <thead>
+    <tr>
+      <th>
+        <%= label_tag :toggle_all_npcs, t(".npcs.table.head.show") %>
+        <%= check_box_tag :toggle_all_npcs %>
+      </th>
+      <th><%= Npc.human_attribute_name(:name) %></th>
+      <th><%= t ".npcs.table.head.position" %></th>
+      <th><%= Npc.human_attribute_name(:gold) %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @npcs.each do |npc| %>
+    <tr>
+      <td><%= check_box_tag npc, npc.id, false, class: "toggle_npc" %></td>
+      <td><%= label_tag npc, npc.name %></td>
+      <td><%= position_text(npc) %></td>
+      <td><%= number_with_delimiter(npc.gold) %></td>
+    </tr>
+    <% end %>
+  </tbody>
+  
+</table>
+
+<script type="text/javascript">
+  var places = <%= @places.to_json(includes: :npcs).html_safe %>,
+      npcs = <%= @npcs.to_json.html_safe %>;
+</script>
