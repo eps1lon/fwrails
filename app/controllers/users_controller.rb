@@ -96,6 +96,7 @@ class UsersController < ApplicationController
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
+    @params[:order] ||= order[:human]
     
     @users = @scope.preload(:clan, :race, :world).where(:world_id => @worlds).
              order("#{order[:db]} #{user_params[:by]}").
@@ -128,6 +129,7 @@ class UsersController < ApplicationController
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
+    @params[:order] ||= order[:human]
     
     @users = @scope.preload(:user, :world).
              order("#{order[:db]} #{@params[:by]}").
@@ -150,6 +152,7 @@ class UsersController < ApplicationController
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 2)
+    @params[:order] ||= order[:human]
     
     @users = @scope.preload(:world).
              order("#{order[:db]} #{user_params[:by]}").
@@ -175,6 +178,7 @@ class UsersController < ApplicationController
     ]
     # default
     order = order_from_attributes(@attributes, @params[:order], 3)
+    @params[:order] ||= order[:human]
     
     @users = @scope.preload(:user, :world).
              order("#{order[:db]} #{@params[:by]}").
@@ -203,6 +207,7 @@ class UsersController < ApplicationController
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 3)
+    @params[:order] ||= order[:human]
 
     order[:db] += " #{user_params[:by]}"
     
@@ -237,6 +242,7 @@ class UsersController < ApplicationController
     ]
     # default
     order = order_from_attributes(@attributes, user_params[:order], 3)
+    @params[:order] ||= order[:human]
     
     @users = @scope.preload(:new_clan, :old_clan, :user, :world).
              order("#{order[:db]} #{user_params[:by]}").
