@@ -387,6 +387,9 @@ de:
         unique_npc: "Art"
         created_at: "erste Sichtung"
         updated_at: "letztes Update"
+      npcs_member:
+        killcount: "Anzahl Kills"
+        chasecount: "Anzahl verjagt"
       news:
         content: "Inhalt"
         created_at: "geschrieben am"
@@ -781,6 +784,9 @@ de:
       npcs:
         heading: "NPCs in Ausschnitt"
         table:
+          caption:
+            one: "ein NPC"
+            other: "%{count} NPCs"
           head:
             show: "Alle anzeigen"
             position: "Position"
@@ -868,6 +874,18 @@ de:
     human: "Session"
     new:
       human: "Login"
+  slmania:
+    actions:
+      kill: "Töten"
+      chase: "Verjagen"
+    evaluate_npc:
+      drop:
+        action: "Methode"
+        chance: "Chance"
+        count: "Anzahl"
+        name: "Itemname"
+    list_actions:
+      soul_capsule: "Seelenkapsel"
   spotlights:
     close: "Schließen"
     heading: "Licht an für"
