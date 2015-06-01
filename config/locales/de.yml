@@ -397,6 +397,10 @@ de:
         member: "Verfasser"
         publish_at: "veröffentlicht am"
         updated_at: "zuletzt verändert am"
+      railpattern:
+        name: "Name"
+        cost: "Kosten"
+        created_at: "eingebaut am"
       statistic:
         name: "Name"
         last_value: "aktueller Wert"
@@ -967,6 +971,29 @@ de:
         last_update: "letztes Update"
         value: "aktueller Wert"
         world: "Welt"
+  tools:
+    human: "Helferlein"
+    railpatterns:
+      human: "Strahlenmuster"
+      heading: "Strahlenmuster"
+      formular:
+        chance: "Chance"
+        ceil: "Aufrunden"
+        chara_factor: "Chara-Faktor"
+        chara_factor_formular: "Faktor abhängig von Stufe bestimmter Fähigkeiten"
+        active_cost: "Kosten aktives Muster"
+        active_factor: "Aktiver Faktor"
+        passive_cost: "Kosten passives Muster"
+        passive_factor: "Passiver Faktor"
+      active_pattern: "Aktives Muster"
+      passive_patterns: "passive Muster"
+      passive_info: "Kosten: %{cost} PE, passiver Faktor: %{factor}"
+      ability: "relevante Charakterfähigkeiten"
+      abilities:
+        a_1: "Seelenverbindung"
+        a_2: "Phasenverständnis"
+      calc: "Berechnen"
+      chances: "Chancen"
   users:
     achivements:
       human: "Errungenschaften"

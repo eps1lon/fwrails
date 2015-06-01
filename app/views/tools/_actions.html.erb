@@ -1,0 +1,3 @@
+<% "railpatterns".split.each do |action| %>
+  <li><%= link_to t("tools.#{action}.human"), url_for({:controller => '/tools', :action => action}) %></li>
+<% end %>

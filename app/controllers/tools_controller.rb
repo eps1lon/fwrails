@@ -28,4 +28,15 @@ class ToolsController < ApplicationController
       end
     end
   end
+  
+  def railpatterns
+    @javascripts << "lib/Railpattern"
+    @javascripts << 'railpatterns'
+    
+    # all the patterns available
+    @railpatterns = Railpattern.for_tools.order(:name)
+    
+    # abilities that are used for certain patterns
+    @abilities = Railpattern.abilities
+  end
 end

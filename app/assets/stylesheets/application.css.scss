@@ -385,3 +385,37 @@ legend {
     font-weight: bold;
     margin-left: -1em;
 }
+
+/* math ml */
+math {
+	font-family: 'Cambria Math', Cambria, MathJax_Main, 
+	             STIXGeneral, DejaVu Serif, DejaVu Sans, 
+	             Times, Lucida Sans Unicode, OpenSymbol,
+	             Standard Symbols L, serif;
+  
+  msup > *:last-child, msub > *:last-child {
+    font-size: 65%;
+  }
+  
+  msup > *:last-child {
+    vertical-align: super;
+  }
+  
+  msub > *:last-child {
+    vertical-align: sub;
+  }
+  
+  mn.result {
+    text-decoration: underline;
+  }
+  
+  mi.result {
+    font-weight: bold;
+  }
+}
+
+math[display=block] {
+	display: block;
+	margin: 1em 0;
+	text-align: center;
+}

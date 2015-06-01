@@ -126,16 +126,14 @@ Freewar3::Application.routes.draw do
   scope as: 'slmania', controller: :slmania, path: '/slmania' do
     root action: 'index', as: 'index'
     
-    scope path: '/:id', as: 'user' do 
-      get '/soul_capsule', action: 'soul_capsule', as: 'soul_capsule'
+    scope path: '/:member', as: 'user' do 
+      get '/:evaluate', action: 'evaluate_npc'
       get '/npc/:name',    action: 'evaluate_npc'
       get '/item/:name',   action: 'evaluate_item'
       
       root action: 'list_actions'
     end
   end
-  
-  get '/tools/hunt', to: 'tools#hunt'
   
   # single statistic/
   get 'statistic/:name(/:world)', 
@@ -147,6 +145,12 @@ Freewar3::Application.routes.draw do
     root action: 'index'
     
     get '/:action(/:world)'
+  end
+  
+  # tools
+  scope :as => 'tools', :controller => 'tools', :path => 'tools' do
+    root :action => 'railpatterns'
+    get '/railpatterns', :as => 'railpatterns', :action => 'railpatterns'
   end
   
   # single user

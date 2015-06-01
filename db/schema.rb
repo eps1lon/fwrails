@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515084032) do
+ActiveRecord::Schema.define(version: 20150528193209) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -23,11 +23,6 @@ ActiveRecord::Schema.define(version: 20150515084032) do
     t.integer  "needed"
     t.integer  "achievement_id", default: 0,  null: false
     t.datetime "created_at"
-  end
-
-  create_table "admin_dumps", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "admin_news", force: true do |t|
@@ -138,8 +133,8 @@ ActiveRecord::Schema.define(version: 20150515084032) do
   add_index "clans_tag_changes", ["created_at"], name: "index_clans_tag_changes_on_created_at", using: :btree
 
   create_table "drops_npcs", id: false, force: true do |t|
-    t.integer  "drop_id"
-    t.integer  "npc_id"
+    t.integer  "drop_id",               default: 0,   null: false
+    t.integer  "npc_id",                default: 0,   null: false
     t.float    "chance",     limit: 24, default: 0.0
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -346,6 +341,16 @@ ActiveRecord::Schema.define(version: 20150515084032) do
     t.string   "short"
   end
 
+  create_table "railpatterns", force: true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.string   "gfx"
+    t.integer  "cost"
+    t.string   "klass",      default: "Railpattern"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "readers", force: true do |t|
     t.string   "email",      null: false
     t.string   "name",       null: false
@@ -391,7 +396,7 @@ ActiveRecord::Schema.define(version: 20150515084032) do
     t.integer  "world_id",   default: 0,  null: false
     t.integer  "clan_id"
     t.integer  "race_id"
-    t.string   "name",       default: "", null: false
+    t.string   "name",       default: ""
     t.integer  "experience", default: 0,  null: false
     t.datetime "created_at"
   end
@@ -448,15 +453,6 @@ ActiveRecord::Schema.define(version: 20150515084032) do
   add_index "users_clan_changes", ["clan_id_new"], name: "index_users_clan_changes_on_clan_id_new", using: :btree
   add_index "users_clan_changes", ["clan_id_old"], name: "index_users_clan_changes_on_clan_id_old", using: :btree
   add_index "users_clan_changes", ["created_at"], name: "index_users_clan_changes_on_created_at", using: :btree
-
-  create_table "users_clan_changes_old", id: false, force: true do |t|
-    t.integer  "user_id",     default: 0,     null: false
-    t.integer  "world_id",    default: 0,     null: false
-    t.integer  "clan_id_old"
-    t.integer  "clan_id_new"
-    t.datetime "created_at",                  null: false
-    t.boolean  "deleted",     default: false, null: false
-  end
 
   create_table "users_deletes", id: false, force: true do |t|
     t.integer  "user_id",    default: 0, null: false

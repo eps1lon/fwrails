@@ -1,0 +1,15 @@
+#abilities {
+  input, label {
+    float: left;
+  }
+  
+  input {
+    width: 4em;
+    text-align: right;
+  }
+  
+  label {
+    clear: both;
+    margin-right: 3px;
+  }
+}

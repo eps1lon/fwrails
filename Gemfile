@@ -20,7 +20,7 @@ group :assets do
   # http://stackoverflow.com/questions/9779456/rake-aborted-stack-level-too-deep-while-deploying-to-heroku#9828925
   gem 'sass-rails', "~> 4.0.1"
   #
-  gem 'coffee-rails', "~> 4.0.1"
+  gem 'coffee-rails', "~> 4.1.0"
   gem 'uglifier', "~> 2.4.0"
   gem "yui-compressor", "~> 0.12.0"
 end
