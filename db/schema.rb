@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528193209) do
+ActiveRecord::Schema.define(version: 20150602191742) do
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"
@@ -346,7 +346,7 @@ ActiveRecord::Schema.define(version: 20150528193209) do
     t.text     "desc"
     t.string   "gfx"
     t.integer  "cost"
-    t.string   "klass",      default: "Railpattern"
+    t.string   "type",       default: "Railpattern"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

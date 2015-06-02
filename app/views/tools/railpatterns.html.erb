@@ -26,7 +26,7 @@
     <td><%= railpattern.passive_factor %></td>
   </tr>
 <% end %>
-<table>
+</table>
 
 <%= field_set_tag t(".ability"), :id => 'abilities' do %>
   <% @abilities.each do |id| %>
@@ -73,5 +73,5 @@
 </ul>
 
 <script type="text/javascript">
-  var railpatterns =  <%= @railpatterns.to_json(only: [:id, :name, :cost, :klass]).html_safe %>;
+  var railpatterns =  <%= @railpatterns.to_json(only: [:id, :name, :cost, :type]).html_safe %>;
 </script>

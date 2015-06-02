@@ -17,17 +17,12 @@ mathml_pow = (string, stage) ->
 $(document).ready ->
   # init railpattern object
   railpatterns.map (pattern) ->
-    pattern.class = new window[pattern.klass](pattern.cost)
-  
-  # debug
-  console.log(pattern, pattern.class.chara_factor(2)) for pattern in railpatterns
+    pattern.class = new window[pattern.type](pattern.cost)
   
   # calc
   $("#calc_railpattern_chance").click ->
     # get active_pattern
     active_pattern = pattern for pattern in railpatterns when pattern.id == +$("#active_pattern option:selected").val()
-    
-    console.log active_pattern.class.active_factor()
     
     # passive_patterns
     # get ids first
@@ -45,7 +40,6 @@ $(document).ready ->
     for pattern in passive_patterns
       # get stage
       stage = +$(ability).val() for ability in $(".ability_stage") when +$(ability).data("id") == pattern.class.ability
-      console.log stage
       
       # chances
       chance_float = pattern.class.chance_float(active_pattern.class, stage)
