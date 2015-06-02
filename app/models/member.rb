@@ -3,12 +3,13 @@ class Member < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable, :registerable, :recoverable, :confirmable
   devise :database_authenticatable, :rememberable, :trackable, :validatable  
   has_many :news
-  has_many :npc_kills, class_name: "npcs_members"
+  has_many :npc_kills, class_name: "NpcsMember"
   
-  scope :slmania_participants, -> { where.not(authenticity_token: nil) }
+  #scope :slmania_participants, -> { includes(:npc_kills).where.not(npcs_members: { member_id: nil }) }
+  scope :slmania_participants, -> { where(id: NpcsMember.select(:member_id).uniq) }
   scope :slmania_public, -> { slmania_participants }
   
-  ROLES = %w{developer content_admin}.map &:to_sym
+  ROLES = [:developer, :content_admin]
 
   def roles
     ROLES.reject do |r|
