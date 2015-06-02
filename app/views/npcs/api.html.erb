@@ -1,5 +1,5 @@
 <h1><%= t ".heading" %></h1>
-<p><%= t ".disclaimer" %></p>
+<p><%= t("npcs.api.disclaimer", :api_url => link_to(t("npcs.api.human"), npcs_api_url)).html_safe %></p>
 
 <h2><%= t ".howto_heading" %></h2>
 <p><%= t ".parameters_explanation" %></p>
