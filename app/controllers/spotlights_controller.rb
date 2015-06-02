@@ -1,5 +1,5 @@
 class SpotlightsController < ApplicationController
-  @@refresh_every = 1.second
+  @@refresh_every = 30.nminutes
   
   def show
     @spotlights = Spotlight.new(@@refresh_every)

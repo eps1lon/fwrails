@@ -10,8 +10,9 @@ class Spotlight
     case rng.rand(2)
     when 0
       model = [ClansNameChange, ClansTagChange, ClansLeaderChange, ClansColeaderChange].sample(random: rng)
-      record = model.active.select(Clan.primary_keys, :deleted, "COUNT(*) AS num")
-                           .group(Clan.primary_keys).order("num DESC").take
+      record = model.active.select(Clan.primary_keys, :deleted, "COUNT(*) AS num").
+                            joins(:clan).where.not(clans: {clan_id: nil}).
+                            group(Clan.primary_keys).order("num DESC").take
       hash = {num: record.num, i18n_key: record.class.name, clan: record.clan}
     when 1
       record = User.in_clans.select(Clan.primary_keys, "COUNT(*) AS num")
@@ -25,13 +26,17 @@ class Spotlight
   
   def user
     rng = random
-    case rng.rand(2)
+    case 0#rng.rand(2)
     when 0
       model = [UsersClanChange, UsersNameChange, UsersRaceChange].sample(random: rng)
-      record = model.active.select(User.primary_keys, :deleted, "COUNT(*) AS num").group(User.primary_keys).order("num DESC").take
+      record = model.active.select(User.primary_keys, :deleted, "COUNT(*) AS num").
+                     joins(:user).where.not(users: {user_id: nil}).
+                     group(User.primary_keys).order("num DESC").take
       hash = {num: record.num, i18n_key: record.class.name, user: record.user}
     when 1
-      achievement = Achievement.levelable.base_stage.sample(random: rng).take
+      achievement = Achievement.levelable.base_stage.joins(:users_achievements).
+                                where.not(users_achievements: {achievement_id: nil}).
+                                sample(random: rng).take
       record = UsersAchievements.select(User.primary_keys, :deleted, :progress)
                                 .where(achievement_id: achievement.achievement_id)
                                 .group(User.primary_keys)
