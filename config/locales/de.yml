@@ -833,7 +833,7 @@ de:
                    auf den NPC-Abstellplatz gestellt und dann kopiert. Ich kann
                    also nicht genau feststellen was die ID des Ur-NPCs ist. Invasions-NPCs 
                    haben daher oft eine negative ID. Zudem könnt ihr die Liste in verschiedenen 
-                   Formaten über eine API abrufen."
+                   Formaten über eine %{api_url} abrufen."
       howto_heading: "HowTo"
       parameters_explanation: "Die folgenden Parameter kann die API verarbeiten:"
       parameters_table:
