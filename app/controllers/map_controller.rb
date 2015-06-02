@@ -1,7 +1,7 @@
 class MapController < ApplicationController
   def index
     # max radius
-    @max_radius = 7
+    @max_radius = 15
     
     # strong params
     @params = map_params
