@@ -9,7 +9,7 @@ class NpcsController < ApplicationController
     @npc = @variants.take
     
     @drops = @variants.map { |npc|
-      npc.drops
+      npc.drops.includes(:item)
     }.flatten
     
     @image_world = World.image_world
