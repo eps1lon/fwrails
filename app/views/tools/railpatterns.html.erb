@@ -1,41 +1,74 @@
 <h1><%= t ".heading" %></h1>
 
-<%= label_tag :active_pattern, t(".active_pattern") %>
-<%= select_tag :active_pattern, options_from_collection_for_select(@railpatterns, :id, :name_with_cost) %>
-
-<p><%= t ".passive_patterns" %></p>
-<table id="passive_patterns">
-  <thead>
-    <tr>
-      <th><%= Railpattern.human_attribute_name(:name) %></th>
-      <th></th>
-      <th><%= Railpattern.human_attribute_name(:cost) %></th>
-      <th><%= t ".formular.passive_factor" %></th>
+<%= form_for :railpattern_configuration, html: {id: "railpattern_configuration"} do |f| %>
+  <%= f.label :active_pattern, t(".active_pattern") %>
+  <%= f.select :active_pattern, options_from_collection_for_select(@railpatterns, 
+                                                                   :name, 
+                                                                   :name_with_cost, 
+                                                                   @active_pattern.try(:name)) %>
+  <p id="active_effect"></p>
+  
+  <table id="passive_patterns">
+    <caption><%= t ".passive_patterns" %></caption>
+    <thead>
+      <tr>
+        <th class="name"><%= Railpattern.human_attribute_name(:name) %></th>
+        <th class="cost"><%= Railpattern.human_attribute_name(:cost) %></th>
+        <th class="passive_effect"><%= t ".thead.passive_effect" %></th>
+        <th class="chance"><%= t ".thead.chance" %></th>
+        <th class="passive_factor"><%= t ".thead.passive_factor" %></th>
+        <th class="ability_factor"><%= t ".thead.ability_factor" %></th>
+      </tr>
+    </thead>
+  <% @railpatterns.each do |railpattern| %>
+    <tr class="railpattern" data-id="<%= railpattern.id %>">
+      <td class="name desc">
+        <%= label_tag "passive_patterns[#{railpattern.id}]", :class => 'tooltip' do %>
+          <em><%= railpattern.name %></em>
+          <%= tooltip_markup railpattern.desc %>
+        <% end %>
+      </td>
+      <td class="cost"><%= number_with_delimiter railpattern.cost %></td>
+      <td class="passive_effect">
+        <%= t ".passive_effects.r_#{railpattern.id}", :count => railpattern.passive_effect,
+                                                      :min => railpattern.passive_effect.try(:min),
+                                                      :max => railpattern.passive_effect.try(:max) %>
+      </td>
+      <td class="chance"><var><%= railpattern.chance %></var>%</td>
+      <td class="passive_factor"><var><%= railpattern.passive_factor %></var></td>
+      <td class="ability_factor"><var><%= railpattern.ability_factor %></var></td>
     </tr>
-  </thead>
-<% @railpatterns.each do |railpattern| %>
-  <tr>
-    <td>
-      <%= label_tag "passive_patterns[#{railpattern.id}]", :class => 'tooltip' do %>
-        <em><%= railpattern.name %></em>
-        <%= tooltip_markup railpattern.desc %>
-      <% end %>
-    </td>
-    <td><%= check_box_tag "passive_patterns[#{railpattern.id}]", 1, false, :data => {id: railpattern.id} %></td>
-    <td><%= number_with_delimiter railpattern.cost %></td>
-    <td><%= railpattern.passive_factor %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= field_set_tag t(".ability"), :id => 'abilities' do %>
-  <% @abilities.each do |id| %>
-    <%= label_tag "ability_#{id}", t(".abilities.a_#{id}") %>
-    <%= number_field_tag "ability_#{id}", 0, :min => 0, :data => {id: id}, :class => "ability_stage" %>
   <% end %>
+  </table>
+
+  <table id="abilities">
+    <caption><%= t(".ability") %></caption>
+    <thead>
+      <tr>
+        <th class="name"><%= Ability.human_attribute_name(:name) %></th>
+        <th class="stage"><%= Ability.human_attribute_name(:stage) %></th>
+        <th class="max_stage"><%= Ability.human_attribute_name(:max_stage) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @abilities.each do |ability| %>
+        <%= f.fields_for "abilities[]", ability do |ability_form| %>
+        <tr class="ability" data-id="<%= ability.id %>">
+          <td><%= ability_form.label :stage, ability.name %></td>
+          <td class="stage">
+            <%= ability_form.number_field :stage, :min => 0 %>
+          </td>
+          <td class="max_stage"><%= ability.max_stage %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= f.button t(".calc"), type: "button" %>
 <% end %>
 
-<%= button_tag t(".calc"), :id => 'calc_railpattern_chance' %>
+<h2><%= t ".formular.heading" %></h2>
 <p id="formular">
   <math id="railpattern_chance_formular" display="block">
     <mi><%= t ".formular.chance" %></mi> <mo>=</mo>
@@ -48,7 +81,8 @@
   <math id="railpattern_active_factor" display="block">
     <mi><%= t(".formular.active_factor") %></mi> <mo>=</mo>
     <mi><%= t(".formular.active_cost") %> <mo>/</mo>
-    <mn>10000</mn>
+    <mn>10000</mn> <mo>=</mo>
+    <mn class="result"><%= @active_pattern.active_factor %></mn>
   </math>
   <math id="railpattern_passive_factor" display="block">
     <mi><%= t(".formular.passive_factor") %></mi> <mo>=</mo>
@@ -67,11 +101,9 @@
   </math>
 </p>
 
-<h2><%= t ".chances" %></h2>
-<ul id="chances">
-  
-</ul>
+
 
 <script type="text/javascript">
-  var railpatterns =  <%= @railpatterns.to_json(only: [:id, :name, :cost, :type]).html_safe %>;
+  var railpatterns_as_json =  <%= @railpatterns.to_json(only: [:id, :name, :cost, :type]).html_safe %>,
+      abilities_as_json = <%= @abilities.to_json(only: [:id, :name, :stage, :max_stage]).html_safe %>;
 </script>

@@ -1,5 +1,6 @@
 class Ability < ActiveRecord::Base
   after_initialize :default_values
+  attr_accessor :stage
 
   scope :for_calc, -> { order("id = 3").order(:name) }
   

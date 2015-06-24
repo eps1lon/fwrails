@@ -38,6 +38,9 @@ module Freewar3
     config.assets.version = '1.0'
     
     config.autoload_paths += Dir["#{config.root}/lib/**/"] # TODO
+
+    # loads subfolders in models
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
     
     # remove in Rails 4.1
     config.secret_key_base = YAML.load(File.open("#{Rails.root}/config/secrets.yml"))[Rails.env]['secret_key_base']

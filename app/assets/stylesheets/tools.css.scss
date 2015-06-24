@@ -43,10 +43,15 @@ table#abilities {
     }
   }
   
-  .from_stage, .till_stage {
+  .from_stage, .till_stage, .stage, .max_stage {
     input[type="number"] {
       width: 3em;
     }
+  }
+  
+  td.max_stage {
+    cursor: hand; /* IE */
+    cursor: pointer;
   }
   
   .basetime {

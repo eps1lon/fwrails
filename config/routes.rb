@@ -149,8 +149,12 @@ Freewar3::Application.routes.draw do
   
   # tools
   scope :as => 'tools', :controller => 'tools', :path => 'tools' do
-    root :action => 'railpatterns'
-    get '/railpatterns', :as => 'railpatterns', :action => 'railpatterns'
+    match '/railpatterns(/:active_pattern)', :as => 'railpatterns', 
+                                          :action => 'railpatterns',
+                                          :defaults => {
+                                            :active_pattern => "Lebensschnitt"
+                                          },
+                                          :via => [:get, :post]
     match '/ability_calc', :as => 'ability_calc', :action => 'ability_calc', :via => [:get, :post]
   end
   

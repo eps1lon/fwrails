@@ -320,6 +320,10 @@ de:
       users_race_change: "Rassenwechsel"
       world: "Welt"
     attributes:
+      ability:
+        name: "Name"
+        stage: "Stufe"
+        max_stage: "Maximalstufe"
       achievement:
         achiev_count: "erreicht von"
         created_at: "Einbaudatum"
@@ -1021,6 +1025,7 @@ de:
       human: "Strahlenmuster"
       heading: "Strahlenmuster"
       formular:
+        heading: "Berechnung"
         chance: "Chance"
         ceil: "Aufrunden"
         chara_factor: "Chara-Faktor"
@@ -1029,8 +1034,57 @@ de:
         active_factor: "Aktiver Faktor"
         passive_cost: "Kosten passives Muster"
         passive_factor: "Passiver Faktor"
+      thead:
+        passive_effect: "passiver Effekt"
+        chance: "Chance"
+        passive_factor: "passiver Faktor"
+        ability_factor: "Chara-Faktor"
       active_pattern: "Aktives Muster"
       passive_patterns: "passive Muster"
+      passive_effects:
+        r_1: 
+          zero: "kein passiver Effekt"
+          one: "ungültiger Zustand"
+          other: "ungültiger Zustand"
+        r_2:
+          zero: "keine geistlose Lebenssicht"
+          one: "geistlose Lebenssicht eines bestimmten Wesens"
+          other: "ungültiger Zustand"
+        r_3:
+          zero: "keine Aktivierung"
+          one: "zu 75% Seelensicht, zu 25% Seelenkapsel"
+          other: "ungültiger Zustand"
+        r_4:
+          zero: "keine Erfahrung"
+          one: "ungültiger Zustand"
+          other: "%{min} bis %{max} Erfahrung"
+        r_5:
+          zero: "keine Schutzauflösung"
+          one: "Schutzauflösung"
+          other: "optionale Schutzauflösung"
+        r_6:
+          zero: "keine Seelenkugel"
+          one: "eine Seelenkugel"
+          other: "%{count} Seelenkugeln"
+        r_7:
+          zero: "keine Verstärkung"
+          other: "%{count}-fache Verstärkung des Schadens"
+        r_8:
+          zero: "keine Aufnahme"
+          one: "Aufnahme aller vom Phasenstrahler erzeugten Gegenstände"
+          other: "ungültiger Zustand"
+        r_9:
+          zero: "kein Phasenwesen"
+          one: "ein Phasenwesen"
+          other: "%{count} Phasenwesen"
+        r_10:
+          zero: "keine Heilung"
+          one: "ungültiger Zustand"
+          other: "%{min} bis %{max} Lebenspunkte (Abhängigkeit von Selbstheilung nicht genau bekannt)"
+        r_11:
+          zero: "keine Lernzeitverkürzung"
+          one: "1 Sekunde Lernzeitverkürzung (10-fach bei Phasenwebkunst)"
+          other: "%{count} Sekunden Lernzeitverkürzung (10-fach bei Phasenwebkunst)"
       passive_info: "Kosten: %{cost} PE, passiver Faktor: %{factor}"
       ability: "relevante Charakterfähigkeiten"
       abilities:

@@ -33,11 +33,33 @@ class ToolsController < ApplicationController
     @javascripts << "lib/Railpattern"
     @javascripts << 'railpatterns'
     
+    configuration = railpattern_config_params
+    
+    # abilities that are used for certain patterns
+    @abilities = Railpattern.abilities.order(:name)
+    
+    # merge params with @abilities
+    logger.debug configuration[:abilities]
+    @abilities.each do |ability|
+      logger.debug configuration[:abilities][ability.id.to_s]
+      ability.stage = configuration[:abilities][ability.id.to_s].try(:[], "stage")
+    end unless configuration[:abilities].blank?
+   
     # all the patterns available
     @railpatterns = Railpattern.for_tools.order(:name)
     
-    # abilities that are used for certain patterns
-    @abilities = Railpattern.abilities
+    @active_pattern = @railpatterns.where(name: configuration[:active_pattern] || params[:active_pattern]).first
+    
+    if @active_pattern.nil?
+      raise ActiveRecord::RecordNotFound
+    end
+    
+    @railpatterns.map do |railpattern|
+      # init abilities
+      railpattern.abilities = @abilities
+      # set active_pattern
+      railpattern.active_pattern = @active_pattern
+    end
   end
   
   def ability_calc
@@ -126,4 +148,12 @@ class ToolsController < ApplicationController
       learntime_max: 0
     }
   end
+  
+  def railpattern_config_params
+    params[:railpattern_configuration] || {
+      :active_pattern => nil,
+      :abilities => []
+    }
+  end
+  
 end

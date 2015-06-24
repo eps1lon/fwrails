@@ -1,66 +1,157 @@
-# Seelenlicht
-class window.Spiritlite extends Railpattern
-  ability: 27
-  # override chara factor
-  chara_factor_formular: "1.015 ^ stage"
+#Erfahrungsbindung
+class window.Experienceabsorption extends Railpattern
+  passive_magnitude: ->
+    [10..15]
+
+# Schutzbrecher
+class window.Guardbreaker extends Railpattern
+  chance_float: ->
+    if @active_pattern == null
+      [0, 100]
+    else
+      if @active_pattern.cost >= 500 then 100.0 else 0.0
+  
+  passive_magnitude: ->
+    1
+
+class window.Healingtwine extends Railpattern
+  constructor: (args...) ->
+    super
+    @concerning_abilities.push 17
+  
+  chance_float: ->
+    100.0
+  
+  # TODO: Abhängigkeit Selbstheilung
+  passive_magnitude: ->
+    # (0.1..0.4) * @active_pattern.cost
+    [Math.ceil(0.1 * @active_pattern.cost)..Math.ceil(0.4 * @active_pattern.cost)]
+
+# Wissensblitz
+class window.Knowdledgeflash extends Railpattern
+  chance_float: ->
+    100.0
+  
+  passive_magnitude: ->
+    Math.ceil(0.04 * @active_pattern.cost)
+
+# Lebensschnitt
+class window.Lifeincision extends Railpattern
+  chance_float: ->
+    100.0
+  
+  passive_magnitude: ->
+    if @active_pattern instanceof Lifewedge then 20 else 10
+
+# Lebenssicht
+class window.Lifesight extends Railpattern
+  # 100%
+  chance_float: ->
+    100.0
+  
+  # geistlose Lebenssicht
+  passive_magnitude: ->
+    1
+
+# Lebenskeil
+class window.Lifewedge extends Railpattern
+  chance_float: ->
+    100.0
+
+# Phasensog
+class window.Phasepull extends Railpattern
+  chance_float: ->
+    100.0
+  
+  passive_magnitude: ->
+    1
 
 # Phasenriss
-class window.Phaserapture extends Railpattern 
-  ability: 32
-  # override chara factor
-  chara_factor_formular: "1.0075 ^ stage"
+class window.Phaserapture extends Railpattern
+  ability_factor_formular: "1.0075 ^ stage"
+  
+  constructor: (args...) ->
+    super
+    @concerning_abilities.push 32
+  
+  ability_factor: ->
+    @calc_formular @get_ability(32)
+    
+  passive_magnitude: ->
+    1
 
+# Phasenstoß
+class window.Phaserecoil extends Railpattern
+  passive_magnitude: ->
+    1
+
+# Seelenlicht
+class window.Spiritlite extends Railpattern
+  # override chara factor
+  ability_factor_formular: "1.015 ^ stage"
+  
+  constructor: (args...) ->
+    super
+    @concerning_abilities.push 27
+  
+  ability_factor: ->
+    @calc_formular @get_ability(27)
+    
+  passive_magnitude: ->
+    1
+  
 # parse power function to mathml
 mathml_pow = (string, stage) ->
   string.replace /([^\^]+)\s*\^\s*([^\^]+)/, "<msup><mn>$1</mn><mn>" + stage + "</mn></msup>"
   
 $(document).ready ->
+  # init abilties
+  abilities = abilities_as_json
+  
   # init railpattern object
-  railpatterns.map (pattern) ->
-    pattern.class = new window[pattern.type](pattern.cost)
+  railpatterns = []
+  
+  railpatterns = (new window[pattern.type](pattern) for pattern in railpatterns_as_json)
+  
+  $("#abilities tr.ability td.max_stage").click ->
+    $("td.stage input", $(this).parents("tr")).val ~~$(this).text()
   
   # calc
-  $("#calc_railpattern_chance").click ->
-    # get active_pattern
-    active_pattern = pattern for pattern in railpatterns when pattern.id == +$("#active_pattern option:selected").val()
+  $("#railpattern_configuration button").click ->
+    $form = $("#railpattern_configuration")
     
-    # passive_patterns
-    # get ids first
-    passive_pattern_ids = ($(pattern).data().id for pattern in  $("#passive_patterns input[type=checkbox]:checked"))
-    # and intersect with railpatterns 
-    passive_patterns = (pattern for pattern in railpatterns when pattern.id in passive_pattern_ids)
-
-    # get summary list
-    $chances = $("#chances")
+    # update stage
+    $("#abilities tr.ability td.stage input").each ->
+      ability = (ability for ability in abilities when ~~ability.id is ~~$(this).parents("tr").data('id'))[0]
+      ability.stage = ~~$(this).val() unless ability is undefined
     
-    # clear summary list
-    $chances.empty()
+    # get active pattern
+    active_pattern = (railpattern for railpattern in railpatterns when railpattern.name is $("#railpattern_configuration_active_pattern", $form).val())[0]
+    return true if active_pattern is undefined
     
-    # walk each passive pattern an calculate chances
-    for pattern in passive_patterns
-      # get stage
-      stage = +$(ability).val() for ability in $(".ability_stage") when +$(ability).data("id") == pattern.class.ability
+    for railpattern in railpatterns
+      # set pattern and abilities
+      railpattern.active_pattern = active_pattern
+      railpattern.set_abilities abilities
       
-      # chances
-      chance_float = pattern.class.chance_float(active_pattern.class, stage)
-      chance = pattern.class.chance(active_pattern.class, stage)
+      # corresponding table row
+      $tr = $("#passive_patterns tr.railpattern[data-id='" + railpattern.id + "']")
       
-      # create list elem
-      $li = $("<li><math><mi class='result'>" + pattern.name + "</mi> = " + 
-              "<mn class='result'>" + chance + "</mn><mi class='unit'>%</mi> <mo>=</mo> " + 
-              "<mo>" + t("tools.railpatterns.formular.ceil") + "</mo>(<mn>" + chance_float + "</mn>) " +
-              "<mi>%</mi> <mo>=</mo> <mo>" + t("tools.railpatterns.formular.ceil") + 
-              "</mo>(<mn>100</mn> <mo>*</mo> <mn>" +  active_pattern.class.active_factor() + "</mn> " + 
-              "<mo>*</mo> <mn>" +  pattern.class.passive_factor() + "</mn> " +
-              "<mo>*</mi> <mn>" + pattern.class.chara_factor(stage) + "</mn>) <mi>%</mi>" + 
-              "</math></li>")
-              
-      if pattern.class.ability != null
-        $li.append ", <math><mi>" +  t("tools.railpatterns.formular.chara_factor") +
-                   "(<mi>" + t("tools.railpatterns.abilities.a_" + pattern.class.ability) + 
-                   "</mi>)</mi> <mo>=</mo> <mn class='result'>" + pattern.class.chara_factor(stage) + 
-                   "</mn> <mo>=</mo>" + mathml_pow(pattern.class.chara_factor_formular, stage) +
-                   "</math>"
-              
-      # append
-      $chances.append $li
+      # update cells
+      i18n_key = "tools.railpatterns.passive_effects.r_" + railpattern.id
+      magnitude = railpattern.passive_effect()
+      if magnitude instanceof Array
+        effect = t i18n_key + ".other", 
+          min: Math.min.apply Math, magnitude
+          max: Math.max.apply Math, magnitude
+      else
+        effect = t i18n_key,
+          count: magnitude
+      
+      $("td.passive_effect", $tr).text effect
+      $("td.chance var", $tr).text railpattern.chance()
+      $("td.passive_factor var", $tr).text railpattern.passive_factor()
+      $("td.ability_factor var", $tr).text railpattern.ability_factor()
+      
+    # prevendDefault
+    false
