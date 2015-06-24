@@ -1,4 +1,4 @@
-#abilities {
+fieldset#abilities {
   input, label {
     float: left;
   }
@@ -11,5 +11,76 @@
   label {
     clear: both;
     margin-right: 3px;
+  }
+}
+
+table#abilities {
+  th {
+    vertical-align: bottom;
+  }
+  
+  td {
+    padding: 2px;
+  }
+  
+  tfoot {
+    border-top: 2px solid black;
+    
+    td {
+      padding-top: 1em;
+    }
+  }
+  
+  tr[data-id="3"] {
+    border-top: 1px solid black;
+    
+    td {
+      padding-top: 2em;
+    }
+    
+    td.name em {
+      font-weight: bold;
+    }
+  }
+  
+  .from_stage, .till_stage {
+    input[type="number"] {
+      width: 3em;
+    }
+  }
+  
+  .basetime {
+    input[type="number"] {
+      width: 6em;
+    }
+  }
+  
+  .learntime_max {
+    border-right: 1px solid black;
+  }
+  
+  input[type="number"] {
+    text-align: right;
+  }
+}
+
+#ability_calc {
+  input[type="submit"] {
+    display: inline-block;
+    margin: 4px 0;
+    padding: 2px 4px;
+    
+    &[name="calc"] {
+      display: block;
+      font-weight: bold;
+    }
+  }
+}
+
+#abilities_cp {
+  margin-top: 1em;
+  
+  label, textarea {
+    display: block;
   }
 }

@@ -419,3 +419,9 @@ math[display=block] {
 	margin: 1em 0;
 	text-align: center;
 }
+
+ol.instruction {
+  li {
+    list-style: decimal;
+  }
+}

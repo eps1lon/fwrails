@@ -84,18 +84,25 @@ de:
         one: 'weniger als eine Sekunde'
         other: 'weniger als %{count} Sekunden'
       x_seconds:
+        zero: ""
         one: 'eine Sekunde'
         other: '%{count} Sekunden'
       less_than_x_minutes:
         one: 'weniger als eine Minute'
         other: 'weniger als %{count} Minuten'
       x_minutes:
+        zero: ""
         one: 'eine Minute'
         other: '%{count} Minuten'
       about_x_hours:
         one: 'etwa eine Stunde'
         other: 'etwa %{count} Stunden'
+      x_hours:
+        zero: ""
+        one: 'eine Stunde'
+        other: '%{count} Stunden'
       x_days:
+        zero: ""
         one: 'ein Tag'
         other: '%{count} Tage'
       about_x_months:
@@ -113,6 +120,10 @@ de:
       over_x_years:
         one: 'mehr als ein Jahr'
         other: 'mehr als %{count} Jahre'
+      x_years:
+        zero: ""
+        one: 'ein Jahr'
+        other: '%{count} Jahre'
     prompts:
       second: "Sekunden"
       minute: "Minuten"
@@ -180,6 +191,10 @@ de:
       words_connector: ", "
       two_words_connector: " und "
       last_word_connector: " und "
+      connector:
+        or: " oder "
+        and: " und "
+        xor: " entweder oder "
     select:
       prompt: "Bitte wählen:"
 
@@ -973,6 +988,35 @@ de:
         world: "Welt"
   tools:
     human: "Helferlein"
+    ability_calc:
+      human: "Charakterfähigkeiten"
+      heading: "Charakterfähigkeiten-Rechner"
+      table:
+        caption: "Fähigkeiten"
+        head: 
+          basetime: "Basiszeit"
+          from_stage: "von"
+          till_stage: "bis"
+          learntime: "Gesamtlernzeit"
+          learntime_max: "LT=Startstufe"
+          learntime_min: "LT=Endstufe"
+        foot:
+          sum: "summierte Gesamtlernzeit"
+      form:
+        submit: "Berechnen"
+        time_spent: "Bis Startstufe benötigte Lernzeit"
+        new_ability: "neue Fähigkeit"
+      abilities_cp:
+        heading: "Stufen kopieren"
+        instruction: 
+          heading: "Anleitung"
+          1st: "Charakterfähigkeiten-Menü öffnen"
+          2nd: "Alles kopieren"
+          3rd: "in Textfeld einfügen"
+          4th: "Abschicken"
+        form:
+          abilities_ingame: "Inhalt von Menü"
+          submit: "Einlesen"
     railpatterns:
       human: "Strahlenmuster"
       heading: "Strahlenmuster"
@@ -990,8 +1034,8 @@ de:
       passive_info: "Kosten: %{cost} PE, passiver Faktor: %{factor}"
       ability: "relevante Charakterfähigkeiten"
       abilities:
-        a_1: "Seelenverbindung"
-        a_2: "Phasenverständnis"
+        a_27: "Seelenverbindung"
+        a_32: "Phasenverständnis"
       calc: "Berechnen"
       chances: "Chancen"
   users:

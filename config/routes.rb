@@ -127,9 +127,9 @@ Freewar3::Application.routes.draw do
     root action: 'index', as: 'index'
     
     scope path: '/:member', as: 'user' do 
-      get '/:evaluate', action: 'evaluate_npc'
-      get '/npc/:name',    action: 'evaluate_npc'
-      get '/item/:name',   action: 'evaluate_item'
+      get '/npc/:name',  action: 'evaluate_npc', as: 'npc'
+      get '/item/:name', action: 'evaluate_item', as: 'item'
+      get '/soul_capsule', action: 'soul_capsule', as: 'soul_capsule'
       
       root action: 'list_actions'
     end
@@ -151,6 +151,7 @@ Freewar3::Application.routes.draw do
   scope :as => 'tools', :controller => 'tools', :path => 'tools' do
     root :action => 'railpatterns'
     get '/railpatterns', :as => 'railpatterns', :action => 'railpatterns'
+    match '/ability_calc', :as => 'ability_calc', :action => 'ability_calc', :via => [:get, :post]
   end
   
   # single user

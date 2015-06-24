@@ -1,14 +1,14 @@
 # Seelenlicht
 class window.Spiritlite extends Railpattern
-  ability: 1
+  ability: 27
   # override chara factor
   chara_factor_formular: "1.015 ^ stage"
 
 # Phasenriss
 class window.Phaserapture extends Railpattern 
-  ability: 2
+  ability: 32
   # override chara factor
-  chara_factor_formular: "1.00075 ^ stage"
+  chara_factor_formular: "1.0075 ^ stage"
 
 # parse power function to mathml
 mathml_pow = (string, stage) ->

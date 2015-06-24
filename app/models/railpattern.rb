@@ -4,7 +4,7 @@ class Railpattern < ActiveRecord::Base
   # abilities that are used for certain patterns
   def self.abilities
     # Seelenverbindung Phasenverständnis
-    %w{1 2}
+    Ability.where(id: [27, 32]).collect(&:id)
   end
   
   # method for options_from_collection_for_select

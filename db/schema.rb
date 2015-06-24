@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150602191742) do
+ActiveRecord::Schema.define(version: 20150610152738) do
+
+  create_table "abilities", force: true do |t|
+    t.string   "name",                   null: false
+    t.text     "desc",                   null: false
+    t.integer  "basetime",   default: 0, null: false
+    t.integer  "max_stage",  default: 1, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "achievements", id: false, force: true do |t|
     t.string   "name"

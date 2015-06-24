@@ -3,6 +3,8 @@
 //= require jquery_ujs
 //= require i18n
 //= require i18n/translations
+//= require lib/Array
+//= require lib/Number
 //= require datepicker
 //= require spotlights
 //= require_self
@@ -47,3 +49,32 @@ window.l = (type, value) ->
   
 window.t = (scope, locals) ->
   I18n.t(scope, locals);
+  
+# translation of Apps ToolsHelper::countdown
+window.countdown = (s) -> 
+  units = countdown_units(s)
+  (word for word in [
+    t("datetime.distance_in_words.x_years",   {count: units.y}),
+    t("datetime.distance_in_words.x_days",    {count: units.d}),
+    t("datetime.distance_in_words.x_hours",   {count: units.h}),
+    t("datetime.distance_in_words.x_minutes", {count: units.m}),
+    t("datetime.distance_in_words.x_seconds", {count: units.s})
+  ] when !!word).to_sentence({ # filter with word for word in words when !word.empty?
+    two_words_connector: t("support.array.connector.and"),
+    last_word_connector: t("support.array.connector.and")
+  })
+
+# translation of Apps ToolsHelper::countdown_units
+countdown_units = (t) ->
+  [mm, ss] = t.divmod(60)            
+  [hh, mm] = mm.divmod(60)          
+  [dd, hh] = hh.divmod(24)  
+  [yy, dd] = dd.divmod(365)
+  
+  {
+    y: yy,
+    d: dd, 
+    h: hh, 
+    m: mm, 
+    s: ss
+  }

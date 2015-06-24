@@ -1,0 +1,82 @@
+<h1><%= t ".heading" %></h1>
+
+<%= form_tag tools_ability_calc_path, id: "ability_calc" do %>
+  <table id="abilities">
+    <caption><%= t ".table.caption" %></caption>
+    <thead>
+      <tr>
+        <th rowspan="2"><%= Ability.human_attribute_name(:name) %></th>
+        <th rowspan="2"><%= t ".table.head.basetime" %></th>
+        <th rowspan="2"><%= t ".table.head.from_stage" %></th>
+        <th rowspan="2"><%= t ".table.head.till_stage" %></th>
+        <th colspan="2"><%= t ".table.head.learntime" %></th>
+      </tr>
+      <tr>
+        <th><%= t ".table.head.learntime_max" %></th>
+        <th><%= t ".table.head.learntime_min" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @abilities.each do |_, ability| %>
+        <tr class="ability" data-id="<%= ability[:klass].id %>">
+          <td class="name tooltip">
+            <%= hidden_field_tag "ability_ids[]", ability[:klass].id, id: nil %>
+            <em><%= ability[:klass].name %></em>
+            <%= tooltip_markup ability[:klass].desc %>
+          </td>
+          <td class="basetime">
+            <%= number_field_tag "basetime[]", ability[:klass].basetime, min: 0 %>
+            (<span class="time_distance"><%= countdown ability[:klass].basetime %></span>)
+          </td>
+          <td class="from_stage">
+            <%= number_field_tag "from_stage[]", ability[:from_stage], min: 0 %>
+          </td>
+          <td class="till_stage">
+            <%= number_field_tag "till_stage[]", ability[:till_stage], min: 0 %>
+          </td>
+          <td class="learntime_max">
+            <%= countdown ability[:learntimes].max %>
+          </td>
+          <td class="learntime_min">
+            <%= countdown ability[:learntimes].min %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="4"><strong><%= t ".table.foot.sum" %></strong></td>
+        <td class="learntime_max">
+          <em id="learntime_max_sum"><%= countdown @learntime_sum.max %></em>
+        </td>
+        <td class="learntime_min">
+          <em id="learntime_min_sum"><%= countdown @learntime_sum.min %></em>
+        </td>
+      </tr>
+    </tfoot> 
+  </table>
+
+<%= submit_tag t(".form.time_spent"), name: "time_spent_mode" %>
+<%= submit_tag t(".form.new_ability"), name: "new_ability" %>
+<%= submit_tag t(".form.submit"), name: "calc" %>
+
+<% end %>
+
+<h2><%= t ".abilities_cp.heading" %></h2>
+
+<h3><%= t ".abilities_cp.instruction.heading" %></h3>
+<ol class="instruction">
+  <li><%= t ".abilities_cp.instruction.1st" %></li>
+  <li><%= t ".abilities_cp.instruction.2nd" %></li>
+  <li><%= t ".abilities_cp.instruction.3rd" %></li>
+  <li><%= t ".abilities_cp.instruction.4th" %></li>
+</ol>
+
+<%= form_tag tools_ability_calc_path, id: "abilities_cp" do %>
+
+<%= label_tag :abilities_ingame, t(".abilities_cp.form.abilities_ingame") %>
+<%= text_area_tag :abilities_ingame, @params[:abilities_ingame], rows: 5, cols: 10 %>
+
+<%= button_tag t(".abilities_cp.form.submit") %>
+
+<% end %>
