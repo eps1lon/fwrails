@@ -208,7 +208,7 @@ if ($user = mysql_fetch_assoc($result)) { // User stimmt
                     $sql_query = "INSERT IGNORE INTO npcs (id, name, live, strength, unique_npc, pos_x, pos_y, created_at, updated_at) VALUES ".
                                  "('" . $npc_id . "', '" . mysql_real_escape_string($npc->name, $db) . "', ".
                                  "'" . (int)$npc->live . "', '" . (int)$npc->strength . "', ".
-                                 "'" . (int)$npc->unique . "'$pos_update_on_insert, '$now', '$now')";
+                                 "'" . ((int)$npc->unique + 1) . "'$pos_update_on_insert, '$now', '$now')";
                     mysql_query($sql_query, $db) or die(mysql_error());
 
                     $inserted += mysql_affected_rows($db);
