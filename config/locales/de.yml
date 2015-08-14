@@ -1085,6 +1085,14 @@ de:
           zero: "keine Lernzeitverkürzung"
           one: "1 Sekunde Lernzeitverkürzung (10-fach bei Phasenwebkunst)"
           other: "%{count} Sekunden Lernzeitverkürzung (10-fach bei Phasenwebkunst)"
+        r_13:
+          zero: "Rückgewinnung zu 50%"
+          one: "ein Prozent Rückgewinnung der verbrauchten PE"
+          other: "%{count}% der verbrauchten PE werden Rückgewonnen"
+        r_12:
+          zero: "kein Zauber der Entstarrung"
+          one: "ein Zauber der Entstarrung"
+          other: "%{count} Zauber der Entstarrung"
       passive_info: "Kosten: %{cost} PE, passiver Faktor: %{factor}"
       ability: "relevante Charakterfähigkeiten"
       abilities:

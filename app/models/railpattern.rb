@@ -9,14 +9,14 @@ class Railpattern < ActiveRecord::Base
   
   # abilities that are used for certain patterns
   def self.abilities
-    # Seelenverbindung Phasenverständnis Selbstheilung
-    Ability.where(id: [27, 32, 17])
+    # Seelenverbindung Phasenverständnis Selbstheilung Phasenenergieeffizienz
+    Ability.where(id: [27, 32, 17, 36])
   end
   
   # method for options_from_collection_for_select
   def name_with_cost
     #TODO number_with_delimiter?
-    "#{self.name} (#{self.cost})"
+    "#{self.name} (#{ActiveSupport::NumberHelper::number_to_delimited(self.cost)})"
   end
   
   # chance for activation as used ingame

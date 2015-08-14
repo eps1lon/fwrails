@@ -99,6 +99,33 @@ class window.Spiritlite extends Railpattern
     
   passive_magnitude: ->
     1
+
+# Zellvibration
+class window.Cellvibe extends Railpattern
+  cost: (standtime = 0) ->
+    @cost + standtime * 8
+  
+  life_drain: ->
+    0.10
+  
+  passive_magnitude: ->
+    1
+
+# Präzisionsspeer
+class window.Precisionspear extends Railpattern
+  constructor: (args...) ->
+    super
+    @concerning_abilities.push 36
+  
+  life_drain: ->
+    500
+  
+  # fetch max_stage
+  passive_magnitude: ->
+    if @get_ability(36) >= 80 then 0.10 else 0.08
+  
+  chance_float: ->
+    100.0
   
 # parse power function to mathml
 mathml_pow = (string, stage) ->
@@ -111,7 +138,7 @@ $(document).ready ->
   # init railpattern object
   railpatterns = []
   
-  railpatterns = (new window[pattern.type](pattern) for pattern in railpatterns_as_json)
+  railpatterns = ((try new window[pattern.type](pattern) catch e then console.log ("class `" + pattern.type + "` not found")) for pattern in railpatterns_as_json)
   
   $("#abilities tr.ability td.max_stage").click ->
     $("td.stage input", $(this).parents("tr")).val ~~$(this).text()
