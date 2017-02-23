@@ -2,6 +2,8 @@ nbproject/
 app/assets/images/achievements
 config/database.yml
 
+lib/cron/mydump.sh
+
 public/dumps
 public/assets
 
